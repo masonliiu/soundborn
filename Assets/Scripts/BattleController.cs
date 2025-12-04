@@ -23,19 +23,38 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
+
+        // initialize stats using GameManager data
+        var gm = GameManager.Instance;
+        if (gm != null) {
+            var activeInstance = gm.GetActiveCharacterInstance();
+            if (activeInstance != null) 
+            {
+                player.InitFrom(activeInstance);
+            }
+
+            var enemyData = gm.GetCurrentEnemyData();
+            if (enemyData != null) 
+            {
+                enemy.InitFrom(enemyData);
+            }
+        }
+
         UpdateUI();
 
-        // Decide who goes first based on Speed
-        if (player.speed >= enemy.speed)
-        {
-            if (battleLogText != null)
+        // decide who goes first based on Speed
+        if (player.speed >= enemy.speed) {
+            if (battleLogText != null) 
+            {
                 battleLogText.text = "Battle start! You act first.";
+            }
             StartPlayerTurn();
-        }
-        else
-        {
-            if (battleLogText != null)
+        } 
+        else {
+            if (battleLogText != null) 
+            {
                 battleLogText.text = "Battle start! Enemy acts first.";
+            }
             StartEnemyTurn();
         }
     }

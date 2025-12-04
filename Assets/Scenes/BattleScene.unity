@@ -360,18 +360,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   displayName: Enemy
-  element: 6
+  element: 4
   maxHP: 120
   currentHP: 120
   attack: 15
   defense: 3
   speed: 8
+  critChance: 0.1
+  critDamageMultiplier: 1.5
   skillPower: 35
   ultimatePower: 60
   skillCooldownTurns: 2
   ultimateCooldownTurns: 4
   skillCooldownRemaining: 0
   ultimateCooldownRemaining: 0
+  currentStatus: 0
+  statusDurationTurns: 0
+  bleedDamagePerTurn: 10
+  defenseUpAmount: 10
 --- !u!1 &875464149
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,7 +601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 240}
+  m_AnchoredPosition: {x: 0, y: 463}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991439264
@@ -1105,18 +1111,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   displayName: Player
-  element: 1
+  element: 3
   maxHP: 150
   currentHP: 150
   attack: 20
   defense: 5
   speed: 10
+  critChance: 0.1
+  critDamageMultiplier: 1.5
   skillPower: 15
   ultimatePower: 40
   skillCooldownTurns: 3
   ultimateCooldownTurns: 5
   skillCooldownRemaining: 0
   ultimateCooldownRemaining: 0
+  currentStatus: 0
+  statusDurationTurns: 0
+  bleedDamagePerTurn: 10
+  defenseUpAmount: 10
 --- !u!1 &1748099990
 GameObject:
   m_ObjectHideFlags: 0

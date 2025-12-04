@@ -261,4 +261,48 @@ public class CharacterStats : MonoBehaviour
 
         return mul;
     }
+    public void InitFrom(CharacterData data)
+    {
+        if (data == null)
+        {
+            Debug.LogWarning("InitFrom called with null CharacterData on " + name);
+            return;
+        }
+
+        displayName = data.displayName;
+        element = data.element;
+
+        maxHP = data.maxHP;
+        currentHP = maxHP;
+
+        attack = data.attack;
+        defense = data.defense;
+        speed = data.speed;
+
+        critChance = data.critChance;
+        critDamageMultiplier = data.critDamageMultiplier;
+
+        skillPower = data.skillPower;
+        ultimatePower = data.ultimatePower;
+
+        bleedDamagePerTurn = data.bleedDamagePerTurn;
+        defenseUpAmount = data.defenseUpAmount;
+
+        // reset runtime stuff
+        skillCooldownRemaining = 0;
+        ultimateCooldownRemaining = 0;
+        ClearStatus();
+    }
+
+    public void InitFrom(CharacterInstance instance)
+    {
+        if (instance == null || instance.data == null)
+        {
+            Debug.LogWarning("InitFrom called with null CharacterInstance on " + name);
+            return;
+        }
+
+        // for now, just use base data. later you can scale by level here.
+        InitFrom(instance.data);
+    }
 }
