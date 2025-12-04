@@ -360,9 +360,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   displayName: Enemy
-  maxHP: 100
-  currentHP: 100
-  attack: 20
+  element: 6
+  maxHP: 120
+  currentHP: 120
+  attack: 15
+  defense: 3
+  speed: 8
   skillPower: 35
   ultimatePower: 60
   skillCooldownTurns: 2
@@ -406,7 +409,6 @@ MonoBehaviour:
   basicAttackButton: {fileID: 2133719609}
   skillButton: {fileID: 1760995676}
   ultimateButton: {fileID: 1585438068}
-  enemyAttackDamage: 10
 --- !u!4 &875464151
 Transform:
   m_ObjectHideFlags: 0
@@ -1103,13 +1105,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   displayName: Player
-  maxHP: 100
-  currentHP: 100
+  element: 1
+  maxHP: 150
+  currentHP: 150
   attack: 20
-  skillPower: 35
-  ultimatePower: 60
-  skillCooldownTurns: 2
-  ultimateCooldownTurns: 4
+  defense: 5
+  speed: 10
+  skillPower: 15
+  ultimatePower: 40
+  skillCooldownTurns: 3
+  ultimateCooldownTurns: 5
   skillCooldownRemaining: 0
   ultimateCooldownRemaining: 0
 --- !u!1 &1748099990

@@ -18,11 +18,8 @@ public class BattleController : MonoBehaviour
     public Button skillButton;
     public Button ultimateButton;
 
-    [Header("Enemy Damage")]
-    public int enemyAttackDamage = 15;
-
     private bool playerTurn = true;
-    private bool battleOver = false;
+    private bool battleOver = false;    
 
     private void Start()
     {
@@ -32,28 +29,30 @@ public class BattleController : MonoBehaviour
             battleLogText.text = "Battle start!";
         }
 
-        //at the start of the very first turn, tick cooldowns for player
+        // start-of-battle: player turn setup
         player.TickCooldowns();
         UpdateAbilityButtons();
     }
 
-    //ability 1: basic attack
+    // basic attack
     public void OnBasicAttackPressed()
     {
         if (!CanPlayerAct()) return;
 
-        int damage = player.attack;
+        float elemMul;
+        int damage = player.CalculateDamageAgainst(enemy, 1.0f, 0, out elemMul);
         enemy.TakeDamage(damage);
 
         if (battleLogText != null)
         {
-            battleLogText.text = $"You strike the enemy for {damage} damage.";
+            string elemText = BuildElementText(elemMul);
+            battleLogText.text = $"You strike the enemy for {damage} damage.{elemText}";
         }
 
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    //ability 2: skill
+    // skill (more damage, on cooldown)
     public void OnSkillPressed()
     {
         if (!CanPlayerAct()) return;
@@ -65,19 +64,21 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        int damage = player.skillPower;
+        float elemMul;
+        int damage = player.CalculateDamageAgainst(enemy, 1.2f, player.skillPower, out elemMul);
         enemy.TakeDamage(damage);
-        player.PutSkillOnCooldown();  // start cooldown
+        player.PutSkillOnCooldown();
 
         if (battleLogText != null)
         {
-            battleLogText.text = $"You use your skill for {damage} damage!";
+            string elemText = BuildElementText(elemMul);
+            battleLogText.text = $"You use your skill for {damage} damage!{elemText}";
         }
 
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    //ability 3: ultimate
+    // ultimate (huge hit, long cooldown)
     public void OnUltimatePressed()
     {
         if (!CanPlayerAct()) return;
@@ -89,59 +90,34 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        int damage = player.ultimatePower;
+        float elemMul;
+        int damage = player.CalculateDamageAgainst(enemy, 1.5f, player.ultimatePower, out elemMul);
         enemy.TakeDamage(damage);
-        player.PutUltimateOnCooldown();  // start cooldown
+        player.PutUltimateOnCooldown();
 
         if (battleLogText != null)
         {
-            battleLogText.text = $"ULTIMATE! You deal {damage} massive damage!";
+            string elemText = BuildElementText(elemMul);
+            battleLogText.text = $"ULTIMATE! You deal {damage} massive damage!{elemText}";
         }
 
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    //common checks / turn handling
-
-    private bool CanPlayerAct()
-    {
-        if (battleOver) return false;
-        if (!playerTurn) return false;
-        return true;
-    }
-
-    private void EndPlayerTurn(bool afterDealingDamage)
-    {
-        UpdateUI();
-
-        //if we hit the enemy with something, check death
-        if (afterDealingDamage && enemy.IsDead())
-        {
-            if (battleLogText != null)
-                battleLogText.text += "\nEnemy defeated! You win.";
-
-            battleOver = true;
-            UpdateAbilityButtons();
-            return;
-        }
-
-        //hand turn to enemy
-        playerTurn = false;
-        UpdateAbilityButtons();
-        Invoke(nameof(EnemyTurn), 0.8f);
-    }
-
+    // enemy turn
     private void EnemyTurn()
     {
         if (battleOver) return;
 
-        //simple enemy: always basic attack
-        int damage = enemyAttackDamage;
+        // Enemy just uses basic attack for now
+        float elemMul;
+        int damage = enemy.CalculateDamageAgainst(player, 1.0f, 0, out elemMul);
         player.TakeDamage(damage);
 
         if (battleLogText != null)
         {
-            battleLogText.text = $"Enemy hits you for {damage} damage.";
+            string elemText = BuildElementText(elemMul);
+            battleLogText.text = $"Enemy hits you for {damage} damage.{elemText}";
         }
 
         UpdateUI();
@@ -155,10 +131,9 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        //now it's the player's turn again
+        // back to player's turn
         playerTurn = true;
-
-        //at the start of the player's turn, tick their cooldowns
+        // tick player's cooldowns at start of their turn
         player.TickCooldowns();
         UpdateAbilityButtons();
 
@@ -166,6 +141,33 @@ public class BattleController : MonoBehaviour
         {
             battleLogText.text += "\nYour turn.";
         }
+    }
+
+    // turn handling / utilities
+
+    private bool CanPlayerAct()
+    {
+        if (battleOver) return false;
+        if (!playerTurn) return false;
+        return true;
+    }
+
+    private void EndPlayerTurn(bool afterDealingDamage)
+    {
+        UpdateUI();
+
+        if (afterDealingDamage && enemy.IsDead())
+        {
+            if (battleLogText != null)
+                battleLogText.text += "\nEnemy defeated! You win.";
+            battleOver = true;
+            UpdateAbilityButtons();
+            return;
+        }
+
+        playerTurn = false;
+        UpdateAbilityButtons();
+        Invoke(nameof(EnemyTurn), 0.8f);
     }
 
     private void UpdateUI()
@@ -183,16 +185,25 @@ public class BattleController : MonoBehaviour
 
     private void UpdateAbilityButtons()
     {
-        //basic attack is available on player's turn if battle not over
+        bool canAct = playerTurn && !battleOver;
+
         if (basicAttackButton != null)
-            basicAttackButton.interactable = playerTurn && !battleOver;
+            basicAttackButton.interactable = canAct;
 
-        //skill only if player's turn, not over, and not on cooldown
         if (skillButton != null)
-            skillButton.interactable = playerTurn && !battleOver && player.CanUseSkill();
+            skillButton.interactable = canAct && player.CanUseSkill();
 
-        //ultimate similar
         if (ultimateButton != null)
-            ultimateButton.interactable = playerTurn && !battleOver && player.CanUseUltimate();
+            ultimateButton.interactable = canAct && player.CanUseUltimate();
+    }
+
+    // small helper to write text for element advantage
+    private string BuildElementText(float elemMul)
+    {
+        if (elemMul > 1.01f)
+            return " (Element Advantage)";
+        if (elemMul < 0.99f)
+            return " (Element Disadvantage)";
+        return "";
     }
 }
