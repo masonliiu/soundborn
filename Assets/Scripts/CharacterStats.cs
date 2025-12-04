@@ -6,7 +6,7 @@ public enum ElementType
     None,
     Bass,       // heavy low-end, power
     Percussion, // rhythm / speed
-    Harmony,    // chords, support
+    Harmony,    // chords, support, calm
     Noise,      // distortion / chaos
     Melody,     // hooks, leads
     Synth       // electronic / digital
@@ -15,8 +15,10 @@ public enum ElementType
 public enum StatusType
 {
     None,
-    Burn,
-    DefenseUp
+    BleedEars,  // damage over time
+    Stun,       // skip turn
+    Sleep,      // skip turn (calm music)
+    DefenseUp   // temporary defense buff on self
 }
 
 public class CharacterStats : MonoBehaviour
@@ -30,18 +32,18 @@ public class CharacterStats : MonoBehaviour
     public int currentHP;
     public int attack = 20;    // base attack power
     public int defense = 5;    // base defense
-    public int speed = 10;     // used for who goes first (later for full turn order)
+    public int speed = 10;     // used for who goes first
 
     [Header("Crit Settings")]
     [Range(0f, 1f)] public float critChance = 0.1f;
-    public float critDamageMultiplier = 1.5f;   // MUST be float
+    public float critDamageMultiplier = 1.5f;
 
     [Header("Ability Power")]
     public int skillPower = 35;      // extra flat power for skill
     public int ultimatePower = 60;   // extra flat power for ultimate
 
     [Header("Cooldowns (in turns)")]
-    public int skillCooldownTurns = 2;   // how many of your turns before you can use it again
+    public int skillCooldownTurns = 2;
     public int ultimateCooldownTurns = 4;
 
     [HideInInspector] public int skillCooldownRemaining = 0;
@@ -50,7 +52,7 @@ public class CharacterStats : MonoBehaviour
     [Header("Status")]
     public StatusType currentStatus = StatusType.None;
     public int statusDurationTurns = 0;
-    public int burnDamagePerTurn = 10;
+    public int bleedDamagePerTurn = 10;
     public int defenseUpAmount = 10;
 
     private int baseDefense;
@@ -75,9 +77,9 @@ public class CharacterStats : MonoBehaviour
         return currentHP <= 0;
     }
 
-    // ===== COOL DOWNS =====
+    // cooldowns
 
-    // called at the start of current character's turn
+    // called at the start of this character's turn
     public void TickCooldowns()
     {
         if (skillCooldownRemaining > 0)
@@ -107,7 +109,7 @@ public class CharacterStats : MonoBehaviour
         return ultimateCooldownRemaining <= 0;
     }
 
-    // ===== STATUS =====
+    // status
 
     public void ApplyStatus(StatusType status, int durationTurns)
     {
@@ -124,8 +126,13 @@ public class CharacterStats : MonoBehaviour
                 defense = baseDefense + defenseUpAmount;
                 break;
 
-            case StatusType.Burn:
+            case StatusType.BleedEars:
                 // damage will be applied at turn start
+                break;
+
+            case StatusType.Stun:
+            case StatusType.Sleep:
+                // skipping handled in BattleController
                 break;
 
             case StatusType.None:
@@ -143,23 +150,31 @@ public class CharacterStats : MonoBehaviour
 
     /// <summary>
     /// Called at the START of this character's turn, after cooldown tick.
-    /// Returns damage taken from status effects (if any).
+    /// Returns whether this character should skip their action,
+    /// and outputs damage taken from status (if any).
     /// </summary>
-    public int TickStatusAtTurnStart()
+    public bool TickStatusAtTurnStart(out int damageFromStatus)
     {
-        int damageFromStatus = 0;
+        damageFromStatus = 0;
+        bool skipTurn = false;
 
         if (currentStatus == StatusType.None || statusDurationTurns <= 0)
         {
             ClearStatus();
-            return 0;
+            return false;
         }
 
         switch (currentStatus)
         {
-            case StatusType.Burn:
-                damageFromStatus = burnDamagePerTurn;
+            case StatusType.BleedEars:
+                damageFromStatus = bleedDamagePerTurn;
                 TakeDamage(damageFromStatus);
+                break;
+
+            case StatusType.Stun:
+            case StatusType.Sleep:
+                // they lose this turn
+                skipTurn = true;
                 break;
 
             case StatusType.DefenseUp:
@@ -168,20 +183,24 @@ public class CharacterStats : MonoBehaviour
         }
 
         statusDurationTurns--;
-
         if (statusDurationTurns <= 0)
         {
             ClearStatus();
         }
 
-        return damageFromStatus;
+        return skipTurn;
     }
 
     /// <summary>
     /// damage formula using attack, defense, a multiplier, flat bonus,
     /// and an element multiplier + crit. returns final damage and outputs flags.
     /// </summary>
-    public int CalculateDamageAgainst(CharacterStats target, float multiplier, int flatBonus, out bool isCrit, out float elementMultiplier)
+    public int CalculateDamageAgainst(
+        CharacterStats target,
+        float multiplier,
+        int flatBonus,
+        out bool isCrit,
+        out float elementMultiplier)
     {
         // base attack vs defense
         int raw = attack - target.defense;
@@ -222,7 +241,6 @@ public class CharacterStats : MonoBehaviour
         if (attacker == ElementType.None || defender == ElementType.None)
             return 1f;
 
-        // default neutral
         float mul = 1f;
 
         // strong matchups (1.25x)
@@ -233,7 +251,7 @@ public class CharacterStats : MonoBehaviour
         else if (attacker == ElementType.Melody    && defender == ElementType.Percussion) mul = 1.25f;
         else if (attacker == ElementType.Percussion && defender == ElementType.Bass)      mul = 1.25f;
 
-        // weak matchups (0.75x) - reverse of above
+        // weak matchups (0.75x)
         else if (attacker == ElementType.Synth      && defender == ElementType.Bass)       mul = 0.75f;
         else if (attacker == ElementType.Harmony    && defender == ElementType.Synth)      mul = 0.75f;
         else if (attacker == ElementType.Noise      && defender == ElementType.Harmony)    mul = 0.75f;

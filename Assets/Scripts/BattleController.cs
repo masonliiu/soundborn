@@ -25,7 +25,7 @@ public class BattleController : MonoBehaviour
     {
         UpdateUI();
 
-        // decide who goes first based on Speed
+        // Decide who goes first based on Speed
         if (player.speed >= enemy.speed)
         {
             if (battleLogText != null)
@@ -40,15 +40,15 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    // flow for turn handling
+    // turn flow
 
     private void StartPlayerTurn()
     {
         if (battleOver) return;
 
-        // Tick cooldowns & status
         player.TickCooldowns();
-        int statusDamage = player.TickStatusAtTurnStart();
+        int statusDamage;
+        bool skipTurn = player.TickStatusAtTurnStart(out statusDamage);
 
         if (statusDamage > 0 && battleLogText != null)
         {
@@ -57,13 +57,21 @@ public class BattleController : MonoBehaviour
 
         UpdateUI();
 
-        // Check for death from status
         if (player.IsDead())
         {
             if (battleLogText != null)
                 battleLogText.text += "\nYou were defeated by status...";
             battleOver = true;
             UpdateAbilityButtons();
+            return;
+        }
+
+        if (skipTurn)
+        {
+            if (battleLogText != null)
+                battleLogText.text += $"\n{player.displayName} is unable to act!";
+            // go straight to enemy turn
+            StartEnemyTurn();
             return;
         }
 
@@ -84,7 +92,8 @@ public class BattleController : MonoBehaviour
         UpdateAbilityButtons();
 
         enemy.TickCooldowns();
-        int statusDamage = enemy.TickStatusAtTurnStart();
+        int statusDamage;
+        bool skipTurn = enemy.TickStatusAtTurnStart(out statusDamage);
 
         if (statusDamage > 0 && battleLogText != null)
         {
@@ -102,7 +111,16 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        // delay the actual enemy action a bit
+        if (skipTurn)
+        {
+            if (battleLogText != null)
+                battleLogText.text += $"\n{enemy.displayName} is unable to act!";
+            // go straight back to player turn
+            StartPlayerTurn();
+            return;
+        }
+
+        // Delay the actual enemy action a bit
         Invoke(nameof(EnemyAction), 0.8f);
     }
 
@@ -128,7 +146,7 @@ public class BattleController : MonoBehaviour
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    // skill: extra damage + inflict Burn on enemy
+    // skill: extra damage + themed status based on your element
     public void OnSkillPressed()
     {
         if (!CanPlayerAct()) return;
@@ -146,14 +164,14 @@ public class BattleController : MonoBehaviour
         enemy.TakeDamage(damage);
         player.PutSkillOnCooldown();
 
-        // Apply Burn for 3 of ENEMY's turns
-        enemy.ApplyStatus(StatusType.Burn, 3);
+        // Apply themed status based on player's element
+        string statusText = ApplyElementalStatusFromPlayerSkill();
 
         if (battleLogText != null)
         {
             string critText = BuildCritText(isCrit);
             string elemText = BuildElementText(elemMul);
-            battleLogText.text = $"You use your skill for {damage} damage and inflict BURN!{critText}{elemText}";
+            battleLogText.text = $"You use your skill for {damage} damage! {statusText}{critText}{elemText}";
         }
 
         EndPlayerTurn(afterDealingDamage: true);
@@ -190,13 +208,41 @@ public class BattleController : MonoBehaviour
         EndPlayerTurn(afterDealingDamage: true);
     }
 
+    // themed status: element → status
+    private string ApplyElementalStatusFromPlayerSkill()
+    {
+        switch (player.element)
+        {
+            case ElementType.Bass:
+            case ElementType.Noise:
+                // harsh / heavy genres → bleeding ears
+                enemy.ApplyStatus(StatusType.BleedEars, 3);
+                return "You inflict BLEEDING EARS over time!";
+
+            case ElementType.Harmony:
+            case ElementType.Melody:
+                // calm / soothing / musical → sleep
+                enemy.ApplyStatus(StatusType.Sleep, 1);
+                return "Your calm melody puts the enemy to SLEEP, skipping their next turn!";
+
+            case ElementType.Percussion:
+            case ElementType.Synth:
+                // sharp hits / glitchy shocks → stun
+                enemy.ApplyStatus(StatusType.Stun, 1);
+                return "You STUN the enemy, they will miss their next turn!";
+
+            default:
+                return "";
+        }
+    }
+
     // enemy action
 
     private void EnemyAction()
     {
         if (battleOver) return;
 
-        // simple enemy action: basic attack only
+        // simple enemy: basic attack only
         bool isCrit;
         float elemMul;
         int damage = enemy.CalculateDamageAgainst(player, 1.0f, 0, out isCrit, out elemMul);
