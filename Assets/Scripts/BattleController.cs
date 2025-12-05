@@ -6,6 +6,20 @@ using System.Collections;
 public class BattleController : MonoBehaviour
 {
 
+    [Header("Ability Card")]
+    public GameObject abilityCardPanel;
+    public TextMeshProUGUI abilityCardName;
+    public TextMeshProUGUI abilityCardStats;
+    public TextMeshProUGUI abilityCardDescription;
+
+    private enum PendingAbility { None, Basic, Skill, Ultimate }
+    private PendingAbility pendingAbility = PendingAbility.None;
+
+    [Header("Impact Effects")]
+    public ImpactEffect impactEffectPrefab;
+    public RectTransform playerImpactAnchor;
+    public RectTransform enemyImpactAnchor;
+
     [Header("Status Icons")]
     public Image playerStatusIcon;
     public Image enemyStatusIcon;
@@ -199,11 +213,19 @@ public class BattleController : MonoBehaviour
     {
         if (!CanPlayerAct()) return;
 
+        if (pendingAbility != PendingAbility.Basic) {
+            ShowAbilityCard(PendingAbility.Basic);
+            return;
+        }
+
+        HideAbilityCard();
+
         bool isCrit;
         float elemMul;
         int damage = player.CalculateDamageAgainst(enemy, 1.0f, 0, out isCrit, out elemMul);
         StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
+        SpawnImpact(onEnemy: true, color: GetElementColor(player.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(enemyPortraitRect));
 
@@ -222,6 +244,13 @@ public class BattleController : MonoBehaviour
     {
         if (!CanPlayerAct()) return;
 
+        if (pendingAbility != PendingAbility.Skill) {
+            ShowAbilityCard(PendingAbility.Skill);
+            return;
+        }
+
+        HideAbilityCard();
+
         if (!player.CanUseSkill())
         {
             if (battleLogText != null)
@@ -234,6 +263,7 @@ public class BattleController : MonoBehaviour
         int damage = player.CalculateDamageAgainst(enemy, 1.2f, player.skillPower, out isCrit, out elemMul);
         StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
+        SpawnImpact(onEnemy: true, color: GetElementColor(player.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(enemyPortraitRect));
         player.PutSkillOnCooldown();
@@ -256,6 +286,13 @@ public class BattleController : MonoBehaviour
     {
         if (!CanPlayerAct()) return;
 
+        if (pendingAbility != PendingAbility.Ultimate) {
+            ShowAbilityCard(PendingAbility.Ultimate);
+            return;
+        }
+
+        HideAbilityCard();
+
         if (!player.CanUseUltimate())
         {
             if (battleLogText != null)
@@ -268,6 +305,7 @@ public class BattleController : MonoBehaviour
         int damage = player.CalculateDamageAgainst(enemy, 1.5f, player.ultimatePower, out isCrit, out elemMul);
         StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
+        SpawnImpact(onEnemy: true, color: GetElementColor(player.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(enemyPortraitRect));
         player.PutUltimateOnCooldown();
@@ -325,6 +363,7 @@ public class BattleController : MonoBehaviour
         int damage = enemy.CalculateDamageAgainst(player, 1.0f, 0, out isCrit, out elemMul);
         StartCoroutine(LungeForward(enemyPortraitRect, towardsCenter: false));
         player.TakeDamage(damage);
+        SpawnImpact(onEnemy: false, color: GetElementColor(enemy.element));
         SpawnDamagePopup(onEnemy: false, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(playerPortraitRect));
 
@@ -515,6 +554,108 @@ public class BattleController : MonoBehaviour
         }
 
         rect.anchoredPosition = start;
+    }
+
+    private Color GetElementColor(ElementType element)
+    {
+        switch (element)
+        {
+            case ElementType.Bass:
+                return new Color(0.6f, 0.1f, 0.2f);   // deep red/purple
+            case ElementType.Percussion:
+                return new Color(0.9f, 0.6f, 0.1f);   // punchy orange
+            case ElementType.Harmony:
+                return new Color(0.2f, 0.8f, 0.5f);   // teal/green
+            case ElementType.Noise:
+                return new Color(0.8f, 0.2f, 0.8f);   // magenta
+            case ElementType.Melody:
+                return new Color(0.4f, 0.7f, 1f);     // light blue
+            case ElementType.Synth:
+                return new Color(0.2f, 1f, 1f);       // neon cyan
+            case ElementType.None:
+            default:
+                return Color.clear;
+        }
+    }
+
+    private void SpawnImpact(bool onEnemy, Color color) {
+        if (impactEffectPrefab == null) return;
+
+        RectTransform anchor = onEnemy ? enemyImpactAnchor : playerImpactAnchor;
+        if (anchor == null) return;
+
+        var fx = Instantiate(impactEffectPrefab, anchor);
+        var rect = fx.GetComponent<RectTransform>();
+        rect.anchoredPosition = Vector2.zero;
+
+        fx.Init(color);
+    }
+
+    private void ShowAbilityCard(PendingAbility ability)
+    {
+        if (abilityCardPanel == null || player == null) return;
+
+        pendingAbility = ability;
+        abilityCardPanel.SetActive(true);
+
+        string name = "";
+        string desc = "";
+        int dmg = 0;
+        int cd = 0;
+
+        switch (ability)
+        {
+            case PendingAbility.Basic:
+                name = "Strike";
+                desc = "A basic attack that scales with your Attack stat.";
+                dmg = player.attack;
+                cd = 0;
+                break;
+
+            case PendingAbility.Skill:
+                name = "Signature Skill";
+                desc = DescribeSkillByElement(player.element);
+                dmg = player.attack + player.skillPower;
+                cd = player.skillCooldownTurns;
+                break;
+
+            case PendingAbility.Ultimate:
+                name = "Ultimate";
+                desc = "Massive attack that also grants Harmonic Shield (Defense Up) for 2 of your turns.";
+                dmg = player.attack + player.ultimatePower;
+                cd = player.ultimateCooldownTurns;
+                break;
+        }
+
+        if (abilityCardName != null) abilityCardName.text = name;
+        if (abilityCardStats != null) abilityCardStats.text = $"Dmg: {dmg}   CD: {cd}";
+        if (abilityCardDescription != null) abilityCardDescription.text = desc;
+    }
+
+    public void HideAbilityCard()
+    {
+        if (abilityCardPanel != null)
+            abilityCardPanel.SetActive(false);
+
+        pendingAbility = PendingAbility.None;
+    }
+
+    private string DescribeSkillByElement(ElementType element)
+    {
+        switch (element)
+        {
+            case ElementType.Bass:
+            case ElementType.Noise:
+                return "Feedback Overload: a harsh attack that inflicts Feedback Overload (damage over time) for 3 turns.";
+            case ElementType.Harmony:
+            case ElementType.Melody:
+                return "Lullaby: a soothing pattern that puts the enemy to sleep, skipping their next turn.";
+            case ElementType.Percussion:
+            case ElementType.Synth:
+                return "Tempo Break: sharp strikes that stun the enemy and make them miss their next turn.";
+            default:
+                return "A special attack tied to your genre.";
+        }
     }
 
 
