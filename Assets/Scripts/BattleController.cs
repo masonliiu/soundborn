@@ -9,6 +9,11 @@ public class BattleController : MonoBehaviour
     public Image playerStatusIcon;
     public Image enemyStatusIcon;
 
+    [Header("Damage Popup")]
+    public DamagePopup damagePopupPrefab;
+    public RectTransform playerPopupAnchor;
+    public RectTransform enemyPopupAnchor;
+
     // placeholder for sprites because IM NOT A ARTIST T^T
     public Color bleedColor = Color.red;
     public Color stunColor = new Color(1f, 0.8f, 0f);
@@ -189,6 +194,7 @@ public class BattleController : MonoBehaviour
         float elemMul;
         int damage = player.CalculateDamageAgainst(enemy, 1.0f, 0, out isCrit, out elemMul);
         enemy.TakeDamage(damage);
+        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
 
         if (battleLogText != null)
         {
@@ -216,6 +222,7 @@ public class BattleController : MonoBehaviour
         float elemMul;
         int damage = player.CalculateDamageAgainst(enemy, 1.2f, player.skillPower, out isCrit, out elemMul);
         enemy.TakeDamage(damage);
+        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         player.PutSkillOnCooldown();
 
         // Apply themed status based on player's element
@@ -247,6 +254,7 @@ public class BattleController : MonoBehaviour
         float elemMul;
         int damage = player.CalculateDamageAgainst(enemy, 1.5f, player.ultimatePower, out isCrit, out elemMul);
         enemy.TakeDamage(damage);
+        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         player.PutUltimateOnCooldown();
 
         // DefenseUp for 2 of YOUR turns
@@ -301,6 +309,7 @@ public class BattleController : MonoBehaviour
         float elemMul;
         int damage = enemy.CalculateDamageAgainst(player, 1.0f, 0, out isCrit, out elemMul);
         player.TakeDamage(damage);
+        SpawnDamagePopup(onEnemy: false, amount: damage, isCrit: isCrit);
 
         if (battleLogText != null)
         {
@@ -432,6 +441,19 @@ public class BattleController : MonoBehaviour
             default:
                 return noStatusColor;
         }
+    }
+
+    private void SpawnDamagePopup(bool onEnemy, int amount, bool isCrit) {
+        if (damagePopupPrefab == null) return;
+
+        RectTransform anchor = onEnemy ? enemyPopupAnchor : playerPopupAnchor;
+        if (anchor == null) return;
+
+        var popup = Instantiate(damagePopupPrefab, anchor);
+        var rect = popup.GetComponent<RectTransform>();
+        rect.anchoredPosition = Vector2.zero;
+
+        popup.Init(amount, isCrit);
     }
 
     private string BuildElementText(float elemMul)

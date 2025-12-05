@@ -151,6 +151,7 @@ RectTransform:
   m_Children:
   - {fileID: 955230332}
   - {fileID: 1556794297}
+  - {fileID: 2016493980}
   - {fileID: 489727134}
   - {fileID: 390800217}
   m_Father: {fileID: 1091560612}
@@ -905,6 +906,7 @@ RectTransform:
   m_Children:
   - {fileID: 1458323768}
   - {fileID: 1851298992}
+  - {fileID: 700749403}
   - {fileID: 107031224}
   - {fileID: 306847886}
   m_Father: {fileID: 1091560612}
@@ -1092,6 +1094,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634227475}
   m_CullTransparentMesh: 1
+--- !u!1 &700749402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700749403}
+  - component: {fileID: 700749404}
+  m_Layer: 5
+  m_Name: EnemyPopupAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &700749403
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700749402}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 523296235}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -86.7, y: -4.4}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &700749404
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700749402}
+  m_CullTransparentMesh: 1
 --- !u!1 &786747393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleController
   playerStatusIcon: {fileID: 489727135}
   enemyStatusIcon: {fileID: 306847887}
+  damagePopupPrefab: {fileID: 9136262585381525840, guid: 7c8ff227c58504e9b82e888e960d3e90, type: 3}
+  playerPopupAnchor: {fileID: 2016493980}
+  enemyPopupAnchor: {fileID: 700749403}
   bleedColor: {r: 1, g: 0, b: 0, a: 1}
   stunColor: {r: 1, g: 0.8, b: 0, a: 1}
   sleepColor: {r: 0.5, g: 0.7, b: 1, a: 1}
@@ -2786,6 +2835,50 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851298991}
+  m_CullTransparentMesh: 1
+--- !u!1 &2016493979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016493980}
+  - component: {fileID: 2016493981}
+  m_Layer: 5
+  m_Name: PlayerPopupAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2016493980
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016493979}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 93611258}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 155.4, y: 373.4}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2016493981
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016493979}
   m_CullTransparentMesh: 1
 --- !u!1 &2133719607
 GameObject:
