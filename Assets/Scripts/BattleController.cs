@@ -4,6 +4,18 @@ using TMPro;
 
 public class BattleController : MonoBehaviour
 {
+
+    [Header("Status Icons")]
+    public Image playerStatusIcon;
+    public Image enemyStatusIcon;
+
+    // placeholder for sprites because IM NOT A ARTIST T^T
+    public Color bleedColor = Color.red;
+    public Color stunColor = new Color(1f, 0.8f, 0f);
+    public Color sleepColor = new Color(0.5f, 0.7f, 1f);
+    public Color defenseUpColor = new Color(0.3f, 1f, 0.3f);
+    public Color noStatusColor = new Color(1f, 1f, 1f, 0f); //transp
+
     [Header("Characters")]
     public CharacterStats player;
     public CharacterStats enemy;
@@ -359,20 +371,67 @@ public class BattleController : MonoBehaviour
                 enemyHpSlider.value = enemy.currentHP;
             }
         }
+        UpdateStatusIcons();
     }
 
     private void UpdateAbilityButtons()
     {
         bool canAct = playerTurn && !battleOver;
 
-        if (basicAttackButton != null)
+        if (basicAttackButton != null) {
+
             basicAttackButton.interactable = canAct;
+            SetAbilityButtonLabel(basicAttackButton, "Strike", 0);
+        }
 
-        if (skillButton != null)
+        if (skillButton != null && player != null) {
             skillButton.interactable = canAct && player.CanUseSkill();
+            SetAbilityButtonLabel(skillButton, "Skill", player.skillCooldownRemaining);
+        }
 
-        if (ultimateButton != null)
+        if (ultimateButton != null && player != null) {
             ultimateButton.interactable = canAct && player.CanUseUltimate();
+            SetAbilityButtonLabel(ultimateButton, "Ultimate", player.ultimateCooldownRemaining);
+        }            
+    }
+
+    private void SetAbilityButtonLabel(Button button, string baseName, int cooldownRemaining) {
+        if (button == null) return;
+
+        var label = button.GetComponentInChildren<TextMeshProUGUI>();
+        if (label == null) return;
+
+        if (cooldownRemaining > 0) {
+            label.text = $"{baseName}\n({cooldownRemaining})";
+        } else {
+            label.text = baseName;
+        }
+    }
+
+    private void UpdateStatusIcons() {
+        if (playerStatusIcon != null && player != null) {
+            playerStatusIcon.color = GetStatusColor(player.currentStatus);
+        }
+
+        if (enemyStatusIcon != null && enemy != null) {
+            enemyStatusIcon.color = GetStatusColor(enemy.currentStatus);
+        }
+    }
+
+    private Color GetStatusColor(StatusType status) {
+        switch (status) {
+            case StatusType.BleedEars:
+                return bleedColor;
+            case StatusType.Stun:
+                return stunColor;
+            case StatusType.Sleep:
+                return sleepColor;
+            case StatusType.DefenseUp:
+                return defenseUpColor;
+            case StatusType.None:
+            default:
+                return noStatusColor;
+        }
     }
 
     private string BuildElementText(float elemMul)
