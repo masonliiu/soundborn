@@ -22,4 +22,7 @@ public class PlayerData
 {
     public List<CharacterInstance> ownedCharacters = new List<CharacterInstance>();
     public int activeCharacterIndex = 0;
+
+    public int softCurrency = 0;
+    public int premiumCurrency = 0;
 }

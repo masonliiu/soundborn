@@ -8,10 +8,17 @@ public class BattleController : MonoBehaviour
     public CharacterStats player;
     public CharacterStats enemy;
 
+    [Header("Portraits")]
+    public Image playerPortraitImage;
+    public Image enemyPortraitImage;
+
     [Header("UI References")]
     public TextMeshProUGUI playerHpText;
     public TextMeshProUGUI enemyHpText;
     public TextMeshProUGUI battleLogText;
+
+    public Slider playerHpSlider;
+    public Slider enemyHpSlider;
 
     [Header("Ability Buttons")]
     public Button basicAttackButton;
@@ -37,6 +44,22 @@ public class BattleController : MonoBehaviour
             if (enemyData != null) 
             {
                 enemy.InitFrom(enemyData);
+            }
+        }
+
+        if (gm != null) {
+            if (playerPortraitImage != null) {
+                var activeInstance = gm.GetActiveCharacterInstance();
+                if (activeInstance != null && activeInstance.data.silhouetteSprite != null) {
+                    playerPortraitImage.sprite = activeInstance.data.silhouetteSprite;
+                }
+            }
+
+            if (enemyPortraitImage != null) {
+                var enemyData = gm.GetCurrentEnemyData();
+                if (enemyData != null && enemyData.silhouetteSprite != null) {
+                    enemyPortraitImage.sprite = enemyData.silhouetteSprite;
+                }
             }
         }
 
@@ -317,14 +340,24 @@ public class BattleController : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (playerHpText != null && player != null)
-        {
-            playerHpText.text = $"Player HP: {player.currentHP}/{player.maxHP}";
+        if (player != null) {
+            if (playerHpText != null) {
+                playerHpText.text = $"{player.displayName} {player.currentHP}/{player.maxHP}";
+            }
+            if (playerHpSlider != null) {
+                playerHpSlider.maxValue = player.maxHP;
+                playerHpSlider.value = player.currentHP;
+            }
         }
 
-        if (enemyHpText != null && enemy != null)
-        {
-            enemyHpText.text = $"Enemy HP: {enemy.currentHP}/{enemy.maxHP}";
+        if (enemy != null) {
+            if (enemyHpText != null) {
+                enemyHpText.text = $"{enemy.displayName} {enemy.currentHP}/{enemy.maxHP}";
+            }
+            if (enemyHpSlider != null) {
+                enemyHpSlider.maxValue = enemy.maxHP;
+                enemyHpSlider.value = enemy.currentHP;
+            }
         }
     }
 
