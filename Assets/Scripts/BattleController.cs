@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class BattleController : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class BattleController : MonoBehaviour
     public DamagePopup damagePopupPrefab;
     public RectTransform playerPopupAnchor;
     public RectTransform enemyPopupAnchor;
+
+    [Header("Attack Animation")]
+    public RectTransform playerPortraitRect;
+    public RectTransform enemyPortraitRect;
+    public float attackMoveDistance = 80f;
+    public float attackMoveDuration = 0.15f;
+    public float hitShakeDistance = 20f;
+    public float hitShakeDuration = 0.1f;
 
     // placeholder for sprites because IM NOT A ARTIST T^T
     public Color bleedColor = Color.red;
@@ -193,8 +202,10 @@ public class BattleController : MonoBehaviour
         bool isCrit;
         float elemMul;
         int damage = player.CalculateDamageAgainst(enemy, 1.0f, 0, out isCrit, out elemMul);
+        StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
+        StartCoroutine(Shake(enemyPortraitRect));
 
         if (battleLogText != null)
         {
@@ -221,8 +232,10 @@ public class BattleController : MonoBehaviour
         bool isCrit;
         float elemMul;
         int damage = player.CalculateDamageAgainst(enemy, 1.2f, player.skillPower, out isCrit, out elemMul);
+        StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
+        StartCoroutine(Shake(enemyPortraitRect));
         player.PutSkillOnCooldown();
 
         // Apply themed status based on player's element
@@ -253,8 +266,10 @@ public class BattleController : MonoBehaviour
         bool isCrit;
         float elemMul;
         int damage = player.CalculateDamageAgainst(enemy, 1.5f, player.ultimatePower, out isCrit, out elemMul);
+        StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
+        StartCoroutine(Shake(enemyPortraitRect));
         player.PutUltimateOnCooldown();
 
         // DefenseUp for 2 of YOUR turns
@@ -308,8 +323,10 @@ public class BattleController : MonoBehaviour
         bool isCrit;
         float elemMul;
         int damage = enemy.CalculateDamageAgainst(player, 1.0f, 0, out isCrit, out elemMul);
+        StartCoroutine(LungeForward(enemyPortraitRect, towardsCenter: false));
         player.TakeDamage(damage);
         SpawnDamagePopup(onEnemy: false, amount: damage, isCrit: isCrit);
+        StartCoroutine(Shake(playerPortraitRect));
 
         if (battleLogText != null)
         {
@@ -455,6 +472,52 @@ public class BattleController : MonoBehaviour
 
         popup.Init(amount, isCrit);
     }
+
+    private IEnumerator LungeForward(RectTransform rect, bool towardsCenter) {
+        if (rect == null) yield break;
+
+        Vector2 start = rect.anchoredPosition;
+        Vector2 dir = towardsCenter ? new Vector2(1f, 0f) : new Vector2(-1f, 0f);
+        Vector2 end = start + dir * attackMoveDistance;
+        
+        float t = 0f;
+
+        while (t < attackMoveDuration) {
+            t += Time.deltaTime;
+            float n = t / attackMoveDuration;
+            rect.anchoredPosition = Vector2.Lerp(start, end, n);
+            yield return null;
+        }
+
+        t = 0f;
+        while (t < attackMoveDuration) {
+            t += Time.deltaTime;
+            float n = t / attackMoveDuration;
+            rect.anchoredPosition = Vector2.Lerp(end, start, n);
+            yield return null;
+        }
+    }
+
+    private IEnumerator Shake(RectTransform rect) {
+        if (rect == null) yield break;
+
+        Vector2 start = rect.anchoredPosition;
+        float t= 0f;
+
+        while (t < hitShakeDuration) {
+            t += Time.deltaTime;
+            float n = t / hitShakeDuration;
+            float strength = (1f - n) * hitShakeDistance;
+            float offsetX = Random.Range(-strength, strength);
+            float offsetY = Random.Range(-strength, strength);
+            rect.anchoredPosition = start + new Vector2(offsetX, offsetY);
+            yield return null;
+        }
+
+        rect.anchoredPosition = start;
+    }
+
+
 
     private string BuildElementText(float elemMul)
     {

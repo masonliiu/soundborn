@@ -1127,7 +1127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.7, y: -4.4}
+  m_AnchoredPosition: {x: -31, y: -4.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &700749404
@@ -1249,6 +1249,12 @@ MonoBehaviour:
   damagePopupPrefab: {fileID: 9136262585381525840, guid: 7c8ff227c58504e9b82e888e960d3e90, type: 3}
   playerPopupAnchor: {fileID: 2016493980}
   enemyPopupAnchor: {fileID: 700749403}
+  playerPortraitRect: {fileID: 1556794297}
+  enemyPortraitRect: {fileID: 1851298992}
+  attackMoveDistance: 80
+  attackMoveDuration: 0.15
+  hitShakeDistance: 20
+  hitShakeDuration: 0.1
   bleedColor: {r: 1, g: 0, b: 0, a: 1}
   stunColor: {r: 1, g: 0.8, b: 0, a: 1}
   sleepColor: {r: 0.5, g: 0.7, b: 1, a: 1}
@@ -2869,7 +2875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155.4, y: 373.4}
+  m_AnchoredPosition: {x: 195, y: 373.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2016493981
