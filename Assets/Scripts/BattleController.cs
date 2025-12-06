@@ -6,6 +6,31 @@ using System.Collections;
 public class BattleController : MonoBehaviour
 {
 
+    [Header("Death FX")]
+    public Material enemyPixelateMaterialTemplate;
+    public float enemyDeathPixelDuration = 0.8f;
+    public float enemyDeathHoldDelay = 0.4f;
+
+    private Material enemyPixelateMaterialRuntime;
+
+    [Header("Result UI")]
+    public GameObject resultPanel;
+    public TextMeshProUGUI resultText;
+    public float resultFadeDuration = 0.7f;
+
+    [Header("Camera Effects")]
+    public Camera mainCamera;
+    public float baseCamSize = 5f;
+    public float camShakeStrength = 0.15f;
+    public float camShakeDuration = 0.12f;
+
+    [Header("Screen Shake Root")]
+    public RectTransform battleRoot;
+
+    private Vector2 baseRootPos;
+
+    private Vector3 baseCamPos;
+
     [Header("Ability Card")]
     public GameObject abilityCardPanel;
     public TextMeshProUGUI abilityCardName;
@@ -37,7 +62,7 @@ public class BattleController : MonoBehaviour
     public float hitShakeDistance = 20f;
     public float hitShakeDuration = 0.1f;
 
-    // placeholder for sprites because IM NOT A ARTIST T^T
+    // placeholder for sprites because im not an artist..
     public Color bleedColor = Color.red;
     public Color stunColor = new Color(1f, 0.8f, 0f);
     public Color sleepColor = new Color(0.5f, 0.7f, 1f);
@@ -70,6 +95,14 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
+            if (mainCamera == null)
+                mainCamera = Camera.main;
+
+            if (mainCamera != null)
+            {
+                baseCamPos = mainCamera.transform.position;
+                baseCamSize = mainCamera.orthographicSize;
+            }
 
         // initialize stats using GameManager data
         var gm = GameManager.Instance;
@@ -104,6 +137,10 @@ public class BattleController : MonoBehaviour
         }
 
         UpdateUI();
+        if (battleRoot != null)
+        {
+            baseRootPos = battleRoot.anchoredPosition;
+        }
 
         // decide who goes first based on Speed
         if (player.speed >= enemy.speed) {
@@ -190,6 +227,7 @@ public class BattleController : MonoBehaviour
                 battleLogText.text += "\nEnemy defeated by status! You win.";
             battleOver = true;
             UpdateAbilityButtons();
+            PlayWinSequence();
             return;
         }
 
@@ -225,6 +263,8 @@ public class BattleController : MonoBehaviour
         int damage = player.CalculateDamageAgainst(enemy, 1.0f, 0, out isCrit, out elemMul);
         StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
+        if (isCrit)
+            StartCoroutine(CameraShake());
         SpawnImpact(onEnemy: true, color: GetElementColor(player.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(enemyPortraitRect));
@@ -263,6 +303,8 @@ public class BattleController : MonoBehaviour
         int damage = player.CalculateDamageAgainst(enemy, 1.2f, player.skillPower, out isCrit, out elemMul);
         StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
+        if (isCrit)
+            StartCoroutine(CameraShake());
         SpawnImpact(onEnemy: true, color: GetElementColor(player.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(enemyPortraitRect));
@@ -305,6 +347,8 @@ public class BattleController : MonoBehaviour
         int damage = player.CalculateDamageAgainst(enemy, 1.5f, player.ultimatePower, out isCrit, out elemMul);
         StartCoroutine(LungeForward(playerPortraitRect, towardsCenter: true));
         enemy.TakeDamage(damage);
+        if (isCrit)
+            StartCoroutine(CameraShake());
         SpawnImpact(onEnemy: true, color: GetElementColor(player.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(enemyPortraitRect));
@@ -363,6 +407,8 @@ public class BattleController : MonoBehaviour
         int damage = enemy.CalculateDamageAgainst(player, 1.0f, 0, out isCrit, out elemMul);
         StartCoroutine(LungeForward(enemyPortraitRect, towardsCenter: false));
         player.TakeDamage(damage);
+        if (isCrit)
+            StartCoroutine(CameraShake());
         SpawnImpact(onEnemy: false, color: GetElementColor(enemy.element));
         SpawnDamagePopup(onEnemy: false, amount: damage, isCrit: isCrit);
         StartCoroutine(Shake(playerPortraitRect));
@@ -382,6 +428,7 @@ public class BattleController : MonoBehaviour
                 battleLogText.text += "\nYou were defeated...";
             battleOver = true;
             UpdateAbilityButtons();
+            PlayLoseSequence();
             return;
         }
 
@@ -408,6 +455,7 @@ public class BattleController : MonoBehaviour
                 battleLogText.text += "\nEnemy defeated! You win.";
             battleOver = true;
             UpdateAbilityButtons();
+            PlayWinSequence();
             return;
         }
 
@@ -554,6 +602,120 @@ public class BattleController : MonoBehaviour
         }
 
         rect.anchoredPosition = start;
+    }
+
+
+    private IEnumerator CameraShake()
+    {
+        if (battleRoot == null) yield break;
+
+        float t = 0f;
+        while (t < camShakeDuration)
+        {
+            t += Time.deltaTime;
+            float n = t / camShakeDuration;
+            float strength = (1f - n) * camShakeStrength * 80f; // *80 to convert to UI pixels
+
+            float offsetX = Random.Range(-strength, strength);
+            float offsetY = Random.Range(-strength, strength);
+            battleRoot.anchoredPosition = baseRootPos + new Vector2(offsetX, offsetY);
+
+            yield return null;
+        }
+
+        battleRoot.anchoredPosition = baseRootPos;
+    }
+
+    private void PlayWinSequence()
+    {
+        StartCoroutine(WinSequenceRoutine());
+    }
+
+    private IEnumerator WinSequenceRoutine()
+    {
+        float postHitDelay = 0.35f;
+        yield return new WaitForSeconds(postHitDelay);
+        
+        yield return StartCoroutine(EnemyDeathPixelateRoutine());
+
+        yield return new WaitForSeconds(enemyDeathHoldDelay);
+
+        if (resultPanel != null && resultText != null)
+        {
+            resultPanel.SetActive(true);
+            resultText.text = "Victory!";
+            yield return StartCoroutine(FadeResultPanel(true));
+        }
+    }
+    
+    private IEnumerator EnemyDeathPixelateRoutine()
+    {
+        if (enemyPixelateMaterialTemplate == null || enemyPortraitImage == null)
+            yield break;
+
+        if (enemyPixelateMaterialRuntime == null)
+            enemyPixelateMaterialRuntime = new Material(enemyPixelateMaterialTemplate);
+
+        var img = enemyPortraitImage;
+        var originalMat = img.material;
+
+        img.material = enemyPixelateMaterialRuntime;
+        enemyPixelateMaterialRuntime.SetFloat("_PixelAmount", 0f);
+
+        float t = 0f;
+        while (t < enemyDeathPixelDuration)
+        {
+            t += Time.deltaTime;
+            float n = Mathf.Clamp01(t / enemyDeathPixelDuration);
+            enemyPixelateMaterialRuntime.SetFloat("_PixelAmount", n);
+            yield return null;
+        }
+
+        enemyPixelateMaterialRuntime.SetFloat("_PixelAmount", 1f);
+        img.enabled = false;
+    }
+
+    private void PlayLoseSequence()
+    {
+        if (resultPanel == null || resultText == null) return;
+
+        resultPanel.SetActive(true);
+        resultText.text = "Defeat...";
+        StartCoroutine(FadeResultPanel(false));
+    }
+
+
+    private IEnumerator FadeResultPanel(bool isWin)
+    {
+        Image bg = resultPanel.GetComponent<Image>();
+        Color bgColor = bg != null ? bg.color : new Color(0f, 0f, 0f, 0f);
+        Color textColor = resultText.color;
+
+        if (bg != null)
+        {
+            bgColor.a = 0f;
+            bg.color = bgColor;
+        }
+        textColor.a = 0f;
+        resultText.color = textColor;
+
+        float t = 0f;
+        while (t < resultFadeDuration)
+        {
+            t += Time.deltaTime;
+            float n = t / resultFadeDuration;
+
+            if (bg != null)
+            {
+                bgColor.a = Mathf.Lerp(0f, 0.85f, n);
+                bg.color = bgColor;
+            }
+
+            textColor.a = Mathf.Lerp(0f, 1f, n);
+            resultText.color = textColor;
+
+            yield return null;
+        }
     }
 
     private Color GetElementColor(ElementType element)
