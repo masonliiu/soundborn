@@ -91,6 +91,10 @@ public class BattleController : MonoBehaviour
     public Slider playerHpSlider;
     public Slider enemyHpSlider;
 
+    [Header("HP Bar Damage Overlay")]
+    public Slider playerHpDamageSlider;   
+    public Slider enemyHpDamageSlider;  
+
     [Header("Ability Buttons")]
     public Button basicAttackButton;
     public Button skillButton;
@@ -213,6 +217,13 @@ public class BattleController : MonoBehaviour
     {
         if (battleOver) return;
 
+        StartCoroutine(EnemyTurnSequence());
+    }
+
+    private IEnumerator EnemyTurnSequence()
+    {
+        if (battleOver) yield break;
+
         playerTurn = false;
         UpdateAbilityButtons();
 
@@ -220,12 +231,67 @@ public class BattleController : MonoBehaviour
         int statusDamage;
         bool skipTurn = enemy.TickStatusAtTurnStart(out statusDamage);
 
-        if (statusDamage > 0 && battleLogText != null)
-        {
-            battleLogText.text += $"\n{enemy.displayName} suffers {statusDamage} damage from {enemy.currentStatus}.";
-        }
+        bool statusDidDamage = statusDamage > 0;
 
-        UpdateUI();
+        if (statusDidDamage)
+        {
+            // TickStatusAtTurnStart has already reduced enemy.currentHP by statusDamage.
+            int newHp = enemy.currentHP;
+            int oldHp = Mathf.Clamp(newHp + statusDamage, 0, enemy.maxHP);
+
+            // Log the status damage line
+            if (battleLogText != null)
+            {
+                battleLogText.text += $"\n{enemy.displayName} suffers {statusDamage} damage from {enemy.currentStatus}.";
+            }
+
+            // Set up the overlay to start from the pre-status HP value.
+            if (enemyHpDamageSlider != null)
+            {
+                enemyHpDamageSlider.maxValue = enemy.maxHP;
+                enemyHpDamageSlider.value = oldHp;
+            }
+
+            if (enemyHpText != null)
+            {
+                enemyHpText.text = $"{enemy.displayName} {oldHp}/{enemy.maxHP}";
+            }
+            if (enemyHpSlider != null && !isEnemyHpAnimating)
+            {
+                enemyHpSlider.maxValue = enemy.maxHP;
+                enemyHpSlider.value = oldHp;
+            }
+
+            float preHitDelay = 0.5f;
+            yield return new WaitForSeconds(preHitDelay);
+            StartCoroutine(Shake(enemyPortraitRect));
+
+            SpawnImpact(onEnemy: true, color: GetStatusColor(enemy.currentStatus));
+            SpawnDamagePopup(onEnemy: true, amount: statusDamage, isCrit: false);
+
+            if (enemyHpText != null)
+            {
+                enemyHpText.text = $"{enemy.displayName} {newHp}/{enemy.maxHP}";
+            }
+            if (enemyHpSlider != null && !isEnemyHpAnimating)
+            {
+                enemyHpSlider.value = newHp;
+            }
+
+            float postHitDelay = 0.25f;
+            yield return new WaitForSeconds(postHitDelay);
+
+            if (enemyHpDamageSlider != null)
+            {
+                yield return StartCoroutine(
+                    AnimateHpBar(enemyHpDamageSlider, oldHp, newHp, isEnemy: true)
+                );
+            }
+        }
+        else
+        {
+            UpdateUI();
+        }
 
         if (enemy.IsDead())
         {
@@ -234,20 +300,21 @@ public class BattleController : MonoBehaviour
             battleOver = true;
             UpdateAbilityButtons();
             PlayWinSequence();
-            return;
+            yield break;
         }
 
         if (skipTurn)
         {
             if (battleLogText != null)
                 battleLogText.text += $"\n{enemy.displayName} is unable to act!";
-            // go straight back to player turn
             StartPlayerTurn();
-            return;
+            yield break;
         }
 
-        // Delay the actual enemy action a bit
-        Invoke(nameof(EnemyAction), 0.8f);
+        float preActionDelay = 0.8f;
+        yield return new WaitForSeconds(preActionDelay);
+
+        EnemyAction();
     }
 
     // player abilities
@@ -275,6 +342,7 @@ public class BattleController : MonoBehaviour
 
         int oldHp = enemy.currentHP;
         enemy.TakeDamage(damage);
+        int newHp = enemy.currentHP;
 
         if (isCrit)
             StartCoroutine(CameraShake());
@@ -288,18 +356,27 @@ public class BattleController : MonoBehaviour
             string elemText = BuildElementText(elemMul);
             battleLogText.text = $"You strike the enemy for {damage} damage.{critText}{elemText}";
         }
+        UpdateUI();
+
+        if (enemyHpDamageSlider != null)
+        {
+            enemyHpDamageSlider.maxValue = enemy.maxHP;
+            enemyHpDamageSlider.value = oldHp;
+        }
+
         float postHitDelay = 0.35f;
         yield return new WaitForSeconds(postHitDelay);
-        UpdateUI(); 
-    
-        yield return StartCoroutine(
-            AnimateHpBar(enemyHpSlider, oldHp, enemy.currentHP, isEnemy: true)
-        );
+
+        if (enemyHpDamageSlider != null)
+        {
+            yield return StartCoroutine(
+                AnimateHpBar(enemyHpDamageSlider, oldHp, enemy.currentHP, isEnemy: true)
+            );
+        }
 
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    // skill: extra damage + themed status based on your element
     public void OnSkillPressed()
     {
         if (!CanPlayerAct()) return;
@@ -348,14 +425,23 @@ public class BattleController : MonoBehaviour
             string elemText = BuildElementText(elemMul);
             battleLogText.text = $"You use your skill for {damage} damage! {statusText}{critText}{elemText}";
         }
-        float postHitDelay = 0.35f;
-        yield return new WaitForSeconds(postHitDelay);
         UpdateUI();
 
-        // Wait for enemy HP bar to animate down before ending the turn
-        yield return StartCoroutine(
-            AnimateHpBar(enemyHpSlider, oldHp, enemy.currentHP, isEnemy: true)
-        );
+        if (enemyHpDamageSlider != null)
+        {
+            enemyHpDamageSlider.maxValue = enemy.maxHP;
+            enemyHpDamageSlider.value = oldHp;
+        }
+
+        float postHitDelay = 0.35f;
+        yield return new WaitForSeconds(postHitDelay);
+
+        if (enemyHpDamageSlider != null)
+        {
+            yield return StartCoroutine(
+                AnimateHpBar(enemyHpDamageSlider, oldHp, enemy.currentHP, isEnemy: true)
+            );
+        }
 
         EndPlayerTurn(afterDealingDamage: true);
     }
@@ -409,38 +495,43 @@ public class BattleController : MonoBehaviour
             string elemText = BuildElementText(elemMul);
             battleLogText.text = $"ULTIMATE! You deal {damage} damage and raise your DEFENSE!{critText}{elemText}";
         }
-        float postHitDelay = 0.35f;
-        yield return new WaitForSeconds(postHitDelay);
         UpdateUI();
 
-        // Wait for enemy HP bar to animate down before ending the turn
-        yield return StartCoroutine(
-            AnimateHpBar(enemyHpSlider, oldHp, enemy.currentHP, isEnemy: true)
-        );
+        if (enemyHpDamageSlider != null)
+        {
+            enemyHpDamageSlider.maxValue = enemy.maxHP;
+            enemyHpDamageSlider.value = oldHp;
+        }
+
+        float postHitDelay = 0.35f;
+        yield return new WaitForSeconds(postHitDelay);
+
+        if (enemyHpDamageSlider != null)
+        {
+            yield return StartCoroutine(
+                AnimateHpBar(enemyHpDamageSlider, oldHp, enemy.currentHP, isEnemy: true)
+            );
+        }
 
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    // themed status: element → status
     private string ApplyElementalStatusFromPlayerSkill()
     {
         switch (player.element)
         {
             case ElementType.Bass:
             case ElementType.Noise:
-                // harsh / heavy genres → bleeding ears
                 enemy.ApplyStatus(StatusType.BleedEars, 3);
                 return "You inflict BLEEDING EARS over time!";
 
             case ElementType.Harmony:
             case ElementType.Melody:
-                // calm / soothing / musical → sleep
                 enemy.ApplyStatus(StatusType.Sleep, 1);
                 return "Your calm melody puts the enemy to SLEEP, skipping their next turn!";
 
             case ElementType.Percussion:
             case ElementType.Synth:
-                // sharp hits / glitchy shocks → stun
                 enemy.ApplyStatus(StatusType.Stun, 1);
                 return "You STUN the enemy, they will miss their next turn!";
 
@@ -482,14 +573,23 @@ public class BattleController : MonoBehaviour
             string elemText = BuildElementText(elemMul);
             battleLogText.text = $"Enemy hits you for {damage} damage.{critText}{elemText}";
         }
-        float postHitDelay = 0.35f;
-        yield return new WaitForSeconds(postHitDelay);
         UpdateUI();
 
-        // Wait for player HP bar to animate down before continuing
-        yield return StartCoroutine(
-            AnimateHpBar(playerHpSlider, oldHp, player.currentHP, isEnemy: false)
-        );
+        if (playerHpDamageSlider != null)
+        {
+            playerHpDamageSlider.maxValue = player.maxHP;
+            playerHpDamageSlider.value = oldHp;
+        }
+
+        float postHitDelay = 0.35f;
+        yield return new WaitForSeconds(postHitDelay);
+
+        if (playerHpDamageSlider != null)
+        {
+            yield return StartCoroutine(
+                AnimateHpBar(playerHpDamageSlider, oldHp, player.currentHP, isEnemy: false)
+            );
+        }
 
         if (player.IsDead())
         {
@@ -501,7 +601,6 @@ public class BattleController : MonoBehaviour
             yield break;
         }
 
-        // back to player's turn
         StartPlayerTurn();
     }
 
@@ -541,7 +640,13 @@ public class BattleController : MonoBehaviour
             if (playerHpSlider != null) {
                 playerHpSlider.maxValue = player.maxHP;
                 if (!isPlayerHpAnimating) {
-                    playerHpSlider.value = player.currentHP;
+                    playerHpSlider.value = player.currentHP;  
+                }
+            }
+            if (playerHpDamageSlider != null) {
+                playerHpDamageSlider.maxValue = player.maxHP;
+                if (!isPlayerHpAnimating) {
+                    playerHpDamageSlider.value = player.currentHP;
                 }
             }
         }
@@ -554,6 +659,12 @@ public class BattleController : MonoBehaviour
                 enemyHpSlider.maxValue = enemy.maxHP;
                 if (!isEnemyHpAnimating) {
                     enemyHpSlider.value = enemy.currentHP;
+                }
+            }
+            if (enemyHpDamageSlider != null) {
+                enemyHpDamageSlider.maxValue = enemy.maxHP;
+                if (!isEnemyHpAnimating) {
+                    enemyHpDamageSlider.value = enemy.currentHP;
                 }
             }
         }
@@ -798,14 +909,18 @@ public class BattleController : MonoBehaviour
             yield break;
 
         if (isEnemy) isEnemyHpAnimating = true;
-        else isPlayerHpAnimating = true;
+        else        isPlayerHpAnimating = true;
 
         float t = 0f;
+
         while (t < hpBarAnimDuration)
         {
             t += Time.deltaTime;
             float n = Mathf.Clamp01(t / hpBarAnimDuration);
-            slider.value = Mathf.Lerp(startValue, targetValue, n);
+
+            float barValue = Mathf.Lerp(startValue, targetValue, n);
+            slider.value = barValue;
+
             yield return null;
         }
 
@@ -816,6 +931,7 @@ public class BattleController : MonoBehaviour
 
         UpdateUI();
     }
+
 
     private Color GetElementColor(ElementType element)
     {
