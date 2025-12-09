@@ -302,7 +302,16 @@ public class CharacterStats : MonoBehaviour
             return;
         }
 
-        // for now, just use base data. later you can scale by level here.
         InitFrom(instance.data);
+
+        int extraLevels = Mathf.Max(0, instance.level - 1);
+        if (extraLevels > 0)
+        {
+            maxHP += extraLevels * 10;   // +10 HP per level
+            attack += extraLevels * 2;   // +2 ATK per level
+            defense += extraLevels * 1;  // +1 DEF per level
+
+            currentHP = maxHP;           // refresh HP to new max
+        }
     }
 }

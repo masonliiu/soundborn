@@ -5,9 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class HomeUIController : MonoBehaviour
 {
+    [Header("Top Bar")]
     public TextMeshProUGUI softCurrencyText;
     public TextMeshProUGUI premiumCurrencyText;
     public Image playerPortrait;
+
+    [Header("Panels")]
+    public TeamSelectPanel teamSelectPanel;
+    public UpgradePanel upgradePanel;
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnPlayerDataChanged += Refresh;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnPlayerDataChanged -= Refresh;
+        }
+    }
 
     private void Start()
     {
@@ -17,15 +38,19 @@ public class HomeUIController : MonoBehaviour
     public void Refresh()
     {
         var gm = GameManager.Instance;
+        if (gm == null)
+            return;
+
         var playerData = gm.playerData;
 
-        // update currencies (for now just leave them 0)
-        softCurrencyText.text = playerData.softCurrency.ToString();
-        premiumCurrencyText.text = playerData.premiumCurrency.ToString();
+        if (softCurrencyText != null)
+            softCurrencyText.text = playerData.softCurrency.ToString();
 
-        // player portrait (use CharacterData.silhouetteSprite)
+        if (premiumCurrencyText != null)
+            premiumCurrencyText.text = playerData.premiumCurrency.ToString();
+
         var active = gm.GetActiveCharacterInstance();
-        if (active != null && active.data.silhouetteSprite != null)
+        if (active != null && active.data != null && active.data.silhouetteSprite != null && playerPortrait != null)
         {
             playerPortrait.sprite = active.data.silhouetteSprite;
         }
@@ -34,6 +59,18 @@ public class HomeUIController : MonoBehaviour
     public void OnClick_ClimbTower()
     {
         SceneManager.LoadScene("BattleScene");
+    }
+
+    public void OnClick_OpenTeamSelect()
+    {
+        if (teamSelectPanel != null)
+            teamSelectPanel.Show(this);
+    }
+
+    public void OnClick_OpenUpgrade()
+    {
+        if (upgradePanel != null)
+            upgradePanel.Show(this);
     }
 
     public void OnClick_Characters()
