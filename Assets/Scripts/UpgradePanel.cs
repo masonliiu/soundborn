@@ -18,6 +18,9 @@ public class UpgradePanel : MonoBehaviour
 
     private HomeUIController homeUI;
 
+    private CharacterInstance targetInstance;
+    private int targetCharacterIndex = -1;  
+
     private void Awake()
     {
         if (root != null)
@@ -26,7 +29,31 @@ public class UpgradePanel : MonoBehaviour
 
     public void Show(HomeUIController home)
     {
+        ShowForCharacter(home, -1);
+    }
+
+    /// <summary>
+    /// Show upgrade panel for a specific character.
+    /// characterIndex = -1 is for the active character.
+    /// </summary>
+    public void ShowForCharacter(HomeUIController home, int characterIndex)
+    {
         homeUI = home;
+        targetCharacterIndex = characterIndex;
+
+        var gm = GameManager.Instance;
+        if (gm == null) return;
+
+        if (characterIndex >= 0 &&
+            gm.playerData.ownedCharacters != null &&
+            characterIndex < gm.playerData.ownedCharacters.Count)
+        {
+            targetInstance = gm.playerData.ownedCharacters[characterIndex];
+        }
+        else
+        {
+            targetInstance = gm.GetActiveCharacterInstance();
+        }
 
         if (root != null)
             root.SetActive(true);
@@ -45,23 +72,37 @@ public class UpgradePanel : MonoBehaviour
         var gm = GameManager.Instance;
         if (gm == null) return;
 
-        var inst = gm.GetActiveCharacterInstance();
-        if (inst == null || inst.data == null)
+        if (targetInstance == null)
+        {
+            if (targetCharacterIndex >= 0 &&
+                gm.playerData.ownedCharacters != null &&
+                targetCharacterIndex < gm.playerData.ownedCharacters.Count)
+            {
+                targetInstance = gm.playerData.ownedCharacters[targetCharacterIndex];
+            }
+            else
+            {
+                targetInstance = gm.GetActiveCharacterInstance();
+            }
+        }
+
+        if (targetInstance == null || targetInstance.data == null)
         {
             if (nameText != null) nameText.text = "No character";
             if (levelText != null) levelText.text = "";
             if (costText != null) costText.text = "";
+            if (softCurrencyText != null) softCurrencyText.text = "";
             if (levelUpButton != null) levelUpButton.interactable = false;
             return;
         }
 
-        int cost = gm.GetLevelUpCost(inst);
+        int cost = gm.GetLevelUpCost(targetInstance);
 
         if (nameText != null)
-            nameText.text = inst.data.displayName;
+            nameText.text = targetInstance.data.displayName;
 
         if (levelText != null)
-            levelText.text = "Level " + inst.level;
+            levelText.text = "Level " + targetInstance.level;
 
         if (costText != null)
             costText.text = "Cost: " + cost;
@@ -76,11 +117,12 @@ public class UpgradePanel : MonoBehaviour
     public void OnClick_LevelUp()
     {
         var gm = GameManager.Instance;
-        if (gm == null) return;
+        if (gm == null || targetInstance == null) return;
 
-        if (gm.TryLevelUpActiveCharacter())
+        if (gm.TryLevelUpCharacter(targetInstance))
         {
             Refresh();
+
             if (homeUI != null)
                 homeUI.Refresh();
         }

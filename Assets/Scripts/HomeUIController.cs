@@ -13,6 +13,7 @@ public class HomeUIController : MonoBehaviour
     [Header("Panels")]
     public TeamSelectPanel teamSelectPanel;
     public UpgradePanel upgradePanel;
+    public CharacterCatalogPanel characterCatalogPanel; 
 
     private void OnEnable()
     {
@@ -56,6 +57,7 @@ public class HomeUIController : MonoBehaviour
         }
     }
 
+
     public void OnClick_ClimbTower()
     {
         SceneManager.LoadScene("BattleScene");
@@ -70,16 +72,17 @@ public class HomeUIController : MonoBehaviour
     public void OnClick_OpenUpgrade()
     {
         if (upgradePanel != null)
-            upgradePanel.Show(this);
+            upgradePanel.Show(this); 
     }
 
     public void OnClick_Characters()
     {
-        SceneManager.LoadScene("CharactersScene");
+        if (characterCatalogPanel != null)
+            characterCatalogPanel.Show(this);
     }
 
     public void OnClick_Gacha()
     {
-        SceneManager.LoadScene("GachaScene");
+        // load a gacha scene/panel
     }
 }
