@@ -1,48 +1,26 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Linq;
 
 public class CharacterCatalogPanel : MonoBehaviour
 {
-    [System.Serializable]
-    public class SlotUI
-    {
-        public Button button;
-        public Image portraitImage;
-        public TextMeshProUGUI nameText;
-        public TextMeshProUGUI levelText;
-    }
-
     [Header("Root")]
-    public GameObject root;       
+    public GameObject root;
 
-    [Header("Slots")]
-    public SlotUI[] slots;         
+    [Header("Scroll")]
+    public ScrollRect scrollRect;
+    public RectTransform contentRoot;
+    public CharacterCatalogItem itemPrefab;
 
     [Header("Upgrade")]
     public UpgradePanel upgradePanel;
 
     private HomeUIController homeUI;
-    private int[] characterIndexBySlot;
+    private readonly List<CharacterCatalogItem> spawnedItems = new List<CharacterCatalogItem>();
 
     private void Awake()
     {
-        if (slots == null)
-            slots = new SlotUI[0];
-
-        characterIndexBySlot = new int[slots.Length];
-
-        for (int i = 0; i < slots.Length; i++)
-        {
-            int slotIndex = i;
-            var slot = slots[i];
-            if (slot != null && slot.button != null)
-            {
-                slot.button.onClick.AddListener(() => OnClickSlot(slotIndex));
-            }
-        }
-
         if (root != null)
             root.SetActive(false);
     }
@@ -90,71 +68,62 @@ public class CharacterCatalogPanel : MonoBehaviour
     public void Refresh()
     {
         var gm = GameManager.Instance;
-        if (gm == null) return;
+        if (gm == null || contentRoot == null || itemPrefab == null)
+            return;
 
         var owned = gm.playerData.ownedCharacters;
-        if (owned == null) return;
+        if (owned == null)
+            return;
 
-        for (int i = 0; i < characterIndexBySlot.Length; i++)
+        foreach (var item in spawnedItems)
         {
-            characterIndexBySlot[i] = -1;
+            if (item != null)
+                Destroy(item.gameObject);
         }
+        spawnedItems.Clear();
 
         var orderedIndices = Enumerable.Range(0, owned.Count)
             .OrderByDescending(i => owned[i].level)
             .ThenBy(i => owned[i].data != null ? owned[i].data.displayName : "")
             .ToList();
 
-        for (int slotIndex = 0; slotIndex < slots.Length; slotIndex++)
+        foreach (int charIndex in orderedIndices)
         {
-            var slot = slots[slotIndex];
-            if (slot == null || slot.button == null)
-                continue;
-
-            bool hasChar = slotIndex < orderedIndices.Count;
-            slot.button.gameObject.SetActive(hasChar);
-
-            if (!hasChar)
-                continue;
-
-            int charIndex = orderedIndices[slotIndex];
-            characterIndexBySlot[slotIndex] = charIndex;
-
             var inst = owned[charIndex];
 
-            if (slot.portraitImage != null &&
-                inst.data != null &&
-                inst.data.silhouetteSprite != null)
-            {
-                slot.portraitImage.sprite = inst.data.silhouetteSprite;
-            }
+            GetLeveledStats(inst, out int hp, out int atk);
 
-            if (slot.nameText != null)
-                slot.nameText.text = inst.data != null ? inst.data.displayName : "???";
-
-            if (slot.levelText != null)
-                slot.levelText.text = "Lv. " + inst.level.ToString();
+            var item = Instantiate(itemPrefab, contentRoot);
+            item.gameObject.SetActive(true);
+            item.Setup(this, charIndex, inst, hp, atk);
+            spawnedItems.Add(item);
         }
+
+        if (scrollRect != null)
+            scrollRect.verticalNormalizedPosition = 1f;
     }
 
-    private void OnClickSlot(int slotIndex)
+    private void GetLeveledStats(CharacterInstance inst, out int hp, out int atk)
     {
-        var gm = GameManager.Instance;
-        if (gm == null) return;
-        if (characterIndexBySlot == null ||
-            slotIndex < 0 ||
-            slotIndex >= characterIndexBySlot.Length)
+        hp = 0;
+        atk = 0;
+
+        if (inst == null || inst.data == null)
             return;
 
-        int charIndex = characterIndexBySlot[slotIndex];
-        if (charIndex < 0 ||
-            gm.playerData.ownedCharacters == null ||
-            charIndex >= gm.playerData.ownedCharacters.Count)
-            return;
+        int baseHP = inst.data.maxHP;
+        int baseATK = inst.data.attack;
 
+        int extraLevels = Mathf.Max(0, inst.level - 1);
+        hp = baseHP + extraLevels * 10;
+        atk = baseATK + extraLevels * 2;
+    }
+
+    public void OnClickItem(int characterIndex)
+    {
         if (upgradePanel != null)
         {
-            upgradePanel.ShowForCharacter(homeUI, charIndex);
+            upgradePanel.ShowForCharacter(homeUI, characterIndex);
         }
     }
 

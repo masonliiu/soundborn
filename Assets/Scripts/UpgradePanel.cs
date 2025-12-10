@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -12,14 +13,17 @@ public class UpgradePanel : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
     public TextMeshProUGUI softCurrencyText;
-
+    public TextMeshProUGUI hpText;     
+    public TextMeshProUGUI atkText;     
     [Header("Buttons")]
     public Button levelUpButton;
 
     private HomeUIController homeUI;
 
     private CharacterInstance targetInstance;
-    private int targetCharacterIndex = -1;  
+    private int targetCharacterIndex = -1;
+
+    private Coroutine levelUpFeedbackRoutine;
 
     private void Awake()
     {
@@ -32,10 +36,6 @@ public class UpgradePanel : MonoBehaviour
         ShowForCharacter(home, -1);
     }
 
-    /// <summary>
-    /// Show upgrade panel for a specific character.
-    /// characterIndex = -1 is for the active character.
-    /// </summary>
     public void ShowForCharacter(HomeUIController home, int characterIndex)
     {
         homeUI = home;
@@ -92,11 +92,14 @@ public class UpgradePanel : MonoBehaviour
             if (levelText != null) levelText.text = "";
             if (costText != null) costText.text = "";
             if (softCurrencyText != null) softCurrencyText.text = "";
+            if (hpText != null) hpText.text = "";
+            if (atkText != null) atkText.text = "";
             if (levelUpButton != null) levelUpButton.interactable = false;
             return;
         }
 
         int cost = gm.GetLevelUpCost(targetInstance);
+        GetLeveledStats(targetInstance, out int hp, out int atk);
 
         if (nameText != null)
             nameText.text = targetInstance.data.displayName;
@@ -110,6 +113,12 @@ public class UpgradePanel : MonoBehaviour
         if (softCurrencyText != null)
             softCurrencyText.text = "Gold: " + gm.playerData.softCurrency;
 
+        if (hpText != null)
+            hpText.text = "HP: " + hp;
+
+        if (atkText != null)
+            atkText.text = "ATK: " + atk;
+
         if (levelUpButton != null)
             levelUpButton.interactable = gm.playerData.softCurrency >= cost;
     }
@@ -119,13 +128,57 @@ public class UpgradePanel : MonoBehaviour
         var gm = GameManager.Instance;
         if (gm == null || targetInstance == null) return;
 
+        int oldLevel = targetInstance.level;
+
         if (gm.TryLevelUpCharacter(targetInstance))
         {
             Refresh();
 
+            if (levelUpFeedbackRoutine != null)
+                StopCoroutine(levelUpFeedbackRoutine);
+
+            levelUpFeedbackRoutine = StartCoroutine(LevelUpFeedback());
+
             if (homeUI != null)
                 homeUI.Refresh();
         }
+    }
+
+    private IEnumerator LevelUpFeedback()
+    {
+        if (levelText == null)
+            yield break;
+
+        Vector3 baseScale = levelText.transform.localScale;
+        float duration = 0.35f;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float p = t / duration;
+            float pulse = 1f + 0.25f * Mathf.Sin(p * Mathf.PI); // quick pop
+            levelText.transform.localScale = baseScale * pulse;
+            yield return null;
+        }
+
+        levelText.transform.localScale = baseScale;
+    }
+
+    private void GetLeveledStats(CharacterInstance inst, out int hp, out int atk)
+    {
+        hp = 0;
+        atk = 0;
+
+        if (inst == null || inst.data == null)
+            return;
+
+        int baseHP = inst.data.maxHP;
+        int baseATK = inst.data.attack;
+
+        int extraLevels = Mathf.Max(0, inst.level - 1);
+        hp = baseHP + extraLevels * 10;
+        atk = baseATK + extraLevels * 2;
     }
 
     public void OnClick_Close()
