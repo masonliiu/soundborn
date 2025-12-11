@@ -83,6 +83,6 @@ public class HomeUIController : MonoBehaviour
 
     public void OnClick_Gacha()
     {
-        // load a gacha scene/panel
+        SceneManager.LoadScene("GachaScene");
     }
 }
