@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66476e8250ed04d9e9412cbdcbab96e5, type: 3}
+  m_Name: Player_Jazz
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  displayName: Jazz
+  element: 3
+  maxHP: 110
+  attack: 18
+  defense: 7
+  speed: 12
+  critChance: 0.1
+  critDamageMultiplier: 1.5
+  skillPower: 35
+  ultimatePower: 50
+  bleedDamagePerTurn: 10
+  defenseUpAmount: 10
+  silhouetteSprite: {fileID: 5174992576602289124, guid: 4f1c910949b8c424bb97ed2d38e1ed36, type: 3}
+  elementIcon: {fileID: 0}

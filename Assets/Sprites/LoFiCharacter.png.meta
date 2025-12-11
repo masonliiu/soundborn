@@ -1,175 +1,175 @@
 fileFormatVersion: 2
-guid: 0b93a62f5d5d3463e9d24a1cce2d3380
+guid: 4e4f3d51ed6d94c07b9e20479a6d1c2b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1031698651895045798
-    second: A_fierce__humanoid_r...-482633299-0_0
+      213: 1193532914802498341
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_0
   - first:
-      213: 641639675229284101
-    second: A_fierce__humanoid_r...-482633299-0_1
+      213: 6349156373197010668
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_1
   - first:
-      213: -1062282002413115208
-    second: A_fierce__humanoid_r...-482633299-0_2
+      213: 7193592276106477384
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_2
   - first:
-      213: -7534822385584413045
-    second: A_fierce__humanoid_r...-482633299-0_3
+      213: 9134062824905701796
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_3
   - first:
-      213: -4288935296183829798
-    second: A_fierce__humanoid_r...-482633299-0_4
+      213: 8271824977427033964
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_4
   - first:
-      213: -7299172775223380082
-    second: A_fierce__humanoid_r...-482633299-0_5
+      213: 2057785618410974409
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_5
   - first:
-      213: 1042887435830823946
-    second: A_fierce__humanoid_r...-482633299-0_6
+      213: 2649688967176427983
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_6
   - first:
-      213: 4922774798868811956
-    second: A_fierce__humanoid_r...-482633299-0_7
+      213: -6603361251892363208
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_7
   - first:
-      213: 211884006626213318
-    second: A_fierce__humanoid_r...-482633299-0_8
+      213: 3759788565191101879
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_8
   - first:
-      213: 8016988627168806247
-    second: A_fierce__humanoid_r...-482633299-0_9
+      213: -6184320652732797733
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_9
   - first:
-      213: -7432646988009291058
-    second: A_fierce__humanoid_r...-482633299-0_10
+      213: 387081847899372825
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_10
   - first:
-      213: -3512380572332516584
-    second: A_fierce__humanoid_r...-482633299-0_11
+      213: 6138421119029633116
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_11
   - first:
-      213: 476934117600807479
-    second: A_fierce__humanoid_r...-482633299-0_12
+      213: -8599696734291759725
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_12
   - first:
-      213: 6297899613150596344
-    second: A_fierce__humanoid_r...-482633299-0_13
+      213: 6134821141871727960
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_13
   - first:
-      213: 8463101172497347138
-    second: A_fierce__humanoid_r...-482633299-0_14
+      213: -7173759115559384763
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_14
   - first:
-      213: 3602503414335668048
-    second: A_fierce__humanoid_r...-482633299-0_15
+      213: -3116611568160522755
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_15
   - first:
-      213: 257142289315463284
-    second: A_fierce__humanoid_r...-482633299-0_16
+      213: 8421865420064592620
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_16
   - first:
-      213: -8446838352170079260
-    second: A_fierce__humanoid_r...-482633299-0_17
+      213: 7006357206995841048
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_17
   - first:
-      213: -5659878348510367517
-    second: A_fierce__humanoid_r...-482633299-0_18
+      213: 8340891981046175029
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_18
   - first:
-      213: -9044076554275353650
-    second: A_fierce__humanoid_r...-482633299-0_19
+      213: -5170862404707784749
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_19
   - first:
-      213: 7032273427178095889
-    second: A_fierce__humanoid_r...-482633299-0_20
+      213: -1813290851967672812
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_20
   - first:
-      213: -5698250170787854991
-    second: A_fierce__humanoid_r...-482633299-0_21
+      213: 5614808800063555254
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_21
   - first:
-      213: 3004152697953013340
-    second: A_fierce__humanoid_r...-482633299-0_22
+      213: -5321584958352552089
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_22
   - first:
-      213: 380946115424167883
-    second: A_fierce__humanoid_r...-482633299-0_23
+      213: -5048968760966988617
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_23
   - first:
-      213: -7820030709196944898
-    second: A_fierce__humanoid_r...-482633299-0_24
+      213: -2882309090758244170
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_24
   - first:
-      213: 394788761185578474
-    second: A_fierce__humanoid_r...-482633299-0_25
+      213: -5041767319325417238
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_25
   - first:
-      213: 7905294291490715886
-    second: A_fierce__humanoid_r...-482633299-0_26
+      213: -152081613731568859
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_26
   - first:
-      213: -2024448892778754666
-    second: A_fierce__humanoid_r...-482633299-0_27
+      213: -1260679730279814155
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_27
   - first:
-      213: -9013785546411936912
-    second: A_fierce__humanoid_r...-482633299-0_28
+      213: 3273288515486274124
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_28
   - first:
-      213: -4890455448894560310
-    second: A_fierce__humanoid_r...-482633299-0_29
+      213: 991222279725193081
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_29
   - first:
-      213: 3123784172480874280
-    second: A_fierce__humanoid_r...-482633299-0_30
+      213: -5891860027255986270
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_30
   - first:
-      213: 6020476001217949336
-    second: A_fierce__humanoid_r...-482633299-0_31
+      213: 5099346938230838934
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_31
   - first:
-      213: -4556933658819643953
-    second: A_fierce__humanoid_r...-482633299-0_32
+      213: 1721594857688971778
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_32
   - first:
-      213: -5389606807380127300
-    second: A_fierce__humanoid_r...-482633299-0_33
+      213: -4757799810830086650
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_33
   - first:
-      213: 8277180862972174973
-    second: A_fierce__humanoid_r...-482633299-0_34
+      213: -4580050067294094554
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_34
   - first:
-      213: -398112215028303424
-    second: A_fierce__humanoid_r...-482633299-0_35
+      213: -6778475328052872573
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_35
   - first:
-      213: -5744465344958672603
-    second: A_fierce__humanoid_r...-482633299-0_36
+      213: 2139598369965526126
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_36
   - first:
-      213: 4640657056601495393
-    second: A_fierce__humanoid_r...-482633299-0_37
+      213: -6209372383698757491
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_37
   - first:
-      213: 710408346566045986
-    second: A_fierce__humanoid_r...-482633299-0_38
+      213: -5386189971625983733
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_38
   - first:
-      213: -7532030889743490664
-    second: A_fierce__humanoid_r...-482633299-0_39
+      213: 305608584115101720
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_39
   - first:
-      213: 505251692747845762
-    second: A_fierce__humanoid_r...-482633299-0_40
+      213: -3198867823466242026
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_40
   - first:
-      213: -4963783623686836299
-    second: A_fierce__humanoid_r...-482633299-0_41
+      213: -6083543400017914613
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_41
   - first:
-      213: -4336108793608138427
-    second: A_fierce__humanoid_r...-482633299-0_42
+      213: 7689434318131969595
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_42
   - first:
-      213: -3195195826990666331
-    second: A_fierce__humanoid_r...-482633299-0_43
+      213: -5988156150696936149
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_43
   - first:
-      213: 3244466946648512267
-    second: A_fierce__humanoid_r...-482633299-0_44
+      213: -8440089856098558626
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_44
   - first:
-      213: -2940847711801535770
-    second: A_fierce__humanoid_r...-482633299-0_45
+      213: -371165605107556166
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_45
   - first:
-      213: -345594691349924070
-    second: A_fierce__humanoid_r...-482633299-0_46
+      213: -5389470906528964255
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_46
   - first:
-      213: 2277762536978329665
-    second: A_fierce__humanoid_r...-482633299-0_47
+      213: 3149159683316512388
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_47
   - first:
-      213: -8281057070459743624
-    second: A_fierce__humanoid_r...-482633299-0_48
+      213: 1257318989842638860
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_48
   - first:
-      213: -5947379552581795596
-    second: A_fierce__humanoid_r...-482633299-0_49
+      213: 7900312708935540390
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_49
   - first:
-      213: 8478012958427317809
-    second: A_fierce__humanoid_r...-482633299-0_50
+      213: 2963569371709355675
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_50
   - first:
-      213: 2048455162333338768
-    second: A_fierce__humanoid_r...-482633299-0_51
+      213: 2443241446958802744
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_51
   - first:
-      213: 7393217199671581360
-    second: A_fierce__humanoid_r...-482633299-0_52
+      213: 978454037983019761
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_52
   - first:
-      213: -9187215967804691090
-    second: A_fierce__humanoid_r...-482633299-0_53
+      213: 8154632035413911123
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_53
   - first:
-      213: 3038089727147989505
-    second: A_fierce__humanoid_r...-482633299-0_54
+      213: -2434919854621244576
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_54
   - first:
-      213: -4061787723103448399
-    second: A_fierce__humanoid_r...-482633299-0_55
+      213: 6233429366346580904
+    second: A_pixel_art_Lo_Fi_cr...-534871621-0_55
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -278,12 +278,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_0
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_0
       rect:
         serializedVersion: 2
-        x: 95
+        x: 99
         y: 835
-        width: 70
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -293,19 +293,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ae147d2574515e00800000000000000
-      internalID: 1031698651895045798
+      spriteID: 52b1a86ccd7409010800000000000000
+      internalID: 1193532914802498341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_1
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_1
       rect:
         serializedVersion: 2
-        x: 351
+        x: 355
         y: 835
-        width: 70
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -315,19 +315,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 507a6d392ef87e800800000000000000
-      internalID: 641639675229284101
+      spriteID: ce6b0d7051cbc1850800000000000000
+      internalID: 6349156373197010668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_2
       rect:
         serializedVersion: 2
-        x: 607
+        x: 611
         y: 835
-        width: 70
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -337,41 +337,327 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b820e2a5240241f0800000000000000
-      internalID: -1062282002413115208
+      spriteID: 84ff154df06c4d360800000000000000
+      internalID: 7193592276106477384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_3
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_3
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 839
+        width: 58
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a9fa92beb5b2ce70800000000000000
+      internalID: 9134062824905701796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_4
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 835
+        width: 54
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6fedbfadfc6bc270800000000000000
+      internalID: 8271824977427033964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_5
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 835
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cc2b490e19be8c10800000000000000
+      internalID: 2057785618410974409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_6
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 839
+        width: 54
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc992d5b31695c420800000000000000
+      internalID: 2649688967176427983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_7
+      rect:
+        serializedVersion: 2
+        x: 1891
+        y: 835
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83080617de52c54a0800000000000000
+      internalID: -6603361251892363208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_8
+      rect:
+        serializedVersion: 2
+        x: 2147
+        y: 835
+        width: 54
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd8ac2a7c37d2430800000000000000
+      internalID: 3759788565191101879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_9
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 835
+        width: 90
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdcefbcd121ec2aa0800000000000000
+      internalID: -6184320652732797733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_10
+      rect:
+        serializedVersion: 2
+        x: 2651
+        y: 835
+        width: 82
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91d3b0bc3e03f5500800000000000000
+      internalID: 387081847899372825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_11
+      rect:
+        serializedVersion: 2
+        x: 2911
+        y: 831
+        width: 66
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5064892c7d003550800000000000000
+      internalID: 6138421119029633116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_12
+      rect:
+        serializedVersion: 2
+        x: 3159
+        y: 831
+        width: 78
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39de370226db7a880800000000000000
+      internalID: -8599696734291759725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_13
+      rect:
+        serializedVersion: 2
+        x: 3347
+        y: 831
+        width: 146
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85512d92353432550800000000000000
+      internalID: 6134821141871727960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_14
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 579
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 549ccd4b710b17c90800000000000000
+      internalID: -7173759115559384763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_15
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 579
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd3be09a429fb4d0800000000000000
+      internalID: -3116611568160522755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_16
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 579
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce298158af970e470800000000000000
+      internalID: 8421865420064592620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_17
       rect:
         serializedVersion: 2
         x: 859
-        y: 835
-        width: 70
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b86649526feee6790800000000000000
-      internalID: -7534822385584413045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_4
-      rect:
-        serializedVersion: 2
-        x: 1111
-        y: 835
-        width: 74
+        y: 579
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -381,41 +667,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: adaf3566214aa74c0800000000000000
-      internalID: -4288935296183829798
+      spriteID: 8103c7c22c49b3160800000000000000
+      internalID: 7006357206995841048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_5
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_18
       rect:
         serializedVersion: 2
-        x: 1367
-        y: 835
-        width: 74
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e87bb9a980124ba90800000000000000
-      internalID: -7299172775223380082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_6
-      rect:
-        serializedVersion: 2
-        x: 1623
-        y: 835
-        width: 74
+        x: 1115
+        y: 579
+        width: 78
         height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -425,19 +689,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a0c0a61f894197e00800000000000000
-      internalID: 1042887435830823946
+      spriteID: 5355928901dc0c370800000000000000
+      internalID: 8340891981046175029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_7
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_19
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 579
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d768f01a086d38b0800000000000000
+      internalID: -5170862404707784749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_20
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 579
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41e500ec395e5d6e0800000000000000
+      internalID: -1813290851967672812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_21
       rect:
         serializedVersion: 2
         x: 1879
-        y: 835
-        width: 74
+        y: 579
+        width: 82
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -447,19 +755,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b012dbf895315440800000000000000
-      internalID: 4922774798868811956
+      spriteID: 6b68689eadecbed40800000000000000
+      internalID: 5614808800063555254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_8
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_22
       rect:
         serializedVersion: 2
-        x: 2135
-        y: 835
-        width: 74
+        x: 2147
+        y: 579
+        width: 58
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76f8553ecaee526b0800000000000000
+      internalID: -5321584958352552089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_23
+      rect:
+        serializedVersion: 2
+        x: 2387
+        y: 579
+        width: 86
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bcb48899a57ee9b0800000000000000
+      internalID: -5048968760966988617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_24
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 579
+        width: 106
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -469,18 +821,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cdba84a163c0f200800000000000000
-      internalID: 211884006626213318
+      spriteID: 6b8c970372bfff7d0800000000000000
+      internalID: -2882309090758244170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_9
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_25
       rect:
         serializedVersion: 2
-        x: 2395
-        y: 831
+        x: 2915
+        y: 579
+        width: 90
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae06f63e55b080ab0800000000000000
+      internalID: -5041767319325417238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_26
+      rect:
+        serializedVersion: 2
+        x: 3171
+        y: 579
         width: 82
         height: 142
       alignment: 0
@@ -491,20 +865,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7654eba3ea0124f60800000000000000
-      internalID: 8016988627168806247
+      spriteID: 52369acf392b3edf0800000000000000
+      internalID: -152081613731568859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_10
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_27
       rect:
         serializedVersion: 2
-        x: 2647
-        y: 835
-        width: 98
-        height: 138
+        x: 3423
+        y: 575
+        width: 134
+        height: 162
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,84 +887,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec244dab1fee9d890800000000000000
-      internalID: -7432646988009291058
+      spriteID: 5fbe225f67a218ee0800000000000000
+      internalID: -1260679730279814155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_11
-      rect:
-        serializedVersion: 2
-        x: 2903
-        y: 823
-        width: 146
-        height: 150
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 81b13269a74814fc0800000000000000
-      internalID: -3512380572332516584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_12
-      rect:
-        serializedVersion: 2
-        x: 3175
-        y: 823
-        width: 150
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 73a4cd49d096e9600800000000000000
-      internalID: 476934117600807479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_13
-      rect:
-        serializedVersion: 2
-        x: 3383
-        y: 823
-        width: 110
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fc49e89452a66750800000000000000
-      internalID: 6297899613150596344
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_14
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_28
       rect:
         serializedVersion: 2
         x: 95
-        y: 579
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -601,18 +909,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24275ec4da9f27570800000000000000
-      internalID: 8463101172497347138
+      spriteID: c42dcecef8e0d6d20800000000000000
+      internalID: 3273288515486274124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_15
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_29
       rect:
         serializedVersion: 2
         x: 351
-        y: 579
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -623,18 +931,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 05ffb99b4c9aef130800000000000000
-      internalID: 3602503414335668048
+      spriteID: 9771974696781cd00800000000000000
+      internalID: 991222279725193081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_16
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_30
       rect:
         serializedVersion: 2
         x: 607
-        y: 579
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -645,19 +953,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 470016bbc8d819300800000000000000
-      internalID: 257142289315463284
+      spriteID: 2a765198588eb3ea0800000000000000
+      internalID: -5891860027255986270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_17
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_31
       rect:
         serializedVersion: 2
-        x: 867
-        y: 579
-        width: 66
+        x: 863
+        y: 323
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -667,239 +975,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4eba1cf954dc6ca80800000000000000
-      internalID: -8446838352170079260
+      spriteID: 69699b7d50584c640800000000000000
+      internalID: 5099346938230838934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_18
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_32
       rect:
         serializedVersion: 2
         x: 1119
-        y: 579
-        width: 78
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3e07d1d11a21471b0800000000000000
-      internalID: -5659878348510367517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_19
-      rect:
-        serializedVersion: 2
-        x: 1371
-        y: 579
-        width: 78
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ecb8afc9a4cfc7280800000000000000
-      internalID: -9044076554275353650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_20
-      rect:
-        serializedVersion: 2
-        x: 1635
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1158e566c67a79160800000000000000
-      internalID: 7032273427178095889
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_21
-      rect:
-        serializedVersion: 2
-        x: 1879
-        y: 579
-        width: 86
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 17581e809afbbe0b0800000000000000
-      internalID: -5698250170787854991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_22
-      rect:
-        serializedVersion: 2
-        x: 2147
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5e458c46f4e0b920800000000000000
-      internalID: 3004152697953013340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_23
-      rect:
-        serializedVersion: 2
-        x: 2383
-        y: 571
-        width: 86
-        height: 154
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc72c604974694500800000000000000
-      internalID: 380946115424167883
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_24
-      rect:
-        serializedVersion: 2
-        x: 2615
-        y: 579
-        width: 118
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef98ba5908ba97390800000000000000
-      internalID: -7820030709196944898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_25
-      rect:
-        serializedVersion: 2
-        x: 2911
-        y: 575
-        width: 106
-        height: 142
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aed68cf59429a7500800000000000000
-      internalID: 394788761185578474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_26
-      rect:
-        serializedVersion: 2
-        x: 3163
-        y: 575
-        width: 138
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ee83a39264f35bd60800000000000000
-      internalID: 7905294291490715886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_27
-      rect:
-        serializedVersion: 2
-        x: 3419
-        y: 575
-        width: 118
-        height: 150
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 69d4dff3576b7e3e0800000000000000
-      internalID: -2024448892778754666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_28
-      rect:
-        serializedVersion: 2
-        x: 91
         y: 323
-        width: 70
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -909,19 +997,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 073f0987dc998e280800000000000000
-      internalID: -9013785546411936912
+      spriteID: 20ab0b3d66554e710800000000000000
+      internalID: 1721594857688971778
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_29
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_33
       rect:
         serializedVersion: 2
-        x: 347
+        x: 1375
         y: 323
-        width: 70
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -931,217 +1019,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac724c21eac912cb0800000000000000
-      internalID: -4890455448894560310
+      spriteID: 60e4d0ba746e8fdb0800000000000000
+      internalID: -4757799810830086650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_30
-      rect:
-        serializedVersion: 2
-        x: 603
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 827c5b38729e95b20800000000000000
-      internalID: 3123784172480874280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_31
-      rect:
-        serializedVersion: 2
-        x: 859
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 89e2c5776070d8350800000000000000
-      internalID: 6020476001217949336
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_32
-      rect:
-        serializedVersion: 2
-        x: 1115
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc5b8012bf482c0c0800000000000000
-      internalID: -4556933658819643953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_33
-      rect:
-        serializedVersion: 2
-        x: 1371
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb1941ff9254435b0800000000000000
-      internalID: -5389606807380127300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_34
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_34
       rect:
         serializedVersion: 2
         x: 1631
         y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d722e17f3247ed270800000000000000
-      internalID: 8277180862972174973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_35
-      rect:
-        serializedVersion: 2
-        x: 1887
-        y: 323
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c97e7abc0f997af0800000000000000
-      internalID: -398112215028303424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_36
-      rect:
-        serializedVersion: 2
-        x: 2139
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5215239443f8740b0800000000000000
-      internalID: -5744465344958672603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_37
-      rect:
-        serializedVersion: 2
-        x: 2387
-        y: 327
-        width: 102
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1675427710de66040800000000000000
-      internalID: 4640657056601495393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_38
-      rect:
-        serializedVersion: 2
-        x: 2639
-        y: 323
-        width: 102
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 221ba8690a0ebd900800000000000000
-      internalID: 710408346566045986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_39
-      rect:
-        serializedVersion: 2
-        x: 2899
-        y: 323
-        width: 94
+        width: 62
         height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1151,63 +1041,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 891e19befc9d87790800000000000000
-      internalID: -7532030889743490664
+      spriteID: 62b7e6ddab46070c0800000000000000
+      internalID: -4580050067294094554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_40
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_35
       rect:
         serializedVersion: 2
-        x: 3147
+        x: 1887
         y: 323
-        width: 114
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2807664dcb3030700800000000000000
-      internalID: 505251692747845762
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_41
-      rect:
-        serializedVersion: 2
-        x: 3407
-        y: 319
-        width: 138
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5bfae30f7191d1bb0800000000000000
-      internalID: -4963783623686836299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_42
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 67
-        width: 66
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1217,19 +1063,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5411a81a60c03d3c0800000000000000
-      internalID: -4336108793608138427
+      spriteID: 38ab8a06a940ee1a0800000000000000
+      internalID: -6778475328052872573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_43
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_36
       rect:
         serializedVersion: 2
-        x: 351
-        y: 67
-        width: 66
+        x: 2143
+        y: 323
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1239,174 +1085,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ad2960035268a3d0800000000000000
-      internalID: -3195195826990666331
+      spriteID: e6cccc3a16161bd10800000000000000
+      internalID: 2139598369965526126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_44
-      rect:
-        serializedVersion: 2
-        x: 607
-        y: 67
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b071b708f79a60d20800000000000000
-      internalID: 3244466946648512267
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_45
-      rect:
-        serializedVersion: 2
-        x: 859
-        y: 67
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e29c8f56920037d0800000000000000
-      internalID: -2940847711801535770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_46
-      rect:
-        serializedVersion: 2
-        x: 1107
-        y: 67
-        width: 78
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a17b3d19573343bf0800000000000000
-      internalID: -345594691349924070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_47
-      rect:
-        serializedVersion: 2
-        x: 1367
-        y: 67
-        width: 78
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 140394395fc3c9f10800000000000000
-      internalID: 2277762536978329665
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_48
-      rect:
-        serializedVersion: 2
-        x: 1627
-        y: 67
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 87292862876c31d80800000000000000
-      internalID: -8281057070459743624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_49
-      rect:
-        serializedVersion: 2
-        x: 1875
-        y: 67
-        width: 86
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4f0c0f7bec9a67da0800000000000000
-      internalID: -5947379552581795596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_50
-      rect:
-        serializedVersion: 2
-        x: 2139
-        y: 67
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13608340ed3f7a570800000000000000
-      internalID: 8478012958427317809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_51
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_37
       rect:
         serializedVersion: 2
         x: 2395
-        y: 59
+        y: 331
         width: 86
-        height: 154
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1415,19 +1107,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09c9131fd139d6c10800000000000000
-      internalID: 2048455162333338768
+      spriteID: d88d38737b0e3d9a0800000000000000
+      internalID: -6209372383698757491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_52
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_38
       rect:
         serializedVersion: 2
-        x: 2643
-        y: 67
-        width: 118
+        x: 2639
+        y: 323
+        width: 102
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1437,20 +1129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ba9bb54fdbf99660800000000000000
-      internalID: 7393217199671581360
+      spriteID: b01467012c86045b0800000000000000
+      internalID: -5386189971625983733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_53
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_39
       rect:
         serializedVersion: 2
-        x: 2871
-        y: 63
-        width: 106
-        height: 142
+        x: 2919
+        y: 323
+        width: 70
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1459,20 +1151,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6d6434d0c3708080800000000000000
-      internalID: -9187215967804691090
+      spriteID: 810ad78536dbd3400800000000000000
+      internalID: 305608584115101720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_54
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_40
       rect:
         serializedVersion: 2
-        x: 3099
-        y: 63
+        x: 3151
+        y: 319
+        width: 82
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6102ed2b9a65b93d0800000000000000
+      internalID: -3198867823466242026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_41
+      rect:
+        serializedVersion: 2
+        x: 3415
+        y: 323
         width: 138
-        height: 146
+        height: 166
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1481,19 +1195,217 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10a5b66a286792a20800000000000000
-      internalID: 3038089727147989505
+      spriteID: b05924a7289e29ba0800000000000000
+      internalID: -6083543400017914613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_55
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_42
       rect:
         serializedVersion: 2
-        x: 3375
-        y: 63
-        width: 118
+        x: 99
+        y: 67
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3e34ff95cb56ba60800000000000000
+      internalID: 7689434318131969595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_43
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 67
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2d732225bbc5eca0800000000000000
+      internalID: -5988156150696936149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_44
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 67
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d1ede4ef6ceda80800000000000000
+      internalID: -8440089856098558626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_45
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 67
+        width: 62
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab0a8b249da59daf0800000000000000
+      internalID: -371165605107556166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_46
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 67
+        width: 78
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161e901e3c0c435b0800000000000000
+      internalID: -5389470906528964255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_47
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 67
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 486ff090c0014bb20800000000000000
+      internalID: 3149159683316512388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_48
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 67
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c086ceea5f4e27110800000000000000
+      internalID: 1257318989842638860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_49
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 67
+        width: 82
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ae5b961d8c83ad60800000000000000
+      internalID: 7900312708935540390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_50
+      rect:
+        serializedVersion: 2
+        x: 2147
+        y: 67
+        width: 58
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b96b6f354a6b02920800000000000000
+      internalID: 2963569371709355675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_51
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 67
+        width: 86
         height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1503,8 +1415,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b2506b0691a1a7c0800000000000000
-      internalID: -4061787723103448399
+      spriteID: 837ad72b62328e120800000000000000
+      internalID: 2443241446958802744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_52
+      rect:
+        serializedVersion: 2
+        x: 2639
+        y: 67
+        width: 106
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f2460373ca249d00800000000000000
+      internalID: 978454037983019761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_53
+      rect:
+        serializedVersion: 2
+        x: 2883
+        y: 67
+        width: 90
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 356edd091a21b2170800000000000000
+      internalID: 8154632035413911123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_54
+      rect:
+        serializedVersion: 2
+        x: 3147
+        y: 67
+        width: 82
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06341c00b4d653ed0800000000000000
+      internalID: -2434919854621244576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_pixel_art_Lo_Fi_cr...-534871621-0_55
+      rect:
+        serializedVersion: 2
+        x: 3355
+        y: 63
+        width: 134
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a383998bf6918650800000000000000
+      internalID: 6233429366346580904
       vertices: []
       indices: 
       edges: []
@@ -1523,62 +1523,62 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      A_fierce__humanoid_r...-482633299-0_0: 1031698651895045798
-      A_fierce__humanoid_r...-482633299-0_1: 641639675229284101
-      A_fierce__humanoid_r...-482633299-0_10: -7432646988009291058
-      A_fierce__humanoid_r...-482633299-0_11: -3512380572332516584
-      A_fierce__humanoid_r...-482633299-0_12: 476934117600807479
-      A_fierce__humanoid_r...-482633299-0_13: 6297899613150596344
-      A_fierce__humanoid_r...-482633299-0_14: 8463101172497347138
-      A_fierce__humanoid_r...-482633299-0_15: 3602503414335668048
-      A_fierce__humanoid_r...-482633299-0_16: 257142289315463284
-      A_fierce__humanoid_r...-482633299-0_17: -8446838352170079260
-      A_fierce__humanoid_r...-482633299-0_18: -5659878348510367517
-      A_fierce__humanoid_r...-482633299-0_19: -9044076554275353650
-      A_fierce__humanoid_r...-482633299-0_2: -1062282002413115208
-      A_fierce__humanoid_r...-482633299-0_20: 7032273427178095889
-      A_fierce__humanoid_r...-482633299-0_21: -5698250170787854991
-      A_fierce__humanoid_r...-482633299-0_22: 3004152697953013340
-      A_fierce__humanoid_r...-482633299-0_23: 380946115424167883
-      A_fierce__humanoid_r...-482633299-0_24: -7820030709196944898
-      A_fierce__humanoid_r...-482633299-0_25: 394788761185578474
-      A_fierce__humanoid_r...-482633299-0_26: 7905294291490715886
-      A_fierce__humanoid_r...-482633299-0_27: -2024448892778754666
-      A_fierce__humanoid_r...-482633299-0_28: -9013785546411936912
-      A_fierce__humanoid_r...-482633299-0_29: -4890455448894560310
-      A_fierce__humanoid_r...-482633299-0_3: -7534822385584413045
-      A_fierce__humanoid_r...-482633299-0_30: 3123784172480874280
-      A_fierce__humanoid_r...-482633299-0_31: 6020476001217949336
-      A_fierce__humanoid_r...-482633299-0_32: -4556933658819643953
-      A_fierce__humanoid_r...-482633299-0_33: -5389606807380127300
-      A_fierce__humanoid_r...-482633299-0_34: 8277180862972174973
-      A_fierce__humanoid_r...-482633299-0_35: -398112215028303424
-      A_fierce__humanoid_r...-482633299-0_36: -5744465344958672603
-      A_fierce__humanoid_r...-482633299-0_37: 4640657056601495393
-      A_fierce__humanoid_r...-482633299-0_38: 710408346566045986
-      A_fierce__humanoid_r...-482633299-0_39: -7532030889743490664
-      A_fierce__humanoid_r...-482633299-0_4: -4288935296183829798
-      A_fierce__humanoid_r...-482633299-0_40: 505251692747845762
-      A_fierce__humanoid_r...-482633299-0_41: -4963783623686836299
-      A_fierce__humanoid_r...-482633299-0_42: -4336108793608138427
-      A_fierce__humanoid_r...-482633299-0_43: -3195195826990666331
-      A_fierce__humanoid_r...-482633299-0_44: 3244466946648512267
-      A_fierce__humanoid_r...-482633299-0_45: -2940847711801535770
-      A_fierce__humanoid_r...-482633299-0_46: -345594691349924070
-      A_fierce__humanoid_r...-482633299-0_47: 2277762536978329665
-      A_fierce__humanoid_r...-482633299-0_48: -8281057070459743624
-      A_fierce__humanoid_r...-482633299-0_49: -5947379552581795596
-      A_fierce__humanoid_r...-482633299-0_5: -7299172775223380082
-      A_fierce__humanoid_r...-482633299-0_50: 8478012958427317809
-      A_fierce__humanoid_r...-482633299-0_51: 2048455162333338768
-      A_fierce__humanoid_r...-482633299-0_52: 7393217199671581360
-      A_fierce__humanoid_r...-482633299-0_53: -9187215967804691090
-      A_fierce__humanoid_r...-482633299-0_54: 3038089727147989505
-      A_fierce__humanoid_r...-482633299-0_55: -4061787723103448399
-      A_fierce__humanoid_r...-482633299-0_6: 1042887435830823946
-      A_fierce__humanoid_r...-482633299-0_7: 4922774798868811956
-      A_fierce__humanoid_r...-482633299-0_8: 211884006626213318
-      A_fierce__humanoid_r...-482633299-0_9: 8016988627168806247
+      A_pixel_art_Lo_Fi_cr...-534871621-0_0: 1193532914802498341
+      A_pixel_art_Lo_Fi_cr...-534871621-0_1: 6349156373197010668
+      A_pixel_art_Lo_Fi_cr...-534871621-0_10: 387081847899372825
+      A_pixel_art_Lo_Fi_cr...-534871621-0_11: 6138421119029633116
+      A_pixel_art_Lo_Fi_cr...-534871621-0_12: -8599696734291759725
+      A_pixel_art_Lo_Fi_cr...-534871621-0_13: 6134821141871727960
+      A_pixel_art_Lo_Fi_cr...-534871621-0_14: -7173759115559384763
+      A_pixel_art_Lo_Fi_cr...-534871621-0_15: -3116611568160522755
+      A_pixel_art_Lo_Fi_cr...-534871621-0_16: 8421865420064592620
+      A_pixel_art_Lo_Fi_cr...-534871621-0_17: 7006357206995841048
+      A_pixel_art_Lo_Fi_cr...-534871621-0_18: 8340891981046175029
+      A_pixel_art_Lo_Fi_cr...-534871621-0_19: -5170862404707784749
+      A_pixel_art_Lo_Fi_cr...-534871621-0_2: 7193592276106477384
+      A_pixel_art_Lo_Fi_cr...-534871621-0_20: -1813290851967672812
+      A_pixel_art_Lo_Fi_cr...-534871621-0_21: 5614808800063555254
+      A_pixel_art_Lo_Fi_cr...-534871621-0_22: -5321584958352552089
+      A_pixel_art_Lo_Fi_cr...-534871621-0_23: -5048968760966988617
+      A_pixel_art_Lo_Fi_cr...-534871621-0_24: -2882309090758244170
+      A_pixel_art_Lo_Fi_cr...-534871621-0_25: -5041767319325417238
+      A_pixel_art_Lo_Fi_cr...-534871621-0_26: -152081613731568859
+      A_pixel_art_Lo_Fi_cr...-534871621-0_27: -1260679730279814155
+      A_pixel_art_Lo_Fi_cr...-534871621-0_28: 3273288515486274124
+      A_pixel_art_Lo_Fi_cr...-534871621-0_29: 991222279725193081
+      A_pixel_art_Lo_Fi_cr...-534871621-0_3: 9134062824905701796
+      A_pixel_art_Lo_Fi_cr...-534871621-0_30: -5891860027255986270
+      A_pixel_art_Lo_Fi_cr...-534871621-0_31: 5099346938230838934
+      A_pixel_art_Lo_Fi_cr...-534871621-0_32: 1721594857688971778
+      A_pixel_art_Lo_Fi_cr...-534871621-0_33: -4757799810830086650
+      A_pixel_art_Lo_Fi_cr...-534871621-0_34: -4580050067294094554
+      A_pixel_art_Lo_Fi_cr...-534871621-0_35: -6778475328052872573
+      A_pixel_art_Lo_Fi_cr...-534871621-0_36: 2139598369965526126
+      A_pixel_art_Lo_Fi_cr...-534871621-0_37: -6209372383698757491
+      A_pixel_art_Lo_Fi_cr...-534871621-0_38: -5386189971625983733
+      A_pixel_art_Lo_Fi_cr...-534871621-0_39: 305608584115101720
+      A_pixel_art_Lo_Fi_cr...-534871621-0_4: 8271824977427033964
+      A_pixel_art_Lo_Fi_cr...-534871621-0_40: -3198867823466242026
+      A_pixel_art_Lo_Fi_cr...-534871621-0_41: -6083543400017914613
+      A_pixel_art_Lo_Fi_cr...-534871621-0_42: 7689434318131969595
+      A_pixel_art_Lo_Fi_cr...-534871621-0_43: -5988156150696936149
+      A_pixel_art_Lo_Fi_cr...-534871621-0_44: -8440089856098558626
+      A_pixel_art_Lo_Fi_cr...-534871621-0_45: -371165605107556166
+      A_pixel_art_Lo_Fi_cr...-534871621-0_46: -5389470906528964255
+      A_pixel_art_Lo_Fi_cr...-534871621-0_47: 3149159683316512388
+      A_pixel_art_Lo_Fi_cr...-534871621-0_48: 1257318989842638860
+      A_pixel_art_Lo_Fi_cr...-534871621-0_49: 7900312708935540390
+      A_pixel_art_Lo_Fi_cr...-534871621-0_5: 2057785618410974409
+      A_pixel_art_Lo_Fi_cr...-534871621-0_50: 2963569371709355675
+      A_pixel_art_Lo_Fi_cr...-534871621-0_51: 2443241446958802744
+      A_pixel_art_Lo_Fi_cr...-534871621-0_52: 978454037983019761
+      A_pixel_art_Lo_Fi_cr...-534871621-0_53: 8154632035413911123
+      A_pixel_art_Lo_Fi_cr...-534871621-0_54: -2434919854621244576
+      A_pixel_art_Lo_Fi_cr...-534871621-0_55: 6233429366346580904
+      A_pixel_art_Lo_Fi_cr...-534871621-0_6: 2649688967176427983
+      A_pixel_art_Lo_Fi_cr...-534871621-0_7: -6603361251892363208
+      A_pixel_art_Lo_Fi_cr...-534871621-0_8: 3759788565191101879
+      A_pixel_art_Lo_Fi_cr...-534871621-0_9: -6184320652732797733
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

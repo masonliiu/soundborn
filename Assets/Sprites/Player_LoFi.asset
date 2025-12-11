@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66476e8250ed04d9e9412cbdcbab96e5, type: 3}
-  m_Name: StarterPlayer_Metal
+  m_Name: Player_LoFi
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  displayName: Metal
-  element: 1
-  maxHP: 140
-  attack: 25
-  defense: 5
-  speed: 10
+  displayName: Lo-Fi
+  element: 3
+  maxHP: 130
+  attack: 15
+  defense: 8
+  speed: 9
   critChance: 0.1
   critDamageMultiplier: 1.5
-  skillPower: 35
-  ultimatePower: 60
+  skillPower: 25
+  ultimatePower: 45
   bleedDamagePerTurn: 10
   defenseUpAmount: 10
-  silhouetteSprite: {fileID: 0}
+  silhouetteSprite: {fileID: 6349156373197010668, guid: 4e4f3d51ed6d94c07b9e20479a6d1c2b, type: 3}
   elementIcon: {fileID: 0}

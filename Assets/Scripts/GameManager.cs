@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public CharacterData starterPlayer;
     public CharacterData starterEnemy;
 
+    [Header("Extra Starting Characters")]
+    public CharacterData[] extraStartingCharacters;
+
     [Header("Economy")]
     public int startingSoftCurrency = 0;       // e.g. gold
     public int startingPremiumCurrency = 0;    // e.g. gems
@@ -43,6 +46,17 @@ public class GameManager : MonoBehaviour
         {
             playerData.ownedCharacters.Add(new CharacterInstance(starterPlayer));
             playerData.activeCharacterIndex = 0;
+        }
+
+        if (extraStartingCharacters != null)
+        {
+            foreach (var cd in extraStartingCharacters)
+            {
+                if (cd != null)
+                {
+                    playerData.ownedCharacters.Add(new CharacterInstance(cd));
+                }
+            }
         }
 
         if (currentEnemyData == null && starterEnemy != null)

@@ -1,175 +1,175 @@
 fileFormatVersion: 2
-guid: 0b93a62f5d5d3463e9d24a1cce2d3380
+guid: 4f1c910949b8c424bb97ed2d38e1ed36
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1031698651895045798
-    second: A_fierce__humanoid_r...-482633299-0_0
+      213: -5399872721067284946
+    second: A_sleek__bipedal_fel...-1776976273-0_0
   - first:
-      213: 641639675229284101
-    second: A_fierce__humanoid_r...-482633299-0_1
+      213: -6609430185427892788
+    second: A_sleek__bipedal_fel...-1776976273-0_1
   - first:
-      213: -1062282002413115208
-    second: A_fierce__humanoid_r...-482633299-0_2
+      213: 3182097504997122526
+    second: A_sleek__bipedal_fel...-1776976273-0_2
   - first:
-      213: -7534822385584413045
-    second: A_fierce__humanoid_r...-482633299-0_3
+      213: -3683557180158360845
+    second: A_sleek__bipedal_fel...-1776976273-0_3
   - first:
-      213: -4288935296183829798
-    second: A_fierce__humanoid_r...-482633299-0_4
+      213: -7361060870365208322
+    second: A_sleek__bipedal_fel...-1776976273-0_4
   - first:
-      213: -7299172775223380082
-    second: A_fierce__humanoid_r...-482633299-0_5
+      213: -4094147388071860619
+    second: A_sleek__bipedal_fel...-1776976273-0_5
   - first:
-      213: 1042887435830823946
-    second: A_fierce__humanoid_r...-482633299-0_6
+      213: -2442513081768931197
+    second: A_sleek__bipedal_fel...-1776976273-0_6
   - first:
-      213: 4922774798868811956
-    second: A_fierce__humanoid_r...-482633299-0_7
+      213: -1079696637006836406
+    second: A_sleek__bipedal_fel...-1776976273-0_7
   - first:
-      213: 211884006626213318
-    second: A_fierce__humanoid_r...-482633299-0_8
+      213: -566988470097595868
+    second: A_sleek__bipedal_fel...-1776976273-0_8
   - first:
-      213: 8016988627168806247
-    second: A_fierce__humanoid_r...-482633299-0_9
+      213: -3821677940139261240
+    second: A_sleek__bipedal_fel...-1776976273-0_9
   - first:
-      213: -7432646988009291058
-    second: A_fierce__humanoid_r...-482633299-0_10
+      213: -4371928132348576332
+    second: A_sleek__bipedal_fel...-1776976273-0_10
   - first:
-      213: -3512380572332516584
-    second: A_fierce__humanoid_r...-482633299-0_11
+      213: 4824802463203806898
+    second: A_sleek__bipedal_fel...-1776976273-0_11
   - first:
-      213: 476934117600807479
-    second: A_fierce__humanoid_r...-482633299-0_12
+      213: 3769113554801344907
+    second: A_sleek__bipedal_fel...-1776976273-0_12
   - first:
-      213: 6297899613150596344
-    second: A_fierce__humanoid_r...-482633299-0_13
+      213: 5174992576602289124
+    second: A_sleek__bipedal_fel...-1776976273-0_13
   - first:
-      213: 8463101172497347138
-    second: A_fierce__humanoid_r...-482633299-0_14
+      213: -6299207783106320150
+    second: A_sleek__bipedal_fel...-1776976273-0_14
   - first:
-      213: 3602503414335668048
-    second: A_fierce__humanoid_r...-482633299-0_15
+      213: 7848007911307274779
+    second: A_sleek__bipedal_fel...-1776976273-0_15
   - first:
-      213: 257142289315463284
-    second: A_fierce__humanoid_r...-482633299-0_16
+      213: -8209923742093872241
+    second: A_sleek__bipedal_fel...-1776976273-0_16
   - first:
-      213: -8446838352170079260
-    second: A_fierce__humanoid_r...-482633299-0_17
+      213: -7014574687903592631
+    second: A_sleek__bipedal_fel...-1776976273-0_17
   - first:
-      213: -5659878348510367517
-    second: A_fierce__humanoid_r...-482633299-0_18
+      213: -6328348027620068865
+    second: A_sleek__bipedal_fel...-1776976273-0_18
   - first:
-      213: -9044076554275353650
-    second: A_fierce__humanoid_r...-482633299-0_19
+      213: -2910067488879884366
+    second: A_sleek__bipedal_fel...-1776976273-0_19
   - first:
-      213: 7032273427178095889
-    second: A_fierce__humanoid_r...-482633299-0_20
+      213: 2726099108443773051
+    second: A_sleek__bipedal_fel...-1776976273-0_20
   - first:
-      213: -5698250170787854991
-    second: A_fierce__humanoid_r...-482633299-0_21
+      213: 794860242792682835
+    second: A_sleek__bipedal_fel...-1776976273-0_21
   - first:
-      213: 3004152697953013340
-    second: A_fierce__humanoid_r...-482633299-0_22
+      213: -4922545996117004560
+    second: A_sleek__bipedal_fel...-1776976273-0_22
   - first:
-      213: 380946115424167883
-    second: A_fierce__humanoid_r...-482633299-0_23
+      213: -6867926513755569544
+    second: A_sleek__bipedal_fel...-1776976273-0_23
   - first:
-      213: -7820030709196944898
-    second: A_fierce__humanoid_r...-482633299-0_24
+      213: 5039762818869591611
+    second: A_sleek__bipedal_fel...-1776976273-0_24
   - first:
-      213: 394788761185578474
-    second: A_fierce__humanoid_r...-482633299-0_25
+      213: -6051352515647374682
+    second: A_sleek__bipedal_fel...-1776976273-0_25
   - first:
-      213: 7905294291490715886
-    second: A_fierce__humanoid_r...-482633299-0_26
+      213: -5516427549628457708
+    second: A_sleek__bipedal_fel...-1776976273-0_26
   - first:
-      213: -2024448892778754666
-    second: A_fierce__humanoid_r...-482633299-0_27
+      213: -6337784210819572522
+    second: A_sleek__bipedal_fel...-1776976273-0_27
   - first:
-      213: -9013785546411936912
-    second: A_fierce__humanoid_r...-482633299-0_28
+      213: -4573053728510449331
+    second: A_sleek__bipedal_fel...-1776976273-0_28
   - first:
-      213: -4890455448894560310
-    second: A_fierce__humanoid_r...-482633299-0_29
+      213: 164214670954141436
+    second: A_sleek__bipedal_fel...-1776976273-0_29
   - first:
-      213: 3123784172480874280
-    second: A_fierce__humanoid_r...-482633299-0_30
+      213: -7229357337082686409
+    second: A_sleek__bipedal_fel...-1776976273-0_30
   - first:
-      213: 6020476001217949336
-    second: A_fierce__humanoid_r...-482633299-0_31
+      213: -8862014159572155127
+    second: A_sleek__bipedal_fel...-1776976273-0_31
   - first:
-      213: -4556933658819643953
-    second: A_fierce__humanoid_r...-482633299-0_32
+      213: 465538566072298514
+    second: A_sleek__bipedal_fel...-1776976273-0_32
   - first:
-      213: -5389606807380127300
-    second: A_fierce__humanoid_r...-482633299-0_33
+      213: 8866115275278486605
+    second: A_sleek__bipedal_fel...-1776976273-0_33
   - first:
-      213: 8277180862972174973
-    second: A_fierce__humanoid_r...-482633299-0_34
+      213: 9203089991687684077
+    second: A_sleek__bipedal_fel...-1776976273-0_34
   - first:
-      213: -398112215028303424
-    second: A_fierce__humanoid_r...-482633299-0_35
+      213: -939885728157687511
+    second: A_sleek__bipedal_fel...-1776976273-0_35
   - first:
-      213: -5744465344958672603
-    second: A_fierce__humanoid_r...-482633299-0_36
+      213: -1077362704597762984
+    second: A_sleek__bipedal_fel...-1776976273-0_36
   - first:
-      213: 4640657056601495393
-    second: A_fierce__humanoid_r...-482633299-0_37
+      213: -2247002955364744526
+    second: A_sleek__bipedal_fel...-1776976273-0_37
   - first:
-      213: 710408346566045986
-    second: A_fierce__humanoid_r...-482633299-0_38
+      213: -5765851256388790856
+    second: A_sleek__bipedal_fel...-1776976273-0_38
   - first:
-      213: -7532030889743490664
-    second: A_fierce__humanoid_r...-482633299-0_39
+      213: 6811472179473641551
+    second: A_sleek__bipedal_fel...-1776976273-0_39
   - first:
-      213: 505251692747845762
-    second: A_fierce__humanoid_r...-482633299-0_40
+      213: 8836867975740464296
+    second: A_sleek__bipedal_fel...-1776976273-0_40
   - first:
-      213: -4963783623686836299
-    second: A_fierce__humanoid_r...-482633299-0_41
+      213: 1240581672137497246
+    second: A_sleek__bipedal_fel...-1776976273-0_41
   - first:
-      213: -4336108793608138427
-    second: A_fierce__humanoid_r...-482633299-0_42
+      213: -5321253620037200391
+    second: A_sleek__bipedal_fel...-1776976273-0_42
   - first:
-      213: -3195195826990666331
-    second: A_fierce__humanoid_r...-482633299-0_43
+      213: 3950090894702570927
+    second: A_sleek__bipedal_fel...-1776976273-0_43
   - first:
-      213: 3244466946648512267
-    second: A_fierce__humanoid_r...-482633299-0_44
+      213: -752923936492635958
+    second: A_sleek__bipedal_fel...-1776976273-0_44
   - first:
-      213: -2940847711801535770
-    second: A_fierce__humanoid_r...-482633299-0_45
+      213: 3172987169393190496
+    second: A_sleek__bipedal_fel...-1776976273-0_45
   - first:
-      213: -345594691349924070
-    second: A_fierce__humanoid_r...-482633299-0_46
+      213: -3435785650773883819
+    second: A_sleek__bipedal_fel...-1776976273-0_46
   - first:
-      213: 2277762536978329665
-    second: A_fierce__humanoid_r...-482633299-0_47
+      213: 8036771873743771533
+    second: A_sleek__bipedal_fel...-1776976273-0_47
   - first:
-      213: -8281057070459743624
-    second: A_fierce__humanoid_r...-482633299-0_48
+      213: -3828672158043765543
+    second: A_sleek__bipedal_fel...-1776976273-0_48
   - first:
-      213: -5947379552581795596
-    second: A_fierce__humanoid_r...-482633299-0_49
+      213: 7003627164930495916
+    second: A_sleek__bipedal_fel...-1776976273-0_49
   - first:
-      213: 8478012958427317809
-    second: A_fierce__humanoid_r...-482633299-0_50
+      213: -5014654500547657250
+    second: A_sleek__bipedal_fel...-1776976273-0_50
   - first:
-      213: 2048455162333338768
-    second: A_fierce__humanoid_r...-482633299-0_51
+      213: 656587153942583519
+    second: A_sleek__bipedal_fel...-1776976273-0_51
   - first:
-      213: 7393217199671581360
-    second: A_fierce__humanoid_r...-482633299-0_52
+      213: 598812402434784687
+    second: A_sleek__bipedal_fel...-1776976273-0_52
   - first:
-      213: -9187215967804691090
-    second: A_fierce__humanoid_r...-482633299-0_53
+      213: -8961607210498720471
+    second: A_sleek__bipedal_fel...-1776976273-0_53
   - first:
-      213: 3038089727147989505
-    second: A_fierce__humanoid_r...-482633299-0_54
+      213: -1386063729414576764
+    second: A_sleek__bipedal_fel...-1776976273-0_54
   - first:
-      213: -4061787723103448399
-    second: A_fierce__humanoid_r...-482633299-0_55
+      213: 4492295389874464434
+    second: A_sleek__bipedal_fel...-1776976273-0_55
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -278,12 +278,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_0
+      name: A_sleek__bipedal_fel...-1776976273-0_0
       rect:
         serializedVersion: 2
         x: 95
         y: 835
-        width: 70
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -293,19 +293,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ae147d2574515e00800000000000000
-      internalID: 1031698651895045798
+      spriteID: e266674be5ccf05b0800000000000000
+      internalID: -5399872721067284946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_1
+      name: A_sleek__bipedal_fel...-1776976273-0_1
       rect:
         serializedVersion: 2
-        x: 351
+        x: 355
         y: 835
-        width: 70
+        width: 58
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -315,18 +315,348 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 507a6d392ef87e800800000000000000
-      internalID: 641639675229284101
+      spriteID: cc583ddb3469644a0800000000000000
+      internalID: -6609430185427892788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_2
+      name: A_sleek__bipedal_fel...-1776976273-0_2
       rect:
         serializedVersion: 2
         x: 607
         y: 835
+        width: 62
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1a20242d4192c20800000000000000
+      internalID: 3182097504997122526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_3
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 839
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f242dec24061ecc0800000000000000
+      internalID: -3683557180158360845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_4
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 839
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef0aad3932248d990800000000000000
+      internalID: -7361060870365208322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_5
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 835
+        width: 58
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57622eb64aaae27c0800000000000000
+      internalID: -4094147388071860619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_6
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 839
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3801be90b437a1ed0800000000000000
+      internalID: -2442513081768931197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_7
+      rect:
+        serializedVersion: 2
+        x: 1887
+        y: 839
+        width: 58
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4d060e01a52401f0800000000000000
+      internalID: -1079696637006836406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_8
+      rect:
+        serializedVersion: 2
+        x: 2143
+        y: 835
+        width: 58
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42237109df6a128f0800000000000000
+      internalID: -566988470097595868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_9
+      rect:
+        serializedVersion: 2
+        x: 2407
+        y: 839
+        width: 62
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c28d0c592ca6fac0800000000000000
+      internalID: -3821677940139261240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_10
+      rect:
+        serializedVersion: 2
+        x: 2655
+        y: 835
+        width: 70
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bd73dfe68ac353c0800000000000000
+      internalID: -4371928132348576332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_11
+      rect:
+        serializedVersion: 2
+        x: 2907
+        y: 835
+        width: 62
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2be41b2074425f240800000000000000
+      internalID: 4824802463203806898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_12
+      rect:
+        serializedVersion: 2
+        x: 3163
+        y: 835
+        width: 74
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b814b08fec49e4430800000000000000
+      internalID: 3769113554801344907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_13
+      rect:
+        serializedVersion: 2
+        x: 3391
+        y: 835
+        width: 106
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e3b9a3845441d740800000000000000
+      internalID: 5174992576602289124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_14
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 579
+        width: 50
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae8629955e7b498a0800000000000000
+      internalID: -6299207783106320150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_15
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 579
+        width: 54
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1aece36d99b9ec60800000000000000
+      internalID: 7848007911307274779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_16
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 579
+        width: 50
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f83f277cadd701e80800000000000000
+      internalID: -8209923742093872241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_17
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 579
         width: 70
         height: 130
       alignment: 0
@@ -337,40 +667,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b820e2a5240241f0800000000000000
-      internalID: -1062282002413115208
+      spriteID: 94f4f057c7937ae90800000000000000
+      internalID: -7014574687903592631
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_3
-      rect:
-        serializedVersion: 2
-        x: 859
-        y: 835
-        width: 70
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b86649526feee6790800000000000000
-      internalID: -7534822385584413045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_4
+      name: A_sleek__bipedal_fel...-1776976273-0_18
       rect:
         serializedVersion: 2
         x: 1111
-        y: 835
+        y: 579
+        width: 78
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff179a67ff03d28a0800000000000000
+      internalID: -6328348027620068865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_19
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 579
         width: 74
         height: 130
       alignment: 0
@@ -381,19 +711,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: adaf3566214aa74c0800000000000000
-      internalID: -4288935296183829798
+      spriteID: 2b7c6ec790d5d97d0800000000000000
+      internalID: -2910067488879884366
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_5
+      name: A_sleek__bipedal_fel...-1776976273-0_20
       rect:
         serializedVersion: 2
-        x: 1367
-        y: 835
-        width: 74
+        x: 1627
+        y: 579
+        width: 70
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -403,41 +733,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e87bb9a980124ba90800000000000000
-      internalID: -7299172775223380082
+      spriteID: b78dc4512bc05d520800000000000000
+      internalID: 2726099108443773051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_6
-      rect:
-        serializedVersion: 2
-        x: 1623
-        y: 835
-        width: 74
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a0c0a61f894197e00800000000000000
-      internalID: 1042887435830823946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_7
+      name: A_sleek__bipedal_fel...-1776976273-0_21
       rect:
         serializedVersion: 2
         x: 1879
-        y: 835
-        width: 74
+        y: 579
+        width: 82
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -447,19 +755,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b012dbf895315440800000000000000
-      internalID: 4922774798868811956
+      spriteID: 3551db1fd29e70b00800000000000000
+      internalID: 794860242792682835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_8
+      name: A_sleek__bipedal_fel...-1776976273-0_22
       rect:
         serializedVersion: 2
-        x: 2135
-        y: 835
-        width: 74
+        x: 2143
+        y: 579
+        width: 78
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -469,18 +777,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cdba84a163c0f200800000000000000
-      internalID: 211884006626213318
+      spriteID: 0feacee4f7a9fabb0800000000000000
+      internalID: -4922545996117004560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_9
+      name: A_sleek__bipedal_fel...-1776976273-0_23
       rect:
         serializedVersion: 2
-        x: 2395
-        y: 831
+        x: 2379
+        y: 583
         width: 82
         height: 142
       alignment: 0
@@ -491,19 +799,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7654eba3ea0124f60800000000000000
-      internalID: 8016988627168806247
+      spriteID: 872cc1c393930b0a0800000000000000
+      internalID: -6867926513755569544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_10
+      name: A_sleek__bipedal_fel...-1776976273-0_24
       rect:
         serializedVersion: 2
-        x: 2647
-        y: 835
-        width: 98
+        x: 2623
+        y: 575
+        width: 118
         height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -513,86 +821,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec244dab1fee9d890800000000000000
-      internalID: -7432646988009291058
+      spriteID: b3e71faf495d0f540800000000000000
+      internalID: 5039762818869591611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_11
+      name: A_sleek__bipedal_fel...-1776976273-0_25
       rect:
         serializedVersion: 2
-        x: 2903
-        y: 823
-        width: 146
-        height: 150
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 81b13269a74814fc0800000000000000
-      internalID: -3512380572332516584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_12
-      rect:
-        serializedVersion: 2
-        x: 3175
-        y: 823
-        width: 150
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 73a4cd49d096e9600800000000000000
-      internalID: 476934117600807479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_13
-      rect:
-        serializedVersion: 2
-        x: 3383
-        y: 823
-        width: 110
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fc49e89452a66750800000000000000
-      internalID: 6297899613150596344
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_14
-      rect:
-        serializedVersion: 2
-        x: 95
+        x: 2907
         y: 579
-        width: 66
-        height: 130
+        width: 114
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -601,284 +843,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24275ec4da9f27570800000000000000
-      internalID: 8463101172497347138
+      spriteID: 6aafb2ec2f6450ca0800000000000000
+      internalID: -6051352515647374682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_15
-      rect:
-        serializedVersion: 2
-        x: 351
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05ffb99b4c9aef130800000000000000
-      internalID: 3602503414335668048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_16
-      rect:
-        serializedVersion: 2
-        x: 607
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 470016bbc8d819300800000000000000
-      internalID: 257142289315463284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_17
-      rect:
-        serializedVersion: 2
-        x: 867
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4eba1cf954dc6ca80800000000000000
-      internalID: -8446838352170079260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_18
-      rect:
-        serializedVersion: 2
-        x: 1119
-        y: 579
-        width: 78
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3e07d1d11a21471b0800000000000000
-      internalID: -5659878348510367517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_19
-      rect:
-        serializedVersion: 2
-        x: 1371
-        y: 579
-        width: 78
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ecb8afc9a4cfc7280800000000000000
-      internalID: -9044076554275353650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_20
-      rect:
-        serializedVersion: 2
-        x: 1635
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1158e566c67a79160800000000000000
-      internalID: 7032273427178095889
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_21
-      rect:
-        serializedVersion: 2
-        x: 1879
-        y: 579
-        width: 86
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 17581e809afbbe0b0800000000000000
-      internalID: -5698250170787854991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_22
-      rect:
-        serializedVersion: 2
-        x: 2147
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5e458c46f4e0b920800000000000000
-      internalID: 3004152697953013340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_23
-      rect:
-        serializedVersion: 2
-        x: 2383
-        y: 571
-        width: 86
-        height: 154
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc72c604974694500800000000000000
-      internalID: 380946115424167883
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_24
-      rect:
-        serializedVersion: 2
-        x: 2615
-        y: 579
-        width: 118
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef98ba5908ba97390800000000000000
-      internalID: -7820030709196944898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_25
-      rect:
-        serializedVersion: 2
-        x: 2911
-        y: 575
-        width: 106
-        height: 142
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aed68cf59429a7500800000000000000
-      internalID: 394788761185578474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_26
+      name: A_sleek__bipedal_fel...-1776976273-0_26
       rect:
         serializedVersion: 2
         x: 3163
-        y: 575
-        width: 138
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ee83a39264f35bd60800000000000000
-      internalID: 7905294291490715886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_27
-      rect:
-        serializedVersion: 2
-        x: 3419
-        y: 575
+        y: 579
         width: 118
-        height: 150
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -887,19 +865,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69d4dff3576b7e3e0800000000000000
-      internalID: -2024448892778754666
+      spriteID: 41d9733fe56b173b0800000000000000
+      internalID: -5516427549628457708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_28
+      name: A_sleek__bipedal_fel...-1776976273-0_27
       rect:
         serializedVersion: 2
-        x: 91
+        x: 3415
+        y: 575
+        width: 146
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dc150bd6daab08a0800000000000000
+      internalID: -6337784210819572522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_28
+      rect:
+        serializedVersion: 2
+        x: 95
         y: 323
-        width: 70
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -909,19 +909,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 073f0987dc998e280800000000000000
-      internalID: -9013785546411936912
+      spriteID: d49eb5decdf3980c0800000000000000
+      internalID: -4573053728510449331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_29
+      name: A_sleek__bipedal_fel...-1776976273-0_29
       rect:
         serializedVersion: 2
-        x: 347
+        x: 351
         y: 323
-        width: 70
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -931,19 +931,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac724c21eac912cb0800000000000000
-      internalID: -4890455448894560310
+      spriteID: cf611298f58674200800000000000000
+      internalID: 164214670954141436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_30
+      name: A_sleek__bipedal_fel...-1776976273-0_30
       rect:
         serializedVersion: 2
-        x: 603
+        x: 607
         y: 323
-        width: 70
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -953,19 +953,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 827c5b38729e95b20800000000000000
-      internalID: 3123784172480874280
+      spriteID: 73492d00ec92cab90800000000000000
+      internalID: -7229357337082686409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_31
+      name: A_sleek__bipedal_fel...-1776976273-0_31
       rect:
         serializedVersion: 2
         x: 859
         y: 323
-        width: 70
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -975,83 +975,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89e2c5776070d8350800000000000000
-      internalID: 6020476001217949336
+      spriteID: 9054838231dc30580800000000000000
+      internalID: -8862014159572155127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_32
+      name: A_sleek__bipedal_fel...-1776976273-0_32
       rect:
         serializedVersion: 2
         x: 1115
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc5b8012bf482c0c0800000000000000
-      internalID: -4556933658819643953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_33
-      rect:
-        serializedVersion: 2
-        x: 1371
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb1941ff9254435b0800000000000000
-      internalID: -5389606807380127300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_34
-      rect:
-        serializedVersion: 2
-        x: 1631
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d722e17f3247ed270800000000000000
-      internalID: 8277180862972174973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_35
-      rect:
-        serializedVersion: 2
-        x: 1887
         y: 323
         width: 66
         height: 130
@@ -1063,19 +997,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c97e7abc0f997af0800000000000000
-      internalID: -398112215028303424
+      spriteID: 21cebfbfbdce57600800000000000000
+      internalID: 465538566072298514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_36
+      name: A_sleek__bipedal_fel...-1776976273-0_33
       rect:
         serializedVersion: 2
-        x: 2139
+        x: 1371
         y: 323
-        width: 70
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1085,20 +1019,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5215239443f8740b0800000000000000
-      internalID: -5744465344958672603
+      spriteID: d4c83a04ed4ca0b70800000000000000
+      internalID: 8866115275278486605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_37
+      name: A_sleek__bipedal_fel...-1776976273-0_34
       rect:
         serializedVersion: 2
-        x: 2387
-        y: 327
-        width: 102
-        height: 138
+        x: 1627
+        y: 323
+        width: 66
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1107,20 +1041,86 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1675427710de66040800000000000000
-      internalID: 4640657056601495393
+      spriteID: def3f7e5691f7bf70800000000000000
+      internalID: 9203089991687684077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_38
+      name: A_sleek__bipedal_fel...-1776976273-0_35
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 323
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 921a3b3f8ead4f2f0800000000000000
+      internalID: -939885728157687511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_36
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 323
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c323a04507c01f0800000000000000
+      internalID: -1077362704597762984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_37
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 331
+        width: 82
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b24b3c97ba01d0e0800000000000000
+      internalID: -2247002955364744526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_38
       rect:
         serializedVersion: 2
         x: 2639
-        y: 323
-        width: 102
-        height: 126
+        y: 327
+        width: 106
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1129,18 +1129,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 221ba8690a0ebd900800000000000000
-      internalID: 710408346566045986
+      spriteID: 8b5d433c4d49bffa0800000000000000
+      internalID: -5765851256388790856
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_39
+      name: A_sleek__bipedal_fel...-1776976273-0_39
       rect:
         serializedVersion: 2
-        x: 2899
-        y: 323
+        x: 2895
+        y: 327
         width: 94
         height: 134
       alignment: 0
@@ -1151,20 +1151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 891e19befc9d87790800000000000000
-      internalID: -7532030889743490664
+      spriteID: f407bf6cbd5378e50800000000000000
+      internalID: 6811472179473641551
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_40
+      name: A_sleek__bipedal_fel...-1776976273-0_40
       rect:
         serializedVersion: 2
         x: 3147
-        y: 323
-        width: 114
-        height: 146
+        y: 327
+        width: 94
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1173,20 +1173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2807664dcb3030700800000000000000
-      internalID: 505251692747845762
+      spriteID: 8ac190daa9cd2aa70800000000000000
+      internalID: 8836867975740464296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_41
+      name: A_sleek__bipedal_fel...-1776976273-0_41
       rect:
         serializedVersion: 2
-        x: 3407
-        y: 319
-        width: 138
-        height: 146
+        x: 3415
+        y: 327
+        width: 86
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1195,19 +1195,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bfae30f7191d1bb0800000000000000
-      internalID: -4963783623686836299
+      spriteID: e9a9d9a357e673110800000000000000
+      internalID: 1240581672137497246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_42
+      name: A_sleek__bipedal_fel...-1776976273-0_42
       rect:
         serializedVersion: 2
-        x: 95
+        x: 99
         y: 67
-        width: 66
+        width: 50
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1217,19 +1217,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5411a81a60c03d3c0800000000000000
-      internalID: -4336108793608138427
+      spriteID: 9f5dbe9960c1726b0800000000000000
+      internalID: -5321253620037200391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_43
+      name: A_sleek__bipedal_fel...-1776976273-0_43
       rect:
         serializedVersion: 2
-        x: 351
+        x: 355
         y: 67
-        width: 66
+        width: 54
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1239,19 +1239,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ad2960035268a3d0800000000000000
-      internalID: -3195195826990666331
+      spriteID: fad60418dba81d630800000000000000
+      internalID: 3950090894702570927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_44
+      name: A_sleek__bipedal_fel...-1776976273-0_44
       rect:
         serializedVersion: 2
-        x: 607
+        x: 611
         y: 67
-        width: 66
+        width: 50
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1261,19 +1261,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b071b708f79a60d20800000000000000
-      internalID: 3244466946648512267
+      spriteID: ac8b77e3ba31d85f0800000000000000
+      internalID: -752923936492635958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_45
+      name: A_sleek__bipedal_fel...-1776976273-0_45
       rect:
         serializedVersion: 2
-        x: 859
+        x: 867
         y: 67
-        width: 66
+        width: 70
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1283,39 +1283,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e29c8f56920037d0800000000000000
-      internalID: -2940847711801535770
+      spriteID: 066ad84f407b80c20800000000000000
+      internalID: 3172987169393190496
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_46
+      name: A_sleek__bipedal_fel...-1776976273-0_46
       rect:
         serializedVersion: 2
-        x: 1107
-        y: 67
-        width: 78
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a17b3d19573343bf0800000000000000
-      internalID: -345594691349924070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_47
-      rect:
-        serializedVersion: 2
-        x: 1367
+        x: 1115
         y: 67
         width: 78
         height: 130
@@ -1327,19 +1305,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 140394395fc3c9f10800000000000000
-      internalID: 2277762536978329665
+      spriteID: 5540d397723a150d0800000000000000
+      internalID: -3435785650773883819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_48
+      name: A_sleek__bipedal_fel...-1776976273-0_47
       rect:
         serializedVersion: 2
-        x: 1627
+        x: 1371
         y: 67
-        width: 66
+        width: 74
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1349,41 +1327,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87292862876c31d80800000000000000
-      internalID: -8281057070459743624
+      spriteID: d8719534079588f60800000000000000
+      internalID: 8036771873743771533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_49
+      name: A_sleek__bipedal_fel...-1776976273-0_48
       rect:
         serializedVersion: 2
-        x: 1875
+        x: 1631
         y: 67
-        width: 86
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4f0c0f7bec9a67da0800000000000000
-      internalID: -5947379552581795596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_50
-      rect:
-        serializedVersion: 2
-        x: 2139
-        y: 67
-        width: 66
+        width: 70
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1393,41 +1349,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13608340ed3f7a570800000000000000
-      internalID: 8478012958427317809
+      spriteID: 9d48f5a15f2dddac0800000000000000
+      internalID: -3828672158043765543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_51
+      name: A_sleek__bipedal_fel...-1776976273-0_49
       rect:
         serializedVersion: 2
-        x: 2395
-        y: 59
-        width: 86
-        height: 154
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09c9131fd139d6c10800000000000000
-      internalID: 2048455162333338768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_52
-      rect:
-        serializedVersion: 2
-        x: 2643
+        x: 1879
         y: 67
-        width: 118
+        width: 82
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1437,19 +1371,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ba9bb54fdbf99660800000000000000
-      internalID: 7393217199671581360
+      spriteID: ca555f8bcc1e13160800000000000000
+      internalID: 7003627164930495916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_53
+      name: A_sleek__bipedal_fel...-1776976273-0_50
       rect:
         serializedVersion: 2
-        x: 2871
-        y: 63
-        width: 106
+        x: 2131
+        y: 67
+        width: 78
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed10b8fec4e586ab0800000000000000
+      internalID: -5014654500547657250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_51
+      rect:
+        serializedVersion: 2
+        x: 2403
+        y: 71
+        width: 82
         height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1459,42 +1415,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6d6434d0c3708080800000000000000
-      internalID: -9187215967804691090
+      spriteID: fd815daa98aac1900800000000000000
+      internalID: 656587153942583519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_54
+      name: A_sleek__bipedal_fel...-1776976273-0_52
       rect:
         serializedVersion: 2
-        x: 3099
-        y: 63
-        width: 138
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10a5b66a286792a20800000000000000
-      internalID: 3038089727147989505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_55
-      rect:
-        serializedVersion: 2
-        x: 3375
+        x: 2635
         y: 63
         width: 118
-        height: 150
+        height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1503,8 +1437,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b2506b0691a1a7c0800000000000000
-      internalID: -4061787723103448399
+      spriteID: fad393615b86f4800800000000000000
+      internalID: 598812402434784687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_53
+      rect:
+        serializedVersion: 2
+        x: 2867
+        y: 67
+        width: 114
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92df4a109b9f1a380800000000000000
+      internalID: -8961607210498720471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_54
+      rect:
+        serializedVersion: 2
+        x: 3119
+        y: 67
+        width: 118
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 485e03cb166b3cce0800000000000000
+      internalID: -1386063729414576764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_sleek__bipedal_fel...-1776976273-0_55
+      rect:
+        serializedVersion: 2
+        x: 3351
+        y: 63
+        width: 146
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b6a79b1bd6d75e30800000000000000
+      internalID: 4492295389874464434
       vertices: []
       indices: 
       edges: []
@@ -1523,62 +1523,62 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      A_fierce__humanoid_r...-482633299-0_0: 1031698651895045798
-      A_fierce__humanoid_r...-482633299-0_1: 641639675229284101
-      A_fierce__humanoid_r...-482633299-0_10: -7432646988009291058
-      A_fierce__humanoid_r...-482633299-0_11: -3512380572332516584
-      A_fierce__humanoid_r...-482633299-0_12: 476934117600807479
-      A_fierce__humanoid_r...-482633299-0_13: 6297899613150596344
-      A_fierce__humanoid_r...-482633299-0_14: 8463101172497347138
-      A_fierce__humanoid_r...-482633299-0_15: 3602503414335668048
-      A_fierce__humanoid_r...-482633299-0_16: 257142289315463284
-      A_fierce__humanoid_r...-482633299-0_17: -8446838352170079260
-      A_fierce__humanoid_r...-482633299-0_18: -5659878348510367517
-      A_fierce__humanoid_r...-482633299-0_19: -9044076554275353650
-      A_fierce__humanoid_r...-482633299-0_2: -1062282002413115208
-      A_fierce__humanoid_r...-482633299-0_20: 7032273427178095889
-      A_fierce__humanoid_r...-482633299-0_21: -5698250170787854991
-      A_fierce__humanoid_r...-482633299-0_22: 3004152697953013340
-      A_fierce__humanoid_r...-482633299-0_23: 380946115424167883
-      A_fierce__humanoid_r...-482633299-0_24: -7820030709196944898
-      A_fierce__humanoid_r...-482633299-0_25: 394788761185578474
-      A_fierce__humanoid_r...-482633299-0_26: 7905294291490715886
-      A_fierce__humanoid_r...-482633299-0_27: -2024448892778754666
-      A_fierce__humanoid_r...-482633299-0_28: -9013785546411936912
-      A_fierce__humanoid_r...-482633299-0_29: -4890455448894560310
-      A_fierce__humanoid_r...-482633299-0_3: -7534822385584413045
-      A_fierce__humanoid_r...-482633299-0_30: 3123784172480874280
-      A_fierce__humanoid_r...-482633299-0_31: 6020476001217949336
-      A_fierce__humanoid_r...-482633299-0_32: -4556933658819643953
-      A_fierce__humanoid_r...-482633299-0_33: -5389606807380127300
-      A_fierce__humanoid_r...-482633299-0_34: 8277180862972174973
-      A_fierce__humanoid_r...-482633299-0_35: -398112215028303424
-      A_fierce__humanoid_r...-482633299-0_36: -5744465344958672603
-      A_fierce__humanoid_r...-482633299-0_37: 4640657056601495393
-      A_fierce__humanoid_r...-482633299-0_38: 710408346566045986
-      A_fierce__humanoid_r...-482633299-0_39: -7532030889743490664
-      A_fierce__humanoid_r...-482633299-0_4: -4288935296183829798
-      A_fierce__humanoid_r...-482633299-0_40: 505251692747845762
-      A_fierce__humanoid_r...-482633299-0_41: -4963783623686836299
-      A_fierce__humanoid_r...-482633299-0_42: -4336108793608138427
-      A_fierce__humanoid_r...-482633299-0_43: -3195195826990666331
-      A_fierce__humanoid_r...-482633299-0_44: 3244466946648512267
-      A_fierce__humanoid_r...-482633299-0_45: -2940847711801535770
-      A_fierce__humanoid_r...-482633299-0_46: -345594691349924070
-      A_fierce__humanoid_r...-482633299-0_47: 2277762536978329665
-      A_fierce__humanoid_r...-482633299-0_48: -8281057070459743624
-      A_fierce__humanoid_r...-482633299-0_49: -5947379552581795596
-      A_fierce__humanoid_r...-482633299-0_5: -7299172775223380082
-      A_fierce__humanoid_r...-482633299-0_50: 8478012958427317809
-      A_fierce__humanoid_r...-482633299-0_51: 2048455162333338768
-      A_fierce__humanoid_r...-482633299-0_52: 7393217199671581360
-      A_fierce__humanoid_r...-482633299-0_53: -9187215967804691090
-      A_fierce__humanoid_r...-482633299-0_54: 3038089727147989505
-      A_fierce__humanoid_r...-482633299-0_55: -4061787723103448399
-      A_fierce__humanoid_r...-482633299-0_6: 1042887435830823946
-      A_fierce__humanoid_r...-482633299-0_7: 4922774798868811956
-      A_fierce__humanoid_r...-482633299-0_8: 211884006626213318
-      A_fierce__humanoid_r...-482633299-0_9: 8016988627168806247
+      A_sleek__bipedal_fel...-1776976273-0_0: -5399872721067284946
+      A_sleek__bipedal_fel...-1776976273-0_1: -6609430185427892788
+      A_sleek__bipedal_fel...-1776976273-0_10: -4371928132348576332
+      A_sleek__bipedal_fel...-1776976273-0_11: 4824802463203806898
+      A_sleek__bipedal_fel...-1776976273-0_12: 3769113554801344907
+      A_sleek__bipedal_fel...-1776976273-0_13: 5174992576602289124
+      A_sleek__bipedal_fel...-1776976273-0_14: -6299207783106320150
+      A_sleek__bipedal_fel...-1776976273-0_15: 7848007911307274779
+      A_sleek__bipedal_fel...-1776976273-0_16: -8209923742093872241
+      A_sleek__bipedal_fel...-1776976273-0_17: -7014574687903592631
+      A_sleek__bipedal_fel...-1776976273-0_18: -6328348027620068865
+      A_sleek__bipedal_fel...-1776976273-0_19: -2910067488879884366
+      A_sleek__bipedal_fel...-1776976273-0_2: 3182097504997122526
+      A_sleek__bipedal_fel...-1776976273-0_20: 2726099108443773051
+      A_sleek__bipedal_fel...-1776976273-0_21: 794860242792682835
+      A_sleek__bipedal_fel...-1776976273-0_22: -4922545996117004560
+      A_sleek__bipedal_fel...-1776976273-0_23: -6867926513755569544
+      A_sleek__bipedal_fel...-1776976273-0_24: 5039762818869591611
+      A_sleek__bipedal_fel...-1776976273-0_25: -6051352515647374682
+      A_sleek__bipedal_fel...-1776976273-0_26: -5516427549628457708
+      A_sleek__bipedal_fel...-1776976273-0_27: -6337784210819572522
+      A_sleek__bipedal_fel...-1776976273-0_28: -4573053728510449331
+      A_sleek__bipedal_fel...-1776976273-0_29: 164214670954141436
+      A_sleek__bipedal_fel...-1776976273-0_3: -3683557180158360845
+      A_sleek__bipedal_fel...-1776976273-0_30: -7229357337082686409
+      A_sleek__bipedal_fel...-1776976273-0_31: -8862014159572155127
+      A_sleek__bipedal_fel...-1776976273-0_32: 465538566072298514
+      A_sleek__bipedal_fel...-1776976273-0_33: 8866115275278486605
+      A_sleek__bipedal_fel...-1776976273-0_34: 9203089991687684077
+      A_sleek__bipedal_fel...-1776976273-0_35: -939885728157687511
+      A_sleek__bipedal_fel...-1776976273-0_36: -1077362704597762984
+      A_sleek__bipedal_fel...-1776976273-0_37: -2247002955364744526
+      A_sleek__bipedal_fel...-1776976273-0_38: -5765851256388790856
+      A_sleek__bipedal_fel...-1776976273-0_39: 6811472179473641551
+      A_sleek__bipedal_fel...-1776976273-0_4: -7361060870365208322
+      A_sleek__bipedal_fel...-1776976273-0_40: 8836867975740464296
+      A_sleek__bipedal_fel...-1776976273-0_41: 1240581672137497246
+      A_sleek__bipedal_fel...-1776976273-0_42: -5321253620037200391
+      A_sleek__bipedal_fel...-1776976273-0_43: 3950090894702570927
+      A_sleek__bipedal_fel...-1776976273-0_44: -752923936492635958
+      A_sleek__bipedal_fel...-1776976273-0_45: 3172987169393190496
+      A_sleek__bipedal_fel...-1776976273-0_46: -3435785650773883819
+      A_sleek__bipedal_fel...-1776976273-0_47: 8036771873743771533
+      A_sleek__bipedal_fel...-1776976273-0_48: -3828672158043765543
+      A_sleek__bipedal_fel...-1776976273-0_49: 7003627164930495916
+      A_sleek__bipedal_fel...-1776976273-0_5: -4094147388071860619
+      A_sleek__bipedal_fel...-1776976273-0_50: -5014654500547657250
+      A_sleek__bipedal_fel...-1776976273-0_51: 656587153942583519
+      A_sleek__bipedal_fel...-1776976273-0_52: 598812402434784687
+      A_sleek__bipedal_fel...-1776976273-0_53: -8961607210498720471
+      A_sleek__bipedal_fel...-1776976273-0_54: -1386063729414576764
+      A_sleek__bipedal_fel...-1776976273-0_55: 4492295389874464434
+      A_sleek__bipedal_fel...-1776976273-0_6: -2442513081768931197
+      A_sleek__bipedal_fel...-1776976273-0_7: -1079696637006836406
+      A_sleek__bipedal_fel...-1776976273-0_8: -566988470097595868
+      A_sleek__bipedal_fel...-1776976273-0_9: -3821677940139261240
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

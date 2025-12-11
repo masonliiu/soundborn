@@ -1,175 +1,175 @@
 fileFormatVersion: 2
-guid: 0b93a62f5d5d3463e9d24a1cce2d3380
+guid: a828af5addfb243258b561438a598869
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1031698651895045798
-    second: A_fierce__humanoid_r...-482633299-0_0
+      213: -4172648089101110486
+    second: A_dark_brown_skinned...-921340317-0 (1)_0
   - first:
-      213: 641639675229284101
-    second: A_fierce__humanoid_r...-482633299-0_1
+      213: 8991886324605370545
+    second: A_dark_brown_skinned...-921340317-0 (1)_1
   - first:
-      213: -1062282002413115208
-    second: A_fierce__humanoid_r...-482633299-0_2
+      213: 414818574883733870
+    second: A_dark_brown_skinned...-921340317-0 (1)_2
   - first:
-      213: -7534822385584413045
-    second: A_fierce__humanoid_r...-482633299-0_3
+      213: -156465675958479538
+    second: A_dark_brown_skinned...-921340317-0 (1)_3
   - first:
-      213: -4288935296183829798
-    second: A_fierce__humanoid_r...-482633299-0_4
+      213: -7327700890728198526
+    second: A_dark_brown_skinned...-921340317-0 (1)_4
   - first:
-      213: -7299172775223380082
-    second: A_fierce__humanoid_r...-482633299-0_5
+      213: 1446129902324258580
+    second: A_dark_brown_skinned...-921340317-0 (1)_5
   - first:
-      213: 1042887435830823946
-    second: A_fierce__humanoid_r...-482633299-0_6
+      213: -3348581533075812013
+    second: A_dark_brown_skinned...-921340317-0 (1)_6
   - first:
-      213: 4922774798868811956
-    second: A_fierce__humanoid_r...-482633299-0_7
+      213: -7851496101786993404
+    second: A_dark_brown_skinned...-921340317-0 (1)_7
   - first:
-      213: 211884006626213318
-    second: A_fierce__humanoid_r...-482633299-0_8
+      213: -9025633054428111788
+    second: A_dark_brown_skinned...-921340317-0 (1)_8
   - first:
-      213: 8016988627168806247
-    second: A_fierce__humanoid_r...-482633299-0_9
+      213: 2425352174086017587
+    second: A_dark_brown_skinned...-921340317-0 (1)_9
   - first:
-      213: -7432646988009291058
-    second: A_fierce__humanoid_r...-482633299-0_10
+      213: -7851579392507120183
+    second: A_dark_brown_skinned...-921340317-0 (1)_10
   - first:
-      213: -3512380572332516584
-    second: A_fierce__humanoid_r...-482633299-0_11
+      213: -1777365111341513409
+    second: A_dark_brown_skinned...-921340317-0 (1)_11
   - first:
-      213: 476934117600807479
-    second: A_fierce__humanoid_r...-482633299-0_12
+      213: 4014527169395034954
+    second: A_dark_brown_skinned...-921340317-0 (1)_12
   - first:
-      213: 6297899613150596344
-    second: A_fierce__humanoid_r...-482633299-0_13
+      213: -727588026276243706
+    second: A_dark_brown_skinned...-921340317-0 (1)_13
   - first:
-      213: 8463101172497347138
-    second: A_fierce__humanoid_r...-482633299-0_14
+      213: 259493023253549326
+    second: A_dark_brown_skinned...-921340317-0 (1)_14
   - first:
-      213: 3602503414335668048
-    second: A_fierce__humanoid_r...-482633299-0_15
+      213: -2989055623860916264
+    second: A_dark_brown_skinned...-921340317-0 (1)_15
   - first:
-      213: 257142289315463284
-    second: A_fierce__humanoid_r...-482633299-0_16
+      213: 8161196975883820893
+    second: A_dark_brown_skinned...-921340317-0 (1)_16
   - first:
-      213: -8446838352170079260
-    second: A_fierce__humanoid_r...-482633299-0_17
+      213: 7193370317744199927
+    second: A_dark_brown_skinned...-921340317-0 (1)_17
   - first:
-      213: -5659878348510367517
-    second: A_fierce__humanoid_r...-482633299-0_18
+      213: 8256852653589029596
+    second: A_dark_brown_skinned...-921340317-0 (1)_18
   - first:
-      213: -9044076554275353650
-    second: A_fierce__humanoid_r...-482633299-0_19
+      213: -4368014425827941175
+    second: A_dark_brown_skinned...-921340317-0 (1)_19
   - first:
-      213: 7032273427178095889
-    second: A_fierce__humanoid_r...-482633299-0_20
+      213: 4857782548680635172
+    second: A_dark_brown_skinned...-921340317-0 (1)_20
   - first:
-      213: -5698250170787854991
-    second: A_fierce__humanoid_r...-482633299-0_21
+      213: 1579788955156322770
+    second: A_dark_brown_skinned...-921340317-0 (1)_21
   - first:
-      213: 3004152697953013340
-    second: A_fierce__humanoid_r...-482633299-0_22
+      213: 1306055737185218976
+    second: A_dark_brown_skinned...-921340317-0 (1)_22
   - first:
-      213: 380946115424167883
-    second: A_fierce__humanoid_r...-482633299-0_23
+      213: -6899743115493342210
+    second: A_dark_brown_skinned...-921340317-0 (1)_23
   - first:
-      213: -7820030709196944898
-    second: A_fierce__humanoid_r...-482633299-0_24
+      213: -3132719565201735703
+    second: A_dark_brown_skinned...-921340317-0 (1)_24
   - first:
-      213: 394788761185578474
-    second: A_fierce__humanoid_r...-482633299-0_25
+      213: -7346496287022975575
+    second: A_dark_brown_skinned...-921340317-0 (1)_25
   - first:
-      213: 7905294291490715886
-    second: A_fierce__humanoid_r...-482633299-0_26
+      213: -4094016913468888976
+    second: A_dark_brown_skinned...-921340317-0 (1)_26
   - first:
-      213: -2024448892778754666
-    second: A_fierce__humanoid_r...-482633299-0_27
+      213: 3543891881358640305
+    second: A_dark_brown_skinned...-921340317-0 (1)_27
   - first:
-      213: -9013785546411936912
-    second: A_fierce__humanoid_r...-482633299-0_28
+      213: 2372239473021195133
+    second: A_dark_brown_skinned...-921340317-0 (1)_28
   - first:
-      213: -4890455448894560310
-    second: A_fierce__humanoid_r...-482633299-0_29
+      213: -3053164434128259184
+    second: A_dark_brown_skinned...-921340317-0 (1)_29
   - first:
-      213: 3123784172480874280
-    second: A_fierce__humanoid_r...-482633299-0_30
+      213: 1008122488792522964
+    second: A_dark_brown_skinned...-921340317-0 (1)_30
   - first:
-      213: 6020476001217949336
-    second: A_fierce__humanoid_r...-482633299-0_31
+      213: -7715242732700353669
+    second: A_dark_brown_skinned...-921340317-0 (1)_31
   - first:
-      213: -4556933658819643953
-    second: A_fierce__humanoid_r...-482633299-0_32
+      213: -8510285047683207559
+    second: A_dark_brown_skinned...-921340317-0 (1)_32
   - first:
-      213: -5389606807380127300
-    second: A_fierce__humanoid_r...-482633299-0_33
+      213: 8320336234862295673
+    second: A_dark_brown_skinned...-921340317-0 (1)_33
   - first:
-      213: 8277180862972174973
-    second: A_fierce__humanoid_r...-482633299-0_34
+      213: 5326493869245043277
+    second: A_dark_brown_skinned...-921340317-0 (1)_34
   - first:
-      213: -398112215028303424
-    second: A_fierce__humanoid_r...-482633299-0_35
+      213: 2245512570966948520
+    second: A_dark_brown_skinned...-921340317-0 (1)_35
   - first:
-      213: -5744465344958672603
-    second: A_fierce__humanoid_r...-482633299-0_36
+      213: -4004783422912711668
+    second: A_dark_brown_skinned...-921340317-0 (1)_36
   - first:
-      213: 4640657056601495393
-    second: A_fierce__humanoid_r...-482633299-0_37
+      213: 7937810451942444372
+    second: A_dark_brown_skinned...-921340317-0 (1)_37
   - first:
-      213: 710408346566045986
-    second: A_fierce__humanoid_r...-482633299-0_38
+      213: 3875590780055049223
+    second: A_dark_brown_skinned...-921340317-0 (1)_38
   - first:
-      213: -7532030889743490664
-    second: A_fierce__humanoid_r...-482633299-0_39
+      213: -1666311628830918297
+    second: A_dark_brown_skinned...-921340317-0 (1)_39
   - first:
-      213: 505251692747845762
-    second: A_fierce__humanoid_r...-482633299-0_40
+      213: 2659853072645997077
+    second: A_dark_brown_skinned...-921340317-0 (1)_40
   - first:
-      213: -4963783623686836299
-    second: A_fierce__humanoid_r...-482633299-0_41
+      213: -4917087614025328271
+    second: A_dark_brown_skinned...-921340317-0 (1)_41
   - first:
-      213: -4336108793608138427
-    second: A_fierce__humanoid_r...-482633299-0_42
+      213: -8915045549044108188
+    second: A_dark_brown_skinned...-921340317-0 (1)_42
   - first:
-      213: -3195195826990666331
-    second: A_fierce__humanoid_r...-482633299-0_43
+      213: 4980127753178246657
+    second: A_dark_brown_skinned...-921340317-0 (1)_43
   - first:
-      213: 3244466946648512267
-    second: A_fierce__humanoid_r...-482633299-0_44
+      213: -8987965784040980127
+    second: A_dark_brown_skinned...-921340317-0 (1)_44
   - first:
-      213: -2940847711801535770
-    second: A_fierce__humanoid_r...-482633299-0_45
+      213: 8098108167442663138
+    second: A_dark_brown_skinned...-921340317-0 (1)_45
   - first:
-      213: -345594691349924070
-    second: A_fierce__humanoid_r...-482633299-0_46
+      213: -9019696601844742118
+    second: A_dark_brown_skinned...-921340317-0 (1)_46
   - first:
-      213: 2277762536978329665
-    second: A_fierce__humanoid_r...-482633299-0_47
+      213: 3422205968402736791
+    second: A_dark_brown_skinned...-921340317-0 (1)_47
   - first:
-      213: -8281057070459743624
-    second: A_fierce__humanoid_r...-482633299-0_48
+      213: -7399105100208240009
+    second: A_dark_brown_skinned...-921340317-0 (1)_48
   - first:
-      213: -5947379552581795596
-    second: A_fierce__humanoid_r...-482633299-0_49
+      213: -6633512547107023590
+    second: A_dark_brown_skinned...-921340317-0 (1)_49
   - first:
-      213: 8478012958427317809
-    second: A_fierce__humanoid_r...-482633299-0_50
+      213: -6633087187547208834
+    second: A_dark_brown_skinned...-921340317-0 (1)_50
   - first:
-      213: 2048455162333338768
-    second: A_fierce__humanoid_r...-482633299-0_51
+      213: 4693777814210130373
+    second: A_dark_brown_skinned...-921340317-0 (1)_51
   - first:
-      213: 7393217199671581360
-    second: A_fierce__humanoid_r...-482633299-0_52
+      213: -2775255826980332545
+    second: A_dark_brown_skinned...-921340317-0 (1)_52
   - first:
-      213: -9187215967804691090
-    second: A_fierce__humanoid_r...-482633299-0_53
+      213: 3248225027353210451
+    second: A_dark_brown_skinned...-921340317-0 (1)_53
   - first:
-      213: 3038089727147989505
-    second: A_fierce__humanoid_r...-482633299-0_54
+      213: -4180027939303387452
+    second: A_dark_brown_skinned...-921340317-0 (1)_54
   - first:
-      213: -4061787723103448399
-    second: A_fierce__humanoid_r...-482633299-0_55
+      213: -5427102379749662730
+    second: A_dark_brown_skinned...-921340317-0 (1)_55
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -278,12 +278,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_0
+      name: A_dark_brown_skinned...-921340317-0 (1)_0
       rect:
         serializedVersion: 2
-        x: 95
+        x: 99
         y: 835
-        width: 70
+        width: 58
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -293,19 +293,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ae147d2574515e00800000000000000
-      internalID: 1031698651895045798
+      spriteID: a237a6caba6c716c0800000000000000
+      internalID: -4172648089101110486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_1
+      name: A_dark_brown_skinned...-921340317-0 (1)_1
       rect:
         serializedVersion: 2
-        x: 351
+        x: 355
         y: 835
-        width: 70
+        width: 58
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -315,19 +315,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 507a6d392ef87e800800000000000000
-      internalID: 641639675229284101
+      spriteID: 1b0cbce98f899cc70800000000000000
+      internalID: 8991886324605370545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_2
+      name: A_dark_brown_skinned...-921340317-0 (1)_2
       rect:
         serializedVersion: 2
-        x: 607
+        x: 611
         y: 835
-        width: 70
+        width: 58
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -337,20 +337,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b820e2a5240241f0800000000000000
-      internalID: -1062282002413115208
+      spriteID: e61cd2acb4bb1c500800000000000000
+      internalID: 414818574883733870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_3
+      name: A_dark_brown_skinned...-921340317-0 (1)_3
       rect:
         serializedVersion: 2
-        x: 859
+        x: 863
         y: 835
-        width: 70
-        height: 126
+        width: 58
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -359,19 +359,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b86649526feee6790800000000000000
-      internalID: -7534822385584413045
+      spriteID: e4514f4fb4f14ddf0800000000000000
+      internalID: -156465675958479538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_4
+      name: A_dark_brown_skinned...-921340317-0 (1)_4
       rect:
         serializedVersion: 2
         x: 1111
         y: 835
-        width: 74
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -381,19 +381,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: adaf3566214aa74c0800000000000000
-      internalID: -4288935296183829798
+      spriteID: 28e05db1dd6ce4a90800000000000000
+      internalID: -7327700890728198526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_5
+      name: A_dark_brown_skinned...-921340317-0 (1)_5
       rect:
         serializedVersion: 2
-        x: 1367
+        x: 1371
         y: 835
-        width: 74
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -403,41 +403,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e87bb9a980124ba90800000000000000
-      internalID: -7299172775223380082
+      spriteID: 4179b17fb7fa11410800000000000000
+      internalID: 1446129902324258580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_6
+      name: A_dark_brown_skinned...-921340317-0 (1)_6
       rect:
         serializedVersion: 2
-        x: 1623
+        x: 1631
         y: 835
-        width: 74
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a0c0a61f894197e00800000000000000
-      internalID: 1042887435830823946
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_7
-      rect:
-        serializedVersion: 2
-        x: 1879
-        y: 835
-        width: 74
+        width: 58
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -447,19 +425,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b012dbf895315440800000000000000
-      internalID: 4922774798868811956
+      spriteID: 351559356d27781d0800000000000000
+      internalID: -3348581533075812013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_8
+      name: A_dark_brown_skinned...-921340317-0 (1)_7
       rect:
         serializedVersion: 2
-        x: 2135
+        x: 1887
         y: 835
-        width: 74
+        width: 66
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -469,19 +447,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6cdba84a163c0f200800000000000000
-      internalID: 211884006626213318
+      spriteID: 40d3f99f4e1e90390800000000000000
+      internalID: -7851496101786993404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_9
+      name: A_dark_brown_skinned...-921340317-0 (1)_8
       rect:
         serializedVersion: 2
-        x: 2395
-        y: 831
-        width: 82
+        x: 2143
+        y: 835
+        width: 66
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45cd9cd8e828eb280800000000000000
+      internalID: -9025633054428111788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_9
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 835
+        width: 86
         height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -491,19 +491,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7654eba3ea0124f60800000000000000
-      internalID: 8016988627168806247
+      spriteID: 3325e97c3f498a120800000000000000
+      internalID: 2425352174086017587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_10
+      name: A_dark_brown_skinned...-921340317-0 (1)_10
       rect:
         serializedVersion: 2
-        x: 2647
+        x: 2639
         y: 835
-        width: 98
+        width: 90
         height: 138
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -513,19 +513,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec244dab1fee9d890800000000000000
-      internalID: -7432646988009291058
+      spriteID: 9c5f5d75426990390800000000000000
+      internalID: -7851579392507120183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_11
+      name: A_dark_brown_skinned...-921340317-0 (1)_11
       rect:
         serializedVersion: 2
-        x: 2903
-        y: 823
-        width: 146
+        x: 2899
+        y: 831
+        width: 90
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f35015e19d78557e0800000000000000
+      internalID: -1777365111341513409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_12
+      rect:
+        serializedVersion: 2
+        x: 3151
+        y: 831
+        width: 94
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4b02f0d03776b730800000000000000
+      internalID: 4014527169395034954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_13
+      rect:
+        serializedVersion: 2
+        x: 3399
+        y: 831
+        width: 90
         height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -535,63 +579,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81b13269a74814fc0800000000000000
-      internalID: -3512380572332516584
+      spriteID: 6071af68b8617e5f0800000000000000
+      internalID: -727588026276243706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_12
+      name: A_dark_brown_skinned...-921340317-0 (1)_14
       rect:
         serializedVersion: 2
-        x: 3175
-        y: 823
-        width: 150
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 73a4cd49d096e9600800000000000000
-      internalID: 476934117600807479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_13
-      rect:
-        serializedVersion: 2
-        x: 3383
-        y: 823
-        width: 110
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fc49e89452a66750800000000000000
-      internalID: 6297899613150596344
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_14
-      rect:
-        serializedVersion: 2
-        x: 95
+        x: 103
         y: 579
-        width: 66
+        width: 50
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -601,19 +601,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24275ec4da9f27570800000000000000
-      internalID: 8463101172497347138
+      spriteID: e0158b0a787e99300800000000000000
+      internalID: 259493023253549326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_15
+      name: A_dark_brown_skinned...-921340317-0 (1)_15
       rect:
         serializedVersion: 2
-        x: 351
+        x: 359
         y: 579
-        width: 66
+        width: 50
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -623,19 +623,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 05ffb99b4c9aef130800000000000000
-      internalID: 3602503414335668048
+      spriteID: 8dfe2ed2fbdb486d0800000000000000
+      internalID: -2989055623860916264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_16
+      name: A_dark_brown_skinned...-921340317-0 (1)_16
       rect:
         serializedVersion: 2
-        x: 607
+        x: 615
         y: 579
-        width: 66
+        width: 50
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -645,19 +645,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 470016bbc8d819300800000000000000
-      internalID: 257142289315463284
+      spriteID: d5f1c81e865624170800000000000000
+      internalID: 8161196975883820893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_17
+      name: A_dark_brown_skinned...-921340317-0 (1)_17
       rect:
         serializedVersion: 2
-        x: 867
+        x: 871
         y: 579
-        width: 66
+        width: 54
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -667,19 +667,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4eba1cf954dc6ca80800000000000000
-      internalID: -8446838352170079260
+      spriteID: 7f85bfe113cf3d360800000000000000
+      internalID: 7193370317744199927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_18
+      name: A_dark_brown_skinned...-921340317-0 (1)_18
       rect:
         serializedVersion: 2
-        x: 1119
+        x: 1123
         y: 579
-        width: 78
+        width: 66
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd26ae3edbb369270800000000000000
+      internalID: 8256852653589029596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_19
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 579
+        width: 58
         height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -689,41 +711,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e07d1d11a21471b0800000000000000
-      internalID: -5659878348510367517
+      spriteID: 9c46ebeb502b163c0800000000000000
+      internalID: -4368014425827941175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_19
-      rect:
-        serializedVersion: 2
-        x: 1371
-        y: 579
-        width: 78
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ecb8afc9a4cfc7280800000000000000
-      internalID: -9044076554275353650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_20
+      name: A_dark_brown_skinned...-921340317-0 (1)_20
       rect:
         serializedVersion: 2
         x: 1635
         y: 579
-        width: 66
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -733,19 +733,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1158e566c67a79160800000000000000
-      internalID: 7032273427178095889
+      spriteID: 423733a8d7f4a6340800000000000000
+      internalID: 4857782548680635172
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_21
+      name: A_dark_brown_skinned...-921340317-0 (1)_21
       rect:
         serializedVersion: 2
-        x: 1879
+        x: 1891
         y: 579
-        width: 86
+        width: 70
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d99d244fa98ce510800000000000000
+      internalID: 1579788955156322770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_22
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 579
+        width: 54
         height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -755,129 +777,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 17581e809afbbe0b0800000000000000
-      internalID: -5698250170787854991
+      spriteID: 0a139cfe5ca002210800000000000000
+      internalID: 1306055737185218976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_22
+      name: A_dark_brown_skinned...-921340317-0 (1)_23
       rect:
         serializedVersion: 2
-        x: 2147
-        y: 579
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5e458c46f4e0b920800000000000000
-      internalID: 3004152697953013340
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_23
-      rect:
-        serializedVersion: 2
-        x: 2383
-        y: 571
-        width: 86
-        height: 154
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc72c604974694500800000000000000
-      internalID: 380946115424167883
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_24
-      rect:
-        serializedVersion: 2
-        x: 2615
-        y: 579
-        width: 118
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ef98ba5908ba97390800000000000000
-      internalID: -7820030709196944898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_25
-      rect:
-        serializedVersion: 2
-        x: 2911
+        x: 2379
         y: 575
-        width: 106
-        height: 142
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aed68cf59429a7500800000000000000
-      internalID: 394788761185578474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_26
-      rect:
-        serializedVersion: 2
-        x: 3163
-        y: 575
-        width: 138
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ee83a39264f35bd60800000000000000
-      internalID: 7905294291490715886
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_27
-      rect:
-        serializedVersion: 2
-        x: 3419
-        y: 575
-        width: 118
+        width: 94
         height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -887,261 +799,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69d4dff3576b7e3e0800000000000000
-      internalID: -2024448892778754666
+      spriteID: ef3829f51303f30a0800000000000000
+      internalID: -6899743115493342210
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_28
+      name: A_dark_brown_skinned...-921340317-0 (1)_24
       rect:
         serializedVersion: 2
-        x: 91
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 073f0987dc998e280800000000000000
-      internalID: -9013785546411936912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_29
-      rect:
-        serializedVersion: 2
-        x: 347
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ac724c21eac912cb0800000000000000
-      internalID: -4890455448894560310
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_30
-      rect:
-        serializedVersion: 2
-        x: 603
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 827c5b38729e95b20800000000000000
-      internalID: 3123784172480874280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_31
-      rect:
-        serializedVersion: 2
-        x: 859
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 89e2c5776070d8350800000000000000
-      internalID: 6020476001217949336
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_32
-      rect:
-        serializedVersion: 2
-        x: 1115
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc5b8012bf482c0c0800000000000000
-      internalID: -4556933658819643953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_33
-      rect:
-        serializedVersion: 2
-        x: 1371
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb1941ff9254435b0800000000000000
-      internalID: -5389606807380127300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_34
-      rect:
-        serializedVersion: 2
-        x: 1631
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d722e17f3247ed270800000000000000
-      internalID: 8277180862972174973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_35
-      rect:
-        serializedVersion: 2
-        x: 1887
-        y: 323
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0c97e7abc0f997af0800000000000000
-      internalID: -398112215028303424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_36
-      rect:
-        serializedVersion: 2
-        x: 2139
-        y: 323
-        width: 70
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5215239443f8740b0800000000000000
-      internalID: -5744465344958672603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_37
-      rect:
-        serializedVersion: 2
-        x: 2387
-        y: 327
-        width: 102
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1675427710de66040800000000000000
-      internalID: 4640657056601495393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_38
-      rect:
-        serializedVersion: 2
-        x: 2639
-        y: 323
-        width: 102
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 221ba8690a0ebd900800000000000000
-      internalID: 710408346566045986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_39
-      rect:
-        serializedVersion: 2
-        x: 2899
-        y: 323
-        width: 94
+        x: 2615
+        y: 579
+        width: 122
         height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1151,19 +821,63 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 891e19befc9d87790800000000000000
-      internalID: -7532030889743490664
+      spriteID: 9effb3f37285684d0800000000000000
+      internalID: -3132719565201735703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_40
+      name: A_dark_brown_skinned...-921340317-0 (1)_25
       rect:
         serializedVersion: 2
-        x: 3147
-        y: 323
-        width: 114
+        x: 2927
+        y: 583
+        width: 74
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a5f444ec800c0a90800000000000000
+      internalID: -7346496287022975575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_26
+      rect:
+        serializedVersion: 2
+        x: 3155
+        y: 583
+        width: 98
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 078ee38ee412f27c0800000000000000
+      internalID: -4094016913468888976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_27
+      rect:
+        serializedVersion: 2
+        x: 3419
+        y: 583
+        width: 90
         height: 146
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1173,40 +887,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2807664dcb3030700800000000000000
-      internalID: 505251692747845762
+      spriteID: 1b4c5c6c3ee6e2130800000000000000
+      internalID: 3543891881358640305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_41
-      rect:
-        serializedVersion: 2
-        x: 3407
-        y: 319
-        width: 138
-        height: 146
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5bfae30f7191d1bb0800000000000000
-      internalID: -4963783623686836299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_42
+      name: A_dark_brown_skinned...-921340317-0 (1)_28
       rect:
         serializedVersion: 2
         x: 95
-        y: 67
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -1217,18 +909,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5411a81a60c03d3c0800000000000000
-      internalID: -4336108793608138427
+      spriteID: d7396976b33ebe020800000000000000
+      internalID: 2372239473021195133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_43
+      name: A_dark_brown_skinned...-921340317-0 (1)_29
       rect:
         serializedVersion: 2
         x: 351
-        y: 67
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -1239,18 +931,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ad2960035268a3d0800000000000000
-      internalID: -3195195826990666331
+      spriteID: 097bdee9f1bf0a5d0800000000000000
+      internalID: -3053164434128259184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_44
+      name: A_dark_brown_skinned...-921340317-0 (1)_30
       rect:
         serializedVersion: 2
         x: 607
-        y: 67
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -1261,18 +953,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b071b708f79a60d20800000000000000
-      internalID: 3244466946648512267
+      spriteID: 4d0af82ff029dfd00800000000000000
+      internalID: 1008122488792522964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_45
+      name: A_dark_brown_skinned...-921340317-0 (1)_31
       rect:
         serializedVersion: 2
         x: 859
-        y: 67
+        y: 323
+        width: 62
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b3b799c93fde490800000000000000
+      internalID: -7715242732700353669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_32
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 323
+        width: 62
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97e268ba6d465e980800000000000000
+      internalID: -8510285047683207559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_33
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -1283,41 +1019,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e29c8f56920037d0800000000000000
-      internalID: -2940847711801535770
+      spriteID: 97a37caf8b5c77370800000000000000
+      internalID: 8320336234862295673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_46
+      name: A_dark_brown_skinned...-921340317-0 (1)_34
       rect:
         serializedVersion: 2
-        x: 1107
-        y: 67
-        width: 78
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a17b3d19573343bf0800000000000000
-      internalID: -345594691349924070
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_47
-      rect:
-        serializedVersion: 2
-        x: 1367
-        y: 67
-        width: 78
+        x: 1631
+        y: 323
+        width: 62
         height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1327,41 +1041,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 140394395fc3c9f10800000000000000
-      internalID: 2277762536978329665
+      spriteID: d4295aef3f18be940800000000000000
+      internalID: 5326493869245043277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_48
+      name: A_dark_brown_skinned...-921340317-0 (1)_35
       rect:
         serializedVersion: 2
-        x: 1627
-        y: 67
-        width: 66
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 87292862876c31d80800000000000000
-      internalID: -8281057070459743624
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_49
-      rect:
-        serializedVersion: 2
-        x: 1875
-        y: 67
-        width: 86
+        x: 1887
+        y: 323
+        width: 62
         height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1371,18 +1063,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f0c0f7bec9a67da0800000000000000
-      internalID: -5947379552581795596
+      spriteID: 8aab82b39c9a92f10800000000000000
+      internalID: 2245512570966948520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_50
+      name: A_dark_brown_skinned...-921340317-0 (1)_36
       rect:
         serializedVersion: 2
         x: 2139
-        y: 67
+        y: 323
         width: 66
         height: 130
       alignment: 0
@@ -1393,63 +1085,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 13608340ed3f7a570800000000000000
-      internalID: 8478012958427317809
+      spriteID: c043ae2f1b62c68c0800000000000000
+      internalID: -4004783422912711668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_51
+      name: A_dark_brown_skinned...-921340317-0 (1)_37
       rect:
         serializedVersion: 2
-        x: 2395
-        y: 59
-        width: 86
-        height: 154
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09c9131fd139d6c10800000000000000
-      internalID: 2048455162333338768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_52
-      rect:
-        serializedVersion: 2
-        x: 2643
-        y: 67
-        width: 118
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0ba9bb54fdbf99660800000000000000
-      internalID: 7393217199671581360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_53
-      rect:
-        serializedVersion: 2
-        x: 2871
-        y: 63
-        width: 106
+        x: 2387
+        y: 327
+        width: 94
         height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1459,20 +1107,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6d6434d0c3708080800000000000000
-      internalID: -9187215967804691090
+      spriteID: 45d896abc84c82e60800000000000000
+      internalID: 7937810451942444372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_54
+      name: A_dark_brown_skinned...-921340317-0 (1)_38
       rect:
         serializedVersion: 2
-        x: 3099
-        y: 63
-        width: 138
-        height: 146
+        x: 2639
+        y: 323
+        width: 90
+        height: 134
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1481,19 +1129,283 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 10a5b66a286792a20800000000000000
-      internalID: 3038089727147989505
+      spriteID: 704d5fbd74dd8c530800000000000000
+      internalID: 3875590780055049223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A_fierce__humanoid_r...-482633299-0_55
+      name: A_dark_brown_skinned...-921340317-0 (1)_39
       rect:
         serializedVersion: 2
-        x: 3375
+        x: 2895
+        y: 323
+        width: 82
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7693e6ee66210e8e0800000000000000
+      internalID: -1666311628830918297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_40
+      rect:
+        serializedVersion: 2
+        x: 3151
+        y: 323
+        width: 78
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 512cbcde642b9e420800000000000000
+      internalID: 2659853072645997077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_41
+      rect:
+        serializedVersion: 2
+        x: 3419
+        y: 323
+        width: 82
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1791c8ceddef2cbb0800000000000000
+      internalID: -4917087614025328271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_42
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 67
+        width: 50
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4647ccc9e45674480800000000000000
+      internalID: -8915045549044108188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_43
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 67
+        width: 50
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ee0404ec7fc1540800000000000000
+      internalID: 4980127753178246657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_44
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 67
+        width: 50
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1614fdc5db4544380800000000000000
+      internalID: -8987965784040980127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_45
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 67
+        width: 54
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e60c110972426070800000000000000
+      internalID: 8098108167442663138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_46
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 67
+        width: 66
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a180f31aab993d280800000000000000
+      internalID: -9019696601844742118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_47
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 67
+        width: 58
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 796edd6523e1e7f20800000000000000
+      internalID: 3422205968402736791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_48
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 67
+        width: 62
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a8e4e0d19115990800000000000000
+      internalID: -7399105100208240009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_49
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 67
+        width: 70
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a15d698fb7701f3a0800000000000000
+      internalID: -6633512547107023590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_50
+      rect:
+        serializedVersion: 2
+        x: 2147
+        y: 67
+        width: 54
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e73cd06b85a82f3a0800000000000000
+      internalID: -6633087187547208834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_51
+      rect:
+        serializedVersion: 2
+        x: 2391
         y: 63
-        width: 118
+        width: 94
         height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1503,8 +1415,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1b2506b0691a1a7c0800000000000000
-      internalID: -4061787723103448399
+      spriteID: 5c1ba96ad06a32140800000000000000
+      internalID: 4693777814210130373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_52
+      rect:
+        serializedVersion: 2
+        x: 2639
+        y: 67
+        width: 122
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb1100878f4c79d0800000000000000
+      internalID: -2775255826980332545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_53
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 71
+        width: 74
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35eebe9d373041d20800000000000000
+      internalID: 3248225027353210451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_54
+      rect:
+        serializedVersion: 2
+        x: 3147
+        y: 71
+        width: 98
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ce0d966cbe8df5c0800000000000000
+      internalID: -4180027939303387452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: A_dark_brown_skinned...-921340317-0 (1)_55
+      rect:
+        serializedVersion: 2
+        x: 3403
+        y: 71
+        width: 90
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ff185fb32f0fa4b0800000000000000
+      internalID: -5427102379749662730
       vertices: []
       indices: 
       edges: []
@@ -1523,62 +1523,62 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      A_fierce__humanoid_r...-482633299-0_0: 1031698651895045798
-      A_fierce__humanoid_r...-482633299-0_1: 641639675229284101
-      A_fierce__humanoid_r...-482633299-0_10: -7432646988009291058
-      A_fierce__humanoid_r...-482633299-0_11: -3512380572332516584
-      A_fierce__humanoid_r...-482633299-0_12: 476934117600807479
-      A_fierce__humanoid_r...-482633299-0_13: 6297899613150596344
-      A_fierce__humanoid_r...-482633299-0_14: 8463101172497347138
-      A_fierce__humanoid_r...-482633299-0_15: 3602503414335668048
-      A_fierce__humanoid_r...-482633299-0_16: 257142289315463284
-      A_fierce__humanoid_r...-482633299-0_17: -8446838352170079260
-      A_fierce__humanoid_r...-482633299-0_18: -5659878348510367517
-      A_fierce__humanoid_r...-482633299-0_19: -9044076554275353650
-      A_fierce__humanoid_r...-482633299-0_2: -1062282002413115208
-      A_fierce__humanoid_r...-482633299-0_20: 7032273427178095889
-      A_fierce__humanoid_r...-482633299-0_21: -5698250170787854991
-      A_fierce__humanoid_r...-482633299-0_22: 3004152697953013340
-      A_fierce__humanoid_r...-482633299-0_23: 380946115424167883
-      A_fierce__humanoid_r...-482633299-0_24: -7820030709196944898
-      A_fierce__humanoid_r...-482633299-0_25: 394788761185578474
-      A_fierce__humanoid_r...-482633299-0_26: 7905294291490715886
-      A_fierce__humanoid_r...-482633299-0_27: -2024448892778754666
-      A_fierce__humanoid_r...-482633299-0_28: -9013785546411936912
-      A_fierce__humanoid_r...-482633299-0_29: -4890455448894560310
-      A_fierce__humanoid_r...-482633299-0_3: -7534822385584413045
-      A_fierce__humanoid_r...-482633299-0_30: 3123784172480874280
-      A_fierce__humanoid_r...-482633299-0_31: 6020476001217949336
-      A_fierce__humanoid_r...-482633299-0_32: -4556933658819643953
-      A_fierce__humanoid_r...-482633299-0_33: -5389606807380127300
-      A_fierce__humanoid_r...-482633299-0_34: 8277180862972174973
-      A_fierce__humanoid_r...-482633299-0_35: -398112215028303424
-      A_fierce__humanoid_r...-482633299-0_36: -5744465344958672603
-      A_fierce__humanoid_r...-482633299-0_37: 4640657056601495393
-      A_fierce__humanoid_r...-482633299-0_38: 710408346566045986
-      A_fierce__humanoid_r...-482633299-0_39: -7532030889743490664
-      A_fierce__humanoid_r...-482633299-0_4: -4288935296183829798
-      A_fierce__humanoid_r...-482633299-0_40: 505251692747845762
-      A_fierce__humanoid_r...-482633299-0_41: -4963783623686836299
-      A_fierce__humanoid_r...-482633299-0_42: -4336108793608138427
-      A_fierce__humanoid_r...-482633299-0_43: -3195195826990666331
-      A_fierce__humanoid_r...-482633299-0_44: 3244466946648512267
-      A_fierce__humanoid_r...-482633299-0_45: -2940847711801535770
-      A_fierce__humanoid_r...-482633299-0_46: -345594691349924070
-      A_fierce__humanoid_r...-482633299-0_47: 2277762536978329665
-      A_fierce__humanoid_r...-482633299-0_48: -8281057070459743624
-      A_fierce__humanoid_r...-482633299-0_49: -5947379552581795596
-      A_fierce__humanoid_r...-482633299-0_5: -7299172775223380082
-      A_fierce__humanoid_r...-482633299-0_50: 8478012958427317809
-      A_fierce__humanoid_r...-482633299-0_51: 2048455162333338768
-      A_fierce__humanoid_r...-482633299-0_52: 7393217199671581360
-      A_fierce__humanoid_r...-482633299-0_53: -9187215967804691090
-      A_fierce__humanoid_r...-482633299-0_54: 3038089727147989505
-      A_fierce__humanoid_r...-482633299-0_55: -4061787723103448399
-      A_fierce__humanoid_r...-482633299-0_6: 1042887435830823946
-      A_fierce__humanoid_r...-482633299-0_7: 4922774798868811956
-      A_fierce__humanoid_r...-482633299-0_8: 211884006626213318
-      A_fierce__humanoid_r...-482633299-0_9: 8016988627168806247
+      A_dark_brown_skinned...-921340317-0 (1)_0: -4172648089101110486
+      A_dark_brown_skinned...-921340317-0 (1)_1: 8991886324605370545
+      A_dark_brown_skinned...-921340317-0 (1)_10: -7851579392507120183
+      A_dark_brown_skinned...-921340317-0 (1)_11: -1777365111341513409
+      A_dark_brown_skinned...-921340317-0 (1)_12: 4014527169395034954
+      A_dark_brown_skinned...-921340317-0 (1)_13: -727588026276243706
+      A_dark_brown_skinned...-921340317-0 (1)_14: 259493023253549326
+      A_dark_brown_skinned...-921340317-0 (1)_15: -2989055623860916264
+      A_dark_brown_skinned...-921340317-0 (1)_16: 8161196975883820893
+      A_dark_brown_skinned...-921340317-0 (1)_17: 7193370317744199927
+      A_dark_brown_skinned...-921340317-0 (1)_18: 8256852653589029596
+      A_dark_brown_skinned...-921340317-0 (1)_19: -4368014425827941175
+      A_dark_brown_skinned...-921340317-0 (1)_2: 414818574883733870
+      A_dark_brown_skinned...-921340317-0 (1)_20: 4857782548680635172
+      A_dark_brown_skinned...-921340317-0 (1)_21: 1579788955156322770
+      A_dark_brown_skinned...-921340317-0 (1)_22: 1306055737185218976
+      A_dark_brown_skinned...-921340317-0 (1)_23: -6899743115493342210
+      A_dark_brown_skinned...-921340317-0 (1)_24: -3132719565201735703
+      A_dark_brown_skinned...-921340317-0 (1)_25: -7346496287022975575
+      A_dark_brown_skinned...-921340317-0 (1)_26: -4094016913468888976
+      A_dark_brown_skinned...-921340317-0 (1)_27: 3543891881358640305
+      A_dark_brown_skinned...-921340317-0 (1)_28: 2372239473021195133
+      A_dark_brown_skinned...-921340317-0 (1)_29: -3053164434128259184
+      A_dark_brown_skinned...-921340317-0 (1)_3: -156465675958479538
+      A_dark_brown_skinned...-921340317-0 (1)_30: 1008122488792522964
+      A_dark_brown_skinned...-921340317-0 (1)_31: -7715242732700353669
+      A_dark_brown_skinned...-921340317-0 (1)_32: -8510285047683207559
+      A_dark_brown_skinned...-921340317-0 (1)_33: 8320336234862295673
+      A_dark_brown_skinned...-921340317-0 (1)_34: 5326493869245043277
+      A_dark_brown_skinned...-921340317-0 (1)_35: 2245512570966948520
+      A_dark_brown_skinned...-921340317-0 (1)_36: -4004783422912711668
+      A_dark_brown_skinned...-921340317-0 (1)_37: 7937810451942444372
+      A_dark_brown_skinned...-921340317-0 (1)_38: 3875590780055049223
+      A_dark_brown_skinned...-921340317-0 (1)_39: -1666311628830918297
+      A_dark_brown_skinned...-921340317-0 (1)_4: -7327700890728198526
+      A_dark_brown_skinned...-921340317-0 (1)_40: 2659853072645997077
+      A_dark_brown_skinned...-921340317-0 (1)_41: -4917087614025328271
+      A_dark_brown_skinned...-921340317-0 (1)_42: -8915045549044108188
+      A_dark_brown_skinned...-921340317-0 (1)_43: 4980127753178246657
+      A_dark_brown_skinned...-921340317-0 (1)_44: -8987965784040980127
+      A_dark_brown_skinned...-921340317-0 (1)_45: 8098108167442663138
+      A_dark_brown_skinned...-921340317-0 (1)_46: -9019696601844742118
+      A_dark_brown_skinned...-921340317-0 (1)_47: 3422205968402736791
+      A_dark_brown_skinned...-921340317-0 (1)_48: -7399105100208240009
+      A_dark_brown_skinned...-921340317-0 (1)_49: -6633512547107023590
+      A_dark_brown_skinned...-921340317-0 (1)_5: 1446129902324258580
+      A_dark_brown_skinned...-921340317-0 (1)_50: -6633087187547208834
+      A_dark_brown_skinned...-921340317-0 (1)_51: 4693777814210130373
+      A_dark_brown_skinned...-921340317-0 (1)_52: -2775255826980332545
+      A_dark_brown_skinned...-921340317-0 (1)_53: 3248225027353210451
+      A_dark_brown_skinned...-921340317-0 (1)_54: -4180027939303387452
+      A_dark_brown_skinned...-921340317-0 (1)_55: -5427102379749662730
+      A_dark_brown_skinned...-921340317-0 (1)_6: -3348581533075812013
+      A_dark_brown_skinned...-921340317-0 (1)_7: -7851496101786993404
+      A_dark_brown_skinned...-921340317-0 (1)_8: -9025633054428111788
+      A_dark_brown_skinned...-921340317-0 (1)_9: 2425352174086017587
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
