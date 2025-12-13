@@ -12,24 +12,8 @@ public class HomeUIController : MonoBehaviour
 
     [Header("Panels")]
     public TeamSelectPanel teamSelectPanel;
+    public CharacterCatalogPanel characterCatalogPanel;
     public UpgradePanel upgradePanel;
-    public CharacterCatalogPanel characterCatalogPanel; 
-
-    private void OnEnable()
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnPlayerDataChanged += Refresh;
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnPlayerDataChanged -= Refresh;
-        }
-    }
 
     private void Start()
     {
@@ -39,8 +23,7 @@ public class HomeUIController : MonoBehaviour
     public void Refresh()
     {
         var gm = GameManager.Instance;
-        if (gm == null)
-            return;
+        if (gm == null) return;
 
         var playerData = gm.playerData;
 
@@ -51,34 +34,30 @@ public class HomeUIController : MonoBehaviour
             premiumCurrencyText.text = playerData.premiumCurrency.ToString();
 
         var active = gm.GetActiveCharacterInstance();
-        if (active != null && active.data != null && active.data.silhouetteSprite != null && playerPortrait != null)
+        if (playerPortrait != null &&
+            active != null &&
+            active.data != null &&
+            active.data.silhouetteSprite != null)
         {
             playerPortrait.sprite = active.data.silhouetteSprite;
         }
     }
-
 
     public void OnClick_ClimbTower()
     {
         SceneManager.LoadScene("BattleScene");
     }
 
-    public void OnClick_OpenTeamSelect()
-    {
-        if (teamSelectPanel != null)
-            teamSelectPanel.Show(this);
-    }
-
-    public void OnClick_OpenUpgrade()
-    {
-        if (upgradePanel != null)
-            upgradePanel.Show(this); 
-    }
-
     public void OnClick_Characters()
     {
         if (characterCatalogPanel != null)
             characterCatalogPanel.Show(this);
+    }
+
+    public void OnClick_Team()
+    {
+        if (teamSelectPanel != null)
+            teamSelectPanel.Show(this);
     }
 
     public void OnClick_Gacha()

@@ -1490,8 +1490,8 @@ MonoBehaviour:
   premiumCurrencyText: {fileID: 878964427}
   playerPortrait: {fileID: 1923278388}
   teamSelectPanel: {fileID: 869941841}
-  upgradePanel: {fileID: 2083671845}
   characterCatalogPanel: {fileID: 1383408952}
+  upgradePanel: {fileID: 2083671845}
 --- !u!4 &527009189
 Transform:
   m_ObjectHideFlags: 0
@@ -2853,7 +2853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &869941840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3234,16 +3234,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf6131d075c343a1917a40c352cd109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  starterPlayer: {fileID: 11400000, guid: b4e02e3e53d3242e5a96f2bac3c0951f, type: 2}
-  starterEnemy: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
   extraStartingCharacters:
   - {fileID: 11400000, guid: 42dd1bdbdc7f648949e06cc7f81941a4, type: 2}
   - {fileID: 11400000, guid: b739821feebdd46bb9601b050db1a01f, type: 2}
   - {fileID: 11400000, guid: d09173d8f12a9486fb6e6b96a2a86e52, type: 2}
-  startingSoftCurrency: 0
-  startingPremiumCurrency: 0
-  baseLevelUpCost: 50
-  levelUpCostMultiplier: 1.5
+  starterPlayer: {fileID: 11400000, guid: b4e02e3e53d3242e5a96f2bac3c0951f, type: 2}
+  starterEnemy: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
   playerData:
     ownedCharacters: []
     activeCharacterIndex: 0

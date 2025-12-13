@@ -7,32 +7,22 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Starting Setup")]
-    public CharacterData starterPlayer;
-    public CharacterData starterEnemy;
 
     [Header("Extra Starting Characters")]
     public CharacterData[] extraStartingCharacters;
-
-    [Header("Economy")]
-    public int startingSoftCurrency = 0;       // e.g. gold
-    public int startingPremiumCurrency = 0;    // e.g. gems
-
-    [Tooltip("Base cost to go from level 1 → 2")]
-    public int baseLevelUpCost = 50;
-
-    [Tooltip("Each extra level multiplies cost by this")]
-    public float levelUpCostMultiplier = 1.5f;
+    public CharacterData starterPlayer;
+    public CharacterData starterEnemy;
 
     [Header("Runtime Data")]
     public PlayerData playerData = new PlayerData();
 
+    [Header("Battle Runtime")]
     public CharacterData currentEnemyData;
 
-    public Action OnPlayerDataChanged;
+    public event Action OnPlayerDataChanged;
 
     private void Awake()
     {
-        // singleton pattern
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -42,12 +32,18 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        if (playerData == null)
+            playerData = new PlayerData();
+
+        if (playerData.ownedCharacters == null)
+            playerData.ownedCharacters = new List<CharacterInstance>();
+
+        // seed starter character
         if (playerData.ownedCharacters.Count == 0 && starterPlayer != null)
         {
             playerData.ownedCharacters.Add(new CharacterInstance(starterPlayer));
             playerData.activeCharacterIndex = 0;
         }
-
         if (extraStartingCharacters != null)
         {
             foreach (var cd in extraStartingCharacters)
@@ -64,16 +60,10 @@ public class GameManager : MonoBehaviour
             currentEnemyData = starterEnemy;
         }
 
-        if (playerData.softCurrency == 0 && playerData.premiumCurrency == 0)
-        {
-            playerData.softCurrency = startingSoftCurrency;
-            playerData.premiumCurrency = startingPremiumCurrency;
-        }
-
-        NotifyDataChanged();
+        NotifyPlayerDataChanged();
     }
 
-    private void NotifyDataChanged()
+    public void NotifyPlayerDataChanged()
     {
         OnPlayerDataChanged?.Invoke();
     }
@@ -97,15 +87,13 @@ public class GameManager : MonoBehaviour
         if (playerData.ownedCharacters == null || playerData.ownedCharacters.Count == 0)
             return;
 
-        playerData.activeCharacterIndex =
-            Mathf.Clamp(index, 0, playerData.ownedCharacters.Count - 1);
+        index = Mathf.Clamp(index, 0, playerData.ownedCharacters.Count - 1);
 
-        NotifyDataChanged();
-    }
-
-    public List<CharacterInstance> GetOwnedCharacters()
-    {
-        return playerData.ownedCharacters;
+        if (playerData.activeCharacterIndex != index)
+        {
+            playerData.activeCharacterIndex = index;
+            NotifyPlayerDataChanged();
+        }
     }
 
     public CharacterData GetCurrentEnemyData()
@@ -113,63 +101,48 @@ public class GameManager : MonoBehaviour
         return currentEnemyData;
     }
 
-    public void AddSoftCurrency(int amount)
+    public void SetCurrentEnemy(CharacterData enemy)
     {
-        if (amount == 0) return;
-
-        playerData.softCurrency = Mathf.Max(0, playerData.softCurrency + amount);
-        NotifyDataChanged();
+        currentEnemyData = enemy;
     }
 
-    public bool TrySpendSoftCurrency(int amount)
+    //helpers
+    public int GetLevelUpCost(CharacterInstance inst)
     {
-        if (amount <= 0)
-            return true;
+        if (inst == null)
+            return 0;
 
-        if (playerData.softCurrency < amount)
+        const int baseCost = 100;
+        return baseCost * Mathf.Max(1, inst.level);
+    }
+
+    public bool TryLevelUpCharacter(CharacterInstance inst)
+    {
+        if (inst == null)
             return false;
 
-        playerData.softCurrency -= amount;
-        NotifyDataChanged();
+        int cost = GetLevelUpCost(inst);
+        if (playerData.softCurrency < cost)
+            return false;
+
+        playerData.softCurrency -= cost;
+        inst.level++;
+
+        NotifyPlayerDataChanged();
         return true;
+    }
+
+    public void AddSoftCurrency(int amount)
+    {
+        if (amount <= 0) return;
+        playerData.softCurrency += amount;
+        NotifyPlayerDataChanged();
     }
 
     public void AddPremiumCurrency(int amount)
     {
-        if (amount == 0) return;
-
-        playerData.premiumCurrency = Mathf.Max(0, playerData.premiumCurrency + amount);
-        NotifyDataChanged();
-    }
-
-    public int GetLevelUpCost(CharacterInstance instance)
-    {
-        if (instance == null)
-            return 0;
-
-        // level 1 → 2 uses baseLevelUpCost
-        // each further level multiplies by levelUpCostMultiplier
-        int levelIndex = Mathf.Max(0, instance.level - 1);
-        float cost = baseLevelUpCost * Mathf.Pow(levelUpCostMultiplier, levelIndex);
-        return Mathf.RoundToInt(cost);
-    }
-
-    public bool TryLevelUpCharacter(CharacterInstance instance)
-    {
-        if (instance == null)
-            return false;
-
-        int cost = GetLevelUpCost(instance);
-        if (!TrySpendSoftCurrency(cost))
-            return false;
-
-        instance.level++;
-        NotifyDataChanged();
-        return true;
-    }
-
-    public bool TryLevelUpActiveCharacter()
-    {
-        return TryLevelUpCharacter(GetActiveCharacterInstance());
+        if (amount <= 0) return;
+        playerData.premiumCurrency += amount;
+        NotifyPlayerDataChanged();
     }
 }

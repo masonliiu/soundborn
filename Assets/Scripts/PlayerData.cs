@@ -15,6 +15,29 @@ public class CharacterInstance
         level = 1;
         currentExp = 0;
     }
+
+    public int GetExpToNextLevel()
+    {
+        // linear curve
+        return 10 + (level - 1) * 5;
+    }
+
+    public bool AddExp(int amount)
+    {
+        if (amount <= 0) return false;
+
+        bool leveledUp = false;
+        currentExp += amount;
+
+        while (currentExp >= GetExpToNextLevel())
+        {
+            currentExp -= GetExpToNextLevel();
+            level++;
+            leveledUp = true;
+        }
+
+        return leveledUp;
+    }
 }
 
 [Serializable]

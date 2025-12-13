@@ -6,6 +6,9 @@ using System.Collections;
 public class BattleController : MonoBehaviour
 {
 
+    [Header("Flow")]
+    public bool autoStartBattle = false;
+
     [Header("HP Bar Animation")]
     public float hpBarAnimDuration = 0.35f;
 
@@ -151,20 +154,27 @@ public class BattleController : MonoBehaviour
         {
             baseRootPos = battleRoot.anchoredPosition;
         }
+    }
 
-        // decide who goes first based on Speed
-        if (player.speed >= enemy.speed) {
-            if (battleLogText != null) 
-            {
+    public void OnClick_Battle()
+    {
+        if (battleOver) return;
+
+        BeginBattle();
+    }
+
+    private void BeginBattle()
+    {
+        if (battleOver) return;
+
+        if (player.speed >= enemy.speed)
+        {
+            if (battleLogText != null)
                 battleLogText.text = "Battle start! You act first.";
-            }
             StartPlayerTurn();
-        } 
-        else {
-            if (battleLogText != null) 
-            {
+        } else {
+            if (battleLogText != null)
                 battleLogText.text = "Battle start! Enemy acts first.";
-            }
             StartEnemyTurn();
         }
     }
