@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        if (playerData.activeLineupIndices == null || playerData.activeLineupIndices.Length != 4)
+            playerData.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
+
+        if (playerData.activeLineupIndices[0] == -1 && playerData.ownedCharacters.Count > 0)
+            playerData.activeLineupIndices[0] = playerData.activeCharacterIndex;
 
         if (currentEnemyData == null && starterEnemy != null)
         {

@@ -11,6 +11,7 @@ public class CharacterCatalogItem : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI hpText;
     public TextMeshProUGUI atkText;
+    public GameObject selectedCheck;
 
     private CharacterCatalogPanel owner;
     private int characterIndex;
@@ -54,6 +55,10 @@ public class CharacterCatalogItem : MonoBehaviour
 
     public void SetGreyedOut(bool greyed)
     {
+        if (selectedCheck != null)
+        {
+            selectedCheck.SetActive(greyed);
+        }
         float a = greyed ? 0.45f : 1f;
 
         if (portraitImage != null)

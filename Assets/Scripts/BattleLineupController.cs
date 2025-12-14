@@ -129,7 +129,7 @@ public class BattleLineupController : MonoBehaviour
             battleButton.interactable = (selected.Count > 0);
 
         if (hintText != null)
-            hintText.text = $"Select up to 4. Selected: {selected.Count}/4";
+            hintText.text = $"Selected: {selected.Count}/4";
 
         if (teamPanel != null)
             teamPanel.SetSelected(selectedSet);

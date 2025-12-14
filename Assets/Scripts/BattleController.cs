@@ -10,6 +10,11 @@ public class BattleController : MonoBehaviour
     public bool autoStartBattle = false; // keep false when using lineup builder
     private bool hasStarted = false;
 
+    [Header("Party UI")]
+    public Image[] partySlotImages;
+    public Color partyEmptyColor = new Color(1f, 1f, 1f, 0.15f);
+    public Color partyFilledColor = Color.white;
+
     [Header("Result / Return")]
     public UnityEngine.UI.Button backHomeButton;
     public float backHomeDelay = 1.25f;
@@ -211,6 +216,7 @@ public class BattleController : MonoBehaviour
             if (enemyPortraitImage != null && enemyData != null && enemyData.silhouetteSprite != null)
                 enemyPortraitImage.sprite = enemyData.silhouetteSprite;
         }
+        FillPartyUI();
 
         UpdateUI();
 
@@ -1091,6 +1097,39 @@ public class BattleController : MonoBehaviour
                 return "Tempo Break: sharp strikes that stun the enemy and make them miss their next turn.";
             default:
                 return "A special attack tied to your genre.";
+        }
+    }
+
+    private void FillPartyUI()
+    {
+        if (partySlotImages == null || partySlotImages.Length < 4)
+            return;
+
+        var gm = GameManager.Instance;
+        if (gm == null) return;
+
+        var pd = gm.playerData;
+        if (pd.activeLineupIndices == null || pd.activeLineupIndices.Length != 4)
+            return;
+
+        for (int i = 0; i < 4; i++)
+        {
+            int idx = pd.activeLineupIndices[i];
+            var img = partySlotImages[i];
+
+            if (img == null) continue;
+
+            if (idx >= 0 && idx < pd.ownedCharacters.Count)
+            {
+                var inst = pd.ownedCharacters[idx];
+                img.sprite = (inst.data != null) ? inst.data.silhouetteSprite : null;
+                img.color = partyFilledColor;
+            }
+            else
+            {
+                img.sprite = null;
+                img.color = partyEmptyColor;
+            }
         }
     }
 
