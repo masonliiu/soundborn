@@ -95,7 +95,7 @@ public class CharacterCatalogPanel : MonoBehaviour
 
             var item = Instantiate(itemPrefab, contentRoot);
             item.gameObject.SetActive(true);
-            item.Setup(this, charIndex, inst, hp, atk);
+            item.Setup(this, charIndex, inst, hp, atk, null, false);
             spawnedItems.Add(item);
         }
 

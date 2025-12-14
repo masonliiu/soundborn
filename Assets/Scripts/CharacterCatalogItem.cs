@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CharacterCatalogItem : MonoBehaviour
 {
@@ -13,31 +14,36 @@ public class CharacterCatalogItem : MonoBehaviour
 
     private CharacterCatalogPanel owner;
     private int characterIndex;
+    private Action<int> onClickOverride;
 
     public void Setup(CharacterCatalogPanel owner, int characterIndex,
-                      CharacterInstance instance, int hp, int atk)
+                      CharacterInstance instance, int hp, int atk,
+                      Action<int> onClickOverride = null,
+                      bool greyedOut = false)
     {
         this.owner = owner;
         this.characterIndex = characterIndex;
+        this.onClickOverride = onClickOverride;
 
-        if (portraitImage != null &&
-            instance.data != null &&
-            instance.data.silhouetteSprite != null)
+        if (instance != null && instance.data != null)
         {
-            portraitImage.sprite = instance.data.silhouetteSprite;
+            if (portraitImage != null)
+                portraitImage.sprite = instance.data.silhouetteSprite;
+
+            if (nameText != null)
+                nameText.text = instance.data.displayName;
+
+            if (levelText != null)
+                levelText.text = "Lv " + instance.level;
+
+            if (hpText != null)
+                hpText.text = "HP: " + hp;
+
+            if (atkText != null)
+                atkText.text = "ATK: " + atk;
         }
 
-        if (nameText != null)
-            nameText.text = instance.data != null ? instance.data.displayName : "???";
-
-        if (levelText != null)
-            levelText.text = "Lv. " + instance.level;
-
-        if (hpText != null)
-            hpText.text = "HP: " + hp;
-
-        if (atkText != null)
-            atkText.text = "ATK: " + atk;
+        SetGreyedOut(greyedOut);
 
         if (button != null)
         {
@@ -46,8 +52,30 @@ public class CharacterCatalogItem : MonoBehaviour
         }
     }
 
+    public void SetGreyedOut(bool greyed)
+    {
+        float a = greyed ? 0.45f : 1f;
+
+        if (portraitImage != null)
+        {
+            var c = portraitImage.color;
+            portraitImage.color = new Color(c.r, c.g, c.b, a);
+        }
+
+        if (nameText != null) nameText.alpha = a;
+        if (levelText != null) levelText.alpha = a;
+        if (hpText != null) hpText.alpha = a;
+        if (atkText != null) atkText.alpha = a;
+    }
+
     private void OnClick()
     {
+        if (onClickOverride != null)
+        {
+            onClickOverride(characterIndex);
+            return;
+        }
+
         if (owner != null)
             owner.OnClickItem(characterIndex);
     }

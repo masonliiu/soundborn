@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class BattleTeamPanel : MonoBehaviour
 {
@@ -10,6 +11,21 @@ public class BattleTeamPanel : MonoBehaviour
     public CharacterCatalogItem itemPrefab;
 
     private readonly List<CharacterCatalogItem> spawnedItems = new List<CharacterCatalogItem>();
+
+    private Action<int> onClickIndex;
+    private HashSet<int> selected = new HashSet<int>();
+
+    public void SetClickHandler(Action<int> handler)
+    {
+        onClickIndex = handler;
+        Refresh();
+    }
+
+    public void SetSelected(HashSet<int> selectedSet)
+    {
+        selected = selectedSet ?? new HashSet<int>();
+        Refresh();
+    }
 
     private void OnEnable()
     {
@@ -56,10 +72,20 @@ public class BattleTeamPanel : MonoBehaviour
 
             GetLeveledStats(inst, out int hp, out int atk);
 
-            var item = Object.Instantiate(itemPrefab, contentRoot);
+            var item = UnityEngine.Object.Instantiate(itemPrefab, contentRoot);
             item.gameObject.SetActive(true);
 
-            item.Setup(null, i, inst, hp, atk);
+            bool isSelected = selected.Contains(i);
+
+            item.Setup(
+                owner: null, 
+                characterIndex: i, 
+                instance: inst, 
+                hp: hp, 
+                atk: atk,
+                onClickOverride: onClickIndex,
+                greyedOut: isSelected
+            );
             spawnedItems.Add(item);
         }
 

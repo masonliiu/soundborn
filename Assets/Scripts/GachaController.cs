@@ -71,6 +71,8 @@ public class GachaController : MonoBehaviour
         CharacterInstance newInstance = new CharacterInstance(picked);
         data.ownedCharacters.Add(newInstance);
 
+        gm.NotifyPlayerDataChanged();
+
         RefreshCurrency();
 
         if (resultText != null && picked != null)

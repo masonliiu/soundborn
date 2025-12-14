@@ -7,7 +7,13 @@ public class BattleController : MonoBehaviour
 {
 
     [Header("Flow")]
-    public bool autoStartBattle = false;
+    public bool autoStartBattle = false; // keep false when using lineup builder
+    private bool hasStarted = false;
+
+    [Header("Result / Return")]
+    public UnityEngine.UI.Button backHomeButton;
+    public float backHomeDelay = 1.25f;
+    public string homeSceneName = "HomeScene";
 
     [Header("HP Bar Animation")]
     public float hpBarAnimDuration = 0.35f;
@@ -108,71 +114,118 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
-            if (mainCamera == null)
-                mainCamera = Camera.main;
+        if (mainCamera == null)
+            mainCamera = Camera.main;
 
-            if (mainCamera != null)
-            {
-                baseCamPos = mainCamera.transform.position;
-                baseCamSize = mainCamera.orthographicSize;
-            }
+        if (mainCamera != null)
+        {
+            baseCamPos = mainCamera.transform.position;
+            baseCamSize = mainCamera.orthographicSize;
+        }
 
         // initialize stats using GameManager data
         var gm = GameManager.Instance;
-        if (gm != null) {
+        if (gm != null)
+        {
             var activeInstance = gm.GetActiveCharacterInstance();
-            if (activeInstance != null) 
+            if (activeInstance != null)
             {
                 player.InitFrom(activeInstance);
             }
 
             var enemyData = gm.GetCurrentEnemyData();
-            if (enemyData != null) 
+            if (enemyData != null)
             {
                 enemy.InitFrom(enemyData);
             }
         }
 
-        if (gm != null) {
-            if (playerPortraitImage != null) {
+        if (gm != null)
+        {
+            if (playerPortraitImage != null)
+            {
                 var activeInstance = gm.GetActiveCharacterInstance();
-                if (activeInstance != null && activeInstance.data.silhouetteSprite != null) {
+                if (activeInstance != null && activeInstance.data.silhouetteSprite != null)
+                {
                     playerPortraitImage.sprite = activeInstance.data.silhouetteSprite;
                 }
             }
 
-            if (enemyPortraitImage != null) {
+            if (enemyPortraitImage != null)
+            {
                 var enemyData = gm.GetCurrentEnemyData();
-                if (enemyData != null && enemyData.silhouetteSprite != null) {
+                if (enemyData != null && enemyData.silhouetteSprite != null)
+                {
                     enemyPortraitImage.sprite = enemyData.silhouetteSprite;
                 }
             }
         }
 
         UpdateUI();
-        if (battleRoot != null)
+
+        if (resultPanel != null)
+            resultPanel.SetActive(false);
+
+        if (backHomeButton != null)
         {
-            baseRootPos = battleRoot.anchoredPosition;
+            backHomeButton.gameObject.SetActive(false);
+            backHomeButton.interactable = false;
+            backHomeButton.onClick.RemoveAllListeners();
+            backHomeButton.onClick.AddListener(() =>
+                UnityEngine.SceneManagement.SceneManager.LoadScene(homeSceneName)
+            );
         }
+
+        if (battleRoot != null)
+            baseRootPos = battleRoot.anchoredPosition;
+
+        if (autoStartBattle)
+            StartBattleNow();
     }
 
     public void OnClick_Battle()
     {
-        if (battleOver) return;
-
-        BeginBattle();
+        StartBattleNow();
     }
 
-    private void BeginBattle()
+    public void StartBattleNow()
     {
         if (battleOver) return;
+        if (hasStarted) return;
+        hasStarted = true;
 
+        var gm = GameManager.Instance;
+        if (gm != null)
+        {
+            var activeInstance = gm.GetActiveCharacterInstance();
+            if (activeInstance != null)
+                player.InitFrom(activeInstance);
+
+            var enemyData = gm.GetCurrentEnemyData();
+            if (enemyData != null)
+                enemy.InitFrom(enemyData);
+
+            if (playerPortraitImage != null && activeInstance != null && activeInstance.data != null && activeInstance.data.silhouetteSprite != null)
+                playerPortraitImage.sprite = activeInstance.data.silhouetteSprite;
+
+            if (enemyPortraitImage != null && enemyData != null && enemyData.silhouetteSprite != null)
+                enemyPortraitImage.sprite = enemyData.silhouetteSprite;
+        }
+
+        UpdateUI();
+
+        if (battleLogText != null)
+            battleLogText.text = "Battle start...";
+
+        // decide who goes first
         if (player.speed >= enemy.speed)
         {
             if (battleLogText != null)
                 battleLogText.text = "Battle start! You act first.";
             StartPlayerTurn();
-        } else {
+        }
+        else
+        {
             if (battleLogText != null)
                 battleLogText.text = "Battle start! Enemy acts first.";
             StartEnemyTurn();
@@ -245,17 +298,14 @@ public class BattleController : MonoBehaviour
 
         if (statusDidDamage)
         {
-            // TickStatusAtTurnStart has already reduced enemy.currentHP by statusDamage.
             int newHp = enemy.currentHP;
             int oldHp = Mathf.Clamp(newHp + statusDamage, 0, enemy.maxHP);
 
-            // Log the status damage line
             if (battleLogText != null)
             {
                 battleLogText.text += $"\n{enemy.displayName} suffers {statusDamage} damage from {enemy.currentStatus}.";
             }
 
-            // Set up the overlay to start from the pre-status HP value.
             if (enemyHpDamageSlider != null)
             {
                 enemyHpDamageSlider.maxValue = enemy.maxHP;
@@ -426,7 +476,6 @@ public class BattleController : MonoBehaviour
         StartCoroutine(Shake(enemyPortraitRect));
         player.PutSkillOnCooldown();
 
-        // Apply themed status based on player's element
         string statusText = ApplyElementalStatusFromPlayerSkill();
 
         if (battleLogText != null)
@@ -456,7 +505,6 @@ public class BattleController : MonoBehaviour
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    // ultimate: huge damage + DefenseUp on yourself
     public void OnUltimatePressed()
     {
         if (!CanPlayerAct()) return;
@@ -496,7 +544,6 @@ public class BattleController : MonoBehaviour
         StartCoroutine(Shake(enemyPortraitRect));
         player.PutUltimateOnCooldown();
 
-        // DefenseUp for 2 of YOUR turns
         player.ApplyStatus(StatusType.DefenseUp, 2);
 
         if (battleLogText != null)
@@ -840,6 +887,7 @@ public class BattleController : MonoBehaviour
             resultPanel.SetActive(true);
             resultText.text = "Victory!";
             yield return StartCoroutine(FadeResultPanel(true));
+            StartCoroutine(EnableBackHomeAfterDelay());
         }
     }
     
@@ -877,6 +925,7 @@ public class BattleController : MonoBehaviour
         resultPanel.SetActive(true);
         resultText.text = "Defeat...";
         StartCoroutine(FadeResultPanel(false));
+        StartCoroutine(EnableBackHomeAfterDelay());
     }
 
 
@@ -1059,5 +1108,15 @@ public class BattleController : MonoBehaviour
     private string BuildCritText(bool isCrit)
     {
         return isCrit ? " (CRIT!)" : "";
+    }
+    private IEnumerator EnableBackHomeAfterDelay()
+    {
+        yield return new WaitForSeconds(backHomeDelay);
+
+        if (backHomeButton != null)
+        {
+            backHomeButton.gameObject.SetActive(true);
+            backHomeButton.interactable = true;
+        }
     }
 }
