@@ -9,43 +9,56 @@ public class ImpactEffect : MonoBehaviour
     public Image image;
 
     private RectTransform rect;
-    private Color startColor;
+    private Color pendingColor = Color.white;
+    private bool pendingPlay = false;
 
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
-        if (image == null)
-            image = GetComponent<Image>();
-        if (image != null)
-            startColor = image.color;
     }
 
     public void Init(Color color)
     {
+        pendingColor = color;
+        pendingPlay = true;
+
         if (image != null)
+            image.color = pendingColor;
+
+        if (gameObject.activeInHierarchy)
         {
-            image.color = color;
-            startColor = color;
+            pendingPlay = false;
+            StartCoroutine(Animate());
         }
-        StartCoroutine(DoAnim());
     }
 
-    private IEnumerator DoAnim()
+    private void OnEnable()
     {
-        float t = 0f;
-        Vector3 startScale = Vector3.zero;
+        if (pendingPlay)
+        {
+            pendingPlay = false;
+            StartCoroutine(Animate());
+        }
+    }
+
+    private IEnumerator Animate()
+    {
+        if (rect == null) yield break;
+
+        Vector3 startScale = Vector3.one;
         Vector3 endScale = Vector3.one * maxScale;
 
+        float t = 0f;
         while (t < duration)
         {
             t += Time.deltaTime;
-            float n = t / duration;
+            float n = Mathf.Clamp01(t / duration);
 
             rect.localScale = Vector3.Lerp(startScale, endScale, n);
 
             if (image != null)
             {
-                Color c = startColor;
+                var c = pendingColor;
                 c.a = 1f - n;
                 image.color = c;
             }

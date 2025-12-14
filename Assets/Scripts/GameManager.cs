@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Starting Setup")]
-
     [Header("Extra Starting Characters")]
     public CharacterData[] extraStartingCharacters;
     public CharacterData starterPlayer;
@@ -23,14 +22,18 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("[GameManager] Awake() called");
+        
         if (Instance != null && Instance != this)
         {
+            Debug.LogWarning("[GameManager] Awake: Another GameManager instance exists, destroying this one");
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        Debug.Log("[GameManager] Awake: Instance set and DontDestroyOnLoad enabled");
 
         if (playerData == null)
             playerData = new PlayerData();
@@ -38,12 +41,13 @@ public class GameManager : MonoBehaviour
         if (playerData.ownedCharacters == null)
             playerData.ownedCharacters = new List<CharacterInstance>();
 
-        // seed starter character
         if (playerData.ownedCharacters.Count == 0 && starterPlayer != null)
         {
             playerData.ownedCharacters.Add(new CharacterInstance(starterPlayer));
             playerData.activeCharacterIndex = 0;
+            Debug.Log($"[GameManager] Awake: Added starter player: {starterPlayer.displayName}");
         }
+        
         if (extraStartingCharacters != null)
         {
             foreach (var cd in extraStartingCharacters)
@@ -51,19 +55,30 @@ public class GameManager : MonoBehaviour
                 if (cd != null)
                 {
                     playerData.ownedCharacters.Add(new CharacterInstance(cd));
+                    Debug.Log($"[GameManager] Awake: Added extra starting character: {cd.displayName}");
                 }
             }
         }
+        
         if (playerData.activeLineupIndices == null || playerData.activeLineupIndices.Length != 4)
+        {
             playerData.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
+            Debug.Log("[GameManager] Awake: Initialized activeLineupIndices to all -1");
+        }
 
         if (playerData.activeLineupIndices[0] == -1 && playerData.ownedCharacters.Count > 0)
+        {
             playerData.activeLineupIndices[0] = playerData.activeCharacterIndex;
+            Debug.Log($"[GameManager] Awake: Set activeLineupIndices[0] to {playerData.activeCharacterIndex}");
+        }
 
         if (currentEnemyData == null && starterEnemy != null)
         {
             currentEnemyData = starterEnemy;
+            Debug.Log($"[GameManager] Awake: Set currentEnemyData to {starterEnemy.displayName}");
         }
+
+        Debug.Log($"[GameManager] Awake: Final state - ownedCharacters.Count={playerData.ownedCharacters.Count}, activeLineupIndices=[{playerData.activeLineupIndices[0]}, {playerData.activeLineupIndices[1]}, {playerData.activeLineupIndices[2]}, {playerData.activeLineupIndices[3]}]");
 
         NotifyPlayerDataChanged();
     }
@@ -111,7 +126,6 @@ public class GameManager : MonoBehaviour
         currentEnemyData = enemy;
     }
 
-    //helpers
     public int GetLevelUpCost(CharacterInstance inst)
     {
         if (inst == null)
