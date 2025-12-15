@@ -17,7 +17,7 @@ MonoBehaviour:
   maxHP: 160
   attack: 15
   defense: 5
-  speed: 7
+  speed: 11
   critChance: 0.1
   critDamageMultiplier: 1.5
   skillPower: 35
