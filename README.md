@@ -1,13 +1,16 @@
 # Soundborn
+**Genre:** Turn-Based RPG
 
-**Genre:** Turn-Based RPG  
-**Platform:** iOS (Planned)  
-**Engine:** Unity 2D  
+**Platform:** iOS
+
+**Language (primarily):** C#
+
+**Engine:** Unity 2D
+
 **Created by:** [masonliiu](https://github.com/masonliiu)
 
 Soundborn is a turn-based RPG set in a universe where musical genres manifest as living characters in order to fight against their oppresors: the Silence.
 
----
 
 ## Current Status
 
@@ -21,7 +24,6 @@ The game is in active development with such systems completed already:
 - Element-based combat mechanics
 - Status effects and ability cooldowns
 
----
 
 ## Core Gameplay
 
@@ -44,8 +46,7 @@ Combat uses a speed-based turn order where all characters (party members and ene
 - Stun: Skip next turn
 - Sleep: Skip next turn (applied by calm melodies)
 - Defense Up: Temporary defense buff
-
----
+  
 
 ## Character System
 
@@ -81,7 +82,6 @@ Each character has:
 - **Skill Power:** Additional damage for skills
 - **Ultimate Power:** Additional damage for ultimates
 
----
 
 ## Progression Systems
 
@@ -92,7 +92,6 @@ Characters gain experience and can be leveled up using soft currency. Each level
 - **Soft Currency:** Earned through gameplay, used for character leveling
 - **Premium Currency:** Can be obtained through quests, events, and purchases. Used for gacha pulls to obtain new characters
 
----
 
 ## Technical Implementation
 
@@ -108,7 +107,6 @@ The battle system uses a unified turn order queue that contains all active chara
 - **GachaScene:** Character summoning interface
 - **BattleScene:** Complex battle engine displaying combat encounters with varying lineup selection and battle execution
 
----
 
 ## Development Roadmap
 
@@ -122,7 +120,6 @@ The battle system uses a unified turn order queue that contains all active chara
 - Progression rewards and achievements
 - **All to be completed by January 1st, 2026**
 
----
 
 ## Project Structure
 
@@ -142,7 +139,6 @@ Assets/
 └── [Assets, Prefabs, Settings]
 ```
 
----
 
 ## Getting Started
 
@@ -157,13 +153,13 @@ Assets/
 4. Configure character data assets in the GameManager
 5. Build and run on target platform
 
----
 
 ## Development Notes
 
 This project is built from scratch using Unity 2D and C#. All code and game design are original work. The battle system architecture is designed to be extensible for future features including equipment, additional status effects, and more complex ability interactions.
 
----
+
+
 
 ## License
 
