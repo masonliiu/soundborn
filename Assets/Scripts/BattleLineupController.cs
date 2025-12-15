@@ -244,6 +244,8 @@ public class BattleLineupController : MonoBehaviour
 
         Debug.Log($"[BattleLineupController] ConfirmAndStartBattle: Final activeLineupIndices = [{gm.playerData.activeLineupIndices[0]}, {gm.playerData.activeLineupIndices[1]}, {gm.playerData.activeLineupIndices[2]}, {gm.playerData.activeLineupIndices[3]}]");
 
+        gm.SetEnemyFromTowerFloor();
+
         if (preBattleRoot != null) preBattleRoot.SetActive(false);
         if (bottomBarRoot != null) bottomBarRoot.SetActive(true);
 

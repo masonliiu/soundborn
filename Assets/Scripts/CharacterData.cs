@@ -29,4 +29,12 @@ public class CharacterData : ScriptableObject
     [Header("Visuals (later)")]
     public Sprite silhouetteSprite;
     public Sprite elementIcon;
+
+    [Header("Boss Settings")]
+    public bool isBoss = false;
+    public AudioClip bossIntroClip;
+
+    [Header("Abilities & Synergy")]
+    public string[] additionalAbilities;
+    public string[] synergyTags;
 }

@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Tower
+  m_EditorClassIdentifier: Assembly-CSharp::TowerConfig
+  floors:
+  - floorNumber: 1
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 150
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 2
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 175
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 3
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 200
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 4
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 225
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 5
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+    rewardSoftCurrency: 350
+    rewardPremiumCurrency: 10
+    rewardItem: {fileID: 0}
+    isBossFloor: 1
+  - floorNumber: 6
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 275
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 7
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 300
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 8
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 325
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 9
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 350
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 10
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+    rewardSoftCurrency: 475
+    rewardPremiumCurrency: 10
+    rewardItem: {fileID: 0}
+    isBossFloor: 1
+  - floorNumber: 11
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 400
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 12
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 425
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 13
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 450
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 14
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 475
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 15
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 500
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 16
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 525
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 17
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 550
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 18
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 575
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 19
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    rewardSoftCurrency: 600
+    rewardPremiumCurrency: 0
+    rewardItem: {fileID: 0}
+    isBossFloor: 0
+  - floorNumber: 20
+    floorName: Static Intro
+    enemyData: {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+    rewardSoftCurrency: 800
+    rewardPremiumCurrency: 15
+    rewardItem: {fileID: 0}
+    isBossFloor: 1

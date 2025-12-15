@@ -8,6 +8,7 @@ public class CharacterInstance
     public CharacterData data;
     public int level;
     public int currentExp;
+    public List<ItemInstance> equippedItems = new List<ItemInstance>();
 
     public CharacterInstance(CharacterData data)
     {
@@ -50,4 +51,21 @@ public class PlayerData
 
     public int softCurrency = 0;
     public int premiumCurrency = 0;
+
+    public List<ItemInstance> inventory = new List<ItemInstance>();
+    public int towerHighestFloorCleared = 0;
+    public int towerCurrentFloor = 0;
+}
+
+[Serializable]
+public class ItemInstance
+{
+    public ItemData data;
+    public int level;
+
+    public ItemInstance(ItemData data, int level = 1)
+    {
+        this.data = data;
+        this.level = level;
+    }
 }

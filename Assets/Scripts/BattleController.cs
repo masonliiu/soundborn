@@ -281,6 +281,18 @@ public class BattleController : MonoBehaviour
         currentTurnIndex = 0;
         currentActor = turnOrder[0];
         
+        if (AudioManager.Instance != null)
+        {
+            if (enemyData != null && enemyData.isBoss && enemyData.bossIntroClip != null)
+            {
+                AudioManager.Instance.PlayClip(enemyData.bossIntroClip);
+            }
+            else
+            {
+                AudioManager.Instance.Play("battle_start");
+            }
+        }
+
         UpdateUI();
 
         if (battleLogText != null)
@@ -516,6 +528,8 @@ public class BattleController : MonoBehaviour
     {
         if (currentActor == null || enemy == null) yield break;
 
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("basic");
+
         bool isCrit;
         float elemMul;
         int damage = currentActor.CalculateDamageAgainst(enemy, 1.0f, 0, out isCrit, out elemMul);
@@ -590,6 +604,8 @@ public class BattleController : MonoBehaviour
     private IEnumerator PlayerSkillRoutine()
     {
         if (currentActor == null || enemy == null) yield break;
+
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("skill");
 
         bool isCrit;
         float elemMul;
@@ -667,6 +683,8 @@ public class BattleController : MonoBehaviour
     private IEnumerator PlayerUltimateRoutine()
     {
         if (currentActor == null || enemy == null) yield break;
+
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("ultimate");
 
         bool isCrit;
         float elemMul;
@@ -1824,6 +1842,21 @@ public class BattleController : MonoBehaviour
                 battleLogText.text += "\nEnemy defeated! You win.";
             battleOver = true;
             UpdateAbilityButtons();
+            var gm = GameManager.Instance;
+            if (gm != null)
+            {
+                var floor = gm.GetCurrentTowerFloor();
+                if (floor != null && gm.rewardManager != null)
+                {
+                    gm.rewardManager.GrantFloorRewards(gm.playerData, floor);
+                }
+                if (gm.towerProgression != null)
+                {
+                    gm.towerProgression.TryAdvanceFloor(gm.playerData);
+                }
+                gm.SetEnemyFromTowerFloor();
+                gm.NotifyPlayerDataChanged();
+            }
             PlayWinSequence();
             return true;
         }

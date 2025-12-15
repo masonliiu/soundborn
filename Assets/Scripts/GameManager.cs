@@ -11,9 +11,12 @@ public class GameManager : MonoBehaviour
     public CharacterData[] extraStartingCharacters;
     public CharacterData starterPlayer;
     public CharacterData starterEnemy;
+    public TowerConfig towerConfig;
 
     [Header("Runtime Data")]
     public PlayerData playerData = new PlayerData();
+    public RewardManager rewardManager;
+    public TowerProgression towerProgression;
 
     [Header("Battle Runtime")]
     public CharacterData currentEnemyData;
@@ -40,6 +43,8 @@ public class GameManager : MonoBehaviour
 
         if (playerData.ownedCharacters == null)
             playerData.ownedCharacters = new List<CharacterInstance>();
+        if (playerData.inventory == null)
+            playerData.inventory = new List<ItemInstance>();
 
         if (playerData.ownedCharacters.Count == 0 && starterPlayer != null)
         {
@@ -119,6 +124,22 @@ public class GameManager : MonoBehaviour
     public CharacterData GetCurrentEnemyData()
     {
         return currentEnemyData;
+    }
+
+    public TowerFloor GetCurrentTowerFloor()
+    {
+        if (towerConfig == null || towerConfig.floors == null || towerConfig.floors.Count == 0) return null;
+        int index = Mathf.Clamp(playerData.towerCurrentFloor, 0, towerConfig.floors.Count - 1);
+        return towerConfig.floors[index];
+    }
+
+    public void SetEnemyFromTowerFloor()
+    {
+        var floor = GetCurrentTowerFloor();
+        if (floor != null && floor.enemyData != null)
+        {
+            currentEnemyData = floor.enemyData;
+        }
     }
 
     public void SetCurrentEnemy(CharacterData enemy)

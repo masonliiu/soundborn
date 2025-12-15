@@ -81,6 +81,11 @@ public class GachaController : MonoBehaviour
             string elementPart = picked.element.ToString();
             resultText.text = $"You pulled {namePart} ({elementPart})!";
         }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.Play("gacha");
+        }
     }
 
     public void OnClick_Back()
