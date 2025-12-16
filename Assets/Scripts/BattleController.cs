@@ -36,6 +36,8 @@ public class BattleController : MonoBehaviour
     [Header("Result UI")]
     public GameObject resultPanel;
     public TextMeshProUGUI resultText;
+    public TextMeshProUGUI rewardsText;
+    public TextMeshProUGUI floorText;
     public float resultFadeDuration = 0.7f;
 
     [Header("Camera Effects")]
@@ -148,6 +150,11 @@ public class BattleController : MonoBehaviour
         
         if (gm != null)
         {
+            if (floorText != null)
+            {
+                floorText.text = $"Floor {gm.playerData.towerCurrentFloor + 1}";
+            }
+
             var enemyData = gm.GetCurrentEnemyData();
             if (enemyData != null)
             {
@@ -1849,6 +1856,11 @@ public class BattleController : MonoBehaviour
                 if (floor != null && gm.rewardManager != null)
                 {
                     gm.rewardManager.GrantFloorRewards(gm.playerData, floor);
+                    if (rewardsText != null)
+                    {
+                        string itemPart = floor.rewardItem != null ? $", Item: {floor.rewardItem.displayName}" : "";
+                        rewardsText.text = $"+{floor.rewardSoftCurrency} Credits, +{floor.rewardPremiumCurrency} Gems{itemPart}";
+                    }
                 }
                 if (gm.towerProgression != null)
                 {

@@ -55,6 +55,8 @@ public class PlayerData
     public List<ItemInstance> inventory = new List<ItemInstance>();
     public int towerHighestFloorCleared = 0;
     public int towerCurrentFloor = 0;
+    public int playerLevel = 1;
+    public int playerExp = 0;
 }
 
 [Serializable]

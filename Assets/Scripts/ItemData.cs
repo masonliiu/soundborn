@@ -20,5 +20,6 @@ public class ItemData : ScriptableObject
     public int hpBonus = 0;
     public int speedBonus = 0;
     public string description = "";
+    public int unlockLevel = 1;
 }
 

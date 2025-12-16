@@ -10,10 +10,15 @@ public class HomeUIController : MonoBehaviour
     public TextMeshProUGUI premiumCurrencyText;
     public Image playerPortrait;
 
+    [Header("Tower / Player")]
+    public TextMeshProUGUI floorText;
+    public TextMeshProUGUI playerLevelText;
+
     [Header("Panels")]
     public TeamSelectPanel teamSelectPanel;
     public CharacterCatalogPanel characterCatalogPanel;
     public UpgradePanel upgradePanel;
+    public InventoryPanel inventoryPanel;
 
     private void Start()
     {
@@ -32,6 +37,12 @@ public class HomeUIController : MonoBehaviour
 
         if (premiumCurrencyText != null)
             premiumCurrencyText.text = playerData.premiumCurrency.ToString();
+
+        if (floorText != null)
+            floorText.text = $"Floor {playerData.towerCurrentFloor + 1}";
+
+        if (playerLevelText != null)
+            playerLevelText.text = $"Lv {playerData.playerLevel}";
 
         var active = gm.GetActiveCharacterInstance();
         if (playerPortrait != null &&
@@ -63,5 +74,11 @@ public class HomeUIController : MonoBehaviour
     public void OnClick_Gacha()
     {
         SceneManager.LoadScene("GachaScene");
+    }
+
+    public void OnClick_Inventory()
+    {
+        if (inventoryPanel != null)
+            inventoryPanel.Show();
     }
 }

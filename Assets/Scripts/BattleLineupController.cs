@@ -26,6 +26,9 @@ public class BattleLineupController : MonoBehaviour
     [Header("Battle")]
     public BattleController battleController;
 
+    [Header("Tower UI")]
+    public TextMeshProUGUI floorText;
+
     private readonly List<int> selected = new List<int>(4);
     private readonly HashSet<int> selectedSet = new HashSet<int>();
 
@@ -57,6 +60,7 @@ public class BattleLineupController : MonoBehaviour
 
         LoadFromPlayerData();
         RefreshUI();
+        RefreshFloorText();
     }
 
     private void LoadFromPlayerData()
@@ -216,6 +220,14 @@ public class BattleLineupController : MonoBehaviour
 
         if (teamPanel != null)
             teamPanel.SetSelected(selectedSet);
+    }
+
+    private void RefreshFloorText()
+    {
+        var gm = GameManager.Instance;
+        if (gm == null || floorText == null)
+            return;
+        floorText.text = $"Floor {gm.playerData.towerCurrentFloor + 1}";
     }
 
     private void ConfirmAndStartBattle()
