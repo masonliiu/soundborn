@@ -15,9 +15,10 @@ MonoBehaviour:
   itemId: item_distortion_pedal
   displayName: Distortion Pedal
   itemType: 0
-  icon: {fileID: 0}
+  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   attackBonus: 8
   defenseBonus: 0
   hpBonus: 0
   speedBonus: 0
   description: Adds chaotic overtones to each strike.
+  unlockLevel: 1

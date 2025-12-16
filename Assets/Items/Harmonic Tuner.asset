@@ -15,9 +15,10 @@ MonoBehaviour:
   itemId: item_harmonic_tuner
   displayName: Harmonic Tuner
   itemType: 2
-  icon: {fileID: 0}
+  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   attackBonus: 0
   defenseBonus: 3
   hpBonus: 20
   speedBonus: 0
   description: Keeps chords in place, boosting sustain.
+  unlockLevel: 1

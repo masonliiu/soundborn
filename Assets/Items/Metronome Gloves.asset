@@ -15,9 +15,10 @@ MonoBehaviour:
   itemId: item_metronome_gloves
   displayName: Metronome Gloves
   itemType: 2
-  icon: {fileID: 0}
+  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   attackBonus: 0
   defenseBonus: 0
   hpBonus: 0
   speedBonus: 4
   description: Locked-in timing for faster runs.
+  unlockLevel: 1

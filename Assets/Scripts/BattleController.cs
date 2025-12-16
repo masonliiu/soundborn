@@ -17,7 +17,6 @@ public class BattleController : MonoBehaviour
 
     [Header("Result / Return")]
     public UnityEngine.UI.Button backHomeButton;
-    public float backHomeDelay = 1.25f;
     public string homeSceneName = "HomeScene";
 
     [Header("HP Bar Animation")]
@@ -1164,7 +1163,11 @@ public class BattleController : MonoBehaviour
             resultPanel.SetActive(true);
             resultText.text = "Victory!";
             yield return StartCoroutine(FadeResultPanel(true));
-            StartCoroutine(EnableBackHomeAfterDelay());
+            if (backHomeButton != null)
+            {
+                backHomeButton.gameObject.SetActive(true);
+                backHomeButton.interactable = true;
+            }
         }
     }
     
@@ -1202,7 +1205,11 @@ public class BattleController : MonoBehaviour
         resultPanel.SetActive(true);
         resultText.text = "Defeat...";
         StartCoroutine(FadeResultPanel(false));
-        StartCoroutine(EnableBackHomeAfterDelay());
+        if (backHomeButton != null)
+        {
+            backHomeButton.gameObject.SetActive(true);
+            backHomeButton.interactable = true;
+        }
     }
 
     private IEnumerator FadeResultPanel(bool isWin)
@@ -1772,17 +1779,6 @@ public class BattleController : MonoBehaviour
     private string BuildCritText(bool isCrit)
     {
         return isCrit ? " (CRIT!)" : "";
-    }
-
-    private IEnumerator EnableBackHomeAfterDelay()
-    {
-        yield return new WaitForSeconds(backHomeDelay);
-
-        if (backHomeButton != null)
-        {
-            backHomeButton.gameObject.SetActive(true);
-            backHomeButton.interactable = true;
-        }
     }
 
     private bool IsPlayerControlled(CharacterStats character)
