@@ -1867,7 +1867,8 @@ public class BattleController : MonoBehaviour
                     gm.towerProgression.TryAdvanceFloor(gm.playerData);
                 }
                 gm.SetEnemyFromTowerFloor();
-                gm.NotifyPlayerDataChanged();
+            gm.NotifyPlayerDataChanged();
+            gm.SavePlayerData();
             }
             PlayWinSequence();
             return true;

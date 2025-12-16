@@ -807,7 +807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &244092138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1342,7 +1342,7 @@ RectTransform:
   m_Father: {fileID: 398682880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1578,7 +1578,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Character Change
+  m_text: Change Character
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3580,6 +3580,8 @@ MonoBehaviour:
   starterPlayer: {fileID: 11400000, guid: b4e02e3e53d3242e5a96f2bac3c0951f, type: 2}
   starterEnemy: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
   towerConfig: {fileID: 11400000, guid: 1c79f5a9f808f45b1ac1ad2097590df5, type: 2}
+  characterDatabase: {fileID: 11400000, guid: badbc3b92f18d495f9028c5563a11934, type: 2}
+  itemDatabase: {fileID: 11400000, guid: 871efd75a4c8142cc90f4b66c2ca2b68, type: 2}
   playerData:
     ownedCharacters: []
     activeCharacterIndex: 0
@@ -4290,9 +4292,9 @@ RectTransform:
   m_Father: {fileID: 1164918335}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -35, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1232548223
 MonoBehaviour:
@@ -5408,6 +5410,8 @@ MonoBehaviour:
   ultimate: {fileID: 0}
   gachaPull: {fileID: 0}
   bossIntro: {fileID: 0}
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
 --- !u!1 &1475205685
 GameObject:
   m_ObjectHideFlags: 0
@@ -6768,6 +6772,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923278386}
   m_CullTransparentMesh: 1
+--- !u!1 &1935510410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1935510412}
+  - component: {fileID: 1935510411}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1935510411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935510410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd66769da75041728df236820b57cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+  current:
+    masterVolume: 1
+    musicVolume: 1
+    sfxVolume: 1
+    battleSpeed: 1
+    vibrationEnabled: 1
+--- !u!4 &1935510412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935510410}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.93769, y: 6.35388, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1971848073
 GameObject:
   m_ObjectHideFlags: 0
@@ -7343,8 +7397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -205}
+  m_SizeDelta: {x: 160, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2100005881
 MonoBehaviour:
@@ -8268,3 +8322,4 @@ SceneRoots:
   - {fileID: 527009189}
   - {fileID: 970610719}
   - {fileID: 1426026046}
+  - {fileID: 1935510412}

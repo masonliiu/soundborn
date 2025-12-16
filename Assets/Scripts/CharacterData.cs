@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     [Header("Identity")]
+    public string characterId = "character_id";
     public string displayName = "Unnamed";
     public ElementType element = ElementType.None;
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66476e8250ed04d9e9412cbdcbab96e5, type: 3}
   m_Name: Player_HipHop
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterId: character_hiphop
   displayName: Hip-Hop
   element: 1
   maxHP: 120
@@ -26,3 +27,7 @@ MonoBehaviour:
   defenseUpAmount: 10
   silhouetteSprite: {fileID: -1777365111341513409, guid: a828af5addfb243258b561438a598869, type: 3}
   elementIcon: {fileID: 0}
+  isBoss: 0
+  bossIntroClip: {fileID: 0}
+  additionalAbilities: []
+  synergyTags: []

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66476e8250ed04d9e9412cbdcbab96e5, type: 3}
   m_Name: StarterEnemy_Soft
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterId: enemy_starter
   displayName: Red 1
   element: 3
   maxHP: 160
@@ -26,3 +27,7 @@ MonoBehaviour:
   defenseUpAmount: 10
   silhouetteSprite: {fileID: 0}
   elementIcon: {fileID: 0}
+  isBoss: 0
+  bossIntroClip: {fileID: 0}
+  additionalAbilities: []
+  synergyTags: []

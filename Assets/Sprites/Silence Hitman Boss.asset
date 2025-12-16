@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66476e8250ed04d9e9412cbdcbab96e5, type: 3}
   m_Name: Silence Hitman Boss
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterId: enemy_silence_hitman
   displayName: Silence Hitman
   element: 4
   maxHP: 300

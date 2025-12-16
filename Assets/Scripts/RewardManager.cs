@@ -11,6 +11,12 @@ public class RewardManager : MonoBehaviour
         {
             data.inventory.Add(new ItemInstance(floor.rewardItem));
         }
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.NotifyPlayerDataChanged();
+            GameManager.Instance.SavePlayerData();
+        }
     }
 
     public void GrantCharacterShard(PlayerData data, CharacterData character, int amount)

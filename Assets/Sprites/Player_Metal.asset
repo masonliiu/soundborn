@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66476e8250ed04d9e9412cbdcbab96e5, type: 3}
   m_Name: Player_Metal
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterId: character_metal
   displayName: Metal
   element: 1
   maxHP: 140
@@ -26,3 +27,7 @@ MonoBehaviour:
   defenseUpAmount: 10
   silhouetteSprite: {fileID: -3512380572332516584, guid: 0b93a62f5d5d3463e9d24a1cce2d3380, type: 3}
   elementIcon: {fileID: 0}
+  isBoss: 0
+  bossIntroClip: {fileID: 0}
+  additionalAbilities: []
+  synergyTags: []

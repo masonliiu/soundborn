@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66476e8250ed04d9e9412cbdcbab96e5, type: 3}
   m_Name: Player_Jazz
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  characterId: character_jazz
   displayName: Jazz
   element: 3
   maxHP: 110
@@ -26,3 +27,7 @@ MonoBehaviour:
   defenseUpAmount: 10
   silhouetteSprite: {fileID: 5174992576602289124, guid: 4f1c910949b8c424bb97ed2d38e1ed36, type: 3}
   elementIcon: {fileID: 0}
+  isBoss: 0
+  bossIntroClip: {fileID: 0}
+  additionalAbilities: []
+  synergyTags: []

@@ -72,6 +72,7 @@ public class GachaController : MonoBehaviour
         data.ownedCharacters.Add(newInstance);
 
         gm.NotifyPlayerDataChanged();
+        gm.SavePlayerData();
 
         RefreshCurrency();
 

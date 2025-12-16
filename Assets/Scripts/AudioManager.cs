@@ -4,6 +4,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
+    [Header("Clips")]
     public AudioClip battleStart;
     public AudioClip basicAttack;
     public AudioClip skill;
@@ -11,7 +12,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip gachaPull;
     public AudioClip bossIntro;
 
-    private AudioSource source;
+    [Header("Audio Sources")]
+    [Tooltip("Optional dedicated music source. If null, masterSource is used.")]
+    public AudioSource musicSource;
+    [Tooltip("Optional dedicated SFX source. If null, masterSource is used.")]
+    public AudioSource sfxSource;
+
+    private AudioSource masterSource;
 
     private void Awake()
     {
@@ -22,13 +29,28 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        source = gameObject.AddComponent<AudioSource>();
+
+        // Ensure we have at least one AudioSource available
+        masterSource = GetComponent<AudioSource>();
+        if (masterSource == null)
+            masterSource = gameObject.AddComponent<AudioSource>();
+
+        if (musicSource == null)
+            musicSource = masterSource;
+        if (sfxSource == null)
+            sfxSource = masterSource;
+
+        // Apply any settings that might already be loaded
+        if (SettingsManager.Instance != null)
+        {
+            SettingsManager.Instance.ApplySettings();
+        }
     }
 
     public void PlayClip(AudioClip clip)
     {
-        if (clip == null || source == null) return;
-        source.PlayOneShot(clip);
+        if (clip == null || sfxSource == null) return;
+        sfxSource.PlayOneShot(clip);
     }
 
     public void Play(string key)
@@ -54,6 +76,25 @@ public class AudioManager : MonoBehaviour
                 PlayClip(bossIntro);
                 break;
         }
+    }
+
+    /// <summary>
+    /// Called by SettingsManager to update volumes.
+    /// </summary>
+    public void SetVolumes(float master, float music, float sfx)
+    {
+        master = Mathf.Clamp01(master);
+        music = Mathf.Clamp01(music);
+        sfx = Mathf.Clamp01(sfx);
+
+        if (masterSource != null)
+            masterSource.volume = master;
+
+        if (musicSource != null)
+            musicSource.volume = master * music;
+
+        if (sfxSource != null)
+            sfxSource.volume = master * sfx;
     }
 }
 

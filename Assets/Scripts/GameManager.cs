@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public CharacterData starterPlayer;
     public CharacterData starterEnemy;
     public TowerConfig towerConfig;
+    public CharacterDatabase characterDatabase;
+    public ItemDatabase itemDatabase;
 
     [Header("Runtime Data")]
     public PlayerData playerData = new PlayerData();
@@ -41,40 +43,19 @@ public class GameManager : MonoBehaviour
         if (playerData == null)
             playerData = new PlayerData();
 
+        // Ensure collections exist before load.
         if (playerData.ownedCharacters == null)
             playerData.ownedCharacters = new List<CharacterInstance>();
         if (playerData.inventory == null)
             playerData.inventory = new List<ItemInstance>();
 
-        if (playerData.ownedCharacters.Count == 0 && starterPlayer != null)
-        {
-            playerData.ownedCharacters.Add(new CharacterInstance(starterPlayer));
-            playerData.activeCharacterIndex = 0;
-            Debug.Log($"[GameManager] Awake: Added starter player: {starterPlayer.displayName}");
-        }
-        
-        if (extraStartingCharacters != null)
-        {
-            foreach (var cd in extraStartingCharacters)
-            {
-                if (cd != null)
-                {
-                    playerData.ownedCharacters.Add(new CharacterInstance(cd));
-                    Debug.Log($"[GameManager] Awake: Added extra starting character: {cd.displayName}");
-                }
-            }
-        }
-        
-        if (playerData.activeLineupIndices == null || playerData.activeLineupIndices.Length != 4)
-        {
-            playerData.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
-            Debug.Log("[GameManager] Awake: Initialized activeLineupIndices to all -1");
-        }
+        bool loaded = SaveSystem.TryLoad(playerData, characterDatabase, itemDatabase);
+        Debug.Log($"[GameManager] Awake: TryLoad returned {loaded}");
 
-        if (playerData.activeLineupIndices[0] == -1 && playerData.ownedCharacters.Count > 0)
+        if (!loaded)
         {
-            playerData.activeLineupIndices[0] = playerData.activeCharacterIndex;
-            Debug.Log($"[GameManager] Awake: Set activeLineupIndices[0] to {playerData.activeCharacterIndex}");
+            InitializeNewPlayerData();
+            SavePlayerData();
         }
 
         if (currentEnemyData == null && starterEnemy != null)
@@ -86,6 +67,50 @@ public class GameManager : MonoBehaviour
         Debug.Log($"[GameManager] Awake: Final state - ownedCharacters.Count={playerData.ownedCharacters.Count}, activeLineupIndices=[{playerData.activeLineupIndices[0]}, {playerData.activeLineupIndices[1]}, {playerData.activeLineupIndices[2]}, {playerData.activeLineupIndices[3]}]");
 
         NotifyPlayerDataChanged();
+    }
+
+    private void InitializeNewPlayerData()
+    {
+        Debug.Log("[GameManager] InitializeNewPlayerData() called");
+
+        playerData.ownedCharacters.Clear();
+        playerData.inventory.Clear();
+
+        if (starterPlayer != null)
+        {
+            playerData.ownedCharacters.Add(new CharacterInstance(starterPlayer));
+            playerData.activeCharacterIndex = 0;
+            Debug.Log($"[GameManager] InitializeNewPlayerData: Added starter player: {starterPlayer.displayName}");
+        }
+
+        if (extraStartingCharacters != null)
+        {
+            foreach (var cd in extraStartingCharacters)
+            {
+                if (cd != null)
+                {
+                    playerData.ownedCharacters.Add(new CharacterInstance(cd));
+                    Debug.Log($"[GameManager] InitializeNewPlayerData: Added extra starting character: {cd.displayName}");
+                }
+            }
+        }
+
+        if (playerData.activeLineupIndices == null || playerData.activeLineupIndices.Length != 4)
+        {
+            playerData.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
+            Debug.Log("[GameManager] InitializeNewPlayerData: Initialized activeLineupIndices to all -1");
+        }
+
+        if (playerData.activeLineupIndices[0] == -1 && playerData.ownedCharacters.Count > 0)
+        {
+            playerData.activeLineupIndices[0] = playerData.activeCharacterIndex;
+            Debug.Log($"[GameManager] InitializeNewPlayerData: Set activeLineupIndices[0] to {playerData.activeCharacterIndex}");
+        }
+    }
+
+    public void SavePlayerData()
+    {
+        SaveSystem.Save(playerData);
     }
 
     public void NotifyPlayerDataChanged()
@@ -118,6 +143,7 @@ public class GameManager : MonoBehaviour
         {
             playerData.activeCharacterIndex = index;
             NotifyPlayerDataChanged();
+            SavePlayerData();
         }
     }
 
@@ -169,6 +195,7 @@ public class GameManager : MonoBehaviour
         inst.level++;
 
         NotifyPlayerDataChanged();
+        SavePlayerData();
         return true;
     }
 
@@ -177,6 +204,7 @@ public class GameManager : MonoBehaviour
         if (amount <= 0) return;
         playerData.softCurrency += amount;
         NotifyPlayerDataChanged();
+        SavePlayerData();
     }
 
     public void AddPremiumCurrency(int amount)
@@ -184,5 +212,6 @@ public class GameManager : MonoBehaviour
         if (amount <= 0) return;
         playerData.premiumCurrency += amount;
         NotifyPlayerDataChanged();
+        SavePlayerData();
     }
 }
