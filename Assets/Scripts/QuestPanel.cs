@@ -44,6 +44,9 @@ public class QuestPanel : MonoBehaviour
         foreach (var state in pd.questStates)
         {
             if (state == null) continue;
+            // Hide quests that have already been claimed so they "disappear" once cleared.
+            if (state.isClaimed) continue;
+
             var def = GetDefinition(state.questId);
             if (def == null) continue;
 

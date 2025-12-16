@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest 1
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: quest_first_clear
-  title: Tower Progression
+  title: Clear 1st Floor of Tower
   description: Clear the first floor of the Tower.
   type: 1
   targetCount: 1

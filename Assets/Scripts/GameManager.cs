@@ -80,8 +80,30 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("[GameManager] InitializeNewPlayerData() called");
 
-        playerData.ownedCharacters.Clear();
-        playerData.inventory.Clear();
+        // Reset all scalar fields to their default starting values.
+        playerData.softCurrency = 0;
+        playerData.premiumCurrency = 0;
+        playerData.towerHighestFloorCleared = 0;
+        playerData.towerCurrentFloor = 0;
+        playerData.playerLevel = 1;
+        playerData.playerExp = 0;
+        playerData.onboardingCompleted = false;
+        playerData.homeTipsSeen = false;
+
+        if (playerData.questStates == null)
+            playerData.questStates = new List<QuestState>();
+        else
+            playerData.questStates.Clear();
+
+        if (playerData.ownedCharacters == null)
+            playerData.ownedCharacters = new List<CharacterInstance>();
+        else
+            playerData.ownedCharacters.Clear();
+
+        if (playerData.inventory == null)
+            playerData.inventory = new List<ItemInstance>();
+        else
+            playerData.inventory.Clear();
 
         if (starterPlayer != null)
         {
@@ -118,6 +140,24 @@ public class GameManager : MonoBehaviour
     public void SavePlayerData()
     {
         SaveSystem.Save(playerData);
+    }
+
+    /// <summary>
+    /// Completely reset the player's progress and re‑initialise starting data.
+    /// This is intended for developer / debug use and can be invoked from the Inspector
+    /// via the context menu or from other tools.
+    /// </summary>
+    [ContextMenu("Developer/Reset Player Progress")]
+    public void DebugResetPlayerProgress()
+    {
+        Debug.Log("[GameManager] DebugResetPlayerProgress() called – clearing PlayerData and reinitialising.");
+
+        // Start from a fresh PlayerData instance.
+        playerData = new PlayerData();
+        InitializeNewPlayerData();
+        // Persist immediately so next launch also starts fresh.
+        SavePlayerData();
+        NotifyPlayerDataChanged();
     }
 
     public void NotifyPlayerDataChanged()

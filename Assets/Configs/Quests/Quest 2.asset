@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest 2
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   questId: quest_five_clears
-  title: Tower Progression
+  title: Clear 5th Floor of Tower
   description: Clear the fifth floor of the Tower.
   type: 1
   targetCount: 1
