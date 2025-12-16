@@ -110,6 +110,7 @@ public class BattleController : MonoBehaviour
     public TextMeshProUGUI playerHpText;
     public TextMeshProUGUI enemyHpText;
     public TextMeshProUGUI battleLogText;
+    public TextMeshProUGUI turnOrderText;   // shows current + next actors
 
     public Slider playerHpSlider;
     public Slider enemyHpSlider;
@@ -173,6 +174,7 @@ public class BattleController : MonoBehaviour
         EnsurePartySlotsActive();
         
         UpdateUI();
+        UpdateTurnOrderUI();
 
         if (resultPanel != null)
             resultPanel.SetActive(false);
@@ -330,6 +332,8 @@ public class BattleController : MonoBehaviour
         }
         
         currentActor = turnOrder[currentTurnIndex];
+
+        UpdateTurnOrderUI();
         
         if (currentActor == null || currentActor.IsDead())
         {
@@ -373,6 +377,31 @@ public class BattleController : MonoBehaviour
         }
         
         ProcessNextTurn();
+    }
+
+    private void UpdateTurnOrderUI()
+    {
+        if (turnOrderText == null || turnOrder == null || turnOrder.Count == 0)
+            return;
+
+        // Show the next few actors in order, starting from currentTurnIndex.
+        const int maxShown = 4;
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        for (int i = 0; i < maxShown && i < turnOrder.Count; i++)
+        {
+            int idx = (currentTurnIndex + i) % turnOrder.Count;
+            var actor = turnOrder[idx];
+            if (actor == null) continue;
+
+            if (i == 0)
+                sb.Append($"Now: {actor.displayName}");
+            else if (i == 1)
+                sb.Append($"\nNext: {actor.displayName}");
+            else
+                sb.Append($"\nLater: {actor.displayName}");
+        }
+
+        turnOrderText.text = sb.ToString();
     }
 
     private void StartPlayerControlledTurn(CharacterStats actor)
