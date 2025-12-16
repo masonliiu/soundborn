@@ -80,8 +80,9 @@ public class BattleLineupController : MonoBehaviour
         var arr = gm.playerData.activeLineupIndices;
         if (arr == null || arr.Length != 4)
         {
-            Debug.LogWarning("[BattleLineupController] LoadFromPlayerData: activeLineupIndices is invalid!");
-            return;
+            Debug.LogWarning("[BattleLineupController] LoadFromPlayerData: activeLineupIndices is invalid! Resetting to -1.");
+            gm.playerData.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
+            arr = gm.playerData.activeLineupIndices;
         }
 
         Debug.Log($"[BattleLineupController] LoadFromPlayerData: activeLineupIndices = [{arr[0]}, {arr[1]}, {arr[2]}, {arr[3]}]");
@@ -95,6 +96,15 @@ public class BattleLineupController : MonoBehaviour
                 selectedSet.Add(idx);
                 Debug.Log($"[BattleLineupController] LoadFromPlayerData: Added character index {idx} to selected lineup");
             }
+        }
+
+        // Fallback: ensure at least one character is pre-selected if player owns any
+        if (selected.Count == 0 && gm.playerData.ownedCharacters.Count > 0)
+        {
+            int idx = Mathf.Clamp(gm.playerData.activeCharacterIndex, 0, gm.playerData.ownedCharacters.Count - 1);
+            selected.Add(idx);
+            selectedSet.Add(idx);
+            Debug.Log("[BattleLineupController] LoadFromPlayerData: No lineup found, auto-selected active character.");
         }
 
         Debug.Log($"[BattleLineupController] LoadFromPlayerData: Loaded {selected.Count} characters into lineup");
@@ -120,6 +130,11 @@ public class BattleLineupController : MonoBehaviour
             selected.Add(index);
             selectedSet.Add(index);
             Debug.Log($"[BattleLineupController] OnClickRosterIndex: Added character {index} to lineup. Total: {selected.Count}");
+
+            if (QuestManager.Instance != null)
+            {
+                QuestManager.Instance.OnTeamChanged();
+            }
         }
 
         RefreshUI();
@@ -235,6 +250,13 @@ public class BattleLineupController : MonoBehaviour
         Debug.Log("[BattleLineupController] ConfirmAndStartBattle() called");
         Debug.Log($"[BattleLineupController] ConfirmAndStartBattle: Selected characters: {selected.Count}");
         
+        if (selected.Count == 0)
+        {
+            if (hintText != null) hintText.text = "Select at least 1 hero to start.";
+            Debug.LogWarning("[BattleLineupController] ConfirmAndStartBattle: No characters selected.");
+            return;
+        }
+
         var gm = GameManager.Instance;
         if (gm == null)
         {

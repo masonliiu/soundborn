@@ -42,6 +42,20 @@ public static class SaveSystem
         public int towerCurrentFloor = 0;
         public int playerLevel = 1;
         public int playerExp = 0;
+
+        public bool onboardingCompleted = false;
+        public bool homeTipsSeen = false;
+
+        public List<QuestStateSave> questStates = new List<QuestStateSave>();
+    }
+
+    [Serializable]
+    private class QuestStateSave
+    {
+        public string questId;
+        public int currentCount;
+        public bool isCompleted;
+        public bool isClaimed;
     }
 
     public static bool HasSave()
@@ -62,7 +76,9 @@ public static class SaveSystem
             towerHighestFloorCleared = data.towerHighestFloorCleared,
             towerCurrentFloor = data.towerCurrentFloor,
             playerLevel = data.playerLevel,
-            playerExp = data.playerExp
+            playerExp = data.playerExp,
+            onboardingCompleted = data.onboardingCompleted,
+            homeTipsSeen = data.homeTipsSeen
         };
 
         // Active lineup
@@ -117,6 +133,22 @@ public static class SaveSystem
             }
         }
 
+        // Quests
+        if (data.questStates != null)
+        {
+            foreach (var qs in data.questStates)
+            {
+                if (qs == null || string.IsNullOrEmpty(qs.questId)) continue;
+                save.questStates.Add(new QuestStateSave
+                {
+                    questId = qs.questId,
+                    currentCount = qs.currentCount,
+                    isCompleted = qs.isCompleted,
+                    isClaimed = qs.isClaimed
+                });
+            }
+        }
+
         string json = JsonUtility.ToJson(save);
         PlayerPrefs.SetString(PlayerPrefsKey, json);
         PlayerPrefs.Save();
@@ -156,6 +188,7 @@ public static class SaveSystem
         // Clear existing
         target.ownedCharacters = new List<CharacterInstance>();
         target.inventory = new List<ItemInstance>();
+        target.questStates = new List<QuestState>();
 
         // Characters
         if (save.characters != null)
@@ -227,6 +260,25 @@ public static class SaveSystem
         target.towerCurrentFloor = save.towerCurrentFloor;
         target.playerLevel = save.playerLevel;
         target.playerExp = save.playerExp;
+
+        target.onboardingCompleted = save.onboardingCompleted;
+        target.homeTipsSeen = save.homeTipsSeen;
+
+        // Quests
+        if (save.questStates != null)
+        {
+            foreach (var qs in save.questStates)
+            {
+                if (qs == null || string.IsNullOrEmpty(qs.questId)) continue;
+                target.questStates.Add(new QuestState
+                {
+                    questId = qs.questId,
+                    currentCount = qs.currentCount,
+                    isCompleted = qs.isCompleted,
+                    isClaimed = qs.isClaimed
+                });
+            }
+        }
 
         Debug.Log($"[SaveSystem] Loaded PlayerData. Characters={target.ownedCharacters.Count}, Inventory={target.inventory.Count}");
         return true;

@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public TowerConfig towerConfig;
     public CharacterDatabase characterDatabase;
     public ItemDatabase itemDatabase;
+    public QuestManager questManager;
 
     [Header("Runtime Data")]
     public PlayerData playerData = new PlayerData();
@@ -56,6 +57,12 @@ public class GameManager : MonoBehaviour
         {
             InitializeNewPlayerData();
             SavePlayerData();
+        }
+
+        // Ensure quests exist for this profile
+        if (questManager != null)
+        {
+            questManager.EnsureInitialQuests();
         }
 
         if (currentEnemyData == null && starterEnemy != null)
@@ -196,6 +203,11 @@ public class GameManager : MonoBehaviour
 
         NotifyPlayerDataChanged();
         SavePlayerData();
+
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.OnCharacterLeveledUp();
+        }
         return true;
     }
 

@@ -57,6 +57,22 @@ public class PlayerData
     public int towerCurrentFloor = 0;
     public int playerLevel = 1;
     public int playerExp = 0;
+
+    // Onboarding flags
+    public bool onboardingCompleted = false;
+    public bool homeTipsSeen = false;
+
+    // Quest progression
+    public List<QuestState> questStates = new List<QuestState>();
+}
+
+[Serializable]
+public class QuestState
+{
+    public string questId;
+    public int currentCount;
+    public bool isCompleted;
+    public bool isClaimed;
 }
 
 [Serializable]

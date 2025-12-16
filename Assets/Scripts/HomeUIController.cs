@@ -19,10 +19,12 @@ public class HomeUIController : MonoBehaviour
     public CharacterCatalogPanel characterCatalogPanel;
     public UpgradePanel upgradePanel;
     public InventoryPanel inventoryPanel;
+    public GameObject onboardingPanel; // assign HomeOnboardingController panel
 
     private void Start()
     {
         Refresh();
+        MaybeShowOnboarding();
     }
 
     public void Refresh()
@@ -51,6 +53,18 @@ public class HomeUIController : MonoBehaviour
             active.data.silhouetteSprite != null)
         {
             playerPortrait.sprite = active.data.silhouetteSprite;
+        }
+    }
+
+    private void MaybeShowOnboarding()
+    {
+        var gm = GameManager.Instance;
+        if (gm == null || onboardingPanel == null) return;
+
+        // Show only once per profile
+        if (!gm.playerData.homeTipsSeen)
+        {
+            onboardingPanel.SetActive(true);
         }
     }
 

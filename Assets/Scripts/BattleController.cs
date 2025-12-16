@@ -1848,6 +1848,9 @@ public class BattleController : MonoBehaviour
             var gm = GameManager.Instance;
             if (gm != null)
             {
+                // Cache the floor index we just cleared before advancing.
+                int clearedFloorIndex = gm.playerData != null ? gm.playerData.towerCurrentFloor : 0;
+
                 var floor = gm.GetCurrentTowerFloor();
                 if (floor != null && gm.rewardManager != null)
                 {
@@ -1863,8 +1866,14 @@ public class BattleController : MonoBehaviour
                     gm.towerProgression.TryAdvanceFloor(gm.playerData);
                 }
                 gm.SetEnemyFromTowerFloor();
-            gm.NotifyPlayerDataChanged();
-            gm.SavePlayerData();
+                gm.NotifyPlayerDataChanged();
+                gm.SavePlayerData();
+
+                // Quest hook: report the floor that was just cleared (before advancing).
+                if (QuestManager.Instance != null)
+                {
+                    QuestManager.Instance.OnBattleWon(clearedFloorIndex);
+                }
             }
             PlayWinSequence();
             return true;

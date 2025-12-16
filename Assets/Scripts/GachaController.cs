@@ -74,6 +74,11 @@ public class GachaController : MonoBehaviour
         gm.NotifyPlayerDataChanged();
         gm.SavePlayerData();
 
+        if (QuestManager.Instance != null)
+        {
+            QuestManager.Instance.OnGachaPulled();
+        }
+
         RefreshCurrency();
 
         if (resultText != null && picked != null)
