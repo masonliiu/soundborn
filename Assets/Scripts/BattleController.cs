@@ -110,7 +110,7 @@ public class BattleController : MonoBehaviour
     public TextMeshProUGUI playerHpText;
     public TextMeshProUGUI enemyHpText;
     public TextMeshProUGUI battleLogText;
-    public TextMeshProUGUI turnOrderText;   // shows current + next actors
+    public TextMeshProUGUI turnOrderText;
 
     public Slider playerHpSlider;
     public Slider enemyHpSlider;
@@ -123,6 +123,7 @@ public class BattleController : MonoBehaviour
     public Button basicAttackButton;
     public Button skillButton;
     public Button ultimateButton;
+    public RectTransform abilityButtonPanel;
 
     private bool battleOver = false;
 
@@ -131,6 +132,10 @@ public class BattleController : MonoBehaviour
     private List<CharacterStats> turnOrder = new List<CharacterStats>();
     private int currentTurnIndex = 0;
     private CharacterStats currentActor = null;
+
+    private Vector2 abilityPanelShownPos;
+    private Vector2 abilityPanelHiddenPos;
+    private bool abilityPanelPositionsInitialized = false;
 
     private void Start()
     {
@@ -184,6 +189,9 @@ public class BattleController : MonoBehaviour
 
         if (battleRoot != null)
             baseRootPos = battleRoot.anchoredPosition;
+
+        // Cache ability panel positions for slide in/out (capture shown pos once)
+        EnsureAbilityPanelPositionsInitialized();
 
         if (autoStartBattle)
             StartBattleNow();
@@ -555,7 +563,7 @@ public class BattleController : MonoBehaviour
         }
 
         HideAbilityCard();
-        StartCoroutine(PlayerBasicAttackRoutine());
+        StartCoroutine(PlayerAttackWithPanelRoutine(PlayerBasicAttackRoutine()));
     }
 
     private IEnumerator PlayerBasicAttackRoutine()
@@ -623,7 +631,6 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        HideAbilityCard();
 
         if (currentActor == null || !currentActor.CanUseSkill())
         {
@@ -632,7 +639,8 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        StartCoroutine(PlayerSkillRoutine());
+        HideAbilityCard();
+        StartCoroutine(PlayerAttackWithPanelRoutine(PlayerSkillRoutine()));
     }
 
     private IEnumerator PlayerSkillRoutine()
@@ -711,7 +719,7 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        StartCoroutine(PlayerUltimateRoutine());
+        StartCoroutine(PlayerAttackWithPanelRoutine(PlayerUltimateRoutine()));
     }
 
     private IEnumerator PlayerUltimateRoutine()
@@ -1050,6 +1058,102 @@ public class BattleController : MonoBehaviour
         } else {
             label.text = baseName;
         }
+    }
+
+    /// <summary>
+    /// Wraps a player attack routine with a quick slide-out/slide-in animation
+    /// for the ability button panel so it disappears during the action and
+    /// reappears for the next player-controlled turn. Not used for enemy turns.
+    /// </summary>
+    private IEnumerator PlayerAttackWithPanelRoutine(IEnumerator attackRoutine)
+    {
+        // Slide panel away
+        yield return StartCoroutine(SlideAbilityPanelOut());
+
+        // Small delay before the attack actually fires, so it feels sequenced
+        yield return new WaitForSeconds(0.05f);
+
+        // Run the actual attack routine (includes its own timings/animations)
+        yield return StartCoroutine(attackRoutine);
+
+        // Small delay after the attack before UI returns
+        yield return new WaitForSeconds(0.08f);
+
+        // Bring the panel back
+        yield return StartCoroutine(SlideAbilityPanelIn());
+    }
+
+    private IEnumerator SlideAbilityPanelOut()
+    {
+        if (abilityButtonPanel == null) yield break;
+        // Capture shown position once (if needed) and recompute hidden based on size.
+        EnsureAbilityPanelPositionsInitialized();
+
+        // Always start from the current position to avoid any snapping/jitter.
+        Vector2 start = abilityButtonPanel.anchoredPosition;
+        Vector2 end = abilityPanelHiddenPos; // fully hidden position
+        float duration = 0.25f;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float n = Mathf.Clamp01(t / duration);
+            // Smoothstep easing for soft motion (no snapping)
+            n = n * n * (3f - 2f * n);
+            abilityButtonPanel.anchoredPosition = Vector2.Lerp(start, end, n);
+            yield return null;
+        }
+
+        abilityButtonPanel.anchoredPosition = end;
+    }
+
+    private IEnumerator SlideAbilityPanelIn()
+    {
+        if (abilityButtonPanel == null) yield break;
+        // Do NOT overwrite shownPos here; we want to return to the cached shown position.
+        EnsureAbilityPanelPositionsInitialized();
+
+        // Start from current (hidden) position to avoid snapping.
+        Vector2 start = abilityButtonPanel.anchoredPosition;
+        Vector2 end = abilityPanelShownPos;
+        float duration = 0.25f;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float n = Mathf.Clamp01(t / duration);
+            // Smoothstep easing for soft motion (no snapping)
+            n = n * n * (3f - 2f * n);
+            abilityButtonPanel.anchoredPosition = Vector2.Lerp(start, end, n);
+            yield return null;
+        }
+
+        abilityButtonPanel.anchoredPosition = end;
+    }
+
+    /// <summary>
+    /// Captures the "shown" anchored position once, then computes the "hidden"
+    /// position based on rect height so the panel slides fully off-screen.
+    /// </summary>
+    private void EnsureAbilityPanelPositionsInitialized()
+    {
+        if (abilityButtonPanel == null) return;
+
+        // If layout hasn't calculated yet, force a pass so rect.height isn't 0.
+        Canvas.ForceUpdateCanvases();
+
+        if (!abilityPanelPositionsInitialized)
+        {
+            abilityPanelShownPos = abilityButtonPanel.anchoredPosition;
+            abilityPanelPositionsInitialized = true;
+        }
+
+        float height = abilityButtonPanel.rect.height;
+        float extraMargin = 40f; // extra so it's fully gone even with shadows
+        float offsetY = -(height + extraMargin);
+        abilityPanelHiddenPos = abilityPanelShownPos + new Vector2(0f, offsetY);
     }
 
     private void UpdateStatusIcons() {

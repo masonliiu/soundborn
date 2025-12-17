@@ -1,24 +1,23 @@
 using UnityEngine;
 
-// element types for the game's music world
 public enum ElementType
 {
     None,
-    Bass,       // heavy low-end, power
-    Percussion, // rhythm / speed
-    Harmony,    // chords, support, calm
-    Noise,      // distortion / chaos
-    Melody,     // hooks, leads
-    Synth       // electronic / digital
+    Bass,
+    Percussion,
+    Harmony,
+    Noise,
+    Melody,
+    Synth
 }
 
 public enum StatusType
 {
     None,
-    BleedEars,  // damage over time
-    Stun,       // skip turn
-    Sleep,      // skip turn (calm music)
-    DefenseUp   // temporary defense buff on self
+    BleedEars,
+    Stun,
+    Sleep,
+    DefenseUp
 }
 
 public class CharacterStats : MonoBehaviour
@@ -30,17 +29,17 @@ public class CharacterStats : MonoBehaviour
     [Header("Core Stats")]
     public int maxHP = 100;
     public int currentHP;
-    public int attack = 20;    // base attack power
-    public int defense = 5;    // base defense
-    public int speed = 10;     // used for who goes first
+    public int attack = 20;
+    public int defense = 5;
+    public int speed = 10;
 
     [Header("Crit Settings")]
     [Range(0f, 1f)] public float critChance = 0.1f;
     public float critDamageMultiplier = 1.5f;
 
     [Header("Ability Power")]
-    public int skillPower = 35;      // extra flat power for skill
-    public int ultimatePower = 60;   // extra flat power for ultimate
+    public int skillPower = 35;
+    public int ultimatePower = 60;
 
     [Header("Cooldowns (in turns)")]
     public int skillCooldownTurns = 2;
@@ -77,9 +76,6 @@ public class CharacterStats : MonoBehaviour
         return currentHP <= 0;
     }
 
-    // cooldowns
-
-    // called at the start of this character's turn
     public void TickCooldowns()
     {
         if (skillCooldownRemaining > 0)
@@ -109,11 +105,8 @@ public class CharacterStats : MonoBehaviour
         return ultimateCooldownRemaining <= 0;
     }
 
-    // status
-
     public void ApplyStatus(StatusType status, int durationTurns)
     {
-        // only one status at a time for now
         ClearStatus();
 
         currentStatus = status;
@@ -122,17 +115,14 @@ public class CharacterStats : MonoBehaviour
         switch (status)
         {
             case StatusType.DefenseUp:
-                // apply buff
                 defense = baseDefense + defenseUpAmount;
                 break;
 
             case StatusType.BleedEars:
-                // damage will be applied at turn start
                 break;
 
             case StatusType.Stun:
             case StatusType.Sleep:
-                // skipping handled in BattleController
                 break;
 
             case StatusType.None:

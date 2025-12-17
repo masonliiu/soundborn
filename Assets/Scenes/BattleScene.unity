@@ -3842,7 +3842,7 @@ GameObject:
   - component: {fileID: 786747396}
   - component: {fileID: 786747395}
   m_Layer: 5
-  m_Name: BottomBar
+  m_Name: AbilityButtonsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3860,7 +3860,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 991439263}
   - {fileID: 611928431}
   - {fileID: 1513927788}
   m_Father: {fileID: 1343401672}
@@ -4260,6 +4259,7 @@ MonoBehaviour:
   basicAttackButton: {fileID: 823770505}
   skillButton: {fileID: 2130635580}
   ultimateButton: {fileID: 1969517026}
+  abilityButtonPanel: {fileID: 786747394}
 --- !u!4 &875464151
 Transform:
   m_ObjectHideFlags: 0
@@ -5151,12 +5151,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 786747394}
+  m_Father: {fileID: 1343401672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 288.64}
-  m_SizeDelta: {x: 0, y: 180}
+  m_AnchoredPosition: {x: 3.3895874, y: -1181.3601}
+  m_SizeDelta: {x: 10.819214, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991439264
 MonoBehaviour:
@@ -6612,6 +6612,7 @@ RectTransform:
   - {fileID: 1627090598}
   - {fileID: 93611258}
   - {fileID: 523296235}
+  - {fileID: 991439263}
   - {fileID: 786747394}
   - {fileID: 1490864624}
   - {fileID: 1801786565}

@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class TowerProgression : MonoBehaviour
 {
-    [Header("Config (optional handcrafted early floors)")]
+    [Header("Config")]
     public TowerConfig config;
 
     [Header("Generated Floors Settings")]
-    [Tooltip("Total number of tower floors available. Floors beyond any handcrafted config will be generated procedurally.")]
     public int generatedMaxFloors = 100;
-    [Tooltip("Every Nth floor is treated as a boss floor.")]
     public int bossInterval = 5;
 
     [Header("Enemy Templates")]
@@ -29,13 +27,11 @@ public class TowerProgression : MonoBehaviour
         int maxFloors = Mathf.Max(1, generatedMaxFloors);
         int index = Mathf.Clamp(data.towerCurrentFloor, 0, maxFloors - 1);
 
-        // Use handcrafted config when available and within range.
         if (config != null && config.floors != null && index < config.floors.Count && config.floors.Count > 0)
         {
             return config.floors[index];
         }
 
-        // Otherwise, generate a floor procedurally.
         return GenerateFloor(index);
     }
 
@@ -62,7 +58,6 @@ public class TowerProgression : MonoBehaviour
         bool isBoss = (bossInterval > 0) && (floorNumber % bossInterval == 0);
         floor.isBossFloor = isBoss;
 
-        // Enemy selection
         if (isBoss && defaultBossEnemy != null)
             floor.enemyData = defaultBossEnemy;
         else if (defaultNormalEnemy != null)
@@ -70,7 +65,6 @@ public class TowerProgression : MonoBehaviour
         else if (config != null && config.floors != null && config.floors.Count > 0)
             floor.enemyData = config.floors[config.floors.Count - 1].enemyData;
 
-        // Reward scaling: roughly linear with boss spikes.
         int soft = baseSoftReward + softRewardPerFloor * index;
         if (isBoss)
             soft += bossSoftBonus;

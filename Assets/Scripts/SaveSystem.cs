@@ -2,10 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Handles serialization of PlayerData into a lightweight save format that can
-/// be stored in PlayerPrefs. Uses character/item IDs to re-link ScriptableObjects.
-/// </summary>
 public static class SaveSystem
 {
     private const string PlayerPrefsKey = "Soundborn_Player";
@@ -81,13 +77,11 @@ public static class SaveSystem
             homeTipsSeen = data.homeTipsSeen
         };
 
-        // Active lineup
         if (data.activeLineupIndices != null && data.activeLineupIndices.Length == 4)
         {
             save.activeLineupIndices = (int[])data.activeLineupIndices.Clone();
         }
 
-        // Characters
         if (data.ownedCharacters != null)
         {
             foreach (var inst in data.ownedCharacters)
@@ -119,7 +113,6 @@ public static class SaveSystem
             }
         }
 
-        // Inventory
         if (data.inventory != null)
         {
             foreach (var item in data.inventory)
@@ -133,7 +126,6 @@ public static class SaveSystem
             }
         }
 
-        // Quests
         if (data.questStates != null)
         {
             foreach (var qs in data.questStates)
@@ -185,12 +177,10 @@ public static class SaveSystem
         if (save == null)
             return false;
 
-        // Clear existing
         target.ownedCharacters = new List<CharacterInstance>();
         target.inventory = new List<ItemInstance>();
         target.questStates = new List<QuestState>();
 
-        // Characters
         if (save.characters != null)
         {
             foreach (var cs in save.characters)
@@ -233,7 +223,6 @@ public static class SaveSystem
             }
         }
 
-        // Inventory
         if (save.inventory != null && itemDb != null)
         {
             foreach (var isave in save.inventory)
@@ -249,7 +238,6 @@ public static class SaveSystem
             }
         }
 
-        // Simple fields
         target.activeCharacterIndex = save.activeCharacterIndex;
         if (save.activeLineupIndices != null && save.activeLineupIndices.Length == 4)
             target.activeLineupIndices = (int[])save.activeLineupIndices.Clone();
@@ -264,7 +252,6 @@ public static class SaveSystem
         target.onboardingCompleted = save.onboardingCompleted;
         target.homeTipsSeen = save.homeTipsSeen;
 
-        // Quests
         if (save.questStates != null)
         {
             foreach (var qs in save.questStates)
