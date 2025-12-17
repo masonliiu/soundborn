@@ -5427,8 +5427,8 @@ MonoBehaviour:
       level: 1
     - data: {fileID: 11400000, guid: cced56c8db1cb430583ca732005168bb, type: 2}
       level: 1
-    towerHighestFloorCleared: 0
-    towerCurrentFloor: 0
+    towerHighestFloorCleared: 20
+    towerCurrentFloor: 20
     playerLevel: 1
     playerExp: 0
     onboardingCompleted: 0
@@ -5465,6 +5465,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerProgression
   config: {fileID: 11400000, guid: 1c79f5a9f808f45b1ac1ad2097590df5, type: 2}
+  generatedMaxFloors: 100
+  bossInterval: 5
+  defaultNormalEnemy: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+  defaultBossEnemy: {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+  baseSoftReward: 150
+  softRewardPerFloor: 25
+  bossSoftBonus: 200
+  basePremiumBossReward: 10
+  premiumBossStep: 1
 --- !u!114 &970610721
 MonoBehaviour:
   m_ObjectHideFlags: 0

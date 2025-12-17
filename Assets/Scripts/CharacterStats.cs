@@ -307,9 +307,11 @@ public class CharacterStats : MonoBehaviour
         int extraLevels = Mathf.Max(0, instance.level - 1);
         if (extraLevels > 0)
         {
-            maxHP += extraLevels * 10;   // +10 HP per level
-            attack += extraLevels * 2;   // +2 ATK per level
-            defense += extraLevels * 1;  // +1 DEF per level
+            // Per-level growth tuned to keep up with floor scaling:
+            // a leveled character gains meaningful survivability and damage.
+            maxHP += extraLevels * 25;   // +25 HP per level
+            attack += extraLevels * 5;   // +5 ATK per level
+            defense += extraLevels * 3;  // +3 DEF per level
 
             currentHP = maxHP;           // refresh HP to new max
         }

@@ -156,18 +156,11 @@ public class BattleController : MonoBehaviour
             }
 
             var enemyData = gm.GetCurrentEnemyData();
-            if (enemyData != null)
+            if (enemyPortraitImage != null &&
+                enemyData != null &&
+                enemyData.silhouetteSprite != null)
             {
-                enemy.InitFrom(enemyData);
-                Debug.Log($"[BattleController] Enemy initialized: {enemyData.displayName}");
-            }
-
-            if (enemyPortraitImage != null)
-            {
-                if (enemyData != null && enemyData.silhouetteSprite != null)
-                {
-                    enemyPortraitImage.sprite = enemyData.silhouetteSprite;
-                }
+                enemyPortraitImage.sprite = enemyData.silhouetteSprite;
             }
         }
 
@@ -261,12 +254,18 @@ public class BattleController : MonoBehaviour
         Debug.Log($"[BattleController] StartBattleNow: ownedCharacters.Count = {pd.ownedCharacters.Count}");
 
         InitializePartyMembers(gm);
-
+        
         var enemyData = gm.GetCurrentEnemyData();
         if (enemyData != null)
         {
             enemy.InitFrom(enemyData);
-            Debug.Log($"[BattleController] StartBattleNow: Enemy initialized: {enemyData.displayName}");
+
+            int floorNumber = gm.playerData != null ? gm.playerData.towerCurrentFloor + 1 : 1;
+            var floorCfg = gm.GetCurrentTowerFloor();
+            bool isBoss = floorCfg != null && floorCfg.isBossFloor;
+            ScaleEnemyForFloor(floorNumber, isBoss);
+
+            Debug.Log($"[BattleController] StartBattleNow: Enemy initialized: {enemyData.displayName} for Floor {floorNumber} (Boss: {isBoss})");
         }
 
         if (enemyPortraitImage != null && enemyData != null && enemyData.silhouetteSprite != null)
@@ -1171,6 +1170,40 @@ public class BattleController : MonoBehaviour
         }
 
         battleRoot.anchoredPosition = baseRootPos;
+    }
+
+    /// <summary>
+    /// Scales enemy stats based on tower floor.
+    /// Uses a moderate exponential curve so that early floors are forgiving,
+    /// mid floors become challenging, and late floors are tough but still
+    /// realistically beatable with leveled characters.
+    /// Boss floors get an additional, smaller multiplier.
+    /// </summary>
+    private void ScaleEnemyForFloor(int floorNumber, bool isBoss)
+    {
+        if (enemy == null) return;
+
+        int t = Mathf.Max(0, floorNumber - 1);
+
+        // ~3.5% HP growth, 2.5% ATK, 2% DEF per floor (compounded).
+        float hpMul = Mathf.Pow(1.035f, t);
+        float atkMul = Mathf.Pow(1.025f, t);
+        float defMul = Mathf.Pow(1.02f,  t);
+
+        if (isBoss)
+        {
+            hpMul *= 1.6f;
+            atkMul *= 1.3f;
+            defMul *= 1.2f;
+        }
+
+        enemy.maxHP = Mathf.RoundToInt(enemy.maxHP * hpMul);
+        enemy.currentHP = enemy.maxHP;
+        enemy.attack = Mathf.RoundToInt(enemy.attack * atkMul);
+        enemy.defense = Mathf.RoundToInt(enemy.defense * defMul);
+
+        Debug.Log($"[BattleController] ScaleEnemyForFloor: floor={floorNumber}, boss={isBoss}, hpMul={hpMul:F2}, atkMul={atkMul:F2}, defMul={defMul:F2}, " +
+                  $"result HP={enemy.maxHP}, ATK={enemy.attack}, DEF={enemy.defense}");
     }
 
     private void PlayWinSequence()

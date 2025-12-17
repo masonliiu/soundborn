@@ -201,6 +201,12 @@ public class GameManager : MonoBehaviour
 
     public TowerFloor GetCurrentTowerFloor()
     {
+        // Prefer TowerProgression (which can generate procedural floors) when available.
+        if (towerProgression != null)
+        {
+            return towerProgression.GetCurrentFloor(playerData);
+        }
+
         if (towerConfig == null || towerConfig.floors == null || towerConfig.floors.Count == 0) return null;
         int index = Mathf.Clamp(playerData.towerCurrentFloor, 0, towerConfig.floors.Count - 1);
         return towerConfig.floors[index];
