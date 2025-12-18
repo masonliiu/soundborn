@@ -222,14 +222,22 @@ public class BattleController : MonoBehaviour
     {
         if (!isSelectingTarget) return;
         
-        // Tap/click an enemy slot to change the selected target (no Unity Button wiring required).
+        // Tap/click an enemy slot to change the selected target or execute attack if already selected.
         if (TryGetPointerDown(out var pointerPos))
         {
             int hit = GetEnemyIndexAtScreenPoint(pointerPos);
             if (hit >= 0)
             {
-                SetEnemyTarget(hit);
-                UpdateTargetIndicators();
+                // If clicking the already-selected enemy, execute the attack immediately.
+                if (hit == currentEnemyTargetIndex)
+                {
+                    ConfirmTargetSelectionAndExecute();
+                }
+                else
+                {
+                    SetEnemyTarget(hit);
+                    UpdateTargetIndicators();
+                }
             }
         }
 
@@ -547,6 +555,9 @@ public class BattleController : MonoBehaviour
         {
             if (battleLogText != null)
                 battleLogText.text += $"\n{actor.displayName} was defeated by status...";
+            int deadIdx = GetPartyMemberIndex(actor);
+            if (deadIdx >= 0)
+                StartCoroutine(PartyMemberDeathPixelateRoutine(deadIdx));
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 return;
@@ -568,6 +579,18 @@ public class BattleController : MonoBehaviour
         {
             battleLogText.text += $"\n{actor.displayName}'s turn.";
         }
+
+        // Auto-setup: show ability panel, select lowest HP enemy, and select best available ability.
+        StartCoroutine(SlideAbilityPanelIn());
+        BeginTargetSelection(GetBestAvailableAbilityForActor(actor));
+    }
+
+    private PendingAbility GetBestAvailableAbilityForActor(CharacterStats actor)
+    {
+        if (actor == null) return PendingAbility.Basic;
+        if (actor.CanUseUltimate()) return PendingAbility.Ultimate;
+        if (actor.CanUseSkill()) return PendingAbility.Skill;
+        return PendingAbility.Basic;
     }
 
     private void BeginTargetSelection(PendingAbility ability)
@@ -738,6 +761,9 @@ public class BattleController : MonoBehaviour
 
         if (enemyActor.IsDead())
         {
+            int deadIdx = GetEnemyIndex(enemyActor);
+            if (deadIdx >= 0)
+                yield return StartCoroutine(EnemyDeathPixelateRoutine(deadIdx));
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
@@ -829,6 +855,7 @@ public class BattleController : MonoBehaviour
 
         if (target.IsDead())
         {
+            yield return StartCoroutine(EnemyDeathPixelateRoutine(enemyIndex));
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
@@ -915,6 +942,7 @@ public class BattleController : MonoBehaviour
 
         if (target.IsDead())
         {
+            yield return StartCoroutine(EnemyDeathPixelateRoutine(enemyIndex));
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
@@ -1001,6 +1029,7 @@ public class BattleController : MonoBehaviour
 
         if (target.IsDead())
         {
+            yield return StartCoroutine(EnemyDeathPixelateRoutine(enemyIndex));
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
@@ -1120,6 +1149,7 @@ public class BattleController : MonoBehaviour
             if (battleLogText != null)
                 battleLogText.text += $"\n{target.displayName} was defeated!";
             
+            yield return StartCoroutine(PartyMemberDeathPixelateRoutine(targetIndex));
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
@@ -1595,6 +1625,64 @@ public class BattleController : MonoBehaviour
 
         enemyPixelateMaterialRuntime.SetFloat("_PixelAmount", 1f);
         img.enabled = false;
+    }
+
+    private IEnumerator EnemyDeathPixelateRoutine(int enemyIndex)
+    {
+        Image img = null;
+        if (enemyPortraitImages != null && enemyIndex >= 0 && enemyIndex < enemyPortraitImages.Length)
+            img = enemyPortraitImages[enemyIndex];
+
+        if (enemyPixelateMaterialTemplate == null || img == null)
+            yield break;
+
+        Material runtimeMat = new Material(enemyPixelateMaterialTemplate);
+        var originalMat = img.material;
+
+        img.material = runtimeMat;
+        runtimeMat.SetFloat("_PixelAmount", 0f);
+
+        float t = 0f;
+        while (t < enemyDeathPixelDuration)
+        {
+            t += Time.deltaTime;
+            float n = Mathf.Clamp01(t / enemyDeathPixelDuration);
+            runtimeMat.SetFloat("_PixelAmount", n);
+            yield return null;
+        }
+
+        runtimeMat.SetFloat("_PixelAmount", 1f);
+        img.enabled = false;
+        Destroy(runtimeMat);
+    }
+
+    private IEnumerator PartyMemberDeathPixelateRoutine(int partyIndex)
+    {
+        Image img = null;
+        if (partyPortraitImages != null && partyIndex >= 0 && partyIndex < partyPortraitImages.Length)
+            img = partyPortraitImages[partyIndex];
+
+        if (enemyPixelateMaterialTemplate == null || img == null)
+            yield break;
+
+        Material runtimeMat = new Material(enemyPixelateMaterialTemplate);
+        var originalMat = img.material;
+
+        img.material = runtimeMat;
+        runtimeMat.SetFloat("_PixelAmount", 0f);
+
+        float t = 0f;
+        while (t < enemyDeathPixelDuration)
+        {
+            t += Time.deltaTime;
+            float n = Mathf.Clamp01(t / enemyDeathPixelDuration);
+            runtimeMat.SetFloat("_PixelAmount", n);
+            yield return null;
+        }
+
+        runtimeMat.SetFloat("_PixelAmount", 1f);
+        img.enabled = false;
+        Destroy(runtimeMat);
     }
 
     private void PlayLoseSequence()
