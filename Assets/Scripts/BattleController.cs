@@ -106,6 +106,16 @@ public class BattleController : MonoBehaviour
     public RectTransform[] partyPopupAnchors = new RectTransform[4];
     public Image[] partyStatusIcons = new Image[4];
 
+    [Header("Enemy Member Displays (Arrays for 4 slots)")]
+    public Image[] enemyPortraitImages = new Image[4];
+    public TextMeshProUGUI[] enemyHpTexts = new TextMeshProUGUI[4];
+    public Slider[] enemyHpSliders = new Slider[4];
+    public Slider[] enemyHpDamageSliders = new Slider[4];
+    public RectTransform[] enemyPortraitRects = new RectTransform[4];
+    public RectTransform[] enemyImpactAnchors = new RectTransform[4];
+    public RectTransform[] enemyPopupAnchors = new RectTransform[4];
+    public Image[] enemyStatusIcons = new Image[4];
+
     [Header("UI References")]
     public TextMeshProUGUI playerHpText;
     public TextMeshProUGUI enemyHpText;
@@ -128,6 +138,8 @@ public class BattleController : MonoBehaviour
     private bool battleOver = false;
 
     private CharacterStats[] partyMembers = new CharacterStats[4];
+    private CharacterStats[] enemies = new CharacterStats[4];
+    private int currentEnemyTargetIndex = 0;
     
     private List<CharacterStats> turnOrder = new List<CharacterStats>();
     private int currentTurnIndex = 0;
@@ -214,6 +226,11 @@ public class BattleController : MonoBehaviour
                 partyMembers[i] = null;
             }
         }
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i] = null;
+        }
     }
 
     public void StartBattleNow()
@@ -262,24 +279,7 @@ public class BattleController : MonoBehaviour
         Debug.Log($"[BattleController] StartBattleNow: ownedCharacters.Count = {pd.ownedCharacters.Count}");
 
         InitializePartyMembers(gm);
-        
-        var enemyData = gm.GetCurrentEnemyData();
-        if (enemyData != null)
-        {
-            enemy.InitFrom(enemyData);
-
-            int floorNumber = gm.playerData != null ? gm.playerData.towerCurrentFloor + 1 : 1;
-            var floorCfg = gm.GetCurrentTowerFloor();
-            bool isBoss = floorCfg != null && floorCfg.isBossFloor;
-            ScaleEnemyForFloor(floorNumber, isBoss);
-
-            Debug.Log($"[BattleController] StartBattleNow: Enemy initialized: {enemyData.displayName} for Floor {floorNumber} (Boss: {isBoss})");
-        }
-
-        if (enemyPortraitImage != null && enemyData != null && enemyData.silhouetteSprite != null)
-        {
-            enemyPortraitImage.sprite = enemyData.silhouetteSprite;
-        }
+        InitializeEnemies(gm);
 
         EnsurePartySlotsActive();
         FillPartyUI();
@@ -298,14 +298,11 @@ public class BattleController : MonoBehaviour
         
         if (AudioManager.Instance != null)
         {
+            var enemyData = GetCurrentEnemyData();
             if (enemyData != null && enemyData.isBoss && enemyData.bossIntroClip != null)
-            {
                 AudioManager.Instance.PlayClip(enemyData.bossIntroClip);
-            }
             else
-            {
                 AudioManager.Instance.Play("battle_start");
-            }
         }
 
         UpdateUI();
@@ -416,6 +413,7 @@ public class BattleController : MonoBehaviour
         if (battleOver || actor == null) return;
 
         currentActor = actor;
+        EnsureEnemyTargetValid();
         
         actor.TickCooldowns();
         int statusDamage;
@@ -458,6 +456,10 @@ public class BattleController : MonoBehaviour
     private void StartEnemyTurn(CharacterStats enemyActor)
     {
         if (battleOver || enemyActor == null) return;
+        int idx = GetEnemyIndex(enemyActor);
+        if (idx >= 0)
+            currentEnemyTargetIndex = idx;
+        EnsureEnemyTargetValid();
         StartCoroutine(EnemyTurnSequence(enemyActor));
     }
 
@@ -503,8 +505,9 @@ public class BattleController : MonoBehaviour
             yield return new WaitForSeconds(preHitDelay);
             StartCoroutine(Shake(enemyPortraitRect));
 
-            SpawnImpact(onEnemy: true, color: GetStatusColor(enemyActor.currentStatus));
-            SpawnDamagePopup(onEnemy: true, amount: statusDamage, isCrit: false);
+            int eIdx = GetEnemyIndex(enemyActor);
+            SpawnImpact(onEnemy: true, color: GetStatusColor(enemyActor.currentStatus), enemyIndex: eIdx);
+            SpawnDamagePopup(onEnemy: true, amount: statusDamage, isCrit: false, enemyIndex: eIdx);
 
             if (enemyHpText != null)
             {
@@ -586,7 +589,7 @@ public class BattleController : MonoBehaviour
             StartCoroutine(CameraShake());
         SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
-        StartCoroutine(Shake(enemyPortraitRect));
+        StartCoroutine(Shake(GetEnemyPortraitRect(currentEnemyTargetIndex)));
 
         if (battleLogText != null)
         {
@@ -662,7 +665,7 @@ public class BattleController : MonoBehaviour
             StartCoroutine(CameraShake());
         SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
-        StartCoroutine(Shake(enemyPortraitRect));
+        StartCoroutine(Shake(GetEnemyPortraitRect(currentEnemyTargetIndex)));
         currentActor.PutSkillOnCooldown();
 
         string statusText = ApplyElementalStatusFromPlayerSkill();
@@ -741,7 +744,7 @@ public class BattleController : MonoBehaviour
             StartCoroutine(CameraShake());
         SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element));
         SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
-        StartCoroutine(Shake(enemyPortraitRect));
+        StartCoroutine(Shake(GetEnemyPortraitRect(currentEnemyTargetIndex)));
         currentActor.PutUltimateOnCooldown();
 
         currentActor.ApplyStatus(StatusType.DefenseUp, 2);
@@ -1060,36 +1063,24 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Wraps a player attack routine with a quick slide-out/slide-in animation
-    /// for the ability button panel so it disappears during the action and
-    /// reappears for the next player-controlled turn. Not used for enemy turns.
-    /// </summary>
     private IEnumerator PlayerAttackWithPanelRoutine(IEnumerator attackRoutine)
     {
-        // Slide panel away
         yield return StartCoroutine(SlideAbilityPanelOut());
 
-        // Small delay before the attack actually fires, so it feels sequenced
         yield return new WaitForSeconds(0.05f);
 
-        // Run the actual attack routine (includes its own timings/animations)
         yield return StartCoroutine(attackRoutine);
 
-        // Small delay after the attack before UI returns
         yield return new WaitForSeconds(0.08f);
 
-        // Bring the panel back
         yield return StartCoroutine(SlideAbilityPanelIn());
     }
 
     private IEnumerator SlideAbilityPanelOut()
     {
         if (abilityButtonPanel == null) yield break;
-        // Capture shown position once (if needed) and recompute hidden based on size.
         EnsureAbilityPanelPositionsInitialized();
 
-        // Always start from the current position to avoid any snapping/jitter.
         Vector2 start = abilityButtonPanel.anchoredPosition;
         Vector2 end = abilityPanelHiddenPos; // fully hidden position
         float duration = 0.25f;
@@ -1099,7 +1090,6 @@ public class BattleController : MonoBehaviour
         {
             t += Time.deltaTime;
             float n = Mathf.Clamp01(t / duration);
-            // Smoothstep easing for soft motion (no snapping)
             n = n * n * (3f - 2f * n);
             abilityButtonPanel.anchoredPosition = Vector2.Lerp(start, end, n);
             yield return null;
@@ -1111,10 +1101,8 @@ public class BattleController : MonoBehaviour
     private IEnumerator SlideAbilityPanelIn()
     {
         if (abilityButtonPanel == null) yield break;
-        // Do NOT overwrite shownPos here; we want to return to the cached shown position.
         EnsureAbilityPanelPositionsInitialized();
 
-        // Start from current (hidden) position to avoid snapping.
         Vector2 start = abilityButtonPanel.anchoredPosition;
         Vector2 end = abilityPanelShownPos;
         float duration = 0.25f;
@@ -1124,7 +1112,6 @@ public class BattleController : MonoBehaviour
         {
             t += Time.deltaTime;
             float n = Mathf.Clamp01(t / duration);
-            // Smoothstep easing for soft motion (no snapping)
             n = n * n * (3f - 2f * n);
             abilityButtonPanel.anchoredPosition = Vector2.Lerp(start, end, n);
             yield return null;
@@ -1133,15 +1120,10 @@ public class BattleController : MonoBehaviour
         abilityButtonPanel.anchoredPosition = end;
     }
 
-    /// <summary>
-    /// Captures the "shown" anchored position once, then computes the "hidden"
-    /// position based on rect height so the panel slides fully off-screen.
-    /// </summary>
     private void EnsureAbilityPanelPositionsInitialized()
     {
         if (abilityButtonPanel == null) return;
 
-        // If layout hasn't calculated yet, force a pass so rect.height isn't 0.
         Canvas.ForceUpdateCanvases();
 
         if (!abilityPanelPositionsInitialized)
@@ -1151,7 +1133,7 @@ public class BattleController : MonoBehaviour
         }
 
         float height = abilityButtonPanel.rect.height;
-        float extraMargin = 40f; // extra so it's fully gone even with shadows
+        float extraMargin = 40f;
         float offsetY = -(height + extraMargin);
         abilityPanelHiddenPos = abilityPanelShownPos + new Vector2(0f, offsetY);
     }
@@ -1185,13 +1167,13 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    private void SpawnDamagePopup(bool onEnemy, int amount, bool isCrit, int targetIndex = -1) {
+    private void SpawnDamagePopup(bool onEnemy, int amount, bool isCrit, int targetIndex = -1, int enemyIndex = -1) {
         if (damagePopupPrefab == null) return;
 
         RectTransform anchor;
         if (onEnemy)
         {
-            anchor = enemyPopupAnchor;
+            anchor = GetEnemyPopupAnchor(enemyIndex >= 0 ? enemyIndex : currentEnemyTargetIndex);
         }
         else
         {
@@ -1276,13 +1258,6 @@ public class BattleController : MonoBehaviour
         battleRoot.anchoredPosition = baseRootPos;
     }
 
-    /// <summary>
-    /// Scales enemy stats based on tower floor.
-    /// Uses a moderate exponential curve so that early floors are forgiving,
-    /// mid floors become challenging, and late floors are tough but still
-    /// realistically beatable with leveled characters.
-    /// Boss floors get an additional, smaller multiplier.
-    /// </summary>
     private void ScaleEnemyForFloor(int floorNumber, bool isBoss)
     {
         if (enemy == null) return;
@@ -1462,13 +1437,13 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    private void SpawnImpact(bool onEnemy, Color color, int targetIndex = -1) {
+    private void SpawnImpact(bool onEnemy, Color color, int targetIndex = -1, int enemyIndex = -1) {
         if (impactEffectPrefab == null) return;
 
         RectTransform anchor;
         if (onEnemy)
         {
-            anchor = enemyImpactAnchor;
+            anchor = GetEnemyImpactAnchor(enemyIndex >= 0 ? enemyIndex : currentEnemyTargetIndex);
         }
         else
         {
@@ -1971,10 +1946,10 @@ public class BattleController : MonoBehaviour
             }
         }
         
-        if (enemy != null && !enemy.IsDead())
+        for (int i = 0; i < enemies.Length; i++)
         {
-            turnOrder.Add(enemy);
-            Debug.Log($"[BattleController] BuildTurnOrder: Added enemy {enemy.displayName} (speed: {enemy.speed})");
+            if (enemies[i] != null && !enemies[i].IsDead())
+                turnOrder.Add(enemies[i]);
         }
         
         turnOrder.Sort((a, b) => b.speed.CompareTo(a.speed));
@@ -2003,9 +1978,187 @@ public class BattleController : MonoBehaviour
         }
     }
 
+    private bool AnyAliveEnemy()
+    {
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i] != null && !enemies[i].IsDead())
+                return true;
+        }
+        return false;
+    }
+
+    private int GetEnemyIndex(CharacterStats stats)
+    {
+        if (stats == null) return -1;
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i] == stats)
+                return i;
+        }
+        return -1;
+    }
+
+    private RectTransform GetEnemyPortraitRect(int index)
+    {
+        if (enemyPortraitRects != null && index >= 0 && index < enemyPortraitRects.Length && enemyPortraitRects[index] != null)
+            return enemyPortraitRects[index];
+        return enemyPortraitRect;
+    }
+
+    private RectTransform GetEnemyImpactAnchor(int index)
+    {
+        if (enemyImpactAnchors != null && index >= 0 && index < enemyImpactAnchors.Length && enemyImpactAnchors[index] != null)
+            return enemyImpactAnchors[index];
+        return enemyImpactAnchor;
+    }
+
+    private RectTransform GetEnemyPopupAnchor(int index)
+    {
+        if (enemyPopupAnchors != null && index >= 0 && index < enemyPopupAnchors.Length && enemyPopupAnchors[index] != null)
+            return enemyPopupAnchors[index];
+        return enemyPopupAnchor;
+    }
+
+    private void EnsureEnemyTargetValid()
+    {
+        if (currentEnemyTargetIndex < 0 || currentEnemyTargetIndex >= enemies.Length)
+            currentEnemyTargetIndex = 0;
+
+        if (enemies[currentEnemyTargetIndex] != null && !enemies[currentEnemyTargetIndex].IsDead())
+        {
+            enemy = enemies[currentEnemyTargetIndex];
+            return;
+        }
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i] != null && !enemies[i].IsDead())
+            {
+                currentEnemyTargetIndex = i;
+                enemy = enemies[i];
+                return;
+            }
+        }
+
+        enemy = null;
+    }
+
+    public void SetEnemyTarget(int index)
+    {
+        if (index < 0 || index >= enemies.Length) return;
+        if (enemies[index] == null || enemies[index].IsDead()) return;
+        currentEnemyTargetIndex = index;
+        enemy = enemies[index];
+        UpdateUI();
+    }
+
+    private CharacterData GetCurrentEnemyData()
+    {
+        var gm = GameManager.Instance;
+        var floorCfg = gm != null ? gm.GetCurrentTowerFloor() : null;
+        if (floorCfg != null && floorCfg.enemies != null && currentEnemyTargetIndex >= 0 && currentEnemyTargetIndex < floorCfg.enemies.Length)
+        {
+            var d = floorCfg.enemies[currentEnemyTargetIndex];
+            if (d != null) return d;
+        }
+        if (floorCfg != null && floorCfg.enemyData != null) return floorCfg.enemyData;
+        return gm != null ? gm.GetCurrentEnemyData() : null;
+    }
+
+    private void InitializeEnemies(GameManager gm)
+    {
+        var floorCfg = gm != null ? gm.GetCurrentTowerFloor() : null;
+        int floorNumber = gm != null && gm.playerData != null ? gm.playerData.towerCurrentFloor + 1 : 1;
+        bool isBoss = floorCfg != null && floorCfg.isBossFloor;
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            CharacterStats stats = null;
+            if (enemies != null && i < enemies.Length && enemies[i] != null)
+                stats = enemies[i];
+            else if (i == 0)
+                stats = enemy;
+
+            enemies[i] = stats;
+        }
+
+        var datas = ResolveEnemyDatasForFloor(floorCfg, gm);
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            var stats = enemies[i];
+            var data = datas[i];
+            if (stats == null)
+                continue;
+
+            bool active = data != null;
+            stats.gameObject.SetActive(active);
+            if (!active)
+                continue;
+
+            stats.InitFrom(data);
+            ScaleEnemyForFloorInstance(stats, floorNumber, isBoss && i == 0);
+
+            if (enemyPortraitImages != null && i < enemyPortraitImages.Length && enemyPortraitImages[i] != null && data.silhouetteSprite != null)
+                enemyPortraitImages[i].sprite = data.silhouetteSprite;
+        }
+
+        EnsureEnemyTargetValid();
+        UpdateUI();
+    }
+
+    private CharacterData[] ResolveEnemyDatasForFloor(TowerFloor floorCfg, GameManager gm)
+    {
+        var result = new CharacterData[4];
+
+        if (floorCfg != null && floorCfg.enemies != null && floorCfg.enemies.Length > 0)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (i < floorCfg.enemies.Length)
+                    result[i] = floorCfg.enemies[i];
+            }
+        }
+
+        if (result[0] == null)
+        {
+            if (floorCfg != null && floorCfg.enemyData != null)
+                result[0] = floorCfg.enemyData;
+            else if (gm != null)
+                result[0] = gm.GetCurrentEnemyData();
+        }
+
+        for (int i = 1; i < 4; i++)
+        {
+            if (result[i] == null)
+                result[i] = result[0];
+        }
+
+        return result;
+    }
+
+    private void ScaleEnemyForFloorInstance(CharacterStats stats, int floorNumber, bool isBoss)
+    {
+        if (stats == null) return;
+        int t = Mathf.Max(0, floorNumber - 1);
+        float hpMul = Mathf.Pow(1.035f, t);
+        float atkMul = Mathf.Pow(1.025f, t);
+        float defMul = Mathf.Pow(1.02f, t);
+        if (isBoss)
+        {
+            hpMul *= 1.85f;
+            atkMul *= 1.45f;
+            defMul *= 1.25f;
+        }
+        stats.maxHP = Mathf.RoundToInt(stats.maxHP * hpMul);
+        stats.currentHP = stats.maxHP;
+        stats.attack = Mathf.RoundToInt(stats.attack * atkMul);
+        stats.defense = Mathf.RoundToInt(stats.defense * defMul);
+    }
+
     private bool CheckBattleEndConditions()
     {
-        if (enemy == null || enemy.IsDead() || !turnOrder.Contains(enemy))
+        if (!AnyAliveEnemy())
         {
             if (battleLogText != null)
                 battleLogText.text += "\nEnemy defeated! You win.";

@@ -10,6 +10,8 @@ public class TowerConfig : ScriptableObject
 [System.Serializable]
 public class TowerFloor
 {
+
+    public CharacterData[] enemies = new CharacterData[4];
     public int floorNumber;
     public string floorName;
     public CharacterData enemyData;

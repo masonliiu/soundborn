@@ -58,12 +58,30 @@ public class TowerProgression : MonoBehaviour
         bool isBoss = (bossInterval > 0) && (floorNumber % bossInterval == 0);
         floor.isBossFloor = isBoss;
 
-        if (isBoss && defaultBossEnemy != null)
-            floor.enemyData = defaultBossEnemy;
-        else if (defaultNormalEnemy != null)
-            floor.enemyData = defaultNormalEnemy;
-        else if (config != null && config.floors != null && config.floors.Count > 0)
-            floor.enemyData = config.floors[config.floors.Count - 1].enemyData;
+        floor.enemies = new CharacterData[4];
+
+        var normal = defaultNormalEnemy;
+        if (normal == null && config != null && config.floors != null && config.floors.Count > 0)
+            normal = config.floors[config.floors.Count - 1].enemyData;
+
+        var boss = defaultBossEnemy != null ? defaultBossEnemy : normal;
+
+        if (isBoss)
+        {
+            floor.enemies[0] = boss;
+            floor.enemies[1] = normal;
+            floor.enemies[2] = normal;
+            floor.enemies[3] = normal;
+        }
+        else
+        {
+            floor.enemies[0] = normal;
+            floor.enemies[1] = normal;
+            floor.enemies[2] = normal;
+            floor.enemies[3] = normal;
+        }
+
+        floor.enemyData = floor.enemies[0];
 
         int soft = baseSoftReward + softRewardPerFloor * index;
         if (isBoss)
