@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem;
+#endif
 
 public class BattleController : MonoBehaviour
 {
@@ -91,6 +94,7 @@ public class BattleController : MonoBehaviour
     [Header("Characters")]
     public CharacterStats player;
     public CharacterStats enemy;
+    public CharacterStats[] enemyActors = new CharacterStats[4];
 
     [Header("Portraits")]
     public Image playerPortraitImage;
@@ -138,8 +142,13 @@ public class BattleController : MonoBehaviour
     private bool battleOver = false;
 
     private CharacterStats[] partyMembers = new CharacterStats[4];
-    private CharacterStats[] enemies = new CharacterStats[4];
+    private CharacterStats[] enemyMembers = new CharacterStats[4];
     private int currentEnemyTargetIndex = 0;
+
+    public GameObject[] enemyTargetIndicators = new GameObject[4];
+    public float enemyTargetIndicatorRotateSpeed = 240f;
+    private bool isSelectingTarget = false;
+    private PendingAbility selectingAbility = PendingAbility.None;
     
     private List<CharacterStats> turnOrder = new List<CharacterStats>();
     private int currentTurnIndex = 0;
@@ -209,6 +218,114 @@ public class BattleController : MonoBehaviour
             StartBattleNow();
     }
 
+    private void Update()
+    {
+        if (!isSelectingTarget) return;
+        
+        // Tap/click an enemy slot to change the selected target (no Unity Button wiring required).
+        if (TryGetPointerDown(out var pointerPos))
+        {
+            int hit = GetEnemyIndexAtScreenPoint(pointerPos);
+            if (hit >= 0)
+            {
+                SetEnemyTarget(hit);
+                UpdateTargetIndicators();
+            }
+        }
+
+        // Only the selected target's indicator should animate.
+        if (enemyTargetIndicators != null)
+        {
+            int idx = currentEnemyTargetIndex;
+            if (idx >= 0 && idx < enemyTargetIndicators.Length)
+            {
+                var go = enemyTargetIndicators[idx];
+                if (go != null && go.activeSelf)
+                    go.transform.Rotate(0f, 0f, -enemyTargetIndicatorRotateSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    private bool TryGetPointerDown(out Vector2 pointerPos)
+    {
+        // Supports both input backends:
+        // - New Input System (ENABLE_INPUT_SYSTEM)
+        // - Old Input Manager (ENABLE_LEGACY_INPUT_MANAGER)
+#if ENABLE_INPUT_SYSTEM
+        if (Touchscreen.current != null)
+        {
+            var touch = Touchscreen.current.primaryTouch;
+            if (touch.press.wasPressedThisFrame)
+            {
+                pointerPos = touch.position.ReadValue();
+                return true;
+            }
+        }
+
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            pointerPos = Mouse.current.position.ReadValue();
+            return true;
+        }
+
+        pointerPos = default;
+        return false;
+#elif ENABLE_LEGACY_INPUT_MANAGER
+        if (Input.touchCount > 0)
+        {
+            var t = Input.GetTouch(0);
+            if (t.phase == TouchPhase.Began)
+            {
+                pointerPos = t.position;
+                return true;
+            }
+        }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            pointerPos = Input.mousePosition;
+            return true;
+        }
+
+        pointerPos = default;
+        return false;
+#else
+        pointerPos = default;
+        return false;
+#endif
+    }
+
+    private int GetEnemyIndexAtScreenPoint(Vector2 screenPos)
+    {
+        for (int i = 0; i < enemyMembers.Length; i++)
+        {
+            var e = enemyMembers[i];
+            if (e == null || e.IsDead()) continue;
+
+            RectTransform rt = null;
+
+            if (enemyTargetIndicators != null && i < enemyTargetIndicators.Length && enemyTargetIndicators[i] != null)
+                rt = enemyTargetIndicators[i].GetComponent<RectTransform>();
+
+            if (rt == null && enemyPortraitRects != null && i < enemyPortraitRects.Length && enemyPortraitRects[i] != null)
+                rt = enemyPortraitRects[i];
+
+            if (rt == null && enemyPortraitImages != null && i < enemyPortraitImages.Length && enemyPortraitImages[i] != null)
+                rt = enemyPortraitImages[i].rectTransform;
+
+            if (rt == null) continue;
+
+            var canvas = rt.GetComponentInParent<Canvas>();
+            Camera cam = null;
+            if (canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+                cam = canvas.worldCamera;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(rt, screenPos, cam))
+                return i;
+        }
+
+        return -1;
+    }
+
     public void ResetBattleState()
     {
         Debug.Log("[BattleController] ResetBattleState() called");
@@ -227,9 +344,9 @@ public class BattleController : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemyMembers.Length; i++)
         {
-            enemies[i] = null;
+            enemyMembers[i] = null;
         }
     }
 
@@ -453,6 +570,107 @@ public class BattleController : MonoBehaviour
         }
     }
 
+    private void BeginTargetSelection(PendingAbility ability)
+    {
+        selectingAbility = ability;
+        isSelectingTarget = true;
+        pendingAbility = ability;
+        AutoSelectLowestHpEnemy();
+        ShowAbilityCard(ability);
+        UpdateTargetIndicators();
+    }
+
+    private void AutoSelectLowestHpEnemy()
+    {
+        int bestIdx = -1;
+        int bestHp = int.MaxValue;
+
+        for (int i = 0; i < enemyMembers.Length; i++)
+        {
+            var e = enemyMembers[i];
+            if (e == null || e.IsDead()) continue;
+
+            if (e.currentHP < bestHp)
+            {
+                bestHp = e.currentHP;
+                bestIdx = i;
+            }
+        }
+
+        if (bestIdx >= 0)
+            SetEnemyTarget(bestIdx);
+        else
+            EnsureEnemyTargetValid();
+    }
+
+    private void CancelTargetSelection()
+    {
+        isSelectingTarget = false;
+        selectingAbility = PendingAbility.None;
+        HideAbilityCard();
+        UpdateTargetIndicators();
+    }
+
+    private void UpdateTargetIndicators()
+    {
+        if (enemyTargetIndicators == null) return;
+
+        for (int i = 0; i < enemyTargetIndicators.Length; i++)
+        {
+            var go = enemyTargetIndicators[i];
+            if (go == null) continue;
+
+            bool on = isSelectingTarget
+                      && enemyMembers != null
+                      && i < enemyMembers.Length
+                      && enemyMembers[i] != null
+                      && !enemyMembers[i].IsDead();
+            go.SetActive(on);
+            go.transform.localScale = on && i == currentEnemyTargetIndex ? Vector3.one * 1.12f : Vector3.one;
+        }
+    }
+
+    public void OnEnemySlotPressed(int index)
+    {
+        Debug.Log($"[BattleController] OnEnemySlotPressed({index}) isSelectingTarget={isSelectingTarget} selectingAbility={selectingAbility}");
+        if (!isSelectingTarget) return;
+        if (index < 0 || index >= enemyMembers.Length) return;
+        if (enemyMembers[index] == null || enemyMembers[index].IsDead()) return;
+
+        SetEnemyTarget(index);
+        UpdateTargetIndicators();
+    }
+
+    private void ConfirmTargetSelectionAndExecute()
+    {
+        if (!isSelectingTarget) return;
+        if (selectingAbility == PendingAbility.None) return;
+
+        // Ensure we have a valid target (prefer current selection, fallback to lowest HP).
+        int idx = currentEnemyTargetIndex;
+        if (idx < 0 || idx >= enemyMembers.Length || enemyMembers[idx] == null || enemyMembers[idx].IsDead())
+        {
+            AutoSelectLowestHpEnemy();
+            idx = currentEnemyTargetIndex;
+        }
+
+        if (idx < 0 || idx >= enemyMembers.Length || enemyMembers[idx] == null || enemyMembers[idx].IsDead())
+            return;
+
+        var ability = selectingAbility;
+        isSelectingTarget = false;
+        selectingAbility = PendingAbility.None;
+        HideAbilityCard();
+        UpdateTargetIndicators();
+
+        if (ability == PendingAbility.Basic)
+            StartCoroutine(PlayerAttackWithPanelRoutine(PlayerBasicAttackRoutine(idx)));
+        else if (ability == PendingAbility.Skill)
+            StartCoroutine(PlayerAttackWithPanelRoutine(PlayerSkillRoutine(idx)));
+        else if (ability == PendingAbility.Ultimate)
+            StartCoroutine(PlayerAttackWithPanelRoutine(PlayerUltimateRoutine(idx)));
+    }
+
     private void StartEnemyTurn(CharacterStats enemyActor)
     {
         if (battleOver || enemyActor == null) return;
@@ -479,52 +697,37 @@ public class BattleController : MonoBehaviour
         {
             int newHp = enemyActor.currentHP;
             int oldHp = Mathf.Clamp(newHp + statusDamage, 0, enemyActor.maxHP);
+            int eIdx = GetEnemyIndex(enemyActor);
 
             if (battleLogText != null)
             {
                 battleLogText.text += $"\n{enemyActor.displayName} suffers {statusDamage} damage from {enemyActor.currentStatus}.";
             }
 
-            if (enemyHpDamageSlider != null)
+            var dmgSlider = GetEnemyHpDamageSlider(eIdx);
+            if (dmgSlider != null)
             {
-                enemyHpDamageSlider.maxValue = enemyActor.maxHP;
-                enemyHpDamageSlider.value = oldHp;
+                dmgSlider.maxValue = enemyActor.maxHP;
+                dmgSlider.value = oldHp;
             }
 
-            if (enemyHpText != null)
-            {
-                enemyHpText.text = $"{enemyActor.displayName} {oldHp}/{enemyActor.maxHP}";
-            }
-            if (enemyHpSlider != null && !isEnemyHpAnimating)
-            {
-                enemyHpSlider.maxValue = enemyActor.maxHP;
-                enemyHpSlider.value = oldHp;
-            }
+            UpdateUI();
 
             float preHitDelay = 0.5f;
             yield return new WaitForSeconds(preHitDelay);
-            StartCoroutine(Shake(enemyPortraitRect));
-
-            int eIdx = GetEnemyIndex(enemyActor);
+            StartCoroutine(Shake(GetEnemyPortraitRect(eIdx)));
             SpawnImpact(onEnemy: true, color: GetStatusColor(enemyActor.currentStatus), enemyIndex: eIdx);
             SpawnDamagePopup(onEnemy: true, amount: statusDamage, isCrit: false, enemyIndex: eIdx);
 
-            if (enemyHpText != null)
-            {
-                enemyHpText.text = $"{enemyActor.displayName} {newHp}/{enemyActor.maxHP}";
-            }
-            if (enemyHpSlider != null && !isEnemyHpAnimating)
-            {
-                enemyHpSlider.value = newHp;
-            }
+            UpdateUI();
 
             float postHitDelay = 0.25f;
             yield return new WaitForSeconds(postHitDelay);
 
-            if (enemyHpDamageSlider != null)
+            if (dmgSlider != null)
             {
                 yield return StartCoroutine(
-                    AnimateHpBar(enemyHpDamageSlider, oldHp, newHp, isEnemy: true)
+                    AnimateHpBar(dmgSlider, oldHp, newHp, isEnemy: true)
                 );
             }
         }
@@ -560,36 +763,44 @@ public class BattleController : MonoBehaviour
     {
         if (!CanPlayerAct()) return;
 
-        if (pendingAbility != PendingAbility.Basic) {
-            ShowAbilityCard(PendingAbility.Basic);
+        if (currentActor == null) return;
+        
+        if (isSelectingTarget)
+        {
+            if (selectingAbility == PendingAbility.Basic)
+                ConfirmTargetSelectionAndExecute();
+            else
+                BeginTargetSelection(PendingAbility.Basic);
             return;
         }
 
-        HideAbilityCard();
-        StartCoroutine(PlayerAttackWithPanelRoutine(PlayerBasicAttackRoutine()));
+        BeginTargetSelection(PendingAbility.Basic);
     }
 
-    private IEnumerator PlayerBasicAttackRoutine()
+    private IEnumerator PlayerBasicAttackRoutine(int enemyIndex)
     {
-        if (currentActor == null || enemy == null) yield break;
+        if (currentActor == null) yield break;
+        if (enemyIndex < 0 || enemyIndex >= enemyMembers.Length) yield break;
+        var target = enemyMembers[enemyIndex];
+        if (target == null || target.IsDead()) yield break;
 
         if (AudioManager.Instance != null) AudioManager.Instance.Play("basic");
 
         bool isCrit;
         float elemMul;
-        int damage = currentActor.CalculateDamageAgainst(enemy, 1.0f, 0, out isCrit, out elemMul);
+        int damage = currentActor.CalculateDamageAgainst(target, 1.0f, 0, out isCrit, out elemMul);
 
         StartCoroutine(LungeForward(GetCurrentActorPortraitRect(), towardsCenter: true));
 
-        int oldHp = enemy.currentHP;
-        enemy.TakeDamage(damage);
-        int newHp = enemy.currentHP;
+        int oldHp = target.currentHP;
+        target.TakeDamage(damage);
+        int newHp = target.currentHP;
 
         if (isCrit)
             StartCoroutine(CameraShake());
-        SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element));
-        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
-        StartCoroutine(Shake(GetEnemyPortraitRect(currentEnemyTargetIndex)));
+        SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element), enemyIndex: enemyIndex);
+        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit, enemyIndex: enemyIndex);
+        StartCoroutine(Shake(GetEnemyPortraitRect(enemyIndex)));
 
         if (battleLogText != null)
         {
@@ -599,27 +810,29 @@ public class BattleController : MonoBehaviour
         }
         UpdateUI();
 
-        if (enemyHpDamageSlider != null)
+        var dmgSlider = GetEnemyHpDamageSlider(enemyIndex);
+        if (dmgSlider != null)
         {
-            enemyHpDamageSlider.maxValue = enemy.maxHP;
-            enemyHpDamageSlider.value = oldHp;
+            dmgSlider.maxValue = target.maxHP;
+            dmgSlider.value = oldHp;
         }
 
         float postHitDelay = 0.35f;
         yield return new WaitForSeconds(postHitDelay);
 
-        if (enemyHpDamageSlider != null)
+        if (dmgSlider != null)
         {
             yield return StartCoroutine(
-                AnimateHpBar(enemyHpDamageSlider, oldHp, enemy.currentHP, isEnemy: true)
+                AnimateHpBar(dmgSlider, oldHp, target.currentHP, isEnemy: true)
             );
         }
 
-        if (enemy.IsDead())
+        if (target.IsDead())
         {
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
+            EnsureEnemyTargetValid();
         }
 
         EndPlayerTurn(afterDealingDamage: true);
@@ -629,12 +842,6 @@ public class BattleController : MonoBehaviour
     {
         if (!CanPlayerAct()) return;
 
-        if (pendingAbility != PendingAbility.Skill) {
-            ShowAbilityCard(PendingAbility.Skill);
-            return;
-        }
-
-
         if (currentActor == null || !currentActor.CanUseSkill())
         {
             if (battleLogText != null)
@@ -642,33 +849,44 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        HideAbilityCard();
-        StartCoroutine(PlayerAttackWithPanelRoutine(PlayerSkillRoutine()));
+        if (isSelectingTarget)
+        {
+            if (selectingAbility == PendingAbility.Skill)
+                ConfirmTargetSelectionAndExecute();
+            else
+                BeginTargetSelection(PendingAbility.Skill);
+            return;
+        }
+
+        BeginTargetSelection(PendingAbility.Skill);
     }
 
-    private IEnumerator PlayerSkillRoutine()
+    private IEnumerator PlayerSkillRoutine(int enemyIndex)
     {
-        if (currentActor == null || enemy == null) yield break;
+        if (currentActor == null) yield break;
+        if (enemyIndex < 0 || enemyIndex >= enemyMembers.Length) yield break;
+        var target = enemyMembers[enemyIndex];
+        if (target == null || target.IsDead()) yield break;
 
         if (AudioManager.Instance != null) AudioManager.Instance.Play("skill");
 
         bool isCrit;
         float elemMul;
-        int damage = currentActor.CalculateDamageAgainst(enemy, 1.2f, currentActor.skillPower, out isCrit, out elemMul);
+        int damage = currentActor.CalculateDamageAgainst(target, 1.2f, currentActor.skillPower, out isCrit, out elemMul);
 
         StartCoroutine(LungeForward(GetCurrentActorPortraitRect(), towardsCenter: true));
 
-        int oldHp = enemy.currentHP;
-        enemy.TakeDamage(damage);
+        int oldHp = target.currentHP;
+        target.TakeDamage(damage);
 
         if (isCrit)
             StartCoroutine(CameraShake());
-        SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element));
-        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
-        StartCoroutine(Shake(GetEnemyPortraitRect(currentEnemyTargetIndex)));
+        SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element), enemyIndex: enemyIndex);
+        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit, enemyIndex: enemyIndex);
+        StartCoroutine(Shake(GetEnemyPortraitRect(enemyIndex)));
         currentActor.PutSkillOnCooldown();
 
-        string statusText = ApplyElementalStatusFromPlayerSkill();
+        string statusText = ApplyElementalStatusFromPlayerSkill(target);
 
         if (battleLogText != null)
         {
@@ -678,27 +896,29 @@ public class BattleController : MonoBehaviour
         }
         UpdateUI();
 
-        if (enemyHpDamageSlider != null)
+        var dmgSlider = GetEnemyHpDamageSlider(enemyIndex);
+        if (dmgSlider != null)
         {
-            enemyHpDamageSlider.maxValue = enemy.maxHP;
-            enemyHpDamageSlider.value = oldHp;
+            dmgSlider.maxValue = target.maxHP;
+            dmgSlider.value = oldHp;
         }
 
         float postHitDelay = 0.35f;
         yield return new WaitForSeconds(postHitDelay);
 
-        if (enemyHpDamageSlider != null)
+        if (dmgSlider != null)
         {
             yield return StartCoroutine(
-                AnimateHpBar(enemyHpDamageSlider, oldHp, enemy.currentHP, isEnemy: true)
+                AnimateHpBar(dmgSlider, oldHp, target.currentHP, isEnemy: true)
             );
         }
 
-        if (enemy.IsDead())
+        if (target.IsDead())
         {
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
+            EnsureEnemyTargetValid();
         }
 
         EndPlayerTurn(afterDealingDamage: true);
@@ -708,13 +928,6 @@ public class BattleController : MonoBehaviour
     {
         if (!CanPlayerAct()) return;
 
-        if (pendingAbility != PendingAbility.Ultimate) {
-            ShowAbilityCard(PendingAbility.Ultimate);
-            return;
-        }
-
-        HideAbilityCard();
-
         if (currentActor == null || !currentActor.CanUseUltimate())
         {
             if (battleLogText != null)
@@ -722,29 +935,41 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        StartCoroutine(PlayerAttackWithPanelRoutine(PlayerUltimateRoutine()));
+        if (isSelectingTarget)
+        {
+            if (selectingAbility == PendingAbility.Ultimate)
+                ConfirmTargetSelectionAndExecute();
+            else
+                BeginTargetSelection(PendingAbility.Ultimate);
+            return;
+        }
+
+        BeginTargetSelection(PendingAbility.Ultimate);
     }
 
-    private IEnumerator PlayerUltimateRoutine()
+    private IEnumerator PlayerUltimateRoutine(int enemyIndex)
     {
-        if (currentActor == null || enemy == null) yield break;
+        if (currentActor == null) yield break;
+        if (enemyIndex < 0 || enemyIndex >= enemyMembers.Length) yield break;
+        var target = enemyMembers[enemyIndex];
+        if (target == null || target.IsDead()) yield break;
 
         if (AudioManager.Instance != null) AudioManager.Instance.Play("ultimate");
 
         bool isCrit;
         float elemMul;
-        int damage = currentActor.CalculateDamageAgainst(enemy, 1.5f, currentActor.ultimatePower, out isCrit, out elemMul);
+        int damage = currentActor.CalculateDamageAgainst(target, 1.5f, currentActor.ultimatePower, out isCrit, out elemMul);
 
         StartCoroutine(LungeForward(GetCurrentActorPortraitRect(), towardsCenter: true));
 
-        int oldHp = enemy.currentHP;
-        enemy.TakeDamage(damage);
+        int oldHp = target.currentHP;
+        target.TakeDamage(damage);
 
         if (isCrit)
             StartCoroutine(CameraShake());
-        SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element));
-        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit);
-        StartCoroutine(Shake(GetEnemyPortraitRect(currentEnemyTargetIndex)));
+        SpawnImpact(onEnemy: true, color: GetElementColor(currentActor.element), enemyIndex: enemyIndex);
+        SpawnDamagePopup(onEnemy: true, amount: damage, isCrit: isCrit, enemyIndex: enemyIndex);
+        StartCoroutine(Shake(GetEnemyPortraitRect(enemyIndex)));
         currentActor.PutUltimateOnCooldown();
 
         currentActor.ApplyStatus(StatusType.DefenseUp, 2);
@@ -757,51 +982,53 @@ public class BattleController : MonoBehaviour
         }
         UpdateUI();
 
-        if (enemyHpDamageSlider != null)
+        var dmgSlider = GetEnemyHpDamageSlider(enemyIndex);
+        if (dmgSlider != null)
         {
-            enemyHpDamageSlider.maxValue = enemy.maxHP;
-            enemyHpDamageSlider.value = oldHp;
+            dmgSlider.maxValue = target.maxHP;
+            dmgSlider.value = oldHp;
         }
 
         float postHitDelay = 0.35f;
         yield return new WaitForSeconds(postHitDelay);
 
-        if (enemyHpDamageSlider != null)
+        if (dmgSlider != null)
         {
             yield return StartCoroutine(
-                AnimateHpBar(enemyHpDamageSlider, oldHp, enemy.currentHP, isEnemy: true)
+                AnimateHpBar(dmgSlider, oldHp, target.currentHP, isEnemy: true)
             );
         }
 
-        if (enemy.IsDead())
+        if (target.IsDead())
         {
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
                 yield break;
+            EnsureEnemyTargetValid();
         }
 
         EndPlayerTurn(afterDealingDamage: true);
     }
 
-    private string ApplyElementalStatusFromPlayerSkill()
+    private string ApplyElementalStatusFromPlayerSkill(CharacterStats target)
     {
-        if (currentActor == null || enemy == null) return "";
+        if (currentActor == null || target == null) return "";
         
         switch (currentActor.element)
         {
             case ElementType.Bass:
             case ElementType.Noise:
-                enemy.ApplyStatus(StatusType.BleedEars, 3);
+                target.ApplyStatus(StatusType.BleedEars, 3);
                 return $"{currentActor.displayName} inflicts BLEEDING EARS over time!";
 
             case ElementType.Harmony:
             case ElementType.Melody:
-                enemy.ApplyStatus(StatusType.Sleep, 1);
+                target.ApplyStatus(StatusType.Sleep, 1);
                 return $"{currentActor.displayName}'s calm melody puts the enemy to SLEEP, skipping their next turn!";
 
             case ElementType.Percussion:
             case ElementType.Synth:
-                enemy.ApplyStatus(StatusType.Stun, 1);
+                target.ApplyStatus(StatusType.Stun, 1);
                 return $"{currentActor.displayName} STUNS the enemy, they will miss their next turn!";
 
             default:
@@ -913,7 +1140,7 @@ public class BattleController : MonoBehaviour
     {
         UpdateUI();
 
-        if (afterDealingDamage && (enemy == null || enemy.IsDead() || !turnOrder.Contains(enemy)))
+        if (afterDealingDamage)
         {
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
@@ -989,7 +1216,35 @@ public class BattleController : MonoBehaviour
         }
 
         UpdatePartyMemberUI();
+        UpdateEnemyMemberUI();
         UpdateStatusIcons();
+    }
+
+    private void UpdateEnemyMemberUI()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            var e = (enemyMembers != null && i < enemyMembers.Length) ? enemyMembers[i] : null;
+            if (e == null) continue;
+
+            if (enemyHpTexts != null && i < enemyHpTexts.Length && enemyHpTexts[i] != null)
+                enemyHpTexts[i].text = $"{e.currentHP}/{e.maxHP}";
+
+            if (enemyHpSliders != null && i < enemyHpSliders.Length && enemyHpSliders[i] != null)
+            {
+                enemyHpSliders[i].maxValue = e.maxHP;
+                enemyHpSliders[i].value = e.currentHP;
+            }
+
+            if (enemyHpDamageSliders != null && i < enemyHpDamageSliders.Length && enemyHpDamageSliders[i] != null)
+            {
+                enemyHpDamageSliders[i].maxValue = e.maxHP;
+                enemyHpDamageSliders[i].value = e.currentHP;
+            }
+
+            if (enemyStatusIcons != null && i < enemyStatusIcons.Length && enemyStatusIcons[i] != null)
+                enemyStatusIcons[i].color = GetStatusColor(e.currentStatus);
+        }
     }
 
     private void UpdatePartyMemberUI()
@@ -1074,6 +1329,9 @@ public class BattleController : MonoBehaviour
         yield return new WaitForSeconds(0.08f);
 
         yield return StartCoroutine(SlideAbilityPanelIn());
+
+        EnsureEnemyTargetValid();
+        UpdateTargetIndicators();
     }
 
     private IEnumerator SlideAbilityPanelOut()
@@ -1946,10 +2204,10 @@ public class BattleController : MonoBehaviour
             }
         }
         
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemyMembers.Length; i++)
         {
-            if (enemies[i] != null && !enemies[i].IsDead())
-                turnOrder.Add(enemies[i]);
+            if (enemyMembers[i] != null && !enemyMembers[i].IsDead())
+                turnOrder.Add(enemyMembers[i]);
         }
         
         turnOrder.Sort((a, b) => b.speed.CompareTo(a.speed));
@@ -1980,9 +2238,9 @@ public class BattleController : MonoBehaviour
 
     private bool AnyAliveEnemy()
     {
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemyMembers.Length; i++)
         {
-            if (enemies[i] != null && !enemies[i].IsDead())
+            if (enemyMembers[i] != null && !enemyMembers[i].IsDead())
                 return true;
         }
         return false;
@@ -1991,9 +2249,9 @@ public class BattleController : MonoBehaviour
     private int GetEnemyIndex(CharacterStats stats)
     {
         if (stats == null) return -1;
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemyMembers.Length; i++)
         {
-            if (enemies[i] == stats)
+            if (enemyMembers[i] == stats)
                 return i;
         }
         return -1;
@@ -2020,23 +2278,30 @@ public class BattleController : MonoBehaviour
         return enemyPopupAnchor;
     }
 
+    private Slider GetEnemyHpDamageSlider(int index)
+    {
+        if (enemyHpDamageSliders != null && index >= 0 && index < enemyHpDamageSliders.Length && enemyHpDamageSliders[index] != null)
+            return enemyHpDamageSliders[index];
+        return enemyHpDamageSlider;
+    }
+
     private void EnsureEnemyTargetValid()
     {
-        if (currentEnemyTargetIndex < 0 || currentEnemyTargetIndex >= enemies.Length)
+        if (currentEnemyTargetIndex < 0 || currentEnemyTargetIndex >= enemyMembers.Length)
             currentEnemyTargetIndex = 0;
 
-        if (enemies[currentEnemyTargetIndex] != null && !enemies[currentEnemyTargetIndex].IsDead())
+        if (enemyMembers[currentEnemyTargetIndex] != null && !enemyMembers[currentEnemyTargetIndex].IsDead())
         {
-            enemy = enemies[currentEnemyTargetIndex];
+            enemy = enemyMembers[currentEnemyTargetIndex];
             return;
         }
 
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemyMembers.Length; i++)
         {
-            if (enemies[i] != null && !enemies[i].IsDead())
+            if (enemyMembers[i] != null && !enemyMembers[i].IsDead())
             {
                 currentEnemyTargetIndex = i;
-                enemy = enemies[i];
+                enemy = enemyMembers[i];
                 return;
             }
         }
@@ -2046,11 +2311,20 @@ public class BattleController : MonoBehaviour
 
     public void SetEnemyTarget(int index)
     {
-        if (index < 0 || index >= enemies.Length) return;
-        if (enemies[index] == null || enemies[index].IsDead()) return;
+        if (index < 0 || index >= enemyMembers.Length) return;
+        if (enemyMembers[index] == null || enemyMembers[index].IsDead()) return;
         currentEnemyTargetIndex = index;
-        enemy = enemies[index];
+        enemy = enemyMembers[index];
+        RefreshFocusedEnemyUI();
         UpdateUI();
+    }
+
+    private void RefreshFocusedEnemyUI()
+    {
+        EnsureEnemyTargetValid();
+        var data = GetCurrentEnemyData();
+        if (enemyPortraitImage != null && data != null && data.silhouetteSprite != null)
+            enemyPortraitImage.sprite = data.silhouetteSprite;
     }
 
     private CharacterData GetCurrentEnemyData()
@@ -2072,21 +2346,43 @@ public class BattleController : MonoBehaviour
         int floorNumber = gm != null && gm.playerData != null ? gm.playerData.towerCurrentFloor + 1 : 1;
         bool isBoss = floorCfg != null && floorCfg.isBossFloor;
 
-        for (int i = 0; i < enemies.Length; i++)
+        // If the scene only has a single enemy actor wired (legacy setup),
+        // auto-create additional "logic-only" enemy actors so multi-enemy battles work.
+        // These extra actors don't need renderers; UI is driven by arrays (portrait images, hp bars, etc).
+        CharacterStats CreateAutoEnemyActor(int index)
+        {
+            var go = new GameObject($"EnemyActor_{index}");
+            // Keep hierarchy tidy near the existing enemy object if possible
+            if (enemy != null)
+                go.transform.SetParent(enemy.transform.parent, worldPositionStays: false);
+            else
+                go.transform.SetParent(transform, worldPositionStays: false);
+            return go.AddComponent<CharacterStats>();
+        }
+
+        for (int i = 0; i < enemyMembers.Length; i++)
         {
             CharacterStats stats = null;
-            if (enemies != null && i < enemies.Length && enemies[i] != null)
-                stats = enemies[i];
+            if (enemyActors != null && i < enemyActors.Length && enemyActors[i] != null)
+                stats = enemyActors[i];
             else if (i == 0)
                 stats = enemy;
+            else if (enemy != null)
+            {
+                // No actor assigned for this slot; create one so it participates in battle logic.
+                stats = CreateAutoEnemyActor(i);
+                if (enemyActors != null && i < enemyActors.Length)
+                    enemyActors[i] = stats;
+                Debug.LogWarning($"[BattleController] InitializeEnemies: enemyActors[{i}] was not assigned; auto-created {stats.name}. Consider wiring Enemy Actors[0..3] in the inspector.");
+            }
 
-            enemies[i] = stats;
+            enemyMembers[i] = stats;
         }
 
         var datas = ResolveEnemyDatasForFloor(floorCfg, gm);
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < enemyMembers.Length; i++)
         {
-            var stats = enemies[i];
+            var stats = enemyMembers[i];
             var data = datas[i];
             if (stats == null)
                 continue;
@@ -2103,7 +2399,14 @@ public class BattleController : MonoBehaviour
                 enemyPortraitImages[i].sprite = data.silhouetteSprite;
         }
 
+        for (int i = 0; i < enemyMembers.Length; i++)
+        {
+            var e = enemyMembers[i];
+            Debug.Log($"[BattleController] InitializeEnemies: slot {i}: {(e != null ? e.displayName : "NULL")} (GO active: {(e != null && e.gameObject.activeInHierarchy)})");
+        }
+
         EnsureEnemyTargetValid();
+        RefreshFocusedEnemyUI();
         UpdateUI();
     }
 

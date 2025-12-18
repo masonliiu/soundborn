@@ -13,140 +13,207 @@ MonoBehaviour:
   m_Name: Tower
   m_EditorClassIdentifier: Assembly-CSharp::TowerConfig
   floors:
-  - floorNumber: 1
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 1
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 150
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 2
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 2
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 175
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 3
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 3
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 200
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 4
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 4
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 225
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 5
+  - enemies:
+    - {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+    floorNumber: 5
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
     rewardSoftCurrency: 350
     rewardPremiumCurrency: 10
     rewardItem: {fileID: 0}
     isBossFloor: 1
-  - floorNumber: 6
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 6
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 275
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 7
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 7
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 300
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 8
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 8
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 325
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 9
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 9
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 350
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 10
+  - enemies:
+    - {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+    floorNumber: 10
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
     rewardSoftCurrency: 475
     rewardPremiumCurrency: 10
     rewardItem: {fileID: 0}
     isBossFloor: 1
-  - floorNumber: 11
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 11
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 400
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 12
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 12
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 425
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 13
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 13
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 450
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 14
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 14
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 475
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 15
+  - enemies:
+    - {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+    floorNumber: 15
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 500
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 16
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 16
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 525
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 17
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 17
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 550
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 18
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 18
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 575
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 19
+  - enemies:
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 19
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
     rewardSoftCurrency: 600
     rewardPremiumCurrency: 0
     rewardItem: {fileID: 0}
     isBossFloor: 0
-  - floorNumber: 20
+  - enemies:
+    - {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    - {fileID: 11400000, guid: eb32197eeaeea4523af46e82f5de3e3e, type: 2}
+    floorNumber: 20
     floorName: Static Intro
     enemyData: {fileID: 11400000, guid: e9a883caffe1c453f99f8672b3c4d432, type: 2}
     rewardSoftCurrency: 800
