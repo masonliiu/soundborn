@@ -9,6 +9,7 @@ public class InventoryPanel : MonoBehaviour
     public ScrollRect scrollRect;
     public RectTransform contentRoot;
     public InventoryItemUI itemPrefab;
+    public ItemDetailPanel itemDetailPanel;
 
     private readonly List<InventoryItemUI> spawnedItems = new List<InventoryItemUI>();
 
@@ -74,6 +75,11 @@ public class InventoryPanel : MonoBehaviour
                         gm.TryEquipItemToActive(inst);
 
                     Refresh();
+                },
+                () =>
+                {
+                    if (itemDetailPanel != null)
+                        itemDetailPanel.Show(inst);
                 }
             );
             spawnedItems.Add(ui);

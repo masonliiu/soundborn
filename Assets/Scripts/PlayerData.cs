@@ -88,6 +88,24 @@ public class CharacterInstance
         return true;
     }
 
+    public bool RemoveEquippedItem(ItemInstance item)
+    {
+        if (item == null || string.IsNullOrEmpty(item.instanceId) || equippedItems == null)
+            return false;
+
+        for (int i = equippedItems.Count - 1; i >= 0; i--)
+        {
+            var equipped = equippedItems[i];
+            if (equipped != null && equipped.instanceId == item.instanceId)
+            {
+                equippedItems.RemoveAt(i);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void GetEquipmentBonuses(out int hpBonus, out int attackBonus, out int defenseBonus, out int speedBonus)
     {
         hpBonus = 0;

@@ -322,6 +322,87 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
+    public CharacterInstance GetCharacterEquippingItem(ItemInstance item, out int characterIndex)
+    {
+        characterIndex = -1;
+        if (item == null || playerData == null || playerData.ownedCharacters == null)
+            return null;
+
+        for (int i = 0; i < playerData.ownedCharacters.Count; i++)
+        {
+            var character = playerData.ownedCharacters[i];
+            if (character != null && character.IsItemEquipped(item))
+            {
+                characterIndex = i;
+                return character;
+            }
+        }
+
+        return null;
+    }
+
+    public bool TryEquipItemToCharacter(ItemInstance item, int characterIndex, bool allowSwap, out CharacterInstance previousOwner)
+    {
+        previousOwner = GetCharacterEquippingItem(item, out int previousIndex);
+
+        if (item == null || playerData == null || playerData.ownedCharacters == null)
+            return false;
+
+        if (characterIndex < 0 || characterIndex >= playerData.ownedCharacters.Count)
+            return false;
+
+        if (previousOwner != null && previousIndex != characterIndex && !allowSwap)
+            return false;
+
+        var target = playerData.ownedCharacters[characterIndex];
+        if (target == null)
+            return false;
+
+        if (previousOwner != null && previousIndex != characterIndex)
+            previousOwner.RemoveEquippedItem(item);
+
+        bool success = target.TryEquip(item, out ItemInstance replaced);
+        if (!success)
+            return false;
+
+        NotifyPlayerDataChanged();
+        SavePlayerData();
+        return true;
+    }
+
+    public bool TryUnequipItemFromCharacter(ItemType type, int characterIndex)
+    {
+        if (playerData == null || playerData.ownedCharacters == null)
+            return false;
+
+        if (characterIndex < 0 || characterIndex >= playerData.ownedCharacters.Count)
+            return false;
+
+        var target = playerData.ownedCharacters[characterIndex];
+        if (target == null)
+            return false;
+
+        bool success = target.TryUnequip(type, out ItemInstance unequipped);
+        if (!success)
+            return false;
+
+        NotifyPlayerDataChanged();
+        SavePlayerData();
+        return true;
+    }
+
+    public bool TryUnequipItemFromOwner(ItemInstance item)
+    {
+        if (item == null || item.data == null)
+            return false;
+
+        var owner = GetCharacterEquippingItem(item, out int ownerIndex);
+        if (owner == null)
+            return false;
+
+        return TryUnequipItemFromCharacter(item.data.itemType, ownerIndex);
+    }
+
     public void AddSoftCurrency(int amount)
     {
         if (amount <= 0) return;

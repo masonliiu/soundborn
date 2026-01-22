@@ -9,13 +9,16 @@ public class InventoryItemUI : MonoBehaviour
     public TextMeshProUGUI lockText;
     public Button actionButton;
     public TextMeshProUGUI actionText;
+    public Button rowButton;
 
     private ItemInstance instance;
     private bool isLocked;
 
-    public void Init(ItemInstance inst, int playerLevel, bool equippedByActive, bool equippedByOther, System.Action onAction)
+    public void Init(ItemInstance inst, int playerLevel, bool equippedByActive, bool equippedByOther, System.Action onAction, System.Action onRowClick)
     {
         instance = inst;
+        ConfigureRow(onRowClick);
+
         if (inst == null || inst.data == null)
         {
             if (nameText != null) nameText.text = "Empty";
@@ -74,6 +77,16 @@ public class InventoryItemUI : MonoBehaviour
                 actionButton.onClick.AddListener(() => onAction());
             actionButton.interactable = interactable;
         }
+    }
+
+    private void ConfigureRow(System.Action onRowClick)
+    {
+        if (rowButton == null) return;
+
+        rowButton.onClick.RemoveAllListeners();
+        if (onRowClick != null)
+            rowButton.onClick.AddListener(() => onRowClick());
+        rowButton.interactable = onRowClick != null;
     }
 }
 
