@@ -50,32 +50,15 @@ public class InventoryPanel : MonoBehaviour
         spawnedItems.Clear();
 
         int playerLevel = gm.playerData.playerLevel;
-        var active = gm.GetActiveCharacterInstance();
 
         for (int i = 0; i < inventory.Count; i++)
         {
             var inst = inventory[i];
-            bool equippedByActive = active != null && active.IsItemEquipped(inst);
-            bool equippedByOther = gm.IsItemEquipped(inst) && !equippedByActive;
-
             var ui = Instantiate(itemPrefab, contentRoot);
             ui.gameObject.SetActive(true);
             ui.Init(
                 inst,
                 playerLevel,
-                equippedByActive,
-                equippedByOther,
-                () =>
-                {
-                    if (inst == null || inst.data == null) return;
-
-                    if (equippedByActive)
-                        gm.TryUnequipItemFromActive(inst.data.itemType);
-                    else
-                        gm.TryEquipItemToActive(inst);
-
-                    Refresh();
-                },
                 () =>
                 {
                     if (itemDetailPanel != null)

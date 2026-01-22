@@ -7,14 +7,12 @@ public class InventoryItemUI : MonoBehaviour
     public Image icon;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI lockText;
-    public Button actionButton;
-    public TextMeshProUGUI actionText;
     public Button rowButton;
 
     private ItemInstance instance;
     private bool isLocked;
 
-    public void Init(ItemInstance inst, int playerLevel, bool equippedByActive, bool equippedByOther, System.Action onAction, System.Action onRowClick)
+    public void Init(ItemInstance inst, int playerLevel, System.Action onRowClick)
     {
         instance = inst;
         ConfigureRow(onRowClick);
@@ -24,7 +22,6 @@ public class InventoryItemUI : MonoBehaviour
             if (nameText != null) nameText.text = "Empty";
             if (icon != null) icon.sprite = null;
             if (lockText != null) lockText.text = "";
-            ConfigureAction(false, "", null);
             return;
         }
 
@@ -45,38 +42,6 @@ public class InventoryItemUI : MonoBehaviour
             img.color = isLocked ? new Color(1f, 1f, 1f, 0.4f) : Color.white;
         }
 
-        if (inst.data.itemType == ItemType.Consumable)
-        {
-            ConfigureAction(false, "Use", null);
-            return;
-        }
-
-        if (equippedByOther)
-        {
-            ConfigureAction(false, "Equipped", null);
-        }
-        else if (equippedByActive)
-        {
-            ConfigureAction(!isLocked, "Unequip", onAction);
-        }
-        else
-        {
-            ConfigureAction(!isLocked, "Equip", onAction);
-        }
-    }
-
-    private void ConfigureAction(bool interactable, string label, System.Action onAction)
-    {
-        if (actionText != null)
-            actionText.text = label;
-
-        if (actionButton != null)
-        {
-            actionButton.onClick.RemoveAllListeners();
-            if (onAction != null)
-                actionButton.onClick.AddListener(() => onAction());
-            actionButton.interactable = interactable;
-        }
     }
 
     private void ConfigureRow(System.Action onRowClick)
