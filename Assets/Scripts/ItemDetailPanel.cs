@@ -79,11 +79,20 @@ public class ItemDetailPanel : MonoBehaviour
                 ? $"Equipped by {equippedOwner.data.displayName}"
                 : "Not equipped";
 
+        bool canEquip = data.itemType != ItemType.Consumable;
+        bool isEquipped = equippedOwner != null;
+
         if (equipButton != null)
-            equipButton.interactable = data.itemType != ItemType.Consumable;
+        {
+            equipButton.gameObject.SetActive(!isEquipped && canEquip);
+            equipButton.interactable = canEquip;
+        }
 
         if (unequipButton != null)
-            unequipButton.interactable = equippedOwner != null;
+        {
+            unequipButton.gameObject.SetActive(isEquipped);
+            unequipButton.interactable = isEquipped;
+        }
     }
 
     public void OnClick_Close()
