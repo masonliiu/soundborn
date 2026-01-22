@@ -242,7 +242,7 @@ public class BattleLineupController : MonoBehaviour
         var gm = GameManager.Instance;
         if (gm == null || floorText == null)
             return;
-        floorText.text = $"Floor {gm.playerData.towerCurrentFloor + 1}";
+        floorText.text = $"Floor {gm.GetFloorLabel(gm.playerData.towerCurrentFloor)}";
     }
 
     private void ConfirmAndStartBattle()

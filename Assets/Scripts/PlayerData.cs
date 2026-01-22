@@ -17,6 +17,99 @@ public class CharacterInstance
         currentExp = 0;
     }
 
+    public IEnumerable<ItemInstance> GetEquippedItems()
+    {
+        if (equippedItems == null)
+            yield break;
+
+        for (int i = 0; i < equippedItems.Count; i++)
+        {
+            var item = equippedItems[i];
+            if (item != null)
+                yield return item;
+        }
+    }
+
+    public ItemInstance GetEquippedItem(ItemType type)
+    {
+        if (equippedItems == null) return null;
+        for (int i = 0; i < equippedItems.Count; i++)
+        {
+            var item = equippedItems[i];
+            if (item != null && item.data != null && item.data.itemType == type)
+                return item;
+        }
+        return null;
+    }
+
+    public bool IsItemEquipped(ItemInstance item)
+    {
+        if (item == null || string.IsNullOrEmpty(item.instanceId) || equippedItems == null) return false;
+        for (int i = 0; i < equippedItems.Count; i++)
+        {
+            var equipped = equippedItems[i];
+            if (equipped != null && equipped.instanceId == item.instanceId)
+                return true;
+        }
+        return false;
+    }
+
+    public bool TryEquip(ItemInstance item, out ItemInstance replaced)
+    {
+        replaced = null;
+        if (item == null || item.data == null || item.data.itemType == ItemType.Consumable)
+            return false;
+
+        if (equippedItems == null)
+            equippedItems = new List<ItemInstance>();
+
+        var existing = GetEquippedItem(item.data.itemType);
+        if (existing != null)
+        {
+            equippedItems.Remove(existing);
+            replaced = existing;
+        }
+
+        if (!IsItemEquipped(item))
+            equippedItems.Add(item);
+        return true;
+    }
+
+    public bool TryUnequip(ItemType type, out ItemInstance unequipped)
+    {
+        unequipped = null;
+        if (equippedItems == null) return false;
+
+        var existing = GetEquippedItem(type);
+        if (existing == null) return false;
+
+        equippedItems.Remove(existing);
+        unequipped = existing;
+        return true;
+    }
+
+    public void GetEquipmentBonuses(out int hpBonus, out int attackBonus, out int defenseBonus, out int speedBonus)
+    {
+        hpBonus = 0;
+        attackBonus = 0;
+        defenseBonus = 0;
+        speedBonus = 0;
+
+        if (equippedItems == null) return;
+
+        foreach (var item in equippedItems)
+        {
+            if (item == null || item.data == null) continue;
+            if (item.data.itemType == ItemType.Consumable) continue;
+
+            float multiplier = 1f + 0.1f * Mathf.Max(0, item.level - 1);
+            hpBonus += Mathf.RoundToInt(item.data.hpBonus * multiplier);
+            attackBonus += Mathf.RoundToInt(item.data.attackBonus * multiplier);
+            defenseBonus += Mathf.RoundToInt(item.data.defenseBonus * multiplier);
+            speedBonus += Mathf.RoundToInt(item.data.speedBonus * multiplier);
+        }
+    }
+
     public int GetExpToNextLevel()
     {
         // linear curve
@@ -80,10 +173,12 @@ public class ItemInstance
 {
     public ItemData data;
     public int level;
+    public string instanceId;
 
-    public ItemInstance(ItemData data, int level = 1)
+    public ItemInstance(ItemData data, int level = 1, string instanceId = null)
     {
         this.data = data;
         this.level = level;
+        this.instanceId = string.IsNullOrEmpty(instanceId) ? Guid.NewGuid().ToString("N") : instanceId;
     }
 }

@@ -178,7 +178,7 @@ public class BattleController : MonoBehaviour
         {
             if (floorText != null)
             {
-                floorText.text = $"Floor {gm.playerData.towerCurrentFloor + 1}";
+                floorText.text = $"Floor {gm.GetFloorLabel(gm.playerData.towerCurrentFloor)}";
             }
 
             var enemyData = gm.GetCurrentEnemyData();
@@ -2531,6 +2531,14 @@ public class BattleController : MonoBehaviour
     private void ScaleEnemyForFloorInstance(CharacterStats stats, int floorNumber, bool isBoss)
     {
         if (stats == null) return;
+
+        var gm = GameManager.Instance;
+        if (gm != null && gm.towerProgression != null)
+        {
+            gm.towerProgression.ApplyEnemyScaling(stats, floorNumber, isBoss);
+            return;
+        }
+
         int t = Mathf.Max(0, floorNumber - 1);
         float hpMul = Mathf.Pow(1.035f, t);
         float atkMul = Mathf.Pow(1.025f, t);
@@ -2567,7 +2575,23 @@ public class BattleController : MonoBehaviour
                     gm.rewardManager.GrantFloorRewards(gm.playerData, floor);
                     if (rewardsText != null)
                     {
-                        string itemPart = floor.rewardItem != null ? $", Item: {floor.rewardItem.displayName}" : "";
+                        string itemPart = "";
+                        if (floor.rewardItems != null && floor.rewardItems.Count > 0)
+                        {
+                            if (floor.rewardItems.Count == 1)
+                            {
+                                itemPart = $", Item: {floor.rewardItems[0].displayName}";
+                            }
+                            else
+                            {
+                                string first = floor.rewardItems[0] != null ? floor.rewardItems[0].displayName : "Item";
+                                string second = floor.rewardItems.Count > 1 && floor.rewardItems[1] != null
+                                    ? floor.rewardItems[1].displayName
+                                    : "Item";
+                                string extra = floor.rewardItems.Count > 2 ? $" (+{floor.rewardItems.Count - 2} more)" : "";
+                                itemPart = $", Items: {first}, {second}{extra}";
+                            }
+                        }
                         rewardsText.text = $"+{floor.rewardSoftCurrency} Credits, +{floor.rewardPremiumCurrency} Gems{itemPart}";
                     }
                 }

@@ -212,6 +212,16 @@ public class GameManager : MonoBehaviour
         return towerConfig.floors[index];
     }
 
+    public string GetFloorLabel(int floorIndex)
+    {
+        if (towerProgression != null)
+        {
+            return towerProgression.GetFloorLabel(floorIndex);
+        }
+
+        return $"Floor {floorIndex + 1}";
+    }
+
     public void SetEnemyFromTowerFloor()
     {
         var floor = GetCurrentTowerFloor();
@@ -254,6 +264,61 @@ public class GameManager : MonoBehaviour
         {
             QuestManager.Instance.OnCharacterLeveledUp();
         }
+        return true;
+    }
+
+    public bool IsItemEquipped(ItemInstance item)
+    {
+        if (item == null || playerData == null || playerData.ownedCharacters == null) return false;
+
+        foreach (var character in playerData.ownedCharacters)
+        {
+            if (character != null && character.IsItemEquipped(item))
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool IsItemEquippedByActive(ItemInstance item)
+    {
+        var active = GetActiveCharacterInstance();
+        if (active == null) return false;
+        return active.IsItemEquipped(item);
+    }
+
+    public bool TryEquipItemToActive(ItemInstance item)
+    {
+        var active = GetActiveCharacterInstance();
+        if (active == null || item == null) return false;
+
+        if (playerData.inventory == null)
+            playerData.inventory = new List<ItemInstance>();
+
+        if (IsItemEquipped(item) && !IsItemEquippedByActive(item))
+            return false;
+
+        bool success = active.TryEquip(item, out ItemInstance replaced);
+        if (!success) return false;
+
+        NotifyPlayerDataChanged();
+        SavePlayerData();
+        return true;
+    }
+
+    public bool TryUnequipItemFromActive(ItemType type)
+    {
+        var active = GetActiveCharacterInstance();
+        if (active == null) return false;
+
+        if (playerData.inventory == null)
+            playerData.inventory = new List<ItemInstance>();
+
+        bool success = active.TryUnequip(type, out ItemInstance unequipped);
+        if (!success) return false;
+
+        NotifyPlayerDataChanged();
+        SavePlayerData();
         return true;
     }
 

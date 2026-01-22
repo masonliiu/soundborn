@@ -302,8 +302,14 @@ public class CharacterStats : MonoBehaviour
             maxHP += extraLevels * 25;   // +25 HP per level
             attack += extraLevels * 5;   // +5 ATK per level
             defense += extraLevels * 3;  // +3 DEF per level
-
-            currentHP = maxHP;           // refresh HP to new max
         }
+
+        instance.GetEquipmentBonuses(out int hpBonus, out int attackBonus, out int defenseBonus, out int speedBonus);
+        maxHP += hpBonus;
+        attack += attackBonus;
+        defense += defenseBonus;
+        speed += speedBonus;
+
+        currentHP = maxHP;           // refresh HP to new max
     }
 }

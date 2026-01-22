@@ -41,7 +41,7 @@ public class HomeUIController : MonoBehaviour
             premiumCurrencyText.text = playerData.premiumCurrency.ToString();
 
         if (floorText != null)
-            floorText.text = $"Floor {playerData.towerCurrentFloor + 1}";
+            floorText.text = $"Floor {gm.GetFloorLabel(playerData.towerCurrentFloor)}";
 
         if (playerLevelText != null)
             playerLevelText.text = $"Lv {playerData.playerLevel}";

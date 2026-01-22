@@ -21,6 +21,7 @@ public static class SaveSystem
     {
         public string itemId;
         public int level;
+        public string instanceId;
     }
 
     [Serializable]
@@ -104,7 +105,8 @@ public static class SaveSystem
                         cs.equippedItems.Add(new ItemSave
                         {
                             itemId = eq.data.itemId,
-                            level = eq.level
+                            level = eq.level,
+                            instanceId = eq.instanceId
                         });
                     }
                 }
@@ -121,7 +123,8 @@ public static class SaveSystem
                 save.inventory.Add(new ItemSave
                 {
                     itemId = item.data.itemId,
-                    level = item.level
+                    level = item.level,
+                    instanceId = item.instanceId
                 });
             }
         }
@@ -181,6 +184,8 @@ public static class SaveSystem
         target.inventory = new List<ItemInstance>();
         target.questStates = new List<QuestState>();
 
+        var itemInstanceMap = new Dictionary<string, ItemInstance>();
+
         if (save.characters != null)
         {
             foreach (var cs in save.characters)
@@ -215,7 +220,20 @@ public static class SaveSystem
                         if (eq == null || string.IsNullOrEmpty(eq.itemId)) continue;
                         var itemData = itemDb.GetById(eq.itemId);
                         if (itemData == null) continue;
-                        inst.equippedItems.Add(new ItemInstance(itemData, eq.level));
+
+                        ItemInstance instance = null;
+                        if (!string.IsNullOrEmpty(eq.instanceId))
+                            itemInstanceMap.TryGetValue(eq.instanceId, out instance);
+
+                        if (instance == null)
+                        {
+                            instance = new ItemInstance(itemData, eq.level, eq.instanceId);
+                            if (!string.IsNullOrEmpty(instance.instanceId))
+                                itemInstanceMap[instance.instanceId] = instance;
+                            target.inventory.Add(instance);
+                        }
+
+                        inst.equippedItems.Add(instance);
                     }
                 }
 
@@ -234,7 +252,12 @@ public static class SaveSystem
                     Debug.LogWarning($"[SaveSystem] TryLoad: Could not find ItemData for id='{isave.itemId}'");
                     continue;
                 }
-                target.inventory.Add(new ItemInstance(itemData, isave.level));
+
+                var itemInstance = new ItemInstance(itemData, isave.level, isave.instanceId);
+                target.inventory.Add(itemInstance);
+
+                if (!string.IsNullOrEmpty(itemInstance.instanceId))
+                    itemInstanceMap[itemInstance.instanceId] = itemInstance;
             }
         }
 
