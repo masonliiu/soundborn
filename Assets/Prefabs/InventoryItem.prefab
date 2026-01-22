@@ -413,6 +413,9 @@ MonoBehaviour:
   icon: {fileID: 341551413662720765}
   nameText: {fileID: 9149568045516866097}
   lockText: {fileID: 1511314881775876024}
+  actionButton: {fileID: 0}
+  actionText: {fileID: 0}
+  rowButton: {fileID: 7482347038183303567}
 --- !u!1 &8790502372487438182
 GameObject:
   m_ObjectHideFlags: 0
