@@ -46,6 +46,7 @@ public class ItemEquipPanel : MonoBehaviour
         if (root != null)
             root.SetActive(true);
 
+        Debug.Log("[ItemEquipPanel] Show called");
         Refresh();
     }
 
@@ -59,7 +60,11 @@ public class ItemEquipPanel : MonoBehaviour
     {
         var gm = GameManager.Instance;
         if (gm == null || contentRoot == null || rowPrefab == null)
+        {
+            Debug.LogWarning("[ItemEquipPanel] Refresh missing refs: " +
+                             $"gm={gm != null}, contentRoot={contentRoot != null}, rowPrefab={rowPrefab != null}");
             return;
+        }
 
         foreach (var row in spawnedRows)
         {
@@ -70,7 +75,10 @@ public class ItemEquipPanel : MonoBehaviour
 
         var characters = gm.playerData.ownedCharacters;
         if (characters == null)
+        {
+            Debug.LogWarning("[ItemEquipPanel] No characters available");
             return;
+        }
 
         var currentOwner = gm.GetCharacterEquippingItem(currentItem, out int currentOwnerIndex);
 
@@ -85,6 +93,8 @@ public class ItemEquipPanel : MonoBehaviour
             spawnedRows.Add(row);
         }
 
+        Debug.Log($"[ItemEquipPanel] Spawned rows: {spawnedRows.Count}");
+
         if (confirmRoot != null)
             confirmRoot.SetActive(false);
     }
@@ -96,6 +106,7 @@ public class ItemEquipPanel : MonoBehaviour
 
     private void OnSelectCharacter(int index, bool equippedByThis)
     {
+        Debug.Log($"[ItemEquipPanel] Clicked character index {index}, equippedByThis={equippedByThis}");
         if (equippedByThis)
             return;
 

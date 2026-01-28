@@ -38,6 +38,10 @@ public class ItemEquipRowUI : MonoBehaviour
                 button.onClick.AddListener(() => onClick());
             button.interactable = !equippedByThis;
         }
+        else
+        {
+            Debug.LogWarning("[ItemEquipRowUI] Button reference missing");
+        }
 
         float alpha = equippedByThis ? 0.5f : 1f;
         if (portraitImage != null)
