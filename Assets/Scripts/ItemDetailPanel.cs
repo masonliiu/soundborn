@@ -26,9 +26,6 @@ public class ItemDetailPanel : MonoBehaviour
 
     private void Awake()
     {
-        if (root != null)
-            root.SetActive(false);
-
         if (equipButton != null)
             equipButton.onClick.AddListener(OnClickEquip);
 

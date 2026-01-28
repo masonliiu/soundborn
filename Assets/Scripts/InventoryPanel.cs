@@ -15,8 +15,6 @@ public class InventoryPanel : MonoBehaviour
 
     private void Awake()
     {
-        if (root != null)
-            root.SetActive(false);
     }
 
     public void Show()

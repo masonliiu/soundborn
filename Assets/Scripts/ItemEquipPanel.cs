@@ -28,9 +28,6 @@ public class ItemEquipPanel : MonoBehaviour
 
     private void Awake()
     {
-        if (root != null)
-            root.SetActive(false);
-
         if (confirmRoot != null)
             confirmRoot.SetActive(false);
 

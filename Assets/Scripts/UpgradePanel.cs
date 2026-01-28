@@ -27,8 +27,6 @@ public class UpgradePanel : MonoBehaviour
 
     private void Awake()
     {
-        if (root != null)
-            root.SetActive(false);
     }
 
     public void Show(HomeUIController home)

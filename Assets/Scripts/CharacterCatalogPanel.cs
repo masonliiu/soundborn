@@ -21,8 +21,6 @@ public class CharacterCatalogPanel : MonoBehaviour
 
     private void Awake()
     {
-        if (root != null)
-            root.SetActive(false);
     }
 
     private void OnEnable()

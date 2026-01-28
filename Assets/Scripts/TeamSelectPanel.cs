@@ -32,9 +32,6 @@ public class TeamSelectPanel : MonoBehaviour
                 slot.button.onClick.AddListener(() => OnClickSlot(index));
             }
         }
-
-        if (root != null)
-            root.SetActive(false);
     }
 
     public void Show(HomeUIController home)
