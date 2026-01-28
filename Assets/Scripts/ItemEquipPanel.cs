@@ -84,12 +84,13 @@ public class ItemEquipPanel : MonoBehaviour
 
         for (int i = 0; i < characters.Count; i++)
         {
+            int index = i;
             var character = characters[i];
             var row = Instantiate(rowPrefab, contentRoot);
             row.gameObject.SetActive(true);
 
-            bool equippedByThis = currentOwner != null && currentOwnerIndex == i;
-            row.Bind(character, equippedByThis, () => OnSelectCharacter(i, equippedByThis));
+            bool equippedByThis = currentOwner != null && currentOwnerIndex == index;
+            row.Bind(character, equippedByThis, () => OnSelectCharacter(index, equippedByThis));
             spawnedRows.Add(row);
         }
 
