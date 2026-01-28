@@ -71,7 +71,14 @@ public class ItemDetailPanel : MonoBehaviour
             levelText.text = $"Lv {currentItem.level}";
 
         if (statsText != null)
-            statsText.text = $"HP +{data.hpBonus}  ATK +{data.attackBonus}  DEF +{data.defenseBonus}  SPD +{data.speedBonus}";
+        {
+            float multiplier = 1f + 0.1f * Mathf.Max(0, currentItem.level - 1);
+            int hpBonus = Mathf.RoundToInt(data.hpBonus * multiplier);
+            int attackBonus = Mathf.RoundToInt(data.attackBonus * multiplier);
+            int defenseBonus = Mathf.RoundToInt(data.defenseBonus * multiplier);
+            int speedBonus = Mathf.RoundToInt(data.speedBonus * multiplier);
+            statsText.text = $"HP +{hpBonus}  ATK +{attackBonus}  DEF +{defenseBonus}  SPD +{speedBonus}";
+        }
 
         var equippedOwner = gm.GetCharacterEquippingItem(currentItem, out int ownerIndex);
         if (equippedText != null)
