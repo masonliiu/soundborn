@@ -18,6 +18,9 @@ public class ItemEquipPanel : MonoBehaviour
     public Button confirmYesButton;
     public Button confirmNoButton;
 
+    [Header("Navigation")]
+    public HomeUIController homeUI;
+
     private readonly List<ItemEquipRowUI> spawnedRows = new List<ItemEquipRowUI>();
     private ItemInstance currentItem;
     private ItemDetailPanel ownerPanel;
@@ -46,7 +49,6 @@ public class ItemEquipPanel : MonoBehaviour
         if (root != null)
             root.SetActive(true);
 
-        Debug.Log("[ItemEquipPanel] Show called");
         Refresh();
     }
 
@@ -60,11 +62,7 @@ public class ItemEquipPanel : MonoBehaviour
     {
         var gm = GameManager.Instance;
         if (gm == null || contentRoot == null || rowPrefab == null)
-        {
-            Debug.LogWarning("[ItemEquipPanel] Refresh missing refs: " +
-                             $"gm={gm != null}, contentRoot={contentRoot != null}, rowPrefab={rowPrefab != null}");
             return;
-        }
 
         foreach (var row in spawnedRows)
         {
@@ -75,10 +73,7 @@ public class ItemEquipPanel : MonoBehaviour
 
         var characters = gm.playerData.ownedCharacters;
         if (characters == null)
-        {
-            Debug.LogWarning("[ItemEquipPanel] No characters available");
             return;
-        }
 
         var currentOwner = gm.GetCharacterEquippingItem(currentItem, out int currentOwnerIndex);
 
@@ -94,8 +89,6 @@ public class ItemEquipPanel : MonoBehaviour
             spawnedRows.Add(row);
         }
 
-        Debug.Log($"[ItemEquipPanel] Spawned rows: {spawnedRows.Count}");
-
         if (confirmRoot != null)
             confirmRoot.SetActive(false);
     }
@@ -107,7 +100,6 @@ public class ItemEquipPanel : MonoBehaviour
 
     private void OnSelectCharacter(int index, bool equippedByThis)
     {
-        Debug.Log($"[ItemEquipPanel] Clicked character index {index}, equippedByThis={equippedByThis}");
         if (equippedByThis)
             return;
 
@@ -136,6 +128,8 @@ public class ItemEquipPanel : MonoBehaviour
             Refresh();
             if (ownerPanel != null)
                 ownerPanel.Refresh();
+
+            ShowCharacterDetails(index);
         }
     }
 
@@ -148,7 +142,8 @@ public class ItemEquipPanel : MonoBehaviour
         if (gm == null || currentItem == null)
             return;
 
-        gm.TryEquipItemToCharacter(currentItem, pendingCharacterIndex, true, out CharacterInstance previousOwner);
+        int targetIndex = pendingCharacterIndex;
+        gm.TryEquipItemToCharacter(currentItem, targetIndex, true, out CharacterInstance previousOwner);
         pendingCharacterIndex = -1;
 
         if (confirmRoot != null)
@@ -157,6 +152,9 @@ public class ItemEquipPanel : MonoBehaviour
         Refresh();
         if (ownerPanel != null)
             ownerPanel.Refresh();
+
+        if (targetIndex >= 0)
+            ShowCharacterDetails(targetIndex);
     }
 
     private void CancelConfirm()
@@ -164,5 +162,35 @@ public class ItemEquipPanel : MonoBehaviour
         pendingCharacterIndex = -1;
         if (confirmRoot != null)
             confirmRoot.SetActive(false);
+    }
+
+    private void ShowCharacterDetails(int characterIndex)
+    {
+        var resolvedHome = ResolveHomeUI();
+        if (resolvedHome == null)
+            return;
+
+        if (resolvedHome.inventoryPanel != null)
+            resolvedHome.inventoryPanel.Hide();
+
+        if (resolvedHome.characterCatalogPanel != null)
+            resolvedHome.characterCatalogPanel.Show(resolvedHome);
+
+        if (resolvedHome.upgradePanel != null)
+            resolvedHome.upgradePanel.ShowForCharacter(resolvedHome, characterIndex);
+
+        if (ownerPanel != null)
+            ownerPanel.Hide();
+
+        Hide();
+    }
+
+    private HomeUIController ResolveHomeUI()
+    {
+        if (homeUI != null)
+            return homeUI;
+
+        homeUI = FindObjectOfType<HomeUIController>();
+        return homeUI;
     }
 }
