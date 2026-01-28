@@ -177,8 +177,12 @@ public class UpgradePanel : MonoBehaviour
         int baseATK = inst.data.attack;
 
         int extraLevels = Mathf.Max(0, inst.level - 1);
-        hp = baseHP + extraLevels * 10;
-        atk = baseATK + extraLevels * 2;
+        hp = baseHP + extraLevels * 25;
+        atk = baseATK + extraLevels * 5;
+
+        inst.GetEquipmentBonuses(out int hpBonus, out int attackBonus, out _, out _);
+        hp += hpBonus;
+        atk += attackBonus;
     }
 
     public void OnClick_Close()
