@@ -186,6 +186,29 @@ public static class SaveSystem
 
         var itemInstanceMap = new Dictionary<string, ItemInstance>();
 
+        if (save.inventory != null && itemDb != null)
+        {
+            foreach (var isave in save.inventory)
+            {
+                if (isave == null || string.IsNullOrEmpty(isave.itemId)) continue;
+                var itemData = itemDb.GetById(isave.itemId);
+                if (itemData == null)
+                {
+                    Debug.LogWarning($"[SaveSystem] TryLoad: Could not find ItemData for id='{isave.itemId}'");
+                    continue;
+                }
+
+                if (!string.IsNullOrEmpty(isave.instanceId) && itemInstanceMap.ContainsKey(isave.instanceId))
+                    continue;
+
+                var itemInstance = new ItemInstance(itemData, isave.level, isave.instanceId);
+                target.inventory.Add(itemInstance);
+
+                if (!string.IsNullOrEmpty(itemInstance.instanceId))
+                    itemInstanceMap[itemInstance.instanceId] = itemInstance;
+            }
+        }
+
         if (save.characters != null)
         {
             foreach (var cs in save.characters)
@@ -238,26 +261,6 @@ public static class SaveSystem
                 }
 
                 target.ownedCharacters.Add(inst);
-            }
-        }
-
-        if (save.inventory != null && itemDb != null)
-        {
-            foreach (var isave in save.inventory)
-            {
-                if (isave == null || string.IsNullOrEmpty(isave.itemId)) continue;
-                var itemData = itemDb.GetById(isave.itemId);
-                if (itemData == null)
-                {
-                    Debug.LogWarning($"[SaveSystem] TryLoad: Could not find ItemData for id='{isave.itemId}'");
-                    continue;
-                }
-
-                var itemInstance = new ItemInstance(itemData, isave.level, isave.instanceId);
-                target.inventory.Add(itemInstance);
-
-                if (!string.IsNullOrEmpty(itemInstance.instanceId))
-                    itemInstanceMap[itemInstance.instanceId] = itemInstance;
             }
         }
 
