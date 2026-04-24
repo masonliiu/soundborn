@@ -143,6 +143,8 @@ public class BattleController : MonoBehaviour
 
     private CharacterStats[] partyMembers = new CharacterStats[4];
     private CharacterStats[] enemyMembers = new CharacterStats[4];
+    private readonly bool[] partySlotsHidden = new bool[4];
+    private readonly bool[] enemySlotsHidden = new bool[4];
     private int currentEnemyTargetIndex = 0;
 
     public GameObject[] enemyTargetIndicators = new GameObject[4];
@@ -342,6 +344,9 @@ public class BattleController : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
+            partySlotsHidden[i] = false;
+            enemySlotsHidden[i] = false;
+
             if (partyMembers[i] != null)
             {
                 Destroy(partyMembers[i].gameObject);
@@ -1169,7 +1174,7 @@ public class BattleController : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (currentActor != null && IsPlayerControlled(currentActor))
+        if (currentActor != null && IsPlayerControlled(currentActor) && !currentActor.IsDead())
         {
             int actorIndex = GetPartyMemberIndex(currentActor);
             if (actorIndex >= 0 && playerPortraitImage != null)
@@ -1214,7 +1219,7 @@ public class BattleController : MonoBehaviour
             }
         }
 
-        if (enemy != null) {
+        if (enemy != null && !enemy.IsDead()) {
             if (enemyHpText != null) {
                 enemyHpText.text = $"{enemy.displayName} {enemy.currentHP}/{enemy.maxHP}";
             }
@@ -1231,6 +1236,17 @@ public class BattleController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if (enemyHpText != null)
+                enemyHpText.text = "";
+            if (enemyHpSlider != null)
+                enemyHpSlider.value = 0;
+            if (enemyHpDamageSlider != null)
+                enemyHpDamageSlider.value = 0;
+            if (enemyPortraitImage != null && !AnyAliveEnemy())
+                enemyPortraitImage.enabled = false;
+        }
 
         UpdatePartyMemberUI();
         UpdateEnemyMemberUI();
@@ -1242,7 +1258,10 @@ public class BattleController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             var e = (enemyMembers != null && i < enemyMembers.Length) ? enemyMembers[i] : null;
-            if (e == null) continue;
+            bool visible = e != null && !enemySlotsHidden[i];
+            SetEnemySlotVisible(i, visible);
+
+            if (!visible) continue;
 
             if (enemyHpTexts != null && i < enemyHpTexts.Length && enemyHpTexts[i] != null)
                 enemyHpTexts[i].text = $"{e.currentHP}/{e.maxHP}";
@@ -1268,7 +1287,10 @@ public class BattleController : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            if (partyMembers[i] == null) continue;
+            bool visible = partyMembers[i] != null && !partySlotsHidden[i];
+            SetPartyMemberSlotVisible(i, visible);
+
+            if (!visible) continue;
 
             if (i < partyHpTexts.Length && partyHpTexts[i] != null)
             {
@@ -1292,6 +1314,56 @@ public class BattleController : MonoBehaviour
                 partyStatusIcons[i].color = GetStatusColor(partyMembers[i].currentStatus);
             }
         }
+    }
+
+    private void HideEnemySlot(int index)
+    {
+        if (index < 0 || index >= enemySlotsHidden.Length) return;
+        enemySlotsHidden[index] = true;
+        SetEnemySlotVisible(index, false);
+        if (index == currentEnemyTargetIndex)
+            EnsureEnemyTargetValid();
+        UpdateTargetIndicators();
+        UpdateUI();
+    }
+
+    private void HidePartyMemberSlot(int index)
+    {
+        if (index < 0 || index >= partySlotsHidden.Length) return;
+        partySlotsHidden[index] = true;
+        SetPartyMemberSlotVisible(index, false);
+    }
+
+    private void SetEnemySlotVisible(int index, bool visible)
+    {
+        SetComponentVisible(enemyPortraitImages, index, visible, true);
+        SetComponentVisible(enemyHpTexts, index, visible);
+        SetComponentVisible(enemyHpSliders, index, visible);
+        SetComponentVisible(enemyHpDamageSliders, index, visible);
+        SetComponentVisible(enemyStatusIcons, index, visible, true);
+
+        if (enemyTargetIndicators != null && index >= 0 && index < enemyTargetIndicators.Length && enemyTargetIndicators[index] != null && !visible)
+            enemyTargetIndicators[index].SetActive(false);
+    }
+
+    private void SetPartyMemberSlotVisible(int index, bool visible)
+    {
+        SetComponentVisible(partyPortraitImages, index, visible, true);
+        SetComponentVisible(partyHpTexts, index, visible);
+        SetComponentVisible(partyHpSliders, index, visible);
+        SetComponentVisible(partyHpDamageSliders, index, visible);
+        SetComponentVisible(partyStatusIcons, index, visible, true);
+    }
+
+    private void SetComponentVisible<T>(T[] components, int index, bool visible, bool toggleGraphic = false) where T : Component
+    {
+        if (components == null || index < 0 || index >= components.Length || components[index] == null)
+            return;
+
+        components[index].gameObject.SetActive(visible);
+
+        if (toggleGraphic && components[index] is Graphic graphic)
+            graphic.enabled = visible;
     }
 
     private void UpdateAbilityButtons()
@@ -1619,7 +1691,10 @@ public class BattleController : MonoBehaviour
             img = enemyPortraitImages[enemyIndex];
 
         if (enemyPixelateMaterialTemplate == null || img == null)
+        {
+            HideEnemySlot(enemyIndex);
             yield break;
+        }
 
         Material runtimeMat = new Material(enemyPixelateMaterialTemplate);
         var originalMat = img.material;
@@ -1637,8 +1712,10 @@ public class BattleController : MonoBehaviour
         }
 
         runtimeMat.SetFloat("_PixelAmount", 1f);
+        img.material = originalMat;
         img.enabled = false;
         Destroy(runtimeMat);
+        HideEnemySlot(enemyIndex);
     }
 
     private IEnumerator PartyMemberDeathPixelateRoutine(int partyIndex)
@@ -1648,7 +1725,10 @@ public class BattleController : MonoBehaviour
             img = partyPortraitImages[partyIndex];
 
         if (enemyPixelateMaterialTemplate == null || img == null)
+        {
+            HidePartyMemberSlot(partyIndex);
             yield break;
+        }
 
         Material runtimeMat = new Material(enemyPixelateMaterialTemplate);
         var originalMat = img.material;
@@ -1666,8 +1746,10 @@ public class BattleController : MonoBehaviour
         }
 
         runtimeMat.SetFloat("_PixelAmount", 1f);
+        img.material = originalMat;
         img.enabled = false;
         Destroy(runtimeMat);
+        HidePartyMemberSlot(partyIndex);
     }
 
     private void PlayLoseSequence()
@@ -1949,6 +2031,8 @@ public class BattleController : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
+            partySlotsHidden[i] = false;
+
             if (partyMembers[i] != null)
             {
                 Destroy(partyMembers[i].gameObject);
@@ -2027,6 +2111,7 @@ public class BattleController : MonoBehaviour
                     if (inst.data != null && inst.data.silhouetteSprite != null)
                     {
                         partyPortraitImages[i].sprite = inst.data.silhouetteSprite;
+                        partyPortraitImages[i].enabled = true;
                         partyPortraitImages[i].gameObject.SetActive(true);
                     }
                     else
@@ -2361,7 +2446,11 @@ public class BattleController : MonoBehaviour
         EnsureEnemyTargetValid();
         var data = GetCurrentEnemyData();
         if (enemyPortraitImage != null && data != null && data.silhouetteSprite != null)
+        {
             enemyPortraitImage.sprite = data.silhouetteSprite;
+            enemyPortraitImage.enabled = true;
+            enemyPortraitImage.gameObject.SetActive(true);
+        }
     }
 
     private CharacterData GetCurrentEnemyData()
@@ -2422,10 +2511,16 @@ public class BattleController : MonoBehaviour
             var stats = enemyMembers[i];
             var data = datas[i];
             if (stats == null)
+            {
+                enemySlotsHidden[i] = true;
+                SetEnemySlotVisible(i, false);
                 continue;
+            }
 
             bool active = data != null;
+            enemySlotsHidden[i] = !active;
             stats.gameObject.SetActive(active);
+            SetEnemySlotVisible(i, active);
             if (!active)
                 continue;
 
@@ -2433,7 +2528,11 @@ public class BattleController : MonoBehaviour
             ScaleEnemyForFloorInstance(stats, floorNumber, isBoss && i == 0);
 
             if (enemyPortraitImages != null && i < enemyPortraitImages.Length && enemyPortraitImages[i] != null && data.silhouetteSprite != null)
+            {
                 enemyPortraitImages[i].sprite = data.silhouetteSprite;
+                enemyPortraitImages[i].enabled = true;
+                enemyPortraitImages[i].gameObject.SetActive(true);
+            }
         }
 
         for (int i = 0; i < enemyMembers.Length; i++)
