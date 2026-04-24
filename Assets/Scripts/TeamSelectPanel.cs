@@ -14,10 +14,10 @@ public class TeamSelectPanel : MonoBehaviour
     }
 
     [Header("Root")]
-    public GameObject root;       
+    public GameObject root;
 
     [Header("Slots")]
-    public SlotUI[] slots;      
+    public SlotUI[] slots;
 
     private HomeUIController homeUI;
 

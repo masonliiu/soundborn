@@ -147,8 +147,6 @@ public static class SaveSystem
         string json = JsonUtility.ToJson(save);
         PlayerPrefs.SetString(PlayerPrefsKey, json);
         PlayerPrefs.Save();
-
-        Debug.Log($"[SaveSystem] Saved PlayerData. Characters={save.characters.Count}, Inventory={save.inventory.Count}");
     }
 
     public static bool TryLoad(PlayerData target, CharacterDatabase characterDb, ItemDatabase itemDb)
@@ -292,8 +290,6 @@ public static class SaveSystem
                 });
             }
         }
-
-        Debug.Log($"[SaveSystem] Loaded PlayerData. Characters={target.ownedCharacters.Count}, Inventory={target.inventory.Count}");
         return true;
     }
 }

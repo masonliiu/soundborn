@@ -78,10 +78,10 @@ public class BattleTeamPanel : MonoBehaviour
             bool isSelected = selected.Contains(i);
 
             item.Setup(
-                owner: null, 
-                characterIndex: i, 
-                instance: inst, 
-                hp: hp, 
+                owner: null,
+                characterIndex: i,
+                instance: inst,
+                hp: hp,
                 atk: atk,
                 onClickOverride: onClickIndex,
                 greyedOut: isSelected

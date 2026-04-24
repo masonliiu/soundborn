@@ -149,7 +149,7 @@ public class BattleController : MonoBehaviour
     public float enemyTargetIndicatorRotateSpeed = 240f;
     private bool isSelectingTarget = false;
     private PendingAbility selectingAbility = PendingAbility.None;
-    
+
     private List<CharacterStats> turnOrder = new List<CharacterStats>();
     private int currentTurnIndex = 0;
     private CharacterStats currentActor = null;
@@ -160,8 +160,7 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("[BattleController] Start() called");
-        
+
         if (mainCamera == null)
             mainCamera = Camera.main;
 
@@ -172,8 +171,7 @@ public class BattleController : MonoBehaviour
         }
 
         var gm = GameManager.Instance;
-        Debug.Log($"[BattleController] GameManager.Instance: {(gm != null ? "EXISTS" : "NULL")}");
-        
+
         if (gm != null)
         {
             if (floorText != null)
@@ -191,7 +189,7 @@ public class BattleController : MonoBehaviour
         }
 
         EnsurePartySlotsActive();
-        
+
         UpdateUI();
         UpdateTurnOrderUI();
 
@@ -221,7 +219,7 @@ public class BattleController : MonoBehaviour
     private void Update()
     {
         if (!isSelectingTarget) return;
-        
+
         // Tap/click an enemy slot to change the selected target or execute attack if already selected.
         if (TryGetPointerDown(out var pointerPos))
         {
@@ -336,13 +334,12 @@ public class BattleController : MonoBehaviour
 
     public void ResetBattleState()
     {
-        Debug.Log("[BattleController] ResetBattleState() called");
         hasStarted = false;
         battleOver = false;
         currentTurnIndex = 0;
         currentActor = null;
         turnOrder.Clear();
-        
+
         for (int i = 0; i < 4; i++)
         {
             if (partyMembers[i] != null)
@@ -360,25 +357,23 @@ public class BattleController : MonoBehaviour
 
     public void StartBattleNow()
     {
-        Debug.Log("[BattleController] StartBattleNow() called");
-        
+
         if (battleOver)
         {
             Debug.LogWarning("[BattleController] StartBattleNow: Battle already over!");
             return;
         }
-        
+
         if (hasStarted)
         {
             Debug.LogWarning("[BattleController] StartBattleNow: Battle already started! Call ResetBattleState() first if you want to restart.");
             return;
         }
-        
+
         hasStarted = true;
 
         var gm = GameManager.Instance;
-        Debug.Log($"[BattleController] StartBattleNow: GameManager.Instance: {(gm != null ? "EXISTS" : "NULL")}");
-        
+
         if (gm == null)
         {
             Debug.LogError("[BattleController] StartBattleNow: GameManager.Instance is NULL! Cannot start battle!");
@@ -386,8 +381,7 @@ public class BattleController : MonoBehaviour
         }
 
         var pd = gm.playerData;
-        Debug.Log($"[BattleController] StartBattleNow: playerData: {(pd != null ? "EXISTS" : "NULL")}");
-        
+
         if (pd == null)
         {
             Debug.LogError("[BattleController] StartBattleNow: playerData is NULL!");
@@ -400,9 +394,6 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[BattleController] StartBattleNow: activeLineupIndices = [{pd.activeLineupIndices[0]}, {pd.activeLineupIndices[1]}, {pd.activeLineupIndices[2]}, {pd.activeLineupIndices[3]}]");
-        Debug.Log($"[BattleController] StartBattleNow: ownedCharacters.Count = {pd.ownedCharacters.Count}");
-
         InitializePartyMembers(gm);
         InitializeEnemies(gm);
 
@@ -411,7 +402,7 @@ public class BattleController : MonoBehaviour
         InitializePartyMemberDisplays();
 
         BuildTurnOrder();
-        
+
         if (turnOrder.Count == 0)
         {
             Debug.LogError("[BattleController] StartBattleNow: No characters in turn order! Cannot start battle!");
@@ -420,7 +411,7 @@ public class BattleController : MonoBehaviour
 
         currentTurnIndex = 0;
         currentActor = turnOrder[0];
-        
+
         if (AudioManager.Instance != null)
         {
             var enemyData = GetCurrentEnemyData();
@@ -443,35 +434,33 @@ public class BattleController : MonoBehaviour
     private void ProcessNextTurn()
     {
         if (battleOver) return;
-        
+
         RemoveDeadCharactersFromTurnOrder();
-        
+
         if (CheckBattleEndConditions())
             return;
-        
+
         if (turnOrder.Count == 0)
         {
             Debug.LogError("[BattleController] ProcessNextTurn: Turn order is empty!");
             return;
         }
-        
+
         if (currentTurnIndex >= turnOrder.Count)
         {
             currentTurnIndex = 0;
         }
-        
+
         currentActor = turnOrder[currentTurnIndex];
 
         UpdateTurnOrderUI();
-        
+
         if (currentActor == null || currentActor.IsDead())
         {
             AdvanceTurn();
             return;
         }
-        
-        Debug.Log($"[BattleController] ProcessNextTurn: {currentActor.displayName}'s turn (speed: {currentActor.speed})");
-        
+
         if (IsPlayerControlled(currentActor))
         {
             StartPlayerControlledTurn(currentActor);
@@ -485,26 +474,25 @@ public class BattleController : MonoBehaviour
     private void AdvanceTurn()
     {
         if (battleOver) return;
-        
+
         RemoveDeadCharactersFromTurnOrder();
-        
+
         if (CheckBattleEndConditions())
             return;
-        
+
         if (turnOrder.Count == 0)
         {
             Debug.LogError("[BattleController] AdvanceTurn: Turn order is empty!");
             return;
         }
-        
+
         currentTurnIndex++;
-        
+
         if (currentTurnIndex >= turnOrder.Count)
         {
             currentTurnIndex = 0;
-            Debug.Log("[BattleController] AdvanceTurn: New round starting");
         }
-        
+
         ProcessNextTurn();
     }
 
@@ -539,7 +527,7 @@ public class BattleController : MonoBehaviour
 
         currentActor = actor;
         EnsureEnemyTargetValid();
-        
+
         actor.TickCooldowns();
         int statusDamage;
         bool skipTurn = actor.TickStatusAtTurnStart(out statusDamage);
@@ -655,7 +643,6 @@ public class BattleController : MonoBehaviour
 
     public void OnEnemySlotPressed(int index)
     {
-        Debug.Log($"[BattleController] OnEnemySlotPressed({index}) isSelectingTarget={isSelectingTarget} selectingAbility={selectingAbility}");
         if (!isSelectingTarget) return;
         if (index < 0 || index >= enemyMembers.Length) return;
         if (enemyMembers[index] == null || enemyMembers[index].IsDead()) return;
@@ -790,7 +777,7 @@ public class BattleController : MonoBehaviour
         if (!CanPlayerAct()) return;
 
         if (currentActor == null) return;
-        
+
         if (isSelectingTarget)
         {
             if (selectingAbility == PendingAbility.Basic)
@@ -1042,7 +1029,7 @@ public class BattleController : MonoBehaviour
     private string ApplyElementalStatusFromPlayerSkill(CharacterStats target)
     {
         if (currentActor == null || target == null) return "";
-        
+
         switch (currentActor.element)
         {
             case ElementType.Bass:
@@ -1112,7 +1099,7 @@ public class BattleController : MonoBehaviour
         target.TakeDamage(damage);
         if (isCrit)
             StartCoroutine(CameraShake());
-        
+
         int targetIndex = GetPartyMemberIndex(target);
         RectTransform targetPortraitRect = GetPartyMemberPortraitRect(targetIndex);
         SpawnImpact(onEnemy: false, color: GetElementColor(enemyActor.element), targetIndex: targetIndex);
@@ -1148,7 +1135,7 @@ public class BattleController : MonoBehaviour
         {
             if (battleLogText != null)
                 battleLogText.text += $"\n{target.displayName} was defeated!";
-            
+
             yield return StartCoroutine(PartyMemberDeathPixelateRoutine(targetIndex));
             RemoveDeadCharactersFromTurnOrder();
             if (CheckBattleEndConditions())
@@ -1203,14 +1190,14 @@ public class BattleController : MonoBehaviour
                     }
                 }
             }
-            
+
             if (playerHpText != null) {
                 playerHpText.text = $"{currentActor.displayName} {currentActor.currentHP}/{currentActor.maxHP}";
             }
             if (playerHpSlider != null) {
                 playerHpSlider.maxValue = currentActor.maxHP;
                 if (!isPlayerHpAnimating) {
-                    playerHpSlider.value = currentActor.currentHP;  
+                    playerHpSlider.value = currentActor.currentHP;
                 }
             }
             if (playerHpDamageSlider != null) {
@@ -1332,7 +1319,7 @@ public class BattleController : MonoBehaviour
         else if (ultimateButton != null) {
             ultimateButton.interactable = false;
             SetAbilityButtonLabel(ultimateButton, "Ultimate", 0);
-        }            
+        }
     }
 
     private void SetAbilityButtonLabel(Button button, string baseName, int cooldownRemaining) {
@@ -1470,7 +1457,7 @@ public class BattleController : MonoBehaviour
             else
                 anchor = GetCurrentActorPopupAnchor();
         }
-        
+
         if (anchor == null) return;
 
         var popup = Instantiate(damagePopupPrefab, anchor);
@@ -1487,7 +1474,7 @@ public class BattleController : MonoBehaviour
         Vector2 start = rect.anchoredPosition;
         Vector2 dir = towardsCenter ? new Vector2(1f, 0f) : new Vector2(-1f, 0f);
         Vector2 end = start + dir * attackMoveDistance;
-        
+
         float t = 0f;
 
         while (t < attackMoveDuration) {
@@ -1569,8 +1556,6 @@ public class BattleController : MonoBehaviour
         enemy.attack = Mathf.RoundToInt(enemy.attack * atkMul);
         enemy.defense = Mathf.RoundToInt(enemy.defense * defMul);
 
-        Debug.Log($"[BattleController] ScaleEnemyForFloor: floor={floorNumber}, boss={isBoss}, hpMul={hpMul:F2}, atkMul={atkMul:F2}, defMul={defMul:F2}, " +
-                  $"result HP={enemy.maxHP}, ATK={enemy.attack}, DEF={enemy.defense}");
     }
 
     private void PlayWinSequence()
@@ -1582,7 +1567,7 @@ public class BattleController : MonoBehaviour
     {
         float postHitDelay = 0.35f;
         yield return new WaitForSeconds(postHitDelay);
-        
+
         yield return StartCoroutine(EnemyDeathPixelateRoutine());
 
         yield return new WaitForSeconds(enemyDeathHoldDelay);
@@ -1599,7 +1584,7 @@ public class BattleController : MonoBehaviour
             }
         }
     }
-    
+
     private IEnumerator EnemyDeathPixelateRoutine()
     {
         if (enemyPixelateMaterialTemplate == null || enemyPortraitImage == null)
@@ -1798,14 +1783,14 @@ public class BattleController : MonoBehaviour
             else
                 anchor = GetCurrentActorImpactAnchor();
         }
-        
+
         if (anchor == null) return;
 
         var fx = Instantiate(impactEffectPrefab, anchor);
         var rect = fx.GetComponent<RectTransform>();
         if (rect != null)
             rect.anchoredPosition = Vector2.zero;
-        
+
         fx.gameObject.SetActive(true);
         fx.Init(color);
     }
@@ -1961,8 +1946,7 @@ public class BattleController : MonoBehaviour
 
     private void InitializePartyMembers(GameManager gm)
     {
-        Debug.Log("[BattleController] InitializePartyMembers() called");
-        
+
         for (int i = 0; i < 4; i++)
         {
             if (partyMembers[i] != null)
@@ -1979,19 +1963,14 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[BattleController] InitializePartyMembers: Processing lineup indices: [{pd.activeLineupIndices[0]}, {pd.activeLineupIndices[1]}, {pd.activeLineupIndices[2]}, {pd.activeLineupIndices[3]}]");
-        Debug.Log($"[BattleController] InitializePartyMembers: ownedCharacters.Count = {pd.ownedCharacters.Count}");
-
         for (int i = 0; i < 4; i++)
         {
             int idx = pd.activeLineupIndices[i];
-            Debug.Log($"[BattleController] InitializePartyMembers: Slot {i}: character index = {idx}");
-            
+
             if (idx >= 0 && idx < pd.ownedCharacters.Count)
             {
                 var inst = pd.ownedCharacters[idx];
-                Debug.Log($"[BattleController] InitializePartyMembers: Slot {i}: Found character instance: {(inst != null ? inst.data.displayName : "NULL")}");
-                
+
                 if (inst != null)
                 {
                     GameObject statObj = new GameObject($"PartyMember_{i}_Stats");
@@ -1999,7 +1978,6 @@ public class BattleController : MonoBehaviour
                     var stats = statObj.AddComponent<CharacterStats>();
                     stats.InitFrom(inst);
                     partyMembers[i] = stats;
-                    Debug.Log($"[BattleController] InitializePartyMembers: Slot {i}: Created CharacterStats for {stats.displayName}");
                 }
                 else
                 {
@@ -2009,12 +1987,9 @@ public class BattleController : MonoBehaviour
             }
             else
             {
-                Debug.Log($"[BattleController] InitializePartyMembers: Slot {i}: Empty slot (idx={idx})");
                 partyMembers[i] = null;
             }
         }
-
-        Debug.Log($"[BattleController] InitializePartyMembers: Complete. Party members: [{GetPartyMemberSummary(0)}, {GetPartyMemberSummary(1)}, {GetPartyMemberSummary(2)}, {GetPartyMemberSummary(3)}]");
     }
 
     private string GetPartyMemberSummary(int index)
@@ -2025,8 +2000,7 @@ public class BattleController : MonoBehaviour
 
     private void InitializePartyMemberDisplays()
     {
-        Debug.Log("[BattleController] InitializePartyMemberDisplays() called");
-        
+
         var gm = GameManager.Instance;
         if (gm == null)
         {
@@ -2044,9 +2018,7 @@ public class BattleController : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             int idx = pd.activeLineupIndices[i];
-            
-            Debug.Log($"[BattleController] InitializePartyMemberDisplays: Slot {i}: idx={idx}, partyMember={(partyMembers[i] != null ? partyMembers[i].displayName : "NULL")}");
-            
+
             if (i < partyPortraitImages.Length && partyPortraitImages[i] != null)
             {
                 if (idx >= 0 && idx < pd.ownedCharacters.Count && partyMembers[i] != null)
@@ -2056,7 +2028,6 @@ public class BattleController : MonoBehaviour
                     {
                         partyPortraitImages[i].sprite = inst.data.silhouetteSprite;
                         partyPortraitImages[i].gameObject.SetActive(true);
-                        Debug.Log($"[BattleController] InitializePartyMemberDisplays: Slot {i}: Portrait sprite set for {inst.data.displayName}");
                     }
                     else
                     {
@@ -2066,7 +2037,6 @@ public class BattleController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log($"[BattleController] InitializePartyMemberDisplays: Slot {i}: Empty slot, hiding portrait");
                     partyPortraitImages[i].gameObject.SetActive(false);
                 }
             }
@@ -2135,8 +2105,7 @@ public class BattleController : MonoBehaviour
 
     private void EnsurePartySlotsActive()
     {
-        Debug.Log("[BattleController] EnsurePartySlotsActive() called");
-        
+
         if (partySlotImages == null || partySlotImages.Length < 4)
         {
             Debug.LogError($"[BattleController] EnsurePartySlotsActive: partySlotImages array is invalid! Null: {partySlotImages == null}, Length: {(partySlotImages != null ? partySlotImages.Length.ToString() : "N/A")}");
@@ -2149,7 +2118,6 @@ public class BattleController : MonoBehaviour
             {
                 partySlotImages[i].gameObject.SetActive(true);
                 partySlotImages[i].enabled = true;
-                Debug.Log($"[BattleController] EnsurePartySlotsActive: Slot {i} activated and enabled");
             }
             else
             {
@@ -2160,8 +2128,7 @@ public class BattleController : MonoBehaviour
 
     private void FillPartyUI()
     {
-        Debug.Log("[BattleController] FillPartyUI() called");
-        
+
         if (partySlotImages == null || partySlotImages.Length < 4)
         {
             Debug.LogError($"[BattleController] FillPartyUI: partySlotImages array is invalid! Null: {partySlotImages == null}, Length: {(partySlotImages != null ? partySlotImages.Length.ToString() : "N/A")}");
@@ -2188,17 +2155,12 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[BattleController] FillPartyUI: activeLineupIndices = [{pd.activeLineupIndices[0]}, {pd.activeLineupIndices[1]}, {pd.activeLineupIndices[2]}, {pd.activeLineupIndices[3]}]");
-        Debug.Log($"[BattleController] FillPartyUI: ownedCharacters.Count = {pd.ownedCharacters.Count}");
-
         EnsurePartySlotsActive();
 
         for (int i = 0; i < 4; i++)
         {
             int idx = pd.activeLineupIndices[i];
             var img = partySlotImages[i];
-
-            Debug.Log($"[BattleController] FillPartyUI: Processing slot {i}: idx={idx}, img={(img != null ? "EXISTS" : "NULL")}");
 
             if (img == null)
             {
@@ -2209,7 +2171,6 @@ public class BattleController : MonoBehaviour
             if (img.gameObject != null && !img.gameObject.activeSelf)
             {
                 img.gameObject.SetActive(true);
-                Debug.Log($"[BattleController] FillPartyUI: Slot {i}: Activated GameObject");
             }
 
             img.enabled = true;
@@ -2217,15 +2178,13 @@ public class BattleController : MonoBehaviour
             if (idx >= 0 && idx < pd.ownedCharacters.Count && pd.ownedCharacters != null)
             {
                 var inst = pd.ownedCharacters[idx];
-                Debug.Log($"[BattleController] FillPartyUI: Slot {i}: Found character instance at index {idx}: {(inst != null ? inst.data.displayName : "NULL")}");
-                
+
                 if (inst != null && inst.data != null)
                 {
                     if (inst.data.silhouetteSprite != null)
                     {
                         img.sprite = inst.data.silhouetteSprite;
                         img.color = partyFilledColor;
-                        Debug.Log($"[BattleController] FillPartyUI: Slot {i}: Sprite set for {inst.data.displayName}, color = {partyFilledColor}");
                     }
                     else
                     {
@@ -2243,15 +2202,10 @@ public class BattleController : MonoBehaviour
             }
             else
             {
-                Debug.Log($"[BattleController] FillPartyUI: Slot {i}: Empty slot (idx={idx}), setting empty color");
                 img.sprite = null;
                 img.color = partyEmptyColor;
             }
-
-            Debug.Log($"[BattleController] FillPartyUI: Slot {i}: Final sprite={(img.sprite != null ? img.sprite.name : "NULL")}, color={img.color}, enabled={img.enabled}, gameObject.activeSelf={img.gameObject.activeSelf}");
         }
-        
-        Debug.Log("[BattleController] FillPartyUI() complete");
     }
 
     private string BuildElementText(float elemMul)
@@ -2282,28 +2236,24 @@ public class BattleController : MonoBehaviour
     private void BuildTurnOrder()
     {
         turnOrder.Clear();
-        
+
         for (int i = 0; i < 4; i++)
         {
             if (partyMembers[i] != null && !partyMembers[i].IsDead())
             {
                 turnOrder.Add(partyMembers[i]);
-                Debug.Log($"[BattleController] BuildTurnOrder: Added party member {partyMembers[i].displayName} (speed: {partyMembers[i].speed})");
             }
         }
-        
+
         for (int i = 0; i < enemyMembers.Length; i++)
         {
             if (enemyMembers[i] != null && !enemyMembers[i].IsDead())
                 turnOrder.Add(enemyMembers[i]);
         }
-        
+
         turnOrder.Sort((a, b) => b.speed.CompareTo(a.speed));
-        
-        Debug.Log($"[BattleController] BuildTurnOrder: Turn order established with {turnOrder.Count} characters");
         for (int i = 0; i < turnOrder.Count; i++)
         {
-            Debug.Log($"[BattleController] BuildTurnOrder: Position {i}: {turnOrder[i].displayName} (speed: {turnOrder[i].speed})");
         }
     }
 
@@ -2313,11 +2263,10 @@ public class BattleController : MonoBehaviour
         {
             if (turnOrder[i] == null || turnOrder[i].IsDead())
             {
-                Debug.Log($"[BattleController] RemoveDeadCharactersFromTurnOrder: Removing dead character at index {i}");
                 turnOrder.RemoveAt(i);
             }
         }
-        
+
         if (currentTurnIndex >= turnOrder.Count && turnOrder.Count > 0)
         {
             currentTurnIndex = 0;
@@ -2490,7 +2439,6 @@ public class BattleController : MonoBehaviour
         for (int i = 0; i < enemyMembers.Length; i++)
         {
             var e = enemyMembers[i];
-            Debug.Log($"[BattleController] InitializeEnemies: slot {i}: {(e != null ? e.displayName : "NULL")} (GO active: {(e != null && e.gameObject.activeInHierarchy)})");
         }
 
         EnsureEnemyTargetValid();
@@ -2612,7 +2560,7 @@ public class BattleController : MonoBehaviour
             PlayWinSequence();
             return true;
         }
-        
+
         bool anyAlivePartyMember = false;
         for (int i = 0; i < 4; i++)
         {
@@ -2622,7 +2570,7 @@ public class BattleController : MonoBehaviour
                 break;
             }
         }
-        
+
         if (!anyAlivePartyMember)
         {
             if (battleLogText != null)
@@ -2632,7 +2580,7 @@ public class BattleController : MonoBehaviour
             PlayLoseSequence();
             return true;
         }
-        
+
         return false;
     }
 }

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GachaController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class GachaController : MonoBehaviour
 
     [Header("Gacha Settings")]
     public int pullCost = 100;
-    public CharacterData[] gachaPool; 
+    public CharacterData[] gachaPool;
 
     private void Start()
     {
@@ -55,18 +56,18 @@ public class GachaController : MonoBehaviour
             return;
         }
 
-        data.premiumCurrency -= pullCost;
-
-        if (gachaPool == null || gachaPool.Length == 0)
+        var pool = GetAvailablePool(gm);
+        if (pool.Count == 0)
         {
             if (resultText != null)
-                resultText.text = "Gacha pool is empty!";
+                resultText.text = "No summon pool configured.";
             RefreshCurrency();
             return;
         }
 
-        int roll = Random.Range(0, gachaPool.Length);
-        CharacterData picked = gachaPool[roll];
+        data.premiumCurrency -= pullCost;
+
+        CharacterData picked = pool[Random.Range(0, pool.Count)];
 
         CharacterInstance newInstance = new CharacterInstance(picked);
         data.ownedCharacters.Add(newInstance);
@@ -97,5 +98,28 @@ public class GachaController : MonoBehaviour
     public void OnClick_Back()
     {
         SceneManager.LoadScene("HomeScene");
+    }
+
+    private List<CharacterData> GetAvailablePool(GameManager gm)
+    {
+        var pool = new List<CharacterData>();
+
+        AddValidCharacters(pool, gachaPool);
+
+        if (pool.Count == 0 && gm != null && gm.characterDatabase != null)
+            AddValidCharacters(pool, gm.characterDatabase.allCharacters);
+
+        return pool;
+    }
+
+    private void AddValidCharacters(List<CharacterData> pool, CharacterData[] characters)
+    {
+        if (pool == null || characters == null) return;
+
+        foreach (var character in characters)
+        {
+            if (character != null && !pool.Contains(character))
+                pool.Add(character);
+        }
     }
 }

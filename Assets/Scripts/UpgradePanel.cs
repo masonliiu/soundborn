@@ -13,8 +13,8 @@ public class UpgradePanel : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI costText;
     public TextMeshProUGUI softCurrencyText;
-    public TextMeshProUGUI hpText;     
-    public TextMeshProUGUI atkText;     
+    public TextMeshProUGUI hpText;
+    public TextMeshProUGUI atkText;
     [Header("Buttons")]
     public Button levelUpButton;
 
@@ -125,8 +125,6 @@ public class UpgradePanel : MonoBehaviour
     {
         var gm = GameManager.Instance;
         if (gm == null || targetInstance == null) return;
-
-        int oldLevel = targetInstance.level;
 
         if (gm.TryLevelUpCharacter(targetInstance))
         {

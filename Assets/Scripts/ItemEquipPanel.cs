@@ -187,7 +187,7 @@ public class ItemEquipPanel : MonoBehaviour
         if (homeUI != null)
             return homeUI;
 
-        homeUI = FindObjectOfType<HomeUIController>();
+        homeUI = FindFirstObjectByType<HomeUIController>();
         return homeUI;
     }
 }

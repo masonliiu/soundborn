@@ -1,6 +1,5 @@
 using UnityEngine;
 
-// template data for any character (player or enemy)
 [CreateAssetMenu(fileName = "NewCharacterData", menuName = "Game/Character Data")]
 public class CharacterData : ScriptableObject
 {
@@ -27,7 +26,7 @@ public class CharacterData : ScriptableObject
     public int bleedDamagePerTurn = 10;
     public int defenseUpAmount = 10;
 
-    [Header("Visuals (later)")]
+    [Header("Visuals")]
     public Sprite silhouetteSprite;
     public Sprite elementIcon;
 

@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [Header("Starting Setup")]
-    [Header("Extra Starting Characters")]
     public CharacterData[] extraStartingCharacters;
     public CharacterData starterPlayer;
     public CharacterData starterEnemy;
@@ -28,8 +27,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("[GameManager] Awake() called");
-        
         if (Instance != null && Instance != this)
         {
             Debug.LogWarning("[GameManager] Awake: Another GameManager instance exists, destroying this one");
@@ -39,19 +36,16 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        Debug.Log("[GameManager] Awake: Instance set and DontDestroyOnLoad enabled");
 
         if (playerData == null)
             playerData = new PlayerData();
 
-        // Ensure collections exist before load.
         if (playerData.ownedCharacters == null)
             playerData.ownedCharacters = new List<CharacterInstance>();
         if (playerData.inventory == null)
             playerData.inventory = new List<ItemInstance>();
 
         bool loaded = SaveSystem.TryLoad(playerData, characterDatabase, itemDatabase);
-        Debug.Log($"[GameManager] Awake: TryLoad returned {loaded}");
 
         if (!loaded)
         {
@@ -59,28 +53,17 @@ public class GameManager : MonoBehaviour
             SavePlayerData();
         }
 
-        // Ensure quests exist for this profile
         if (questManager != null)
-        {
             questManager.EnsureInitialQuests();
-        }
 
         if (currentEnemyData == null && starterEnemy != null)
-        {
             currentEnemyData = starterEnemy;
-            Debug.Log($"[GameManager] Awake: Set currentEnemyData to {starterEnemy.displayName}");
-        }
-
-        Debug.Log($"[GameManager] Awake: Final state - ownedCharacters.Count={playerData.ownedCharacters.Count}, activeLineupIndices=[{playerData.activeLineupIndices[0]}, {playerData.activeLineupIndices[1]}, {playerData.activeLineupIndices[2]}, {playerData.activeLineupIndices[3]}]");
 
         NotifyPlayerDataChanged();
     }
 
     private void InitializeNewPlayerData()
     {
-        Debug.Log("[GameManager] InitializeNewPlayerData() called");
-
-        // Reset all scalar fields to their default starting values.
         playerData.softCurrency = 0;
         playerData.premiumCurrency = 0;
         playerData.towerHighestFloorCleared = 0;
@@ -109,7 +92,6 @@ public class GameManager : MonoBehaviour
         {
             playerData.ownedCharacters.Add(new CharacterInstance(starterPlayer));
             playerData.activeCharacterIndex = 0;
-            Debug.Log($"[GameManager] InitializeNewPlayerData: Added starter player: {starterPlayer.displayName}");
         }
 
         if (extraStartingCharacters != null)
@@ -117,24 +99,17 @@ public class GameManager : MonoBehaviour
             foreach (var cd in extraStartingCharacters)
             {
                 if (cd != null)
-                {
                     playerData.ownedCharacters.Add(new CharacterInstance(cd));
-                    Debug.Log($"[GameManager] InitializeNewPlayerData: Added extra starting character: {cd.displayName}");
-                }
             }
         }
 
         if (playerData.activeLineupIndices == null || playerData.activeLineupIndices.Length != 4)
         {
             playerData.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
-            Debug.Log("[GameManager] InitializeNewPlayerData: Initialized activeLineupIndices to all -1");
         }
 
         if (playerData.activeLineupIndices[0] == -1 && playerData.ownedCharacters.Count > 0)
-        {
             playerData.activeLineupIndices[0] = playerData.activeCharacterIndex;
-            Debug.Log($"[GameManager] InitializeNewPlayerData: Set activeLineupIndices[0] to {playerData.activeCharacterIndex}");
-        }
     }
 
     public void SavePlayerData()
@@ -143,19 +118,13 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Completely reset the player's progress and re‑initialise starting data.
-    /// This is intended for developer / debug use and can be invoked from the Inspector
-    /// via the context menu or from other tools.
+    /// Completely reset the player's progress and reinitialize starting data.
     /// </summary>
     [ContextMenu("Developer/Reset Player Progress")]
     public void DebugResetPlayerProgress()
     {
-        Debug.Log("[GameManager] DebugResetPlayerProgress() called – clearing PlayerData and reinitialising.");
-
-        // Start from a fresh PlayerData instance.
         playerData = new PlayerData();
         InitializeNewPlayerData();
-        // Persist immediately so next launch also starts fresh.
         SavePlayerData();
         NotifyPlayerDataChanged();
     }
