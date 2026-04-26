@@ -6364,8 +6364,8 @@ MonoBehaviour:
   - {fileID: 1877200177}
   outerTargetIndicatorName: OuterDashed
   innerTargetIndicatorName: InnerTargetIndicator
-  outerTargetIndicatorRotateSpeed: 240
-  innerTargetIndicatorRotateSpeed: 240
+  outerTargetIndicatorRotateSpeed: 40
+  innerTargetIndicatorRotateSpeed: 40
   selectedTargetIndicatorScale: 1
   aoeTargetIndicatorScale: 0.7
 --- !u!4 &875464151
@@ -7677,8 +7677,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3.3896484, y: -1181.3601}
-  m_SizeDelta: {x: 10.819214, y: 180}
+  m_AnchoredPosition: {x: -171.49, y: -890}
+  m_SizeDelta: {x: -342.98, y: 173.5059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991439264
 MonoBehaviour:
@@ -7766,7 +7766,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 329.04132, y: 93.08411, z: 0, w: -28.141724}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

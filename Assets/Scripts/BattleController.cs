@@ -145,8 +145,8 @@ public class BattleController : MonoBehaviour
     public GameObject[] enemyTargetIndicators = new GameObject[4];
     public string outerTargetIndicatorName = "OuterDashed";
     public string innerTargetIndicatorName = "InnerTargetIndicator";
-    public float outerTargetIndicatorRotateSpeed = 240f;
-    public float innerTargetIndicatorRotateSpeed = 240f;
+    public float outerTargetIndicatorRotateSpeed = 40f;
+    public float innerTargetIndicatorRotateSpeed = 40f;
     public float selectedTargetIndicatorScale = 1f;
     public float aoeTargetIndicatorScale = 0.7f;
     private bool isSelectingTarget = false;
@@ -213,7 +213,6 @@ public class BattleController : MonoBehaviour
 
         // Cache ability panel positions for slide in/out (capture shown pos once)
         EnsureAbilityPanelPositionsInitialized();
-
         if (autoStartBattle)
             StartBattleNow();
     }
@@ -504,7 +503,7 @@ public class BattleController : MonoBehaviour
         }
 
         if (bestIdx >= 0)
-            SetEnemyTarget(bestIdx);
+            SelectEnemyTarget(bestIdx);
         else
             EnsureEnemyTargetValid();
     }
@@ -584,7 +583,7 @@ public class BattleController : MonoBehaviour
             return;
         }
 
-        SetEnemyTarget(index);
+        SelectEnemyTarget(index);
     }
 
     private void ConfirmTargetSelectionAndExecute()
@@ -2301,6 +2300,17 @@ public class BattleController : MonoBehaviour
     }
 
     public void SetEnemyTarget(int index)
+    {
+        if (!isSelectingTarget)
+        {
+            SelectEnemyTarget(index);
+            return;
+        }
+
+        OnEnemySlotPressed(index);
+    }
+
+    private void SelectEnemyTarget(int index)
     {
         if (index < 0 || index >= enemyMembers.Length) return;
         if (enemyMembers[index] == null || enemyMembers[index].IsDead()) return;
