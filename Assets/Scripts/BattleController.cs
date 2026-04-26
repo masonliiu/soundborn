@@ -3,9 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
-#endif
 
 public class BattleController : MonoBehaviour
 {
@@ -147,8 +144,14 @@ public class BattleController : MonoBehaviour
     private readonly bool[] enemySlotsHidden = new bool[4];
     private int currentEnemyTargetIndex = 0;
 
+    [Header("Target Indicators")]
     public GameObject[] enemyTargetIndicators = new GameObject[4];
-    public float enemyTargetIndicatorRotateSpeed = 240f;
+    public string outerTargetIndicatorName = "OuterDashed";
+    public string innerTargetIndicatorName = "InnerTargetIndicator";
+    public float outerTargetIndicatorRotateSpeed = 240f;
+    public float innerTargetIndicatorRotateSpeed = 240f;
+    public float selectedTargetIndicatorScale = 1f;
+    public float aoeTargetIndicatorScale = 0.7f;
     private bool isSelectingTarget = false;
     private PendingAbility selectingAbility = PendingAbility.None;
 
@@ -222,116 +225,7 @@ public class BattleController : MonoBehaviour
     {
         if (!isSelectingTarget) return;
 
-        // Tap/click an enemy slot to change the selected target or execute attack if already selected.
-        if (TryGetPointerDown(out var pointerPos))
-        {
-            int hit = GetEnemyIndexAtScreenPoint(pointerPos);
-            if (hit >= 0)
-            {
-                // If clicking the already-selected enemy, execute the attack immediately.
-                if (hit == currentEnemyTargetIndex)
-                {
-                    ConfirmTargetSelectionAndExecute();
-                }
-                else
-                {
-                    SetEnemyTarget(hit);
-                    UpdateTargetIndicators();
-                }
-            }
-        }
-
-        // Only the selected target's indicator should animate.
-        if (enemyTargetIndicators != null)
-        {
-            int idx = currentEnemyTargetIndex;
-            if (idx >= 0 && idx < enemyTargetIndicators.Length)
-            {
-                var go = enemyTargetIndicators[idx];
-                if (go != null && go.activeSelf)
-                    go.transform.Rotate(0f, 0f, -enemyTargetIndicatorRotateSpeed * Time.deltaTime);
-            }
-        }
-    }
-
-    private bool TryGetPointerDown(out Vector2 pointerPos)
-    {
-        // Supports both input backends:
-        // - New Input System (ENABLE_INPUT_SYSTEM)
-        // - Old Input Manager (ENABLE_LEGACY_INPUT_MANAGER)
-#if ENABLE_INPUT_SYSTEM
-        if (Touchscreen.current != null)
-        {
-            var touch = Touchscreen.current.primaryTouch;
-            if (touch.press.wasPressedThisFrame)
-            {
-                pointerPos = touch.position.ReadValue();
-                return true;
-            }
-        }
-
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            pointerPos = Mouse.current.position.ReadValue();
-            return true;
-        }
-
-        pointerPos = default;
-        return false;
-#elif ENABLE_LEGACY_INPUT_MANAGER
-        if (Input.touchCount > 0)
-        {
-            var t = Input.GetTouch(0);
-            if (t.phase == TouchPhase.Began)
-            {
-                pointerPos = t.position;
-                return true;
-            }
-        }
-        else if (Input.GetMouseButtonDown(0))
-        {
-            pointerPos = Input.mousePosition;
-            return true;
-        }
-
-        pointerPos = default;
-        return false;
-#else
-        pointerPos = default;
-        return false;
-#endif
-    }
-
-    private int GetEnemyIndexAtScreenPoint(Vector2 screenPos)
-    {
-        for (int i = 0; i < enemyMembers.Length; i++)
-        {
-            var e = enemyMembers[i];
-            if (e == null || e.IsDead()) continue;
-
-            RectTransform rt = null;
-
-            if (enemyTargetIndicators != null && i < enemyTargetIndicators.Length && enemyTargetIndicators[i] != null)
-                rt = enemyTargetIndicators[i].GetComponent<RectTransform>();
-
-            if (rt == null && enemyPortraitRects != null && i < enemyPortraitRects.Length && enemyPortraitRects[i] != null)
-                rt = enemyPortraitRects[i];
-
-            if (rt == null && enemyPortraitImages != null && i < enemyPortraitImages.Length && enemyPortraitImages[i] != null)
-                rt = enemyPortraitImages[i].rectTransform;
-
-            if (rt == null) continue;
-
-            var canvas = rt.GetComponentInParent<Canvas>();
-            Camera cam = null;
-            if (canvas != null && canvas.renderMode != RenderMode.ScreenSpaceOverlay)
-                cam = canvas.worldCamera;
-
-            if (RectTransformUtility.RectangleContainsScreenPoint(rt, screenPos, cam))
-                return i;
-        }
-
-        return -1;
+        RotateActiveTargetIndicators();
     }
 
     public void ResetBattleState()
@@ -631,19 +525,55 @@ public class BattleController : MonoBehaviour
     {
         if (enemyTargetIndicators == null) return;
 
+        bool isAoe = IsAoeAbility(selectingAbility);
+
         for (int i = 0; i < enemyTargetIndicators.Length; i++)
         {
             var go = enemyTargetIndicators[i];
             if (go == null) continue;
 
-            bool on = isSelectingTarget
-                      && enemyMembers != null
-                      && i < enemyMembers.Length
-                      && enemyMembers[i] != null
-                      && !enemyMembers[i].IsDead();
+            bool isAliveEnemy = enemyMembers != null
+                                && i < enemyMembers.Length
+                                && enemyMembers[i] != null
+                                && !enemyMembers[i].IsDead();
+            bool isMainTarget = i == currentEnemyTargetIndex;
+            bool on = isSelectingTarget && isAliveEnemy && (isMainTarget || isAoe);
+
             go.SetActive(on);
-            go.transform.localScale = on && i == currentEnemyTargetIndex ? Vector3.one * 1.12f : Vector3.one;
+
+            if (on)
+            {
+                float scale = isMainTarget ? selectedTargetIndicatorScale : aoeTargetIndicatorScale;
+                go.transform.localScale = Vector3.one * scale;
+            }
         }
+    }
+
+    private bool IsAoeAbility(PendingAbility ability)
+    {
+        return false;
+    }
+
+    private void RotateActiveTargetIndicators()
+    {
+        if (enemyTargetIndicators == null) return;
+
+        for (int i = 0; i < enemyTargetIndicators.Length; i++)
+        {
+            var indicator = enemyTargetIndicators[i];
+            if (indicator == null || !indicator.activeSelf) continue;
+
+            RotateTargetIndicatorChild(indicator.transform, outerTargetIndicatorName, outerTargetIndicatorRotateSpeed);
+            RotateTargetIndicatorChild(indicator.transform, innerTargetIndicatorName, -innerTargetIndicatorRotateSpeed);
+        }
+    }
+
+    private void RotateTargetIndicatorChild(Transform parent, string childName, float speed)
+    {
+        Transform child = parent.Find(childName);
+        if (child == null) return;
+
+        child.Rotate(0f, 0f, speed * Time.deltaTime);
     }
 
     public void OnEnemySlotPressed(int index)
@@ -652,8 +582,13 @@ public class BattleController : MonoBehaviour
         if (index < 0 || index >= enemyMembers.Length) return;
         if (enemyMembers[index] == null || enemyMembers[index].IsDead()) return;
 
+        if (index == currentEnemyTargetIndex)
+        {
+            ConfirmTargetSelectionAndExecute();
+            return;
+        }
+
         SetEnemyTarget(index);
-        UpdateTargetIndicators();
     }
 
     private void ConfirmTargetSelectionAndExecute()
@@ -2439,6 +2374,7 @@ public class BattleController : MonoBehaviour
         enemy = enemyMembers[index];
         RefreshFocusedEnemyUI();
         UpdateUI();
+        UpdateTargetIndicators();
     }
 
     private void RefreshFocusedEnemyUI()
