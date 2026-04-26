@@ -3,30 +3,30 @@ using UnityEngine;
 
 public class RewardManager : MonoBehaviour
 {
-    public void GrantFloorRewards(PlayerData data, TowerFloor floor)
+    public FloorRewardResult GrantFloorRewards(PlayerData data, TowerFloor floor)
     {
-        if (data == null || floor == null) return;
+        var result = new FloorRewardResult();
+        if (data == null || floor == null) return result;
 
         data.softCurrency += floor.rewardSoftCurrency;
         data.premiumCurrency += floor.rewardPremiumCurrency;
+        result.softCurrency = floor.rewardSoftCurrency;
+        result.premiumCurrency = floor.rewardPremiumCurrency;
 
         if (data.inventory == null)
             data.inventory = new List<ItemInstance>();
 
-        var grantedItems = new List<ItemData>();
         if (floor.rewardItem != null)
-            grantedItems.Add(floor.rewardItem);
+            result.items.Add(floor.rewardItem);
 
         if (GameManager.Instance != null && GameManager.Instance.towerProgression != null)
         {
             var rolled = GameManager.Instance.towerProgression.RollBossDrops(floor.floorNumber, floor.isBossFloor);
             if (rolled != null)
-                grantedItems.AddRange(rolled);
+                result.items.AddRange(rolled);
         }
 
-        floor.rewardItems = grantedItems;
-
-        foreach (var item in grantedItems)
+        foreach (var item in result.items)
         {
             if (item != null)
                 data.inventory.Add(new ItemInstance(item));
@@ -37,5 +37,14 @@ public class RewardManager : MonoBehaviour
             GameManager.Instance.NotifyPlayerDataChanged();
             GameManager.Instance.SavePlayerData();
         }
+
+        return result;
     }
+}
+
+public class FloorRewardResult
+{
+    public int softCurrency;
+    public int premiumCurrency;
+    public List<ItemData> items = new List<ItemData>();
 }

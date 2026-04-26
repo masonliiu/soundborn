@@ -117,7 +117,7 @@ public class UpgradePanel : MonoBehaviour
         }
 
         int cost = gm.GetLevelUpCost(targetInstance);
-        GetLeveledStats(targetInstance, out int hp, out int atk);
+        targetInstance.GetTotalStats(out int hp, out int atk, out _, out _);
 
         if (nameText != null)
             nameText.text = targetInstance.data.displayName;
@@ -186,26 +186,6 @@ public class UpgradePanel : MonoBehaviour
         }
 
         levelText.transform.localScale = baseScale;
-    }
-
-    private void GetLeveledStats(CharacterInstance inst, out int hp, out int atk)
-    {
-        hp = 0;
-        atk = 0;
-
-        if (inst == null || inst.data == null)
-            return;
-
-        int baseHP = inst.data.maxHP;
-        int baseATK = inst.data.attack;
-
-        int extraLevels = Mathf.Max(0, inst.level - 1);
-        hp = baseHP + extraLevels * 25;
-        atk = baseATK + extraLevels * 5;
-
-        inst.GetEquipmentBonuses(out int hpBonus, out int attackBonus, out _, out _);
-        hp += hpBonus;
-        atk += attackBonus;
     }
 
     public void OnClick_Close()

@@ -5,6 +5,10 @@ using UnityEngine;
 [Serializable]
 public class CharacterInstance
 {
+    private const int HpPerLevel = 25;
+    private const int AttackPerLevel = 5;
+    private const int DefensePerLevel = 3;
+
     public CharacterData data;
     public int level;
     public int currentExp;
@@ -126,6 +130,30 @@ public class CharacterInstance
             defenseBonus += Mathf.RoundToInt(item.data.defenseBonus * multiplier);
             speedBonus += Mathf.RoundToInt(item.data.speedBonus * multiplier);
         }
+    }
+
+    public void GetTotalStats(out int hp, out int attack, out int defense, out int speed)
+    {
+        hp = 0;
+        attack = 0;
+        defense = 0;
+        speed = 0;
+
+        if (data == null)
+            return;
+
+        int extraLevels = Mathf.Max(0, level - 1);
+
+        hp = data.maxHP + extraLevels * HpPerLevel;
+        attack = data.attack + extraLevels * AttackPerLevel;
+        defense = data.defense + extraLevels * DefensePerLevel;
+        speed = data.speed;
+
+        GetEquipmentBonuses(out int hpBonus, out int attackBonus, out int defenseBonus, out int speedBonus);
+        hp += hpBonus;
+        attack += attackBonus;
+        defense += defenseBonus;
+        speed += speedBonus;
     }
 
     public int GetExpToNextLevel()

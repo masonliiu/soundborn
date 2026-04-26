@@ -294,22 +294,7 @@ public class CharacterStats : MonoBehaviour
 
         InitFrom(instance.data);
 
-        int extraLevels = Mathf.Max(0, instance.level - 1);
-        if (extraLevels > 0)
-        {
-            // Per-level growth tuned to keep up with floor scaling:
-            // a leveled character gains meaningful survivability and damage.
-            maxHP += extraLevels * 25;   // +25 HP per level
-            attack += extraLevels * 5;   // +5 ATK per level
-            defense += extraLevels * 3;  // +3 DEF per level
-        }
-
-        instance.GetEquipmentBonuses(out int hpBonus, out int attackBonus, out int defenseBonus, out int speedBonus);
-        maxHP += hpBonus;
-        attack += attackBonus;
-        defense += defenseBonus;
-        speed += speedBonus;
-
-        currentHP = maxHP;           // refresh HP to new max
+        instance.GetTotalStats(out maxHP, out attack, out defense, out speed);
+        currentHP = maxHP;
     }
 }

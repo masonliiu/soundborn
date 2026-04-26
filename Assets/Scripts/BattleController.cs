@@ -2484,27 +2484,10 @@ public class BattleController : MonoBehaviour
                 var floor = gm.GetCurrentTowerFloor();
                 if (floor != null && gm.rewardManager != null)
                 {
-                    gm.rewardManager.GrantFloorRewards(gm.playerData, floor);
+                    var reward = gm.rewardManager.GrantFloorRewards(gm.playerData, floor);
                     if (rewardsText != null)
                     {
-                        string itemPart = "";
-                        if (floor.rewardItems != null && floor.rewardItems.Count > 0)
-                        {
-                            if (floor.rewardItems.Count == 1)
-                            {
-                                itemPart = $", Item: {floor.rewardItems[0].displayName}";
-                            }
-                            else
-                            {
-                                string first = floor.rewardItems[0] != null ? floor.rewardItems[0].displayName : "Item";
-                                string second = floor.rewardItems.Count > 1 && floor.rewardItems[1] != null
-                                    ? floor.rewardItems[1].displayName
-                                    : "Item";
-                                string extra = floor.rewardItems.Count > 2 ? $" (+{floor.rewardItems.Count - 2} more)" : "";
-                                itemPart = $", Items: {first}, {second}{extra}";
-                            }
-                        }
-                        rewardsText.text = $"+{floor.rewardSoftCurrency} Credits, +{floor.rewardPremiumCurrency} Gems{itemPart}";
+                        rewardsText.text = FormatRewardText(reward);
                     }
                 }
                 if (gm.towerProgression != null)
@@ -2546,5 +2529,34 @@ public class BattleController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private string FormatRewardText(FloorRewardResult reward)
+    {
+        if (reward == null)
+            return "";
+
+        string itemPart = "";
+        if (reward.items != null && reward.items.Count > 0)
+        {
+            if (reward.items.Count == 1)
+            {
+                itemPart = $", Item: {GetItemName(reward.items[0])}";
+            }
+            else
+            {
+                string first = GetItemName(reward.items[0]);
+                string second = reward.items.Count > 1 ? GetItemName(reward.items[1]) : "Item";
+                string extra = reward.items.Count > 2 ? $" (+{reward.items.Count - 2} more)" : "";
+                itemPart = $", Items: {first}, {second}{extra}";
+            }
+        }
+
+        return $"+{reward.softCurrency} Credits, +{reward.premiumCurrency} Gems{itemPart}";
+    }
+
+    private string GetItemName(ItemData item)
+    {
+        return item != null ? item.displayName : "Item";
     }
 }

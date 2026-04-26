@@ -69,8 +69,11 @@ public class BattleTeamPanel : MonoBehaviour
         for (int i = 0; i < owned.Count; i++)
         {
             var inst = owned[i];
+            int hp = 0;
+            int atk = 0;
 
-            GetLeveledStats(inst, out int hp, out int atk);
+            if (inst != null)
+                inst.GetTotalStats(out hp, out atk, out _, out _);
 
             var item = UnityEngine.Object.Instantiate(itemPrefab, contentRoot);
             item.gameObject.SetActive(true);
@@ -93,19 +96,4 @@ public class BattleTeamPanel : MonoBehaviour
             scrollRect.horizontalNormalizedPosition = 0f;
     }
 
-    private void GetLeveledStats(CharacterInstance inst, out int hp, out int atk)
-    {
-        hp = 0;
-        atk = 0;
-
-        if (inst == null || inst.data == null)
-            return;
-
-        int baseHP = inst.data.maxHP;
-        int baseATK = inst.data.attack;
-
-        int extraLevels = Mathf.Max(0, inst.level - 1);
-        hp = baseHP + extraLevels * 10;
-        atk = baseATK + extraLevels * 2;
-    }
 }

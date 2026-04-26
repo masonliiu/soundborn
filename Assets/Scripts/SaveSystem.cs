@@ -290,8 +290,47 @@ public static class SaveSystem
                 });
             }
         }
+
+        RepairCharacterSelection(target);
         return true;
     }
-}
 
+    private static void RepairCharacterSelection(PlayerData target)
+    {
+        if (target.ownedCharacters == null)
+            target.ownedCharacters = new List<CharacterInstance>();
+
+        if (target.activeLineupIndices == null || target.activeLineupIndices.Length != 4)
+            target.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
+
+        int characterCount = target.ownedCharacters.Count;
+        if (characterCount == 0)
+        {
+            target.activeCharacterIndex = 0;
+            for (int i = 0; i < target.activeLineupIndices.Length; i++)
+                target.activeLineupIndices[i] = -1;
+            return;
+        }
+
+        if (target.activeCharacterIndex < 0 || target.activeCharacterIndex >= characterCount)
+            target.activeCharacterIndex = 0;
+
+        bool hasValidLineupMember = false;
+        for (int i = 0; i < target.activeLineupIndices.Length; i++)
+        {
+            int index = target.activeLineupIndices[i];
+            if (index >= 0 && index < characterCount)
+            {
+                hasValidLineupMember = true;
+            }
+            else
+            {
+                target.activeLineupIndices[i] = -1;
+            }
+        }
+
+        if (!hasValidLineupMember)
+            target.activeLineupIndices[0] = target.activeCharacterIndex;
+    }
+}
 

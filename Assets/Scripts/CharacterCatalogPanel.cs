@@ -88,8 +88,11 @@ public class CharacterCatalogPanel : MonoBehaviour
         foreach (int charIndex in orderedIndices)
         {
             var inst = owned[charIndex];
+            int hp = 0;
+            int atk = 0;
 
-            GetLeveledStats(inst, out int hp, out int atk);
+            if (inst != null)
+                inst.GetTotalStats(out hp, out atk, out _, out _);
 
             var item = Instantiate(itemPrefab, contentRoot);
             item.gameObject.SetActive(true);
@@ -99,22 +102,6 @@ public class CharacterCatalogPanel : MonoBehaviour
 
         if (scrollRect != null)
             scrollRect.verticalNormalizedPosition = 1f;
-    }
-
-    private void GetLeveledStats(CharacterInstance inst, out int hp, out int atk)
-    {
-        hp = 0;
-        atk = 0;
-
-        if (inst == null || inst.data == null)
-            return;
-
-        int baseHP = inst.data.maxHP;
-        int baseATK = inst.data.attack;
-
-        int extraLevels = Mathf.Max(0, inst.level - 1);
-        hp = baseHP + extraLevels * 10;
-        atk = baseATK + extraLevels * 2;
     }
 
     public void OnClickItem(int characterIndex)

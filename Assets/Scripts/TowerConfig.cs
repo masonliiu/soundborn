@@ -19,7 +19,6 @@ public class TowerFloor
     public int rewardSoftCurrency;
     public int rewardPremiumCurrency;
     public ItemData rewardItem;
-    public List<ItemData> rewardItems = new List<ItemData>();
     public bool isBossFloor;
 }
 
@@ -65,5 +64,4 @@ public class TowerLootArea
         legendary = 2
     };
 }
-
 
