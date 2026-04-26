@@ -30,8 +30,6 @@ public class BattleController : MonoBehaviour
     public float enemyDeathPixelDuration = 0.8f;
     public float enemyDeathHoldDelay = 0.4f;
 
-    private Material enemyPixelateMaterialRuntime;
-
     [Header("Result UI")]
     public GameObject resultPanel;
     public TextMeshProUGUI resultText;
@@ -58,7 +56,6 @@ public class BattleController : MonoBehaviour
     public TextMeshProUGUI abilityCardDescription;
 
     private enum PendingAbility { None, Basic, Skill, Ultimate }
-    private PendingAbility pendingAbility = PendingAbility.None;
 
     [Header("Impact Effects")]
     public ImpactEffect impactEffectPrefab;
@@ -484,7 +481,6 @@ public class BattleController : MonoBehaviour
     {
         selectingAbility = ability;
         isSelectingTarget = true;
-        pendingAbility = ability;
         AutoSelectLowestHpEnemy();
         ShowAbilityCard(ability);
         UpdateTargetIndicators();
@@ -1540,31 +1536,6 @@ public class BattleController : MonoBehaviour
         battleRoot.anchoredPosition = baseRootPos;
     }
 
-    private void ScaleEnemyForFloor(int floorNumber, bool isBoss)
-    {
-        if (enemy == null) return;
-
-        int t = Mathf.Max(0, floorNumber - 1);
-
-        // ~3.5% HP growth, 2.5% ATK, 2% DEF per floor (compounded).
-        float hpMul = Mathf.Pow(1.035f, t);
-        float atkMul = Mathf.Pow(1.025f, t);
-        float defMul = Mathf.Pow(1.02f,  t);
-
-        if (isBoss)
-        {
-            hpMul *= 1.6f;
-            atkMul *= 1.3f;
-            defMul *= 1.2f;
-        }
-
-        enemy.maxHP = Mathf.RoundToInt(enemy.maxHP * hpMul);
-        enemy.currentHP = enemy.maxHP;
-        enemy.attack = Mathf.RoundToInt(enemy.attack * atkMul);
-        enemy.defense = Mathf.RoundToInt(enemy.defense * defMul);
-
-    }
-
     private void PlayWinSequence()
     {
         StartCoroutine(WinSequenceRoutine());
@@ -1574,8 +1545,6 @@ public class BattleController : MonoBehaviour
     {
         float postHitDelay = 0.35f;
         yield return new WaitForSeconds(postHitDelay);
-
-        yield return StartCoroutine(EnemyDeathPixelateRoutine());
 
         yield return new WaitForSeconds(enemyDeathHoldDelay);
 
@@ -1590,33 +1559,6 @@ public class BattleController : MonoBehaviour
                 backHomeButton.interactable = true;
             }
         }
-    }
-
-    private IEnumerator EnemyDeathPixelateRoutine()
-    {
-        if (enemyPixelateMaterialTemplate == null || enemyPortraitImage == null)
-            yield break;
-
-        if (enemyPixelateMaterialRuntime == null)
-            enemyPixelateMaterialRuntime = new Material(enemyPixelateMaterialTemplate);
-
-        var img = enemyPortraitImage;
-        var originalMat = img.material;
-
-        img.material = enemyPixelateMaterialRuntime;
-        enemyPixelateMaterialRuntime.SetFloat("_PixelAmount", 0f);
-
-        float t = 0f;
-        while (t < enemyDeathPixelDuration)
-        {
-            t += Time.deltaTime;
-            float n = Mathf.Clamp01(t / enemyDeathPixelDuration);
-            enemyPixelateMaterialRuntime.SetFloat("_PixelAmount", n);
-            yield return null;
-        }
-
-        enemyPixelateMaterialRuntime.SetFloat("_PixelAmount", 1f);
-        img.enabled = false;
     }
 
     private IEnumerator EnemyDeathPixelateRoutine(int enemyIndex)
@@ -1898,7 +1840,6 @@ public class BattleController : MonoBehaviour
     {
         if (abilityCardPanel == null || currentActor == null || !IsPlayerControlled(currentActor)) return;
 
-        pendingAbility = ability;
         abilityCardPanel.SetActive(true);
 
         string name = "";
@@ -1940,7 +1881,6 @@ public class BattleController : MonoBehaviour
         if (abilityCardPanel != null)
             abilityCardPanel.SetActive(false);
 
-        pendingAbility = PendingAbility.None;
     }
 
     private string DescribeSkillByElement(ElementType element)
@@ -2009,12 +1949,6 @@ public class BattleController : MonoBehaviour
                 partyMembers[i] = null;
             }
         }
-    }
-
-    private string GetPartyMemberSummary(int index)
-    {
-        if (partyMembers[index] == null) return "NULL";
-        return partyMembers[index].displayName;
     }
 
     private void InitializePartyMemberDisplays()
@@ -2469,11 +2403,6 @@ public class BattleController : MonoBehaviour
                 enemyPortraitImages[i].enabled = true;
                 enemyPortraitImages[i].gameObject.SetActive(true);
             }
-        }
-
-        for (int i = 0; i < enemyMembers.Length; i++)
-        {
-            var e = enemyMembers[i];
         }
 
         EnsureEnemyTargetValid();

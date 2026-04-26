@@ -38,11 +38,4 @@ public class RewardManager : MonoBehaviour
             GameManager.Instance.SavePlayerData();
         }
     }
-
-    public void GrantCharacterShard(PlayerData data, CharacterData character, int amount)
-    {
-        if (data == null || character == null || amount <= 0) return;
-        data.softCurrency += amount * 10;
-    }
 }
-
