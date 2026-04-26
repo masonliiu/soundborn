@@ -1,0 +1,820 @@
+fileFormatVersion: 2
+guid: 46ccbc9fcb5bb191fb0318447fa1c79f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7119820301461341112
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_0
+  - first:
+      213: -7315778322887844142
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_1
+  - first:
+      213: 3329067304426906466
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_2
+  - first:
+      213: 3364981944865898136
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_3
+  - first:
+      213: 1037247939468440589
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_4
+  - first:
+      213: 3176223528791794122
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_5
+  - first:
+      213: -8826089292917391832
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_6
+  - first:
+      213: 7865948527551668536
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_7
+  - first:
+      213: 6107033410397474709
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_8
+  - first:
+      213: 2296647708653712207
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_9
+  - first:
+      213: 3379396519176488666
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_10
+  - first:
+      213: -3138708414325943524
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_11
+  - first:
+      213: 2873731772139404720
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_12
+  - first:
+      213: 7475659491252439406
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_13
+  - first:
+      213: 211616396384304290
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_14
+  - first:
+      213: -1591684683571183135
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_15
+  - first:
+      213: 7580105219123348360
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_16
+  - first:
+      213: 4136042294786138117
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_17
+  - first:
+      213: 2413676841904265384
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_18
+  - first:
+      213: -2615583112438037147
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_19
+  - first:
+      213: -1444717329409057873
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_20
+  - first:
+      213: -386343625446688969
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_21
+  - first:
+      213: 2415518355584278230
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_22
+  - first:
+      213: 5182743524164795249
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_23
+  - first:
+      213: -5502547905592897144
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_24
+  - first:
+      213: 6696359167049864481
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_25
+  - first:
+      213: 7232724726228091636
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_26
+  - first:
+      213: -3970247411714425553
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_27
+  - first:
+      213: 569291584097497168
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_28
+  - first:
+      213: 6496323360895295512
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_29
+  - first:
+      213: -744818200023775562
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_30
+  - first:
+      213: -6946498851987925894
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_31
+  - first:
+      213: 4726099179251165068
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_32
+  - first:
+      213: -3328218098682399735
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_33
+  - first:
+      213: 7577097031813000770
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_34
+  - first:
+      213: -8176889390001140544
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_35
+  - first:
+      213: 718357579775310822
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_36
+  - first:
+      213: 3282860189542373158
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_37
+  - first:
+      213: 3090739675483005981
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_38
+  - first:
+      213: 1071301999812613207
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_39
+  - first:
+      213: -7623983728801894422
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_40
+  - first:
+      213: 2423773083120953190
+    second: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_20
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 14
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fabd8bb4e3553fbe0800000000000000
+      internalID: -1444717329409057873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_21
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 14
+        width: 21
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7377304058e63aaf0800000000000000
+      internalID: -386343625446688969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_22
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6de590d7525a58120800000000000000
+      internalID: 2415518355584278230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_23
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17b7ccf96cdcce740800000000000000
+      internalID: 5182743524164795249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_24
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 881d09765d503a3b0800000000000000
+      internalID: -5502547905592897144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_25
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12510700f2f3eec50800000000000000
+      internalID: 6696359167049864481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_26
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f2820161dccf5460800000000000000
+      internalID: 7232724726228091636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_27
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2df85aa309d6e8c0800000000000000
+      internalID: -3970247411714425553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_28
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05030c3fda786e700800000000000000
+      internalID: 569291584097497168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_29
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8106c308da3972a50800000000000000
+      internalID: 6496323360895295512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_30
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b646551bcfd9a5f0800000000000000
+      internalID: -744818200023775562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_31
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 14
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a74d9962914199f90800000000000000
+      internalID: -6946498851987925894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_32
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c87e780e92a769140800000000000000
+      internalID: 4726099179251165068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_33
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 904720dd54bcfc1d0800000000000000
+      internalID: -3328218098682399735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_34
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24e61e1fa91472960800000000000000
+      internalID: 7577097031813000770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_35
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc425d3c6ad58e80800000000000000
+      internalID: -8176889390001140544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_36
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb773ca96e18f900800000000000000
+      internalID: 718357579775310822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_37
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 627d1f4f2ff0f8d20800000000000000
+      internalID: 3282860189542373158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_38
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 14
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d14ee520c5384ea20800000000000000
+      internalID: 3090739675483005981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_39
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 14
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7541ff92e770ede00800000000000000
+      internalID: 1071301999812613207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_40
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aefa767313b223690800000000000000
+      internalID: -7623983728801894422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_41
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667e39307c8f2a120800000000000000
+      internalID: 2423773083120953190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_42
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 54
+        width: 895
+        height: 892
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f09ad4ea57a8d85a40bad1e1d2e79a
+      internalID: 1742504609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 29de197ecb78fcc6ca3282732d92ed08
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_0: 7119820301461341112
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_1: -7315778322887844142
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_10: 3379396519176488666
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_11: -3138708414325943524
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_12: 2873731772139404720
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_13: 7475659491252439406
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_14: 211616396384304290
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_15: -1591684683571183135
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_16: 7580105219123348360
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_17: 4136042294786138117
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_18: 2413676841904265384
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_19: -2615583112438037147
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_2: 3329067304426906466
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_20: -1444717329409057873
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_21: -386343625446688969
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_22: 2415518355584278230
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_23: 5182743524164795249
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_24: -5502547905592897144
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_25: 6696359167049864481
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_26: 7232724726228091636
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_27: -3970247411714425553
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_28: 569291584097497168
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_29: 6496323360895295512
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_3: 3364981944865898136
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_30: -744818200023775562
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_31: -6946498851987925894
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_32: 4726099179251165068
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_33: -3328218098682399735
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_34: 7577097031813000770
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_35: -8176889390001140544
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_36: 718357579775310822
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_37: 3282860189542373158
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_38: 3090739675483005981
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_39: 1071301999812613207
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_4: 1037247939468440589
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_40: -7623983728801894422
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_41: 2423773083120953190
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_42: 1742504609
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_5: 3176223528791794122
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_6: -8826089292917391832
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_7: 7865948527551668536
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_8: 6107033410397474709
+      royalty-free-color-scheme-cartoon-dashed-circle-96bc3053d5863b39cad61d93d21f53b1_9: 2296647708653712207
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
