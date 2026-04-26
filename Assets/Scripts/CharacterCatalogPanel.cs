@@ -119,10 +119,14 @@ public class CharacterCatalogPanel : MonoBehaviour
 
     public void OnClickItem(int characterIndex)
     {
-        if (upgradePanel != null)
-        {
-            upgradePanel.ShowForCharacter(homeUI, characterIndex);
-        }
+        var gm = GameManager.Instance;
+        if (upgradePanel == null || gm == null || gm.playerData.ownedCharacters == null)
+            return;
+
+        if (characterIndex < 0 || characterIndex >= gm.playerData.ownedCharacters.Count)
+            return;
+
+        upgradePanel.ShowForCharacter(homeUI, gm.playerData.ownedCharacters[characterIndex]);
     }
 
     public void OnClick_Close()

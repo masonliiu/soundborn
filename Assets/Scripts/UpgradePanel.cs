@@ -8,6 +8,9 @@ public class UpgradePanel : MonoBehaviour
     [Header("Root")]
     public GameObject root;
 
+    [Header("Character")]
+    public Image iconImage;
+
     [Header("Texts")]
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI levelText;
@@ -59,6 +62,18 @@ public class UpgradePanel : MonoBehaviour
         Refresh();
     }
 
+    public void ShowForCharacter(HomeUIController home, CharacterInstance character)
+    {
+        homeUI = home;
+        targetCharacterIndex = -1;
+        targetInstance = character;
+
+        if (root != null)
+            root.SetActive(true);
+
+        Refresh();
+    }
+
     public void Hide()
     {
         if (root != null)
@@ -87,6 +102,11 @@ public class UpgradePanel : MonoBehaviour
         if (targetInstance == null || targetInstance.data == null)
         {
             if (nameText != null) nameText.text = "No character";
+            if (iconImage != null)
+            {
+                iconImage.sprite = null;
+                iconImage.enabled = false;
+            }
             if (levelText != null) levelText.text = "";
             if (costText != null) costText.text = "";
             if (softCurrencyText != null) softCurrencyText.text = "";
@@ -101,6 +121,13 @@ public class UpgradePanel : MonoBehaviour
 
         if (nameText != null)
             nameText.text = targetInstance.data.displayName;
+
+        if (iconImage != null)
+        {
+            iconImage.sprite = targetInstance.data.silhouetteSprite;
+            iconImage.enabled = targetInstance.data.silhouetteSprite != null;
+            iconImage.preserveAspect = true;
+        }
 
         if (levelText != null)
             levelText.text = "Level " + targetInstance.level;
