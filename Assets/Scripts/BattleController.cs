@@ -108,6 +108,7 @@ public class BattleController : MonoBehaviour
     public Image[] enemyPortraitImages = new Image[4];
     public TextMeshProUGUI[] enemyHpTexts = new TextMeshProUGUI[4];
     public Slider[] enemyHpSliders = new Slider[4];
+    public Slider[] enemyHpPreviewSliders = new Slider[4];
     public Slider[] enemyHpDamageSliders = new Slider[4];
     public RectTransform[] enemyPortraitRects = new RectTransform[4];
     public RectTransform[] enemyImpactAnchors = new RectTransform[4];
@@ -140,6 +141,7 @@ public class BattleController : MonoBehaviour
     private readonly bool[] partySlotsHidden = new bool[4];
     private readonly bool[] enemySlotsHidden = new bool[4];
     private int currentEnemyTargetIndex = 0;
+    private bool isPlayerActionRunning = false;
 
     [Header("Target Indicators")]
     public GameObject[] enemyTargetIndicators = new GameObject[4];
@@ -514,6 +516,7 @@ public class BattleController : MonoBehaviour
         selectingAbility = PendingAbility.None;
         HideAbilityCard();
         UpdateTargetIndicators();
+        UpdateUI();
     }
 
     private void UpdateTargetIndicators()
@@ -590,6 +593,7 @@ public class BattleController : MonoBehaviour
     {
         if (!isSelectingTarget) return;
         if (selectingAbility == PendingAbility.None) return;
+        if (isPlayerActionRunning) return;
 
         // Ensure we have a valid target (prefer current selection, fallback to lowest HP).
         int idx = currentEnemyTargetIndex;
@@ -603,10 +607,12 @@ public class BattleController : MonoBehaviour
             return;
 
         var ability = selectingAbility;
+        isPlayerActionRunning = true;
         isSelectingTarget = false;
         selectingAbility = PendingAbility.None;
         HideAbilityCard();
         UpdateTargetIndicators();
+        UpdateUI();
 
         if (ability == PendingAbility.Basic)
             StartCoroutine(PlayerAttackWithPanelRoutine(PlayerBasicAttackRoutine(idx)));
@@ -1083,6 +1089,7 @@ public class BattleController : MonoBehaviour
     private bool CanPlayerAct()
     {
         if (battleOver) return false;
+        if (isPlayerActionRunning) return false;
         if (currentActor == null) return false;
         if (!IsPlayerControlled(currentActor)) return false;
         return true;
@@ -1198,19 +1205,78 @@ public class BattleController : MonoBehaviour
 
             if (enemyHpSliders != null && i < enemyHpSliders.Length && enemyHpSliders[i] != null)
             {
+                int hpValue = GetEnemyPreviewHpValue(e, i);
                 enemyHpSliders[i].maxValue = e.maxHP;
-                enemyHpSliders[i].value = e.currentHP;
+                enemyHpSliders[i].value = hpValue;
+                SetSliderFillVisible(enemyHpSliders[i], hpValue > 0);
+            }
+
+            if (enemyHpPreviewSliders != null && i < enemyHpPreviewSliders.Length && enemyHpPreviewSliders[i] != null)
+            {
+                bool showPreview = ShouldShowEnemyDamagePreview(e, i);
+                enemyHpPreviewSliders[i].gameObject.SetActive(showPreview);
+                enemyHpPreviewSliders[i].maxValue = e.maxHP;
+                enemyHpPreviewSliders[i].value = showPreview ? e.currentHP : 0;
             }
 
             if (enemyHpDamageSliders != null && i < enemyHpDamageSliders.Length && enemyHpDamageSliders[i] != null)
             {
                 enemyHpDamageSliders[i].maxValue = e.maxHP;
-                enemyHpDamageSliders[i].value = e.currentHP;
+                if (!isEnemyHpAnimating)
+                    enemyHpDamageSliders[i].value = e.currentHP;
+                SetSliderFillVisible(enemyHpDamageSliders[i], e.currentHP > 0);
             }
 
             if (enemyStatusIcons != null && i < enemyStatusIcons.Length && enemyStatusIcons[i] != null)
                 enemyStatusIcons[i].color = GetStatusColor(e.currentStatus);
         }
+    }
+
+    private int GetEnemyPreviewHpValue(CharacterStats target, int enemyIndex)
+    {
+        if (!ShouldShowEnemyDamagePreview(target, enemyIndex))
+            return target.currentHP;
+
+        int damage = GetSelectedAbilityPreviewDamage(target);
+        return Mathf.Max(0, target.currentHP - damage);
+    }
+
+    private bool ShouldShowEnemyDamagePreview(CharacterStats target, int enemyIndex)
+    {
+        return isSelectingTarget
+               && currentActor != null
+               && target != null
+               && !target.IsDead()
+               && enemyIndex == currentEnemyTargetIndex
+               && selectingAbility != PendingAbility.None;
+    }
+
+    private int GetSelectedAbilityPreviewDamage(CharacterStats target)
+    {
+        float multiplier = 1f;
+        int flatBonus = 0;
+
+        if (selectingAbility == PendingAbility.Skill)
+        {
+            multiplier = 1.2f;
+            flatBonus = currentActor.skillPower;
+        }
+        else if (selectingAbility == PendingAbility.Ultimate)
+        {
+            multiplier = 1.5f;
+            flatBonus = currentActor.ultimatePower;
+        }
+
+        return currentActor.CalculateDamagePreviewAgainst(target, multiplier, flatBonus);
+    }
+
+    private void SetSliderFillVisible(Slider slider, bool visible)
+    {
+        if (slider == null || slider.fillRect == null) return;
+
+        var fillGraphic = slider.fillRect.GetComponent<Graphic>();
+        if (fillGraphic != null)
+            fillGraphic.enabled = visible;
     }
 
     private void UpdatePartyMemberUI()
@@ -1269,6 +1335,7 @@ public class BattleController : MonoBehaviour
         SetComponentVisible(enemyPortraitImages, index, visible, true);
         SetComponentVisible(enemyHpTexts, index, visible);
         SetComponentVisible(enemyHpSliders, index, visible);
+        SetComponentVisible(enemyHpPreviewSliders, index, visible);
         SetComponentVisible(enemyHpDamageSliders, index, visible);
         SetComponentVisible(enemyStatusIcons, index, visible, true);
 
@@ -1351,6 +1418,7 @@ public class BattleController : MonoBehaviour
 
         EnsureEnemyTargetValid();
         UpdateTargetIndicators();
+        isPlayerActionRunning = false;
     }
 
     private IEnumerator SlideAbilityPanelOut()
@@ -2301,6 +2369,8 @@ public class BattleController : MonoBehaviour
 
     public void SetEnemyTarget(int index)
     {
+        if (isPlayerActionRunning) return;
+
         if (!isSelectingTarget)
         {
             SelectEnemyTarget(index);

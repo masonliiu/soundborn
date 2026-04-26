@@ -216,6 +216,20 @@ public class CharacterStats : MonoBehaviour
         return finalDamage;
     }
 
+    public int CalculateDamagePreviewAgainst(CharacterStats target, float multiplier, int flatBonus)
+    {
+        int raw = attack - target.defense;
+        if (raw < 1) raw = 1;
+
+        float scaled = raw * multiplier + flatBonus;
+        scaled *= CalculateElementMultiplier(this.element, target.element);
+
+        int finalDamage = Mathf.RoundToInt(scaled);
+        if (finalDamage < 1) finalDamage = 1;
+
+        return finalDamage;
+    }
+
     /// <summary>
     /// Element wheel:
     /// Bass > Synth
