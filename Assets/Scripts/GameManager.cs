@@ -1,6 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum BattleMode
+{
+    Tower,
+    Trial
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +18,7 @@ public class GameManager : MonoBehaviour
     public CharacterData starterPlayer;
     public CharacterData starterEnemy;
     public TowerConfig towerConfig;
+    public TrialConfig trialConfig;
     public CharacterDatabase characterDatabase;
     public ItemDatabase itemDatabase;
     public QuestManager questManager;
@@ -22,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Battle Runtime")]
     public CharacterData currentEnemyData;
+    public BattleMode currentBattleMode = BattleMode.Tower;
+    public TrialDefinition currentTrial;
 
     public event Action OnPlayerDataChanged;
 
@@ -186,6 +196,67 @@ public class GameManager : MonoBehaviour
         return towerConfig.floors[index];
     }
 
+    public TowerFloor GetCurrentBattleFloor()
+    {
+        if (currentBattleMode == BattleMode.Trial)
+            return BuildTrialFloor(currentTrial);
+
+        return GetCurrentTowerFloor();
+    }
+
+    public TowerFloor BuildTrialFloor(TrialDefinition trial)
+    {
+        if (trial == null)
+            return null;
+
+        var floor = new TowerFloor
+        {
+            floorNumber = Mathf.Max(1, trial.enemyScaleFloor),
+            floorName = trial.displayName,
+            rewardSoftCurrency = trial.rewardNotes,
+            rewardPremiumCurrency = 0,
+            isBossFloor = false
+        };
+
+        for (int i = 0; i < floor.enemies.Length; i++)
+        {
+            if (trial.enemies != null && i < trial.enemies.Length)
+                floor.enemies[i] = trial.enemies[i];
+        }
+
+        floor.enemyData = floor.enemies[0];
+        return floor;
+    }
+
+    public void StartTowerBattle()
+    {
+        currentBattleMode = BattleMode.Tower;
+        currentTrial = null;
+        SetEnemyFromCurrentBattle();
+        SceneManager.LoadScene("BattleScene");
+    }
+
+    public bool StartTrialBattle(TrialType type, int tier)
+    {
+        var trial = trialConfig != null ? trialConfig.GetTrial(type, tier) : null;
+        if (trial == null || !IsTrialUnlocked(trial))
+            return false;
+
+        currentBattleMode = BattleMode.Trial;
+        currentTrial = trial;
+        SetEnemyFromCurrentBattle();
+        SceneManager.LoadScene("BattleScene");
+        return true;
+    }
+
+    public bool IsTrialUnlocked(TrialDefinition trial)
+    {
+        if (trial == null || playerData == null)
+            return false;
+
+        return playerData.towerHighestFloorCleared + 1 >= trial.unlockTowerFloor;
+    }
+
     public string GetFloorLabel(int floorIndex)
     {
         if (towerProgression != null)
@@ -203,6 +274,13 @@ public class GameManager : MonoBehaviour
         {
             currentEnemyData = floor.enemyData;
         }
+    }
+
+    public void SetEnemyFromCurrentBattle()
+    {
+        var floor = GetCurrentBattleFloor();
+        if (floor != null && floor.enemyData != null)
+            currentEnemyData = floor.enemyData;
     }
 
     public void SetCurrentEnemy(CharacterData enemy)

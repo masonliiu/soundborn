@@ -2406,7 +2406,7 @@ public class BattleController : MonoBehaviour
     private CharacterData GetCurrentEnemyData()
     {
         var gm = GameManager.Instance;
-        var floorCfg = gm != null ? gm.GetCurrentTowerFloor() : null;
+        var floorCfg = gm != null ? gm.GetCurrentBattleFloor() : null;
         if (floorCfg != null && floorCfg.enemies != null && currentEnemyTargetIndex >= 0 && currentEnemyTargetIndex < floorCfg.enemies.Length)
         {
             var d = floorCfg.enemies[currentEnemyTargetIndex];
@@ -2418,8 +2418,8 @@ public class BattleController : MonoBehaviour
 
     private void InitializeEnemies(GameManager gm)
     {
-        var floorCfg = gm != null ? gm.GetCurrentTowerFloor() : null;
-        int floorNumber = gm != null && gm.playerData != null ? gm.playerData.towerCurrentFloor + 1 : 1;
+        var floorCfg = gm != null ? gm.GetCurrentBattleFloor() : null;
+        int floorNumber = floorCfg != null ? Mathf.Max(1, floorCfg.floorNumber) : 1;
         bool isBoss = floorCfg != null && floorCfg.isBossFloor;
 
         // If the scene only has a single enemy actor wired (legacy setup),
@@ -2561,25 +2561,27 @@ public class BattleController : MonoBehaviour
                 // Cache the floor index we just cleared before advancing.
                 int clearedFloorIndex = gm.playerData != null ? gm.playerData.towerCurrentFloor : 0;
 
-                var floor = gm.GetCurrentTowerFloor();
+                var floor = gm.GetCurrentBattleFloor();
                 if (floor != null && gm.rewardManager != null)
                 {
-                    var reward = gm.rewardManager.GrantFloorRewards(gm.playerData, floor);
+                    var reward = gm.currentBattleMode == BattleMode.Trial
+                        ? gm.rewardManager.GrantTrialRewards(gm.playerData, gm.currentTrial)
+                        : gm.rewardManager.GrantFloorRewards(gm.playerData, floor);
                     if (rewardsText != null)
                     {
                         rewardsText.text = FormatRewardText(reward);
                     }
                 }
-                if (gm.towerProgression != null)
+                if (gm.currentBattleMode == BattleMode.Tower && gm.towerProgression != null)
                 {
                     gm.towerProgression.TryAdvanceFloor(gm.playerData);
                 }
-                gm.SetEnemyFromTowerFloor();
+                gm.SetEnemyFromCurrentBattle();
                 gm.NotifyPlayerDataChanged();
                 gm.SavePlayerData();
 
                 // Quest hook: report the floor that was just cleared (before advancing).
-                if (QuestManager.Instance != null)
+                if (gm.currentBattleMode == BattleMode.Tower && QuestManager.Instance != null)
                 {
                     QuestManager.Instance.OnBattleWon(clearedFloorIndex);
                 }
@@ -2632,7 +2634,11 @@ public class BattleController : MonoBehaviour
             }
         }
 
-        return $"+{reward.softCurrency} Notes, +{reward.characterExp} Character EXP, +{reward.premiumCurrency} Gems{itemPart}";
+        string resonancePart = "";
+        if (reward.resonanceMaterialAmount > 0)
+            resonancePart = $", +{reward.resonanceMaterialAmount} Resonance {reward.resonanceMaterialTier}";
+
+        return $"+{reward.softCurrency} Notes, +{reward.characterExp} Character EXP, +{reward.premiumCurrency} Gems{resonancePart}{itemPart}";
     }
 
     private string GetItemName(ItemData item)

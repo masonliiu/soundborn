@@ -3,7 +3,7 @@
 Soundborn is a mobile turn-based RPG built around two progression loops:
 
 - Main Tower: push floors, beat harder enemies, unlock systems, earn first-clear rewards.
-- Trials: repeatable farming stages for level-cap materials and steady resources.
+- Trials: repeatable farming stages for level-cap materials, equipment, and steady resources.
 
 The goal is simple: fight, earn resources, upgrade characters/equipment, push farther.
 
@@ -15,7 +15,7 @@ Every system should support at least one pillar:
 Clear progress: the player always knows what to do next.
 Meaningful upgrades: every reward moves a character, item, or unlock forward.
 Team expression: characters and equipment should create different team choices.
-Controlled randomness: drops and cases can be exciting, but pity prevents dead streaks.
+Controlled randomness: drops and cases can be exciting, but rates and costs must be clear.
 Fast sessions: one battle should be useful even when the player only has a few minutes.
 ```
 
@@ -36,8 +36,8 @@ Unlock harder Trials and better rewards
 
 ```text
 Enter Trial
-Farm Notes, Character EXP, and Resonance Materials
-Use Resonance Materials to break character level caps
+Farm Notes, Character EXP, Resonance Materials, or equipment
+Use farmed rewards to break level caps or improve builds
 Return to Tower stronger
 ```
 
@@ -288,13 +288,28 @@ Losses should teach the player they need upgrades, team changes, or better targe
 
 Trials are repeatable farming stages.
 
-Example structure:
+Trial categories:
 
 ```text
-Trial Tier I: Resonance Material I
-Trial Tier II: Resonance Material II
-Trial Tier III: Resonance Material III
-Trial Tier IV: Resonance Material IV
+Resonance Trials: farm level-cap materials
+Equipment Trials: farm equipment drops
+```
+
+Example Resonance Trial structure:
+
+```text
+Resonance Trial Tier I: Resonance Material I
+Resonance Trial Tier II: Resonance Material II
+Resonance Trial Tier III: Resonance Material III
+Resonance Trial Tier IV: Resonance Material IV
+```
+
+Example Equipment Trial structure:
+
+```text
+Equipment Trial Tier I: early equipment
+Equipment Trial Tier II: stronger equipment
+Equipment Trial Tier III: late equipment
 ```
 
 Unlocks should be tied to Tower progress:
@@ -306,22 +321,14 @@ Tier III Trial: Stage 8-30
 Tier IV Trial: Stage 15-50
 ```
 
-Avoid extremely low pure RNG. Use low drop chance plus guarantee:
+Trials use RNG drops with no pity.
 
 ```text
-20% material drop chance
-1 guaranteed material every 5 clears
+Resonance Trial: Notes, Character EXP, chance for Resonance Material
+Equipment Trial: Notes, Character EXP, chance for equipment
 ```
 
-This creates farming without making progression feel broken.
-
-Trials should have visible pity progress.
-
-```text
-Example: Resonance Material guaranteed in 3 more clears
-```
-
-Players should never have to guess whether farming is working.
+Since Tower attempts and Trials are not stamina-limited, losses or bad drops do not need compensation rewards.
 
 ## Equipment
 
@@ -445,7 +452,7 @@ character shards
 inventory/items
 active lineup
 tower progress
-trial progress/pity counters
+trial unlock progress
 ```
 
 `GameManager` should own the live `PlayerData` instance and save/load it through `SaveSystem`.
@@ -460,7 +467,7 @@ ItemData
 TowerConfig
 QuestData
 Reward tables later
-TrialConfig later
+TrialConfig
 GachaConfig later
 ```
 

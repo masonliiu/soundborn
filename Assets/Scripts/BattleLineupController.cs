@@ -237,7 +237,7 @@ public class BattleLineupController : MonoBehaviour
 
         gm.playerData.activeCharacterIndex = selected[0];
 
-        gm.SetEnemyFromTowerFloor();
+        gm.SetEnemyFromCurrentBattle();
 
         if (preBattleRoot != null) preBattleRoot.SetActive(false);
         if (bottomBarRoot != null) bottomBarRoot.SetActive(true);

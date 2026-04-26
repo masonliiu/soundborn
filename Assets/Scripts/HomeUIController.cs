@@ -19,6 +19,7 @@ public class HomeUIController : MonoBehaviour
     public CharacterCatalogPanel characterCatalogPanel;
     public UpgradePanel upgradePanel;
     public InventoryPanel inventoryPanel;
+    public TrialsPanel trialsPanel;
     public GameObject onboardingPanel; // assign HomeOnboardingController panel
 
     private void Start()
@@ -70,7 +71,34 @@ public class HomeUIController : MonoBehaviour
 
     public void OnClick_ClimbTower()
     {
-        SceneManager.LoadScene("BattleScene");
+        var gm = GameManager.Instance;
+        if (gm != null)
+            gm.StartTowerBattle();
+        else
+            SceneManager.LoadScene("BattleScene");
+    }
+
+    public void OnClick_ResonanceTrialTier1()
+    {
+        StartTrial(TrialType.Resonance, 1);
+    }
+
+    public void OnClick_EquipmentTrialTier1()
+    {
+        StartTrial(TrialType.Equipment, 1);
+    }
+
+    private void StartTrial(TrialType type, int tier)
+    {
+        var gm = GameManager.Instance;
+        if (gm != null)
+            gm.StartTrialBattle(type, tier);
+    }
+
+    public void OnClick_Trials()
+    {
+        if (trialsPanel != null)
+            trialsPanel.Show(this);
     }
 
     public void OnClick_Characters()
