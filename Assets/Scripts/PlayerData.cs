@@ -11,14 +11,14 @@ public class CharacterInstance
 
     public CharacterData data;
     public int level;
-    public int currentExp;
+    public int levelCap;
     public List<ItemInstance> equippedItems = new List<ItemInstance>();
 
     public CharacterInstance(CharacterData data)
     {
         this.data = data;
         level = 1;
-        currentExp = 0;
+        levelCap = 10;
     }
 
     public IEnumerable<ItemInstance> GetEquippedItems()
@@ -156,27 +156,16 @@ public class CharacterInstance
         speed += speedBonus;
     }
 
-    public int GetExpToNextLevel()
+    public static int GetExpCostForLevel(int currentLevel)
     {
-        // linear curve
-        return 10 + (level - 1) * 5;
+        int safeLevel = Mathf.Max(1, currentLevel);
+        return 50 + safeLevel * safeLevel * 10;
     }
 
-    public bool AddExp(int amount)
+    public static int GetNotesCostForLevel(int currentLevel)
     {
-        if (amount <= 0) return false;
-
-        bool leveledUp = false;
-        currentExp += amount;
-
-        while (currentExp >= GetExpToNextLevel())
-        {
-            currentExp -= GetExpToNextLevel();
-            level++;
-            leveledUp = true;
-        }
-
-        return leveledUp;
+        int safeLevel = Mathf.Max(1, currentLevel);
+        return 100 + safeLevel * safeLevel * 25;
     }
 }
 
@@ -190,6 +179,11 @@ public class PlayerData
 
     public int softCurrency = 0;
     public int premiumCurrency = 0;
+    public int characterExp = 0;
+    public int resonanceMaterialTier1 = 0;
+    public int resonanceMaterialTier2 = 0;
+    public int resonanceMaterialTier3 = 0;
+    public int resonanceMaterialTier4 = 0;
 
     public List<ItemInstance> inventory = new List<ItemInstance>();
     public int towerHighestFloorCleared = 0;

@@ -12,7 +12,7 @@ public class GachaController : MonoBehaviour
     public Button pullButton;
 
     [Header("Gacha Settings")]
-    public int pullCost = 100;
+    public int pullCost = 400;
     public CharacterData[] gachaPool;
 
     private void Start()

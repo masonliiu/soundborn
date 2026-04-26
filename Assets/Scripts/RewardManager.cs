@@ -12,6 +12,8 @@ public class RewardManager : MonoBehaviour
         data.premiumCurrency += floor.rewardPremiumCurrency;
         result.softCurrency = floor.rewardSoftCurrency;
         result.premiumCurrency = floor.rewardPremiumCurrency;
+        result.characterExp = GetCharacterExpReward(floor);
+        data.characterExp += result.characterExp;
 
         if (data.inventory == null)
             data.inventory = new List<ItemInstance>();
@@ -40,11 +42,21 @@ public class RewardManager : MonoBehaviour
 
         return result;
     }
+
+    private int GetCharacterExpReward(TowerFloor floor)
+    {
+        int floorNumber = Mathf.Max(1, floor.floorNumber);
+        int reward = 25 + floorNumber * 5;
+        if (floor.isBossFloor)
+            reward *= 2;
+        return reward;
+    }
 }
 
 public class FloorRewardResult
 {
     public int softCurrency;
     public int premiumCurrency;
+    public int characterExp;
     public List<ItemData> items = new List<ItemData>();
 }

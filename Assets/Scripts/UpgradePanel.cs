@@ -116,7 +116,10 @@ public class UpgradePanel : MonoBehaviour
             return;
         }
 
-        int cost = gm.GetLevelUpCost(targetInstance);
+        gm.EnsureCharacterLevelCap(targetInstance);
+        bool atCap = gm.IsCharacterAtLevelCap(targetInstance);
+        int notesCost = gm.GetLevelUpNotesCost(targetInstance);
+        int expCost = gm.GetLevelUpExpCost(targetInstance);
         targetInstance.GetTotalStats(out int hp, out int atk, out _, out _);
 
         if (nameText != null)
@@ -130,13 +133,27 @@ public class UpgradePanel : MonoBehaviour
         }
 
         if (levelText != null)
-            levelText.text = "Level " + targetInstance.level;
+            levelText.text = $"Level {targetInstance.level}/{targetInstance.levelCap}";
 
         if (costText != null)
-            costText.text = "Cost: " + cost;
+        {
+            if (atCap && gm.GetNextLevelCapRequirement(targetInstance, out int tier, out int amount, out int nextCap))
+            {
+                int owned = gm.GetResonanceMaterialCount(tier);
+                costText.text = $"Limit Break: {amount} {GetResonanceMaterialName(tier)} ({owned}/{amount})\nUnlocks level {nextCap}";
+            }
+            else if (atCap)
+            {
+                costText.text = "Max level reached";
+            }
+            else
+            {
+                costText.text = $"Level Up: {expCost} Character EXP, {notesCost} Notes";
+            }
+        }
 
         if (softCurrencyText != null)
-            softCurrencyText.text = "Gold: " + gm.playerData.softCurrency;
+            softCurrencyText.text = $"Notes: {gm.playerData.softCurrency}  EXP: {gm.playerData.characterExp}";
 
         if (hpText != null)
             hpText.text = "HP: " + hp;
@@ -145,7 +162,12 @@ public class UpgradePanel : MonoBehaviour
             atkText.text = "ATK: " + atk;
 
         if (levelUpButton != null)
-            levelUpButton.interactable = gm.playerData.softCurrency >= cost;
+        {
+            levelUpButton.interactable = CanPressUpgradeButton(gm, targetInstance, atCap, notesCost, expCost);
+            var label = levelUpButton.GetComponentInChildren<TextMeshProUGUI>();
+            if (label != null)
+                label.text = atCap ? "Limit Break" : "Level Up";
+        }
     }
 
     public void OnClick_LevelUp()
@@ -153,7 +175,11 @@ public class UpgradePanel : MonoBehaviour
         var gm = GameManager.Instance;
         if (gm == null || targetInstance == null) return;
 
-        if (gm.TryLevelUpCharacter(targetInstance))
+        bool changed = gm.IsCharacterAtLevelCap(targetInstance)
+            ? gm.TryBreakCharacterLevelCap(targetInstance)
+            : gm.TryLevelUpCharacter(targetInstance);
+
+        if (changed)
         {
             Refresh();
 
@@ -165,6 +191,25 @@ public class UpgradePanel : MonoBehaviour
             if (homeUI != null)
                 homeUI.Refresh();
         }
+    }
+
+    private bool CanPressUpgradeButton(GameManager gm, CharacterInstance inst, bool atCap, int notesCost, int expCost)
+    {
+        if (gm == null || gm.playerData == null || inst == null)
+            return false;
+
+        if (!atCap)
+            return gm.playerData.softCurrency >= notesCost && gm.playerData.characterExp >= expCost;
+
+        if (!gm.GetNextLevelCapRequirement(inst, out int tier, out int amount, out _))
+            return false;
+
+        return gm.GetResonanceMaterialCount(tier) >= amount;
+    }
+
+    private string GetResonanceMaterialName(int tier)
+    {
+        return "Resonance " + tier;
     }
 
     private IEnumerator LevelUpFeedback()

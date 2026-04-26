@@ -12,7 +12,7 @@ public static class SaveSystem
         public string characterId;
         public string displayNameFallback;
         public int level;
-        public int currentExp;
+        public int levelCap;
         public List<ItemSave> equippedItems = new List<ItemSave>();
     }
 
@@ -33,6 +33,11 @@ public static class SaveSystem
 
         public int softCurrency = 0;
         public int premiumCurrency = 0;
+        public int characterExp = 0;
+        public int resonanceMaterialTier1 = 0;
+        public int resonanceMaterialTier2 = 0;
+        public int resonanceMaterialTier3 = 0;
+        public int resonanceMaterialTier4 = 0;
 
         public List<ItemSave> inventory = new List<ItemSave>();
         public int towerHighestFloorCleared = 0;
@@ -70,6 +75,11 @@ public static class SaveSystem
             activeCharacterIndex = data.activeCharacterIndex,
             softCurrency = data.softCurrency,
             premiumCurrency = data.premiumCurrency,
+            characterExp = data.characterExp,
+            resonanceMaterialTier1 = data.resonanceMaterialTier1,
+            resonanceMaterialTier2 = data.resonanceMaterialTier2,
+            resonanceMaterialTier3 = data.resonanceMaterialTier3,
+            resonanceMaterialTier4 = data.resonanceMaterialTier4,
             towerHighestFloorCleared = data.towerHighestFloorCleared,
             towerCurrentFloor = data.towerCurrentFloor,
             playerLevel = data.playerLevel,
@@ -94,7 +104,7 @@ public static class SaveSystem
                     characterId = inst.data.characterId,
                     displayNameFallback = inst.data.displayName,
                     level = inst.level,
-                    currentExp = inst.currentExp
+                    levelCap = inst.levelCap
                 };
 
                 if (inst.equippedItems != null)
@@ -231,7 +241,7 @@ public static class SaveSystem
                 var inst = new CharacterInstance(data)
                 {
                     level = cs.level,
-                    currentExp = cs.currentExp
+                    levelCap = cs.levelCap > 0 ? cs.levelCap : 10
                 };
 
                 if (cs.equippedItems != null && itemDb != null)
@@ -268,6 +278,11 @@ public static class SaveSystem
 
         target.softCurrency = save.softCurrency;
         target.premiumCurrency = save.premiumCurrency;
+        target.characterExp = save.characterExp;
+        target.resonanceMaterialTier1 = save.resonanceMaterialTier1;
+        target.resonanceMaterialTier2 = save.resonanceMaterialTier2;
+        target.resonanceMaterialTier3 = save.resonanceMaterialTier3;
+        target.resonanceMaterialTier4 = save.resonanceMaterialTier4;
         target.towerHighestFloorCleared = save.towerHighestFloorCleared;
         target.towerCurrentFloor = save.towerCurrentFloor;
         target.playerLevel = save.playerLevel;
@@ -304,6 +319,19 @@ public static class SaveSystem
             target.activeLineupIndices = new int[4] { -1, -1, -1, -1 };
 
         int characterCount = target.ownedCharacters.Count;
+        for (int i = 0; i < characterCount; i++)
+        {
+            var character = target.ownedCharacters[i];
+            if (character == null) continue;
+
+            if (character.level <= 0)
+                character.level = 1;
+            if (character.levelCap <= 0)
+                character.levelCap = 10;
+            if (character.level > character.levelCap)
+                character.levelCap = Mathf.CeilToInt(character.level / 10f) * 10;
+        }
+
         if (characterCount == 0)
         {
             target.activeCharacterIndex = 0;
@@ -333,4 +361,3 @@ public static class SaveSystem
             target.activeLineupIndices[0] = target.activeCharacterIndex;
     }
 }
-

@@ -2632,7 +2632,7 @@ public class BattleController : MonoBehaviour
             }
         }
 
-        return $"+{reward.softCurrency} Credits, +{reward.premiumCurrency} Gems{itemPart}";
+        return $"+{reward.softCurrency} Notes, +{reward.characterExp} Character EXP, +{reward.premiumCurrency} Gems{itemPart}";
     }
 
     private string GetItemName(ItemData item)
